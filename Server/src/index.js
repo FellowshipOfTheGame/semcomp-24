@@ -1,9 +1,14 @@
-// Dependencies and Configurations
+// Dependencies
 const express = require('express');
 const https = require('https');
-require('dotenv').config()
+
+const userRoutes = require('./routes/user')
+const sessionRoutes = require('./routes/session')
+const raceRoutes = require('./routes/race')
+const shopRoutes = require('./routes/shop')
 
 // Enviroments Variables
+require('dotenv').config()
 const NODE_ENV = process.env.NODE_ENV || "dev"
 const SERVER_HTTP_PORT = process.env.SERVER_HTTP_PORT || 3000
 const SERVER_HTTPS_PORT = process.env.SERVER_HTTPS_PORT || undefined
@@ -19,10 +24,15 @@ var app = express();
 app.disable('x-powered-by')
 
 // Routes Configurations
-app.get('/', (req, res) => res.json({ serverStatus: "OK" }))
+app.get('/ping', (req, res) => res.json({ response: "pong :)" }))
+app.use('/user', userRoutes)
+app.use('/session', sessionRoutes)
+app.use('/race', raceRoutes)
+app.use('/shop', shopRoutes)
 
 // Server Listeners
 if(NODE_ENV === "dev" || SERVER_HTTPS_PORT === undefined){
+    
     app.listen(SERVER_HTTP_PORT, (error) => {
         if (error) throw error
         console.log(`Starting HTTP server on port ${SERVER_HTTP_PORT}.`) 
