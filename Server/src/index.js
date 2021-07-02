@@ -16,8 +16,10 @@ const CERTIFICATE_KEY_PATH = process.env.CERTIFICATE_KEY_PATH || undefined
 const CERTIFICATE_CERT_PATH = process.env.CERTIFICATE_CERT_PATH || undefined
 const CERTIFICATE_CA_PATH = process.env.CERTIFICATE_CA_PATH || undefined
 
-// Server Configurations
+// Server Configurations & Middlewares
 var app = express();
+
+app.use(express.json())
 
 // Security and Log Configurations
 // TODO (https://expressjs.com/pt-br/advanced/best-practice-security.html)

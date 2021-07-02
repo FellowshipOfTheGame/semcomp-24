@@ -1,6 +1,5 @@
 // Dependencies
-const express = require('express');
-const routes = express.Router();
+const routes = require('express').Router();
 
 // Middlewares
 // None until now....

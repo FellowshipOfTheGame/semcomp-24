@@ -1,6 +1,6 @@
 # Semcomp 24 - Game Server
-# sudo docker build -t semcomp-24:1.0 .
-# sudo docker run -d -p 3000:3000 --rm --name semcomp24-server semcomp-24:1.0
+# sudo docker build -t semcomp24-game:1.0 .
+# sudo docker run -d -p 3000:3000 --rm --name semcomp24-game-inst semcomp24-game:1.0
 FROM node:15.14
 
 # Create app directory
