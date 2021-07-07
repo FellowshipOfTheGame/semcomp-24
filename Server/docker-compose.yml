@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+    webapi:
+        image: semcomp24-game:1.0
+        container_name: semcomp-24-game-api
+        ports: 
+            - 3000:3000
+    
+    mongodb:
+        image: mongo
+        ports: 
+            - 27017:27017
+        container_name: semcomp-24-game-mongo
+        logging:
+            driver: "none"
+        
+    redis:
+        image: redis
+        container_name: semcomp-24-game-redis
+        ports:
+            - 6379:6379
+        # expose: 
+        #     - 6379
+        # Use ports in development but change to expose in production.
+        # Reason: expose allow only inter-service communications and 
+        # can be reached by other services using the 'semcomp-24-game-redis.server_default' DNS
+        
