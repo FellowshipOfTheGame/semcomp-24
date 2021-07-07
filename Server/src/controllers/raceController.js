@@ -1,8 +1,9 @@
 // Dependencies
 const Redis = require("ioredis");
 const { randomInt } = require("crypto");
+const config = require("../config/")
 
-const redis = new Redis({ port: 6379, host: "localhost"});
+const redis = new Redis({ port: config.REDIS_PORT, host: config.REDIS_HOST}); 
 
 // Exporting controller async functions
 module.exports = { 

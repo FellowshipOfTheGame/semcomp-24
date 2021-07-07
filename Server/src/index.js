@@ -8,13 +8,7 @@ const raceRoutes = require('./routes/race')
 const shopRoutes = require('./routes/shop')
 
 // Enviroments Variables
-require('dotenv').config()
-const NODE_ENV = process.env.NODE_ENV || "dev"
-const SERVER_HTTP_PORT = process.env.SERVER_HTTP_PORT || 3000
-const SERVER_HTTPS_PORT = process.env.SERVER_HTTPS_PORT || undefined
-const CERTIFICATE_KEY_PATH = process.env.CERTIFICATE_KEY_PATH || undefined
-const CERTIFICATE_CERT_PATH = process.env.CERTIFICATE_CERT_PATH || undefined
-const CERTIFICATE_CA_PATH = process.env.CERTIFICATE_CA_PATH || undefined
+const config = require("./config/")
 
 // Server Configurations & Middlewares
 var app = express();
@@ -33,22 +27,22 @@ app.use('/race', raceRoutes)
 app.use('/shop', shopRoutes)
 
 // Server Listeners
-if(NODE_ENV === "dev" || SERVER_HTTPS_PORT === undefined){
+if(config.NODE_ENV === "dev" || config.SERVER_HTTPS_PORT === undefined){
     
-    app.listen(SERVER_HTTP_PORT, (error) => {
+    app.listen(config.SERVER_HTTP_PORT, (error) => {
         if (error) throw error
-        console.log(`Starting HTTP server on port ${SERVER_HTTP_PORT}.`) 
+        console.log(`Starting HTTP server on port ${config.SERVER_HTTP_PORT}.`) 
     })
 
 } else { 
     var httpsCredentials = {
-        key:  fs.readFileSync(CERTIFICATE_KEY_PATH),
-        cert: fs.readFileSync(CERTIFICATE_CERT_PATH),
-        ca:   fs.readFileSync(CERTIFICATE_CA_PATH)
+        key:  fs.readFileSync(config.CERTIFICATE_KEY_PATH),
+        cert: fs.readFileSync(config.CERTIFICATE_CERT_PATH),
+        ca:   fs.readFileSync(config.CERTIFICATE_CA_PATH)
     }
 
-    https.createServer(httpsCredentials, app).listen(SERVER_HTTPS_PORT , (error) => {
+    https.createServer(httpsCredentials, app).listen(config.SERVER_HTTPS_PORT , (error) => {
         if (error) throw error
-        console.log(`Starting HTTPS server on port ${SERVER_HTTPS_PORT}.`) 
+        console.log(`Starting HTTPS server on port ${config.SERVER_HTTPS_PORT}.`) 
     })
 }
