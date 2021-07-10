@@ -28,9 +28,7 @@ module.exports = function (passport) {
         callbackURL: `http${SERVER_HTTPS_PORT ? 's' : ''}://localhost:${SERVER_HTTPS_PORT ? SERVER_HTTPS_PORT : SERVER_HTTP_PORT}/session/login/callback`
     },
         function(accessToken, refreshToken, profile, done) {
-            console.log(profile)
-
-            UserController.findOrCreate(profile).then((err, user) => {
+            UserController.findOrCreate(profile, (err, user) => {
                 if (err) {
                     console.log(err);
                     return done(err, null, { message: "Não foi possível criar ou encontrar usuário" })
@@ -39,13 +37,9 @@ module.exports = function (passport) {
                 if (!user) {
                     return done(null, null, { message: "Usuário não criado ou não encontrado" });
                 }
-
-                console.log('Criando usuario: ', user);
-
+                
                 return done(null, user);
             });
-
-            // return done(null, profile.id);
         }
     ));
 }

@@ -6,9 +6,8 @@ require('../config/passport')(passport);
 
 // Routes
 routes.get('/login', passport.authenticate('google', { scope: ['profile', 'email'] , access_type: 'online' }))
-routes.get('/login/callback', passport.authenticate('google', { failureRedirect: '/login' }),
+routes.get('/login/callback', passport.authenticate('google', { failureRedirect: '/session/login' }),
     function(req, res) {
-        // Successful authentication, redirect home.
         res.redirect('/');
     }
 );

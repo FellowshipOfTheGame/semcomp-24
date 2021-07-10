@@ -3,6 +3,7 @@ const express = require('express');
 const https = require('https');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
+const mongoose = require('mongoose');
 
 const userRoutes = require('./routes/user')
 const sessionRoutes = require('./routes/session')
@@ -28,6 +29,17 @@ app.use(cookieSession({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+try {
+    mongoose.connect(`mongodb://localhost:27017/semcomp-24`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+    console.log("MongoDB Connected");    
+} catch (error) {
+    console.log("MongoDB Error");
+    console.log(error);
+}
 
 app.use((req, res, next) => {
     console.log(req.method, req.path);

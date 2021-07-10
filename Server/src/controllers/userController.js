@@ -1,35 +1,35 @@
 const User = require('../models/User');
 
 module.exports = {
-    async findOrCreate (user) {
-        if (!user.id) {
-            return ({ message: "Um google_id é necessário" }, null);
+    async findOrCreate (google_user, cb) {
+        if (!google_user.id) {
+            return cb({ message: "Um google_id é necessário" }, null);
         }
-
+        
         try {
-            var user = await User.findOne(google_id);
+            var user = await User.findOne({ google_id: google_user.id });
         } catch (err) {
-            return (err, null);
+            return cb(err, null);
         }
 
         if (user) {
-            return (null, user);
+            return cb(null, user);
         }
 
         try {
             user = await User.create({
                 created_at: new Date(),
 
-                google_id: user.id,
-                name: user._json?.name,
-                email: user._json?.email,
-                picture: user._json?.picture
+                google_id: google_user.id,
+                name: google_user._json?.name,
+                email: google_user._json?.email,
+                picture: google_user._json?.picture
             });
         } catch (err) {
-            return (err, null);
+            return cb(err, null);
         }
 
-        return (null, user);
+        return cb(null, user);
     },
 
     async show (req, res) {
