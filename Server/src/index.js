@@ -1,6 +1,8 @@
 // Dependencies
 const express = require('express');
 const https = require('https');
+const passport = require('passport');
+const cookieSession = require('cookie-session');
 
 const userRoutes = require('./routes/user')
 const sessionRoutes = require('./routes/session')
@@ -21,7 +23,20 @@ var app = express();
 
 // Security and Log Configurations
 // TODO (https://expressjs.com/pt-br/advanced/best-practice-security.html)
-app.disable('x-powered-by')
+app.disable('x-powered-by');
+
+app.use(cookieSession({
+    name: 'test-google',
+    keys: ['key1', 'key2']
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+    console.log(req.method, req.path);
+    next()
+})
 
 // Routes Configurations
 app.get('/ping', (req, res) => res.json({ response: "pong :)" }))
