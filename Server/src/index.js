@@ -2,8 +2,9 @@
 const express = require('express');
 const https = require('https');
 const passport = require('passport');
-const cookieSession = require('cookie-session');
+const session = require('express-session');
 const mongoose = require('mongoose');
+const redis = require('./config/redis');
 
 const userRoutes = require('./routes/user')
 const sessionRoutes = require('./routes/session')
@@ -11,7 +12,8 @@ const raceRoutes = require('./routes/race')
 const shopRoutes = require('./routes/shop')
 
 // Enviroments Variables
-const config = require("./config/")
+const config = require("./config/");
+require('dotenv').config();
 
 // Server Configurations & Middlewares
 var app = express();
@@ -22,9 +24,18 @@ app.use(express.json())
 // TODO (https://expressjs.com/pt-br/advanced/best-practice-security.html)
 app.disable('x-powered-by');
 
-app.use(cookieSession({
-    name: 'test-google',
-    keys: ['key1', 'key2']
+app.use(session({
+    resave: true,
+    name: "semcompSession",
+    saveUninitialized: true,
+    cookie: {
+        secure: false, 
+        httpOnly: false, 
+        sameSite: 'strict', 
+        maxAge: 3600000 
+    }, //TODO: change secure to true
+    secret: `${process.env.REDIS_SECRET}`,
+    store: redis.sessionStore,
 }));
 
 app.use(passport.initialize());

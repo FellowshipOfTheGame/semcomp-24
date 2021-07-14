@@ -27,7 +27,22 @@ const UserSchema = new mongoose.Schema({
     },
     picture: {
         type: String,
-    }
+    },
+
+    gold: {
+        type: Number,
+        default: 0,
+    },
+    runs: {
+        type: Number,
+        default: 0,
+    },
+    upgrades: [{
+        type: Number,
+    }],
+    topScores: [{
+        type: Number,
+    }]
 });
 
 module.exports = mongoose.model('User', UserSchema);

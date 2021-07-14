@@ -11,7 +11,7 @@ routes.get('/login/callback', passport.authenticate('google', { failureRedirect:
         res.redirect('/');
     }
 );
-routes.post('/logout', (req, res) => res.json({ serverStatus: "OK" }))
+routes.post('/logout', (req, res) => { req.logOut(); return res.status(200).end() });
 
 // Export routes
 module.exports = routes;
