@@ -59,7 +59,7 @@ public class HealthSystem : MonoBehaviour
 		// Debug.Log("Heal: " + healAmount);
 	}
 
-	void Start() {
+	void Awake() {
 		ResetHealth();
 	}
 }
