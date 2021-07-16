@@ -2,4 +2,6 @@
 {
     MAIN_MENU,
     CREDIT,
+    STORE,
+    RANKING,
 }
