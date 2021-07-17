@@ -7,17 +7,17 @@ public class HealthBar : MonoBehaviour
 {
 	
 	[SerializeField]
-	private Slider _slider;
+	private Slider slider;
 
 	[SerializeField]
 	private HealthSystem healthSystem;
 
     public void SetHealthBarMax(int healthBarMax) {
-		_slider.maxValue = healthBarMax;
+		slider.maxValue = healthBarMax;
     }
 
 	public void SetHealthBarValue(int healthBarValue) {
-		_slider.value = Mathf.Clamp(healthBarValue, _slider.minValue, _slider.maxValue);
+		slider.value = Mathf.Clamp(healthBarValue, slider.minValue, slider.maxValue);
 	}
 
 	void OnEnable() {
@@ -36,5 +36,6 @@ public class HealthBar : MonoBehaviour
 	// Update only when health value changes (damage or heal)
 	void UpdateHealthBar(object sender, System.EventArgs e) {
 		SetHealthBarValue(healthSystem.GetHealth());
+		Debug.Log("Health: " + healthSystem.GetHealth());
 	}
 }
