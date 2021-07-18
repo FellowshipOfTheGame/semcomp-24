@@ -1,9 +1,16 @@
 // Dependencies
-const Redis = require("ioredis");
-const { randomInt } = require("crypto");
-const config = require("../config/")
+const Redis = require("ioredis")
+const { randomInt } = require("crypto")
 
-const redis = new Redis({ port: config.REDIS_PORT, host: config.REDIS_HOST}); 
+const config = require("../config/")
+const UserModel = require("../models/User")
+const RaceModel = require("../models/Race")
+
+// Starting Races Caching DB
+const redis = new Redis({ 
+    port: config.REDIS_PORT, 
+    host: config.REDIS_HOST,
+}); 
 
 // Exporting controller async functions
 module.exports = { 
@@ -14,52 +21,84 @@ module.exports = {
 
 // Controller Functions
 async function start(req, res) {
-    // Generate Nonce, attach to user and return it
-    const userId = "user-auth-123abc"
-    const nonce = randomInt(10000000, 99999999).toString();
-    
-    redis.set(`${userId}-nonce-${nonce}`, nonce)
-    .then((r) => { console.log(`at /race/start: Nonce ${nonce} generate to user ${userId}`) })
-    .catch((e) => { console.log(`at /race/start: Error in set nonce ${nonce} to user ${userId}`) })
+    const userId = "60f32e0105e0c858b8746d75"
+    const nonce  = randomInt(10000000, 99999999).toString();
+    const startedAt = new Date().toISOString()
 
-    return res.json({ message: "ok", nonce: nonce })
+    redis.multi()
+    .set(`${userId}-nonce`, nonce)
+    .set(`${userId}-startedAt`, startedAt)
+    .exec((err, results) => {
+
+        if(err){
+            console.error(`at /race/start: Error in set nonce ${nonce} to user ${userId}`)
+            return res.status(500).json({ message: "Internal Server Error!" })
+        }
+
+        return res.json({ message: "ok", nonce: nonce })
+    })    
 }
 
 async function finish(req, res) { 
 
-    console.log(req.body)
-
-    // Get userId to retrieve the nonce and verify it
-    const userId = "user-auth-123abc"
-    const nonce = req.body?.nonce.toString()
+    const userId = "60f32e0105e0c858b8746d75"
     const score = parseInt(req.body?.score)
-    const hash  = req.body?.hash
+    const gold  = parseInt(req.body?.gold)
+    const nonce = req.body?.nonce?.toString().trim()
+    const sign  = req.body?.sign?.toString().trim()
+    const finishedAt = new Date().toISOString().trim()
 
-    // Basic fields validations
-    if( !nonce || !score || !hash || !Number.isInteger(score)) 
-        return res.status(400).json({ message: "Incorrect parameters." })
+    // Request Fields validations
+    if(Number.isNaN(score)) return res.status(400).json({ message: "Invalid field score!" })
+    if(Number.isNaN(gold)) return res.status(400).json({ message: "Invalid field gold!" })
+    if(!nonce) return res.status(400).json({ message: "Invalid field nonce!" })
+    if(!sign) return res.status(400).json({ message: "Invalid field sign!" })
 
-    // TODO: check JSON string with generated hash :P
-    
+    // Get nonce and start time in Cache Database
     redis.multi()
-    .get(`${userId}-nonce-${nonce}`)
-    .del(`${userId}-nonce-${nonce}`)
+    .get(`${userId}-nonce`)
+    .get(`${userId}-startedAt`)
+    .del(`${userId}-nonce`)
     .exec((err, results) => {
+    
+        if(err){
+            console.error(`at /race/finish: Error in get nonce in cache to user ${userId}`)
+            return res.status(500).json({ message: "Internal Server Error!" })
+        }
+        
         const storedNonce = results[0][1]
+        const startedAt = results[1][1]
 
-        // Invalid Nonce
         if(storedNonce === null || storedNonce !== nonce){
             console.log(`at /race/finish: Invalid Nonce ${nonce} != ${storedNonce} to user ${userId}`)
             return res.status(400).json({ message: "Invalid nonce!" })
         }
         
-        // TODO: Store races into mongo and verify if is in top 10 ranking 
+        // TODO: estudar possibilidade de utilizar transactions p/ diminuir latencia
+        //       ou realizar cache dos dados do usuario?
         
-        return res.json({ message: "ok" })
+        // TODO: Adicionar usuários no ranking se entrarem no top 10.
+
+        UserModel.findById(userId)
+        .then((doc) => { doc.gold += gold; return doc.save(); })
+        .then(( ) => { return new RaceModel({ userId, score, gold, startedAt, finishedAt}).save() })
+        .then(( ) => { return res.json({ message: "ok" }) })
+        .catch((err) => { 
+            console.error(`at /race/finish: Error saving user ${userId} race!`)
+            return res.status(500).json({ message: "Internal Server Error!" })
+        })
     })
 }
 
 async function ranking(req, res) {
+
+    // const newUser = new UserModel({
+    //     created_at: new Date(),
+    //     google_id: "google-id-fake-lol",
+    //     name: "Gabriel",
+    //     email: "email@teste.com",
+    // })
+    // newUser.save()
 
     // console.log("Saving foo-bar")
     // redis.set("foo", "bar")
