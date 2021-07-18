@@ -5,6 +5,7 @@ const { randomInt } = require("crypto")
 const config = require("../config/")
 const UserModel = require("../models/User")
 const RaceModel = require("../models/Race")
+const RankingModel = require("../models/Ranking")
 
 // Starting Races Caching DB
 const redis = new Redis({ 
@@ -18,6 +19,15 @@ module.exports = {
     finish,
     ranking
 }
+
+// Init global ranking variable 
+let globalRank = undefined
+
+RankingModel.find({}).limit(1).sort({createdAt: -1})
+// .then((doc) => new RankingModel({ rank: doc.rank, minScore: doc.minScore }).save())
+.catch((err) => RankingModel({ rank: [], minScore: 0 }).save())
+.then((doc) => { globalRank = doc })
+.catch((err) => { console.error('Unable to create new Rank document!') })
 
 // Controller Functions
 async function start(req, res) {
@@ -92,29 +102,5 @@ async function finish(req, res) {
 
 async function ranking(req, res) {
 
-    // const newUser = new UserModel({
-    //     created_at: new Date(),
-    //     google_id: "google-id-fake-lol",
-    //     name: "Gabriel",
-    //     email: "email@teste.com",
-    // })
-    // newUser.save()
-
-    // console.log("Saving foo-bar")
-    // redis.set("foo", "bar")
-
-    // redis.get("foo")
-    // .then(function (result) {
-    //     console.log(`Returned ${result}`); // Prints "bar"
-    // });
-    
-    // redis.multi()
-    // .set(`teste33`, 'teste33-foo')
-    // .get(`teste33`)
-    // .get(`teste44`)
-    // .del(`teste33`)
-    // .get(`teste33`)
-    // .exec((err, results) => { console.log(results[0])})
-
-    return res.json({ serverStatus: "OK", endpoint: "race ranking" })
+    return res.json({ message: "ok", ranking: globalRank })
 }
