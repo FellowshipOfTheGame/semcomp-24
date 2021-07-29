@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &680376509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 680376510}
+  - component: {fileID: 680376512}
+  - component: {fileID: 680376511}
+  m_Layer: 7
+  m_Name: WheelsColliders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &680376510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680376509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6036709807576084207}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &680376512
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680376509}
+  m_Material: {fileID: 13400000, guid: 2f060a6237801e6408679e3ada16b6b3, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 3
+  m_Direction: 0
+  m_Center: {x: 0, y: -0.5, z: 0.5}
+--- !u!136 &680376511
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680376509}
+  m_Material: {fileID: 13400000, guid: 2f060a6237801e6408679e3ada16b6b3, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 3
+  m_Direction: 0
+  m_Center: {x: 0, y: -0.5, z: -0.5}
 --- !u!1 &6036709807405129391
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,14 +101,13 @@ GameObject:
   - component: {fileID: 6036709807576084207}
   - component: {fileID: 6036709807576084200}
   - component: {fileID: 6036709807576084201}
-  - component: {fileID: 6036709807576084204}
   - component: {fileID: 6036709807576084211}
   - component: {fileID: 6036709807576084205}
-  - component: {fileID: 6036709807576084206}
-  - component: {fileID: 6036709807576084202}
+  - component: {fileID: 6036709807576084204}
+  - component: {fileID: 407148919}
   m_Layer: 0
   m_Name: Vehicle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,6 +127,7 @@ Transform:
   - {fileID: 6036709807879933422}
   - {fileID: 6036709807714276438}
   - {fileID: 6036709807405129390}
+  - {fileID: 680376510}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -120,32 +180,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6036709807576084204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6036709807576084203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe71479855dd6a94591fafe10cec17dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  preset: {fileID: 11400000, guid: 5fc40ecfe4806844080af202987ff611, type: 2}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  groundDetection:
-  - {fileID: 6036709807610969998}
-  - {fileID: 6036709807879933422}
-  - {fileID: 6036709807714276438}
-  - {fileID: 6036709807405129390}
-  groundCheckDistance: 0.5
-  groundDrag: 2
-  airDrag: 0.1
-  wheelBase: 4
-  turningAngle: 0
 --- !u!54 &6036709807576084211
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -175,34 +209,47 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
   m_Center: {x: 0, y: 0.00000023841858, z: 0}
---- !u!136 &6036709807576084206
-CapsuleCollider:
+--- !u!114 &6036709807576084204
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6036709807576084203}
-  m_Material: {fileID: 13400000, guid: 2f060a6237801e6408679e3ada16b6b3, type: 2}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 3
-  m_Direction: 0
-  m_Center: {x: 0, y: -0.5, z: 0.5}
---- !u!136 &6036709807576084202
-CapsuleCollider:
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe71479855dd6a94591fafe10cec17dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: {fileID: 11400000, guid: 5fc40ecfe4806844080af202987ff611, type: 2}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  groundDetection:
+  - {fileID: 6036709807610969998}
+  - {fileID: 6036709807879933422}
+  - {fileID: 6036709807714276438}
+  - {fileID: 6036709807405129390}
+  groundCheckDistance: 0.5
+  groundDrag: 2
+  airDrag: 0.1
+  wheelBase: 4
+  turningAngle: 0
+  currentSpeedText: {fileID: 0}
+--- !u!114 &407148919
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6036709807576084203}
-  m_Material: {fileID: 13400000, guid: 2f060a6237801e6408679e3ada16b6b3, type: 2}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 3
-  m_Direction: 0
-  m_Center: {x: 0, y: -0.5, z: -0.5}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad26218649bb1523f840544fef3067bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  healthMax: 100
 --- !u!1 &6036709807610969999
 GameObject:
   m_ObjectHideFlags: 0
