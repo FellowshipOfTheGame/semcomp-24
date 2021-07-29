@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
@@ -13,6 +14,9 @@ public class Obstacle : MonoBehaviour
     private float collisionTimeCount; // Seconds since collision with player or another obstacle
     private bool hitPlayer;
     private bool hitObstacle;
+    private float fadeSpeed;
+
+    private Renderer renderer;
 
     void Start()
     {
@@ -20,6 +24,9 @@ public class Obstacle : MonoBehaviour
         vehicleSpeedDecrease = obstaclePropertiesPreset.GetVehicleSpeedDecrease();
         destroyCountdownPlayer = obstaclePropertiesPreset.GetDestroyCountdownPlayer();
         destroyCountdownObstacle = obstaclePropertiesPreset.GetDestroyCountdownObstacle();
+        fadeSpeed = obstaclePropertiesPreset.GetFadeSpeed();
+
+        renderer = GetComponent<Renderer>();
     }
 
     private void FixedUpdate()
@@ -51,7 +58,7 @@ public class Obstacle : MonoBehaviour
                 float collisionDot2 = Vector3.Dot((player.transform.position - other.GetContact(0).point).normalized, other.GetContact(0).normal);
                 float damage3 = other.relativeVelocity.magnitude * Mathf.Abs(collisionDot2);
 
-                /*// DEBUG ---------------
+                // DEBUG ---------------
                 
                 Debug.DrawRay(player.transform.position, other.GetContact(0).normal, Color.magenta);
                 Debug.DrawRay(player.transform.position, other.relativeVelocity + other.transform.rotation.eulerAngles, Color.cyan); // [equation 1]
@@ -72,7 +79,7 @@ public class Obstacle : MonoBehaviour
                 
                 Time.timeScale = 0;
                 
-                // --------------------- */
+                // ---------------------
 
                 int finalDamage = baseDamage + (int) Mathf.Floor(damage2 / 4f);
                 player.GetComponent<HealthSystem>().Damage(finalDamage);
@@ -121,14 +128,40 @@ public class Obstacle : MonoBehaviour
 
         if ((hitPlayer && collisionTimeCount >= destroyCountdownPlayer) || (hitObstacle && collisionTimeCount >= destroyCountdownObstacle))
         {
-            if (hitPlayer)
-            {
-                Debug.Log("Destroying obstacle after collision with player (" + collisionTimeCount + " s)");
-            } else {
-                Debug.Log("Destroying obstacle after collision with another obstacle (" + collisionTimeCount + " s)");
-            }
+            Color c = renderer.material.color;
+            // c.a = Mathf.Lerp(1f, 0f, 15f * Time.deltaTime);
+            c.a = Mathf.Clamp(c.a - (fadeSpeed * Time.deltaTime), 0f, 1f);
+            renderer.material.color = c;
 
-            Destroy(gameObject);
+            if (c.a == 0)
+            {
+                if (hitPlayer)
+                {
+                    Debug.Log("Destroying obstacle after collision with player (" + collisionTimeCount + " s)");
+                } else {
+                    Debug.Log("Destroying obstacle after collision with another obstacle (" + collisionTimeCount + " s)");
+                }
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private IEnumerator Fade()
+    {
+        // Color c = renderer.materials[0].color;
+        // for (float ft = 1f; ft >= 0; ft -= 0.1f) 
+        // {
+        //     c.a = ft;
+        //     renderer.material.color = c;
+        // }
+
+        while (renderer.material.color.a > 0f)
+        {
+            Color c = renderer.material.color;
+            c.a = Mathf.Lerp(1f, 0f, 0.01f * Time.deltaTime);
+            // c.a -= 0.1f * Time.deltaTime;
+            renderer.material.color = c;
+            yield return null;
         }
     }
 }
