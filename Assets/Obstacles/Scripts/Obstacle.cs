@@ -58,7 +58,7 @@ public class Obstacle : MonoBehaviour
                 float collisionDot2 = Vector3.Dot((player.transform.position - other.GetContact(0).point).normalized, other.GetContact(0).normal);
                 float damage3 = other.relativeVelocity.magnitude * Mathf.Abs(collisionDot2);
 
-                // DEBUG ---------------
+                /*// DEBUG ---------------
                 
                 Debug.DrawRay(player.transform.position, other.GetContact(0).normal, Color.magenta);
                 Debug.DrawRay(player.transform.position, other.relativeVelocity + other.transform.rotation.eulerAngles, Color.cyan); // [equation 1]
@@ -79,7 +79,7 @@ public class Obstacle : MonoBehaviour
                 
                 Time.timeScale = 0;
                 
-                // ---------------------
+                // ---------------------*/
 
                 int finalDamage = baseDamage + (int) Mathf.Floor(damage2 / 4f);
                 player.GetComponent<HealthSystem>().Damage(finalDamage);
