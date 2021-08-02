@@ -13,7 +13,8 @@ module.exports = {
 
 // Controller Functions
 
-//shop function: retrieves items from shop, retrieves and displays the amount of money user has
+
+//shop function: retrieves items from shop, retrieves and displays the amount of gold user has
 //GET request
 async function shop(req, res) {
     const userId = "60f32e0105e0c858b8746d75"  //string
@@ -28,8 +29,7 @@ async function shop(req, res) {
 
     //TODO: if user already has an item, do not display it / have it "unavailable"
     //else display it as usual
-
-    return res.json({ serverStatus: "OK", endpoint: "shop" })
+    return res.json({ message: "ok", shop: shopItems })
 }
 
 //buy function: exchanges user's money for the item they want to buy
