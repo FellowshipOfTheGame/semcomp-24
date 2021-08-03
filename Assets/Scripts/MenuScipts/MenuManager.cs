@@ -2,14 +2,17 @@
 using UnityEngine.SceneManagement;
 public static class MenuManager {
     public static bool isInitialised = false;
-    private static GameObject mainMenu, settingsPanel, creditsMenu;
+    private static GameObject mainMenu, settingsPanel, creditsMenu, storeMenu, rankingMenu;
     
     public static void Init() {
         GameObject canvas = GameObject.Find("Canvas");
         GameObject panel = canvas.transform.Find("Panel").gameObject;
+        panel = panel.transform.Find("PanelInit").gameObject;
         settingsPanel = panel.transform.Find("BottomMenu").transform.Find("SettingsPanel").gameObject;
         creditsMenu = panel.transform.Find("Credits").gameObject;
         mainMenu = panel.transform.Find("MainMenu").gameObject;
+        storeMenu = panel.transform.Find("Store").gameObject;
+        rankingMenu = panel.transform.Find("Ranking").gameObject;
 
         isInitialised = true;
     }
@@ -25,6 +28,12 @@ public static class MenuManager {
                 break;
             case Menu.CREDIT:
                 creditsMenu.SetActive(true);
+                break;
+            case Menu.STORE:
+                storeMenu.SetActive(true);
+                break;
+            case Menu.RANKING:
+                rankingMenu.SetActive(true);
                 break;
         }
 
