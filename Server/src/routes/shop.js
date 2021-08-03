@@ -6,7 +6,7 @@ const routes = express.Router();
 const shopController = require('../controllers/shopController')
 
 // Routes
-routes.get('/shop', shopController.shop)
+routes.get('/', shopController.shop)
 routes.post('/buy-upgrades', shopController.buy)
 
 // Export routes

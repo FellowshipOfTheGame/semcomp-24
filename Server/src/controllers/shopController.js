@@ -1,6 +1,4 @@
 // Dependencies
-const Redis = require("ioredis");
-const redis = new Redis({ port: config.REDIS_PORT, host: config.REDIS_HOST}); 
 
 const UserModel = require("../models/User")
 const ShopModel = require("../models/Shop")
@@ -17,9 +15,9 @@ module.exports = {
 //shop function: retrieves upgrades from shop, retrieves and displays the amount of gold user has
 //GET request
 async function shop(req, res) {
-    const userId = "60f32e0105e0c858b8746d75"  //string
-    const userGold = parseInt(req.body?.gold)   //integer
-    const userUpgrades = req.body?.upgrades   //list
+    const userId = req.query?.user_id  //string
+    const userGold = 500   //integer
+    //const userUpgrades = req.body?.upgrades   //list
 
     const shopUpgrades = {
         "thing 1": 100,
@@ -29,7 +27,7 @@ async function shop(req, res) {
 
     //TODO: if user already has an upgrade, do not display it / have it "unavailable"
     //else display it as usual
-    return res.json({ message: "ok", shop: shopUpgrades })
+    return res.status(200).json({ message: "ok", gold: userGold, shop: shopUpgrades })
 }
 
 //buy function: exchanges user's money for the upgrade they want to buy
@@ -60,5 +58,5 @@ async function buy(req, res) {
 
     //TODO: add change to database
 
-    return res.json({ message: "ok" })
+    return res.status(200).json({ message: "ok" })
 }
