@@ -26,7 +26,7 @@ loadRanking()
 
 // Controller Functions
 async function start(req, res) {
-    const userId = "610995376fcc148333974985"
+    const userId = req.user._id
     const nonce  = randomInt(10000000, 99999999).toString();
     const startedAt = new Date().toISOString()
 
@@ -45,7 +45,7 @@ async function start(req, res) {
 }
 
 async function finish(req, res) { 
-    const userId = "610995376fcc148333974985"
+    const userId = req.user._id
     const score = parseInt(req.body?.score)
     const gold  = parseInt(req.body?.gold)
     const nonce = req.body?.nonce?.toString().trim()
@@ -53,7 +53,6 @@ async function finish(req, res) {
     const finishedAt = new Date().toISOString().trim()
 
     let newPersonalRecord = false
-    let nickname = ""
 
     // Request Fields validations
     if(Number.isNaN(score)) return res.status(400).json({ message: "invalid field @score" })
@@ -90,14 +89,13 @@ async function finish(req, res) {
             doc.gold += gold
             doc.runs += 1
             newPersonalRecord = doc.topScore < score
-            nickname          = doc.nickname
             doc.topScore      = (newPersonalRecord) ? score : doc.topScore
             return doc.save() 
         })
         .then(( ) => new RaceModel({ userId, score, gold, startedAt, finishedAt}).save())
         .then(async ( ) => { 
             if( globalRank.minScore < score ) 
-                await updateRanking(userId, nickname, score)
+                await updateRanking(userId, req.user.name, score)
 
             return res.json({ message: "ok", isPersonalRecord: newPersonalRecord }) 
         })
