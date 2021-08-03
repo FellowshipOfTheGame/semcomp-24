@@ -5,6 +5,7 @@ const passport = require('passport');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const redis = require('./config/redis');
+const cookieParser = require('cookie-parser');
 
 const userRoutes = require('./routes/user')
 const sessionRoutes = require('./routes/session')
@@ -24,10 +25,12 @@ app.use(express.json())
 // TODO (https://expressjs.com/pt-br/advanced/best-practice-security.html)
 app.disable('x-powered-by');
 
+app.use(cookieParser(`${process.env.REDIS_SECRET}`));
+
 app.use(session({
-    resave: true,
+    resave: false,
     name: "semcompSession",
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         secure: false, 
         httpOnly: false, 

@@ -32,6 +32,7 @@ const UserSchema = new mongoose.Schema({
     gold: {
         type: Number,
         default: 0,
+        min: 0,
     },
     runs: {
         type: Number,
