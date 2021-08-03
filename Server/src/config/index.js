@@ -21,4 +21,6 @@ module.exports = {
 
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || undefined,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET|| undefined,
+
+    REQUEST_SIGNATURE_KEY: process.env.REQUEST_SIGNATURE_KEY || "MINAHSENHASUPERSECRETA",
 }

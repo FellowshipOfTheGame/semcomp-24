@@ -1,6 +1,6 @@
 // Dependencies
 const Redis = require("ioredis")
-const { randomInt } = require("crypto")
+const { randomInt, createHmac } = require("crypto")
 
 const config = require("../config/")
 const UserModel = require("../models/User")
@@ -21,17 +21,12 @@ module.exports = {
 }
 
 // Init global ranking variable 
-let globalRank = undefined
-
-RankingModel.find({}).limit(1).sort({createdAt: -1})
-// .then((doc) => new RankingModel({ rank: doc.rank, minScore: doc.minScore }).save())
-.catch((err) => RankingModel({ rank: [], minScore: 0 }).save())
-.then((doc) => { globalRank = doc })
-.catch((err) => { console.error('Unable to create new Rank document!') })
+let globalRank = {rank: [], minScore: -1, updatedAt: new Date(), createdAt: new Date()}
+loadRanking()
 
 // Controller Functions
 async function start(req, res) {
-    const userId = "60f32e0105e0c858b8746d75"
+    const userId = "610995376fcc148333974985"
     const nonce  = randomInt(10000000, 99999999).toString();
     const startedAt = new Date().toISOString()
 
@@ -42,7 +37,7 @@ async function start(req, res) {
 
         if(err){
             console.error(`at /race/start: Error in set nonce ${nonce} to user ${userId}`)
-            return res.status(500).json({ message: "Internal Server Error!" })
+            return res.status(500).json({ message: "internal server error" })
         }
 
         return res.json({ message: "ok", nonce: nonce })
@@ -50,19 +45,25 @@ async function start(req, res) {
 }
 
 async function finish(req, res) { 
-
-    const userId = "60f32e0105e0c858b8746d75"
+    const userId = "610995376fcc148333974985"
     const score = parseInt(req.body?.score)
     const gold  = parseInt(req.body?.gold)
     const nonce = req.body?.nonce?.toString().trim()
     const sign  = req.body?.sign?.toString().trim()
     const finishedAt = new Date().toISOString().trim()
 
+    let newPersonalRecord = false
+    let nickname = ""
+
     // Request Fields validations
-    if(Number.isNaN(score)) return res.status(400).json({ message: "Invalid field score!" })
-    if(Number.isNaN(gold)) return res.status(400).json({ message: "Invalid field gold!" })
-    if(!nonce) return res.status(400).json({ message: "Invalid field nonce!" })
-    if(!sign) return res.status(400).json({ message: "Invalid field sign!" })
+    if(Number.isNaN(score)) return res.status(400).json({ message: "invalid field @score" })
+    if(Number.isNaN(gold)) return res.status(400).json({ message: "invalid field @gold" })
+    if(!nonce) return res.status(400).json({ message: "invalid field @nonce" })
+    if(!sign) return res.status(400).json({ message: "invalid field @signature" })
+
+    // Verifying the signature 
+    const reqSign = createHmac('sha256', config.REQUEST_SIGNATURE_KEY).update(JSON.stringify({score, gold, nonce})).digest('hex')
+    if(sign !== reqSign) return res.status(400).json({ message: "incorrect signature" })
 
     // Get nonce and start time in Cache Database
     redis.multi()
@@ -73,7 +74,7 @@ async function finish(req, res) {
     
         if(err){
             console.error(`at /race/finish: Error in get nonce in cache to user ${userId}`)
-            return res.status(500).json({ message: "Internal Server Error!" })
+            return res.status(500).json({ message: "internal server error" })
         }
         
         const storedNonce = results[0][1]
@@ -81,26 +82,81 @@ async function finish(req, res) {
 
         if(storedNonce === null || storedNonce !== nonce){
             console.log(`at /race/finish: Invalid Nonce ${nonce} != ${storedNonce} to user ${userId}`)
-            return res.status(400).json({ message: "Invalid nonce!" })
+            return res.status(400).json({ message: "incorrect nonce" })
         }
-        
-        // TODO: estudar possibilidade de utilizar transactions p/ diminuir latencia
-        //       ou realizar cache dos dados do usuario?
-        
-        // TODO: Adicionar usuários no ranking se entrarem no top 10.
 
         UserModel.findById(userId)
-        .then((doc) => { doc.gold += gold; return doc.save(); })
-        .then(( ) => { return new RaceModel({ userId, score, gold, startedAt, finishedAt}).save() })
-        .then(( ) => { return res.json({ message: "ok" }) })
+        .then((doc) => { 
+            doc.gold += gold
+            doc.runs += 1
+            newPersonalRecord = doc.topScore < score
+            nickname          = doc.nickname
+            doc.topScore      = (newPersonalRecord) ? score : doc.topScore
+            return doc.save() 
+        })
+        .then(( ) => new RaceModel({ userId, score, gold, startedAt, finishedAt}).save())
+        .then(async ( ) => { 
+            if( globalRank.minScore < score ) 
+                await updateRanking(userId, nickname, score)
+
+            return res.json({ message: "ok", isPersonalRecord: newPersonalRecord }) 
+        })
         .catch((err) => { 
-            console.error(`at /race/finish: Error saving user ${userId} race!`)
-            return res.status(500).json({ message: "Internal Server Error!" })
+            console.error(`at /race/finish: Error saving user ${userId} race! ${err}`)
+            return res.status(500).json({ message: "internal server error" })
         })
     })
 }
 
 async function ranking(req, res) {
 
+    // await new UserModel({  
+    //     google_id: "abcde", 
+    //     name: "GabrielVanLoon", 
+    //     nickname: "GabrielVanLoon",
+    //     email: "gabriel@teste.com",
+    //     created_at: new Date()
+    // }).save()
+
     return res.json({ message: "ok", ranking: globalRank })
+}
+
+// Auxiliar Functions 
+async function loadRanking(){
+    await RankingModel.findOne().sort({createdAt: -1}).limit(1).exec()
+    .then((doc) => {
+        if(!doc) return Promise.resolve({ rank: [], minScore: 0 }) 
+        else     return Promise.resolve({ rank: doc.rank, minScore: doc.minScore })
+    }) 
+    .then((data) => { globalRank = new RankingModel(data) })
+    .catch((err) => { console.log(`at loadRanking(): error loading ranking ${err}`) })
+}
+
+async function updateRanking(userId, nickname, score){ 
+    // If user is already in ranking then update his score
+    let isInRanking = false
+    for(let i = 0; isInRanking === false && i < globalRank.rank.length; i++){
+        if(globalRank.rank[i].userId.equals(userId)){
+            if(score < globalRank.rank[i].score)
+                return 
+            isInRanking = true
+            globalRank.rank[i].score = score
+        }
+    }
+
+    // If not in ranking need to append to the ranking list
+    if(isInRanking === false) 
+        globalRank.rank.push({userId, nickname, score})
+    
+    // Reordering the ranking
+    globalRank.rank.sort((a,b) => (b.score > a.score) ? 1 : -1)
+
+    // Remove ranking overflow
+    globalRank.rank = globalRank.rank.slice(0,10)
+    
+    // Update min score and update time
+    globalRank.minScore = globalRank.rank.reduce((cur,item) => (item.score < cur) ? item.score : cur, Number.MAX_SAFE_INTEGER)
+    globalRank.updatedAt = new Date()
+
+    return await globalRank.save()
 }

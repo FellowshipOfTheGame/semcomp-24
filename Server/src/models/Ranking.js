@@ -8,7 +8,7 @@ const RankingSchema = new mongoose.Schema({
             ref: 'User',
         },
 
-        userName: { 
+        nickname: { 
             type: String,
             required: true
         },
