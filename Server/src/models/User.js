@@ -41,9 +41,10 @@ const UserSchema = new mongoose.Schema({
     upgrades: [{
         type: Number,
     }],
-    topScores: [{
+    topScore: {
         type: Number,
-    }]
+        default: 0,
+    }
 });
 
 module.exports = mongoose.model('User', UserSchema);
