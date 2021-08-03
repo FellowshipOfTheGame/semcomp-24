@@ -14,49 +14,49 @@ module.exports = {
 // Controller Functions
 
 
-//shop function: retrieves items from shop, retrieves and displays the amount of gold user has
+//shop function: retrieves upgrades from shop, retrieves and displays the amount of gold user has
 //GET request
 async function shop(req, res) {
     const userId = "60f32e0105e0c858b8746d75"  //string
     const userGold = parseInt(req.body?.gold)   //integer
-    const userItems = req.body?.items   //list
+    const userUpgrades = req.body?.upgrades   //list
 
-    const shopItems = {
+    const shopUpgrades = {
         "thing 1": 100,
         "thing 2": 200,
         "thing 3": 300
-    }  //dict of all items on shop and their "prices"
+    }  //dict of all upgrades on shop and their "prices"
 
-    //TODO: if user already has an item, do not display it / have it "unavailable"
+    //TODO: if user already has an upgrade, do not display it / have it "unavailable"
     //else display it as usual
-    return res.json({ message: "ok", shop: shopItems })
+    return res.json({ message: "ok", shop: shopUpgrades })
 }
 
-//buy function: exchanges user's money for the item they want to buy
+//buy function: exchanges user's money for the upgrade they want to buy
 //POST request
 async function buy(req, res) { 
     const userId = "60f32e0105e0c858b8746d75"  //string
     const userGold = parseInt(req.body?.gold)   //integer
-    const userItems = req.body?.items   //list
-    const targetItem = req.body?.item.toString()   //string
+    const userUpgrades = req.body?.upgrades   //list
+    const targetUpgrade = req.body?.upgrade.toString()   //string
 
-    const shopItems = {
+    const shopUpgrades = {
         "thing 1": 100,
         "thing 2": 200,
         "thing 3": 300
-    }  //dict of all items on shop and their "prices"
+    }  //dict of all upgrades on shop and their "prices"
 
-    //check if user has already purchased the item
-    if(targetItem in userItems)
-        return res.status(400).json({ message: "User already purchased this item!" })
+    //check if user has already purchased the upgrade
+    if(targetUpgrade in userUpgrades)
+        return res.status(400).json({ message: "User already purchased this upgrade!" })
     
     //check if user has enough gold for the transaction
-    if(shopItems[targetItem] > userGold)
+    if(shopUpgrades[targetUpgrade] > userGold)
         return res.status(400).json({ message: "User doesn't have enough gold!" })
 
-    //if both are true, subtract user's gold and add item to his "acquired items"
-    userGold = userGold - shopItems[targetItem]
-    userItems.push(targetItem)
+    //if both are true, subtract user's gold and add upgrade to his "acquired upgrades"
+    userGold = userGold - shopUpgrades[targetUpgrade]
+    userUpgrades.push(targetUpgrade)
 
     //TODO: add change to database
 

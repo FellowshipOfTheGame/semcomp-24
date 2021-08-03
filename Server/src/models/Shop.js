@@ -9,6 +9,12 @@ const ShopSchema = new mongoose.Schema({
             required: true
         },
 
+        level: { 
+            type: Number,
+            required: true,
+            default: 0
+        },
+
         price: { 
             type: Number,
             required: true
