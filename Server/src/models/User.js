@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const UpgradesModel = require("../models/UserUpgrades")
+
 const UserSchema = new mongoose.Schema({
     created_at: {
         type: Date,
@@ -38,6 +40,9 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    upgrades: [{
+        type: UpgradesModel,
+    }],
     topScore: {
         type: Number,
         default: 0,

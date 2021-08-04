@@ -2,20 +2,16 @@ const mongoose = require('mongoose');
 
 const UpgradesSchema = new mongoose.Schema({
     
-    item: [{
+    itemName: { 
+        type: String,
+        required: true
+    },
 
-        itemName: { 
-            type: String,
-            required: true
-        },
-
-        level: {
-            type: Number,
-            required: true,
-            default: 0
-        },
-
-    }],
+    level: {
+        type: Number,
+        required: true,
+        default: 0
+    },
    
     updatedAt: { 
         type: Date,
@@ -30,4 +26,6 @@ const UpgradesSchema = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('UserUpgrades', UpgradesSchema);
+module.exports = UpgradesSchema;
+
+//module.exports = mongoose.model('UserUpgrades', UpgradesSchema);
