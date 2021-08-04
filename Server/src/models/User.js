@@ -38,9 +38,6 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    upgrades: [{
-        type: Number,
-    }],
     topScore: {
         type: Number,
         default: 0,

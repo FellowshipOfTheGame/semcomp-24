@@ -5,7 +5,6 @@ const { randomInt, createHmac } = require("crypto")
 const config = require("../config/")
 const UserModel = require("../models/User")
 const RaceModel = require("../models/Race")
-const RankingModel = require("../models/Ranking")
 
 // Starting Races Caching DB
 const redis = new Redis({ 
@@ -20,8 +19,9 @@ module.exports = {
     ranking
 }
 
-// Init global ranking variable 
-let globalRank = {rank: [], minScore: -1, updatedAt: new Date(), createdAt: new Date()}
+// Init global ranking variable
+const rankingMazSize = 10
+let   globalRank     = { rank: [], minScore: -1, updatedAt: new Date() }
 loadRanking()
 
 // Controller Functions
@@ -89,13 +89,13 @@ async function finish(req, res) {
             doc.gold += gold
             doc.runs += 1
             newPersonalRecord = doc.topScore < score
-            doc.topScore      = (newPersonalRecord) ? score : doc.topScore
+            doc.topScore = (newPersonalRecord) ? score : doc.topScore
             return doc.save() 
         })
         .then(( ) => new RaceModel({ userId, score, gold, startedAt, finishedAt}).save())
-        .then(async ( ) => { 
-            if( globalRank.minScore < score ) 
-                await updateRanking(userId, req.user.name, score)
+        .then(( ) => { 
+            if( newPersonalRecord && globalRank.minScore < score ) 
+                updateRanking(userId, req.user.name, score)
 
             return res.json({ message: "ok", isPersonalRecord: newPersonalRecord }) 
         })
@@ -107,54 +107,57 @@ async function finish(req, res) {
 }
 
 async function ranking(req, res) {
-
-    // await new UserModel({  
-    //     google_id: "abcde", 
-    //     name: "GabrielVanLoon", 
-    //     nickname: "GabrielVanLoon",
-    //     email: "gabriel@teste.com",
-    //     created_at: new Date()
-    // }).save()
-
-    return res.json({ message: "ok", ranking: globalRank })
+    return res.json({ 
+        message: "ok",
+        updatedAt: globalRank.updatedAt,
+        rank: globalRank.rank.map((item) => { 
+            return { 
+                name: item.name, 
+                nickname: item.nickname, 
+                topScore: item.topScore
+            }
+        }) 
+    })
 }
 
 // Auxiliar Functions 
 async function loadRanking(){
-    await RankingModel.findOne().sort({createdAt: -1}).limit(1).exec()
-    .then((doc) => {
-        if(!doc) return Promise.resolve({ rank: [], minScore: 0 }) 
-        else     return Promise.resolve({ rank: doc.rank, minScore: doc.minScore })
-    }) 
-    .then((data) => { globalRank = new RankingModel(data) })
-    .catch((err) => { console.log(`at loadRanking(): error loading ranking ${err}`) })
+    await UserModel.find().select('name nickname topScore').sort({topScore: -1}).limit(rankingMazSize).exec()
+    .then((docs) => {
+        const N             = docs.length
+        globalRank.rank     = docs
+        globalRank.minScore = (N >= rankingMazSize) ? globalRank.rank[N-1].topScore : -1
+    })
+    .catch((err) => { console.error(`at loadRanking(): error loading ranking ${err}`) })
 }
 
-async function updateRanking(userId, nickname, score){ 
-    // If user is already in ranking then update his score
+function updateRanking(_id, nickname, topScore){ 
+    // Flag to know if user is already in ranking
     let isInRanking = false
+
+    // If user is already in ranking then update his score
     for(let i = 0; isInRanking === false && i < globalRank.rank.length; i++){
-        if(globalRank.rank[i].userId.equals(userId)){
-            if(score < globalRank.rank[i].score)
-                return 
+        if(_id.equals(globalRank.rank[i]._id)){
+            if(topScore < globalRank.rank[i].topScore) 
+                return  // If he did not beat his own best topScore then ignore
+            
             isInRanking = true
-            globalRank.rank[i].score = score
+            globalRank.rank[i].topScore = topScore
         }
     }
 
     // If not in ranking need to append to the ranking list
     if(isInRanking === false) 
-        globalRank.rank.push({userId, nickname, score})
+        globalRank.rank.push({_id, nickname, topScore})
     
     // Reordering the ranking
-    globalRank.rank.sort((a,b) => (b.score > a.score) ? 1 : -1)
+    globalRank.rank.sort((a,b) => (b.topScore > a.topScore) ? 1 : -1)
 
     // Remove ranking overflow
-    globalRank.rank = globalRank.rank.slice(0,10)
+    globalRank.rank = globalRank.rank.slice(0,rankingMazSize)
     
     // Update min score and update time
-    globalRank.minScore = globalRank.rank.reduce((cur,item) => (item.score < cur) ? item.score : cur, Number.MAX_SAFE_INTEGER)
+    const N = globalRank.rank.length
+    globalRank.minScore  = (N >= rankingMazSize) ? globalRank.rank[N-1].topScore : -1
     globalRank.updatedAt = new Date()
-
-    return await globalRank.save()
 }
