@@ -10,20 +10,36 @@ module.exports = {
 }
 
 // Controller Functions
+//create shop display for user based on his acquired upgrades
+async function createShop(userUpgrades) {
+    const names = ["Max Life", "Base Acceleration", "Traction", "Booster", "Nitro", "Bus Stop"]
+    var shopUpgrades = []
+    
+    for(let i = 0; i < names.length; i++) {
 
+        item = await ShopModel.create({
+            itemName: names[i],
+            level: 0,
+            price: 100,
+            created_at: new Date(),
+            updated_at: new Date(),
+        });
+
+        shopUpgrades.push(item);
+    }
+
+    return shopUpgrades
+}
 
 //shop function: retrieves upgrades from shop, retrieves and displays the amount of gold user has
 //GET request
 async function shop(req, res) {
     const userId = req.query?.user_id  //string
     const userGold = 500   //integer
-    //const userUpgrades = req.body?.upgrades   //list
+    const userUpgrades = req.body?.upgrades   //list
 
-    const shopUpgrades = {
-        "thing 1": 100,
-        "thing 2": 200,
-        "thing 3": 300
-    }  //dict of all upgrades on shop and their "prices"
+    // Shop model
+    const shopUpgrades = await createShop(userUpgrades)
 
     //TODO: if user already has an upgrade, do not display it / have it "unavailable"
     //else display it as usual
@@ -38,6 +54,7 @@ async function buy(req, res) {
     const userUpgrades = req.body?.upgrades   //list
     const targetUpgrade = req.body?.upgrade.toString()   //string
 
+    //TODO: add the real upgrade names, add mongoose model
     const shopUpgrades = {
         "thing 1": 100,
         "thing 2": 200,

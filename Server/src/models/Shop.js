@@ -1,26 +1,24 @@
 const mongoose = require('mongoose');
 
 const ShopSchema = new mongoose.Schema({
-    
-    item: [{
 
-        itemName: { 
-            type: String,
-            required: true
-        },
+    itemName: { 
+        type: String,
+        enum: ["Max Life", "Base Acceleration", "Traction", "Booster", "Nitro", "Bus Stop"],
+        required: true
+    },
 
-        level: { 
-            type: Number,
-            required: true,
-            default: 0
-        },
+    level: { 
+        type: Number,
+        required: true,
+        max: 3,
+        default: 0
+    },
 
-        price: { 
-            type: Number,
-            required: true
-        },
-
-    }],
+    price: { 
+        type: Number,
+        required: true
+    },
    
     updatedAt: { 
         type: Date,
