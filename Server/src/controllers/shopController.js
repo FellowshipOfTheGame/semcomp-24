@@ -1,6 +1,7 @@
 // Dependencies
 
-const UserModel = require("../models/User")
+//const UserModel = require("../models/User")
+const UserUpModel = require("../models/UserUpgradesModel")
 const ShopModel = require("../models/Shop")
 
 // Exporting controller async functions
@@ -10,17 +11,41 @@ module.exports = {
 }
 
 // Controller Functions
+
+//for testing
+async function createUserUp() {
+    const names = ["Max Life", "Base Acceleration", "Traction", "Booster", "Nitro", "Bus Stop"]
+    var userUpgrades = []
+    
+    for(let i = 0; i < names.length; i++) {
+
+        item = await UserUpModel.create({
+            itemName: names[i],
+            level: 0,
+            created_at: new Date(),
+            updated_at: new Date(),
+        });
+
+        userUpgrades.push(item);
+    }
+
+    return userUpgrades
+}
+
 //create shop display for user based on his acquired upgrades
 async function createShop(userUpgrades) {
     const names = ["Max Life", "Base Acceleration", "Traction", "Booster", "Nitro", "Bus Stop"]
     var shopUpgrades = []
     
     for(let i = 0; i < names.length; i++) {
+        const userLevel = userUpgrades[i].level
+
+        console.log(userLevel)
 
         item = await ShopModel.create({
             itemName: names[i],
-            level: 0,
-            price: 100,
+            level: userLevel,
+            price: (userLevel + 1) * 100,
             created_at: new Date(),
             updated_at: new Date(),
         });
@@ -36,7 +61,10 @@ async function createShop(userUpgrades) {
 async function shop(req, res) {
     const userId = req.query?.user_id  //string
     const userGold = 500   //integer
-    const userUpgrades = req.body?.upgrades   //list
+    const userUpgrades = await createUserUp()   //list
+
+    //var userGold = await UserModel.findById(userId).select("gold");
+    //var userUpgrades = await UserModel.findById(userId).select("upgrades");
 
     // Shop model
     const shopUpgrades = await createShop(userUpgrades)
