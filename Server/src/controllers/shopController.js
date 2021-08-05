@@ -1,7 +1,6 @@
 // Dependencies
 
-//const UserModel = require("../models/User")
-const UserUpModel = require("../models/UserUpgradesModel")
+const UserModel = require("../models/User")
 const ShopModel = require("../models/Shop")
 
 // Exporting controller async functions
@@ -11,26 +10,6 @@ module.exports = {
 }
 
 // Controller Functions
-
-//for testing
-async function createUserUp() {
-    const names = ["Max Life", "Base Acceleration", "Traction", "Booster", "Nitro", "Bus Stop"]
-    var userUpgrades = []
-    
-    for(let i = 0; i < names.length; i++) {
-
-        item = await UserUpModel.create({
-            itemName: names[i],
-            level: 0,
-            created_at: new Date(),
-            updated_at: new Date(),
-        });
-
-        userUpgrades.push(item);
-    }
-
-    return userUpgrades
-}
 
 //create shop display for user based on his acquired upgrades
 async function createShop(userUpgrades) {
@@ -60,11 +39,9 @@ async function createShop(userUpgrades) {
 //GET request
 async function shop(req, res) {
     const userId = req.query?.user_id  //string
-    const userGold = 500   //integer
-    const userUpgrades = await createUserUp()   //list
 
-    //var userGold = await UserModel.findById(userId).select("gold");
-    //var userUpgrades = await UserModel.findById(userId).select("upgrades");
+    const userGold = await UserModel.findById(userId).select("gold");
+    const userUpgrades = await UserModel.findById(userId).select("upgrades");
 
     // Shop model
     const shopUpgrades = await createShop(userUpgrades)
@@ -74,34 +51,32 @@ async function shop(req, res) {
     return res.status(200).json({ message: "ok", gold: userGold, shop: shopUpgrades })
 }
 
-//buy function: exchanges user's money for the upgrade they want to buy
+//buy function: exchanges user's gold for the upgrade they want to buy
 //POST request
 async function buy(req, res) { 
-    const userId = "60f32e0105e0c858b8746d75"  //string
-    const userGold = parseInt(req.body?.gold)   //integer
-    const userUpgrades = req.body?.upgrades   //list
-    const targetUpgrade = req.body?.upgrade.toString()   //string
+    const userId = req.query?.user_id  //string
 
-    //TODO: add the real upgrade names, add mongoose model
-    const shopUpgrades = {
-        "thing 1": 100,
-        "thing 2": 200,
-        "thing 3": 300
-    }  //dict of all upgrades on shop and their "prices"
+    const upgradeIndex = req.body?.upgrade_index  //integer
+    const upgradeName = req.body?.upgrade_name.toString()   //string
+    const upgradeLevel = req.body?.upgrade_level  //integer
+    const upgradePrice = req.body?.upgrade_price  //integer
+
+    var userGold = await UserModel.findById(userId).select("gold");
+    var userUpgrades = await UserModel.findById(userId).select("upgrades");
 
     //check if user has already purchased the upgrade
-    if(targetUpgrade in userUpgrades)
-        return res.status(400).json({ message: "User already purchased this upgrade!" })
+    if(upgradeLevel !== userUpgrades[upgradeIndex].level + 1)
+        return res.status(400).json({ message: "User cannot purchase this upgrade!" })
     
     //check if user has enough gold for the transaction
-    if(shopUpgrades[targetUpgrade] > userGold)
+    if(upgradePrice > userGold)
         return res.status(400).json({ message: "User doesn't have enough gold!" })
 
     //if both are true, subtract user's gold and add upgrade to his "acquired upgrades"
-    userGold = userGold - shopUpgrades[targetUpgrade]
-    userUpgrades.push(targetUpgrade)
+    userGold -= upgradePrice
+    userUpgrades[upgradeIndex].level++
 
     //TODO: add change to database
 
-    return res.status(200).json({ message: "ok" })
+    return res.status(200).json({ message: "ok", userGold: userGold, upgrade: upgradeName, upgrade_level: upgradeLevel })
 }
