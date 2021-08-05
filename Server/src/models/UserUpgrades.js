@@ -27,5 +27,3 @@ const UpgradesSchema = new mongoose.Schema({
 })
 
 module.exports = UpgradesSchema;
-
-//module.exports = mongoose.model('UserUpgrades', UpgradesSchema);
