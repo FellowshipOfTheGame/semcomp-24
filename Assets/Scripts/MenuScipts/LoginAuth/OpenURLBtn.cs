@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class OpenURLBtn : MonoBehaviour
 {
+    [SerializeField]
+    private string url;
+
     private Button _button;
     private void Awake()
     {
@@ -12,7 +15,7 @@ public class OpenURLBtn : MonoBehaviour
 
     private void ButtonCallback()
     {
-        Application.OpenURL("http://2136976e4f9d.ngrok.io/");
+        Application.OpenURL(url);
         Debug.Log("Botao apertado! Yey");
     }
 }
