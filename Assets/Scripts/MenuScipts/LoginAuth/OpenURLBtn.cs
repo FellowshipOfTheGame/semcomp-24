@@ -1,4 +1,3 @@
-using System.Net.WebSockets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +7,12 @@ public class OpenURLBtn : MonoBehaviour
     private void Awake()
     {
         _button = GetComponent<Button>();
-        _button.onClick.AddListener(OpenUrl);
+        _button.onClick.AddListener(ButtonCallback);
     }
 
-    private void OpenUrl()
+    private void ButtonCallback()
     {
         Application.OpenURL("http://2136976e4f9d.ngrok.io/");
-        Debug.Log("Abrindo..");
+        Debug.Log("Botao apertado! Yey");
     }
 }
