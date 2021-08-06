@@ -1,19 +1,21 @@
-using System.Net.WebSockets;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OpenURLBtn : MonoBehaviour
 {
+    [SerializeField]
+    private string url;
+
     private Button _button;
     private void Awake()
     {
         _button = GetComponent<Button>();
-        _button.onClick.AddListener(OpenUrl);
+        _button.onClick.AddListener(ButtonCallback);
     }
 
-    private void OpenUrl()
+    private void ButtonCallback()
     {
-        Application.OpenURL("http://2136976e4f9d.ngrok.io/");
-        Debug.Log("Abrindo..");
+        Application.OpenURL(url);
+        Debug.Log("Botao apertado! Yey");
     }
 }
