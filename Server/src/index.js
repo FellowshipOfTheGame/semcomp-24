@@ -4,7 +4,7 @@ const https = require('https');
 const passport = require('passport');
 const session = require('express-session');
 const mongoose = require('mongoose');
-const redis = require('./config/redis');
+const redis = require('./loaders/redis')
 const cookieParser = require('cookie-parser');
 
 const userRoutes = require('./routes/user')

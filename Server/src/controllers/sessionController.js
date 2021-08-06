@@ -3,7 +3,7 @@ const Redis = require("ioredis")
 const passport = require('passport')
 const { v4: uuidv4, validate: uuidValidate } = require('uuid')
 
-const config = require("../config/")
+const { otpClient: redis } = require("../loaders/redis")
 
 // Exporting controller async functions
 module.exports = { 
@@ -11,12 +11,6 @@ module.exports = {
     getSession,
     logout,
 }
-
-// Starting One Time Password Caching DB
-const redis = new Redis({ 
-    port: config.REDIS_PORT, 
-    host: config.REDIS_HOST,
-}) 
 
 // Controller Functions
 async function loginCallback(req, res) { 

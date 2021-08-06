@@ -5,12 +5,7 @@ const { randomInt, createHmac } = require("crypto")
 const config = require("../config/")
 const UserModel = require("../models/User")
 const RaceModel = require("../models/Race")
-
-// Starting Races Caching DB
-const redis = new Redis({ 
-    port: config.REDIS_PORT, 
-    host: config.REDIS_HOST,
-}); 
+const { nonceClient: redis } = require("../loaders/redis")
 
 // Exporting controller async functions
 module.exports = { 
