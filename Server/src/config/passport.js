@@ -26,6 +26,7 @@ module.exports = function (passport) {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: `http${SERVER_HTTPS_PORT ? 's' : ''}://localhost:${SERVER_HTTPS_PORT ? SERVER_HTTPS_PORT : SERVER_HTTP_PORT}/session/login/callback`
+        // callbackURL: `http://2136976e4f9d.ngrok.io/session/login/callback/`
     },
         function(accessToken, refreshToken, profile, done) {
             UserController.findOrCreate(profile, (err, user) => {
