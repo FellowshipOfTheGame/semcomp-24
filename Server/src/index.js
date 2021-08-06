@@ -8,6 +8,7 @@ const fs = require('fs');
 require('./loaders/mongoose')
 require('./loaders/redis')
 const session = require('./loaders/session')
+require('./loaders/passport')(passport)
 
 // Routes
 const userRoutes = require('./routes/user')

@@ -2,7 +2,6 @@
 const express = require('express');
 const routes = express.Router();
 const passport = require('passport');
-require('../config/passport')(passport);
 
 // Middlewares
 const SessionMiddleware = require('../middlewares/Session.middleware');
