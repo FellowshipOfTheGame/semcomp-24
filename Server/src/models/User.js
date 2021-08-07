@@ -32,17 +32,16 @@ const UserSchema = new mongoose.Schema({
     gold: {
         type: Number,
         default: 0,
+        min: 0,
     },
     runs: {
         type: Number,
         default: 0,
     },
-    upgrades: [{
+    topScore: {
         type: Number,
-    }],
-    topScores: [{
-        type: Number,
-    }]
+        default: 0,
+    }
 });
 
 module.exports = mongoose.model('User', UserSchema);
