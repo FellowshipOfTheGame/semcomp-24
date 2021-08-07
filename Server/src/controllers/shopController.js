@@ -11,41 +11,25 @@ module.exports = {
 
 // Controller Functions
 
-// create shop display for user based on his acquired upgrades
-async function createShop(userUpgrades) {
-    const names = ["Max Life", "Base Acceleration", "Traction", "Booster", "Nitro", "Bus Stop"]
-    var shopUpgrades = []
-    
-    for(let i = 0; i < names.length; i++) {
-        const upLevel = userUpgrades[i].level + 1
-
-        item = await ShopModel.create({
-            itemName: names[i],
-            level: upLevel,
-            price: upLevel * 100,
-            created_at: new Date(),
-            updated_at: new Date(),
-        });
-
-        shopUpgrades.push(item);
-    }
-
-    return shopUpgrades
-}
-
 // shop function: retrieves upgrades from shop, retrieves and displays the amount of gold user has
 // GET request
 async function shop(req, res) {
-    const userId = req.query?.user_id  //string
+    const userId = req.user._id  //string
 
     var user = await UserModel.findById(userId)
     var userGold = user.gold
-    var userUpgrades = await user.upgrades
+    const userUpgrades = await user.upgrades
 
-    // Shop model
-    const shopUpgrades = await createShop(userUpgrades)
+    // makes copy to avoid referencing the original
+    var shopUpgrades = JSON.parse(JSON.stringify(userUpgrades))
 
-    // TODO: if user already has an upgrade, do not display it / have it "unavailable"
+    // if user already has an upgrade maximized, do not display it
+    shopUpgrades = shopUpgrades.filter(function(obj) {
+        obj.level++ // add +1 to level and multiply price
+        obj.price = obj.level * obj.price
+        return (obj.level < 4);
+    })
+
     // else display it as usual
     return res.status(200).json({ message: "ok", gold: userGold, shop: shopUpgrades })
 }
@@ -53,20 +37,34 @@ async function shop(req, res) {
 // buy function: exchanges user's gold for the upgrade they want to buy
 // POST request
 async function buy(req, res) { 
-    const userId = req.query?.user_id  //string
+    const userId = req.user._id  //string
 
-    const upgradeIndex = req.body?.upgrade_index  //integer
     const upgradeName = req.body?.upgrade_name.toString()   //string
-    const upgradeLevel = req.body?.upgrade_level  //integer
-    const upgradePrice = req.body?.upgrade_price  //integer
 
     var user = await UserModel.findById(userId)
     var userGold = user.gold
     var userUpgrades = await user.upgrades
 
-    // check if user has already purchased the upgrade
-    if(upgradeLevel !== userUpgrades[upgradeIndex].level + 1)
-        return res.status(400).json({ message: "User cannot purchase this upgrade!" })
+    // current upgrade values
+    var currUpgrade = userUpgrades.find(obj => obj.itemName === upgradeName)
+
+    if(!currUpgrade)
+        return res.status(400).json({ message: "Upgrade not found" })
+
+    // target upgrade values
+    // makes copy to avoid referencing the original
+    var targetUpgrade = JSON.parse(JSON.stringify(currUpgrade))
+
+    // add +1 to level and multiply price
+    targetUpgrade.level++
+    targetUpgrade.price = targetUpgrade.level * targetUpgrade.price
+
+    const upgradeLevel = targetUpgrade.level
+    const upgradePrice = targetUpgrade.price
+
+    // check if user has already maximized the upgrade 
+    if(upgradeLevel > 3)
+        return res.status(400).json({ message: "User already maximized this upgrade!" })
     
     // check if user has enough gold for the transaction
     if(upgradePrice > userGold)
@@ -74,12 +72,11 @@ async function buy(req, res) {
 
     // if both are true, subtract user's gold and add upgrade to his "acquired upgrades"
     userGold -= upgradePrice
-    userUpgrades[upgradeIndex].level++
+    currUpgrade.level++
 
     // add change to database
     user.gold = userGold
-    user.upgrades[upgradeIndex].level = userUpgrades[upgradeIndex].level
     await user.save()
 
-    return res.status(200).json({ message: "ok", userGold: userGold, upgrade: upgradeName, upgrade_level: upgradeLevel })
+    return res.status(200).json({ message: "ok", userGold: userGold, upgrade: upgradeName, upgrade_level: upgradeLevel, upgrade_price: upgradePrice })
 }

@@ -4,26 +4,22 @@ const UpgradesSchema = new mongoose.Schema({
     
     itemName: { 
         type: String,
-        required: true
+        required: true,
+        enum: ["Max_Life", "Base_Acceleration", "Traction", "Booster", "Nitro", "Bus_Stop"]
     },
 
     level: {
         type: Number,
         required: true,
+        max: 3,
         default: 0
     },
-   
-    updatedAt: { 
-        type: Date,
-        required: true,
-        default: Date.now
-    },
 
-    createdAt: { 
-        type: Date,
+    price: {
+        type: Number,
         required: true,
-        default: Date.now
-    },
+        default: 100
+    }
 })
 
 module.exports = UpgradesSchema;

@@ -40,9 +40,22 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    upgrades: [{
-        type: UpgradesModel,
-    }],
+    upgrades: {
+        type: [UpgradesModel],
+        default:[{
+            itemName: "Max_Life",
+        }, {
+            itemName: "Base_Acceleration",
+        }, {
+            itemName: "Traction",
+        }, {
+            itemName: "Booster",
+        }, {
+            itemName: "Nitro",
+        }, {
+            itemName: "Bus_Stop",
+        }]
+    },
     topScore: {
         type: Number,
         default: 0,
