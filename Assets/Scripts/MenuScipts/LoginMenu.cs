@@ -1,22 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LoginMenu : MonoBehaviour
 {
-    private GameObject panelInit;
-    GameObject button;
+    [SerializeField] private GameObject inserKeyPanel;
+    [SerializeField] private GameObject loginPanel;
+    [SerializeField] private GameObject initPanel;
+    
+    public void OnClick_Login() 
+    {
+        Application.OpenURL(Endpoints.login_url);
 
-    private void Start() {
-        panelInit = GameObject.Find("Canvas");
-        panelInit = panelInit.transform.Find("Panel").gameObject;
-        panelInit = panelInit.transform.Find("PanelInit").gameObject;
-        button = gameObject.transform.GetChild(1).gameObject;
-    }
-
-    public void OnClick_Login() {
-        panelInit.SetActive(true);
-        button.SetActive(false);
+        inserKeyPanel.SetActive(true);
+        loginPanel.SetActive(false);
     }
 }
