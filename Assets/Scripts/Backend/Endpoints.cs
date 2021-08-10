@@ -1,11 +1,9 @@
-
 public static class Endpoints
 {
-    //TODO: ler url base do api_settings.json
-    private const string base_url = "http://ff0848782688.ngrok.io";
+    public static string Base_url { private get; set; }
     
-    public const string login_url = base_url + "/session/login";
-    public const string get_session_url = base_url + "/session/login/get-session";
-    public const string race_start = base_url + "/race/start";
-    public const string race_finish = base_url + "/race/finish";
+    public static string Login_url => Base_url + "/session/login";
+    public static string Login_get_session_url => Base_url + "/session/login/get-session";
+    public static string Race_start_url => Base_url + "/race/start";
+    public static string Race_finish_url => Base_url + "/race/finish";
 }

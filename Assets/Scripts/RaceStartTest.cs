@@ -11,7 +11,7 @@ public class RaceStartTest : MonoBehaviour
 
     private IEnumerator StartRace()
     {
-        using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.race_start, "{}");
+        using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Race_start_url, "{}");
         yield return request.SendWebRequest();
 
         if (request.result != UnityWebRequest.Result.Success)
@@ -55,7 +55,7 @@ public class RaceStartTest : MonoBehaviour
 
     private IEnumerator FinishRace()
     {
-        using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.race_finish, JsonUtility.ToJson(raceData));
+        using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Race_finish_url, JsonUtility.ToJson(raceData));
         yield return request.SendWebRequest();
 
         if (request.result != UnityWebRequest.Result.Success)
