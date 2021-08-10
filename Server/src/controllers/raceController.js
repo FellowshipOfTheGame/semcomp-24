@@ -56,7 +56,7 @@ async function finish(req, res) {
     if(!sign) return res.status(400).json({ message: "invalid field @signature" })
 
     // Verifying the signature 
-    const reqSign = createHmac('sha256', config.REQUEST_SIGNATURE_KEY).update(JSON.stringify({score, gold, nonce})).digest('hex')
+    const reqSign = createHmac('sha256', config.REQUEST_SIGNATURE_KEY).update(JSON.stringify({score, gold, nonce, sign: ""})).digest('base64')
     if(sign !== reqSign) return res.status(400).json({ message: "incorrect signature" })
 
     // Get nonce and start time in Cache Database

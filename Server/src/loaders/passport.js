@@ -21,9 +21,9 @@ module.exports = function (passport) {
     });
 
     passport.use(new GoogleStrategy({
-            clientID: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: `http${config.ENABLE_HTTPS ? 's' : ''}://${config.SERVER_HOST}:${config.SERVER_PORT}/session/login/callback`
+            clientID: config.GOOGLE_CLIENT_ID,
+            clientSecret: config.GOOGLE_CLIENT_SECRET,
+            callbackURL: config.GOOGLE_CALLBACK_URL,
         },
         function(accessToken, refreshToken, profile, done) {
             UserController.findOrCreate(profile, (err, user) => {
