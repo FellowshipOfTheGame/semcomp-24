@@ -29,11 +29,11 @@ module.exports = function (passport) {
             UserController.findOrCreate(profile, (err, user) => {
                 if (err) {
                     console.log(err);
-                    return done(err, null, { message: "Não foi possível criar ou encontrar usuário" })
+                    return done(err, null, { message: "unable to create or find user" })
                 }
 
                 if (!user) {
-                    return done(null, null, { message: "Usuário não criado ou não encontrado" });
+                    return done(null, null, { message: "user not created or not found" });
                 }
                 
                 return done(null, user);

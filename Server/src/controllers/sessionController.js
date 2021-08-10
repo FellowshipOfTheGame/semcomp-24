@@ -44,12 +44,12 @@ async function getSession(req, res) {
         const sessionID = results[0][1]
         
         if(sessionID === null)
-            return res.status(400).json({ message: "otp code expired!" })
+            return res.status(400).json({ message: "otp code expired" })
         
         req.sessionID = sessionID
         req.sessionStore.get(sessionID, function (err, session) {
             if(err || session === undefined)
-                return res.status(400).json({ message: "original session expired!" })
+                return res.status(400).json({ message: "original session expired" })
 
             req.sessionStore.createSession(req, session);
             return res.json({ message: "ok" })
