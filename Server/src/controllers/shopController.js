@@ -52,7 +52,6 @@ async function buy(req, res) {
 
     // add +1 to level and multiply price
     targetUpgrade.level++
-    targetUpgrade.price = targetUpgrade.level * targetUpgrade.price
 
     const upgradeLevel = targetUpgrade.level
     const upgradePrice = targetUpgrade.price
