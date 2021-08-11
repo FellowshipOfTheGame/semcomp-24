@@ -15,7 +15,7 @@ module.exports = {
 async function shop(req, res) {
     const userId = req.user._id  //string
     const userGold = req.user.gold
-    const userUpgrades = await req.user.upgrades
+    const userUpgrades = req.user.upgrades
 
     // makes copy to avoid referencing the original
     let shopUpgrades = JSON.parse(JSON.stringify(userUpgrades))
@@ -38,7 +38,7 @@ async function buy(req, res) {
     const upgradeName = req.body?.upgrade_name.toString()   //string
 
     let userGold = req.user.gold
-    let userUpgrades = await req.user.upgrades
+    let userUpgrades = req.user.upgrades
 
     // current upgrade values
     let currUpgrade = userUpgrades.find(obj => obj.itemName === upgradeName)
