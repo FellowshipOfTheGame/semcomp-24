@@ -1,7 +1,6 @@
 // Dependencies
 
 const UserModel = require("../models/User")
-const ShopModel = require("../models/Shop")
 
 // Exporting controller async functions
 module.exports = { 
@@ -15,18 +14,15 @@ module.exports = {
 // GET request
 async function shop(req, res) {
     const userId = req.user._id  //string
-
-    var user = await UserModel.findById(userId)
-    var userGold = user.gold
-    const userUpgrades = await user.upgrades
+    const userGold = req.user.gold
+    const userUpgrades = await req.user.upgrades
 
     // makes copy to avoid referencing the original
-    var shopUpgrades = JSON.parse(JSON.stringify(userUpgrades))
+    let shopUpgrades = JSON.parse(JSON.stringify(userUpgrades))
 
     // if user already has an upgrade maximized, do not display it
     shopUpgrades = shopUpgrades.filter(function(obj) {
         obj.level++ // add +1 to level and multiply price
-        obj.price = obj.level * obj.price
         return (obj.level < 4);
     })
 
@@ -41,19 +37,18 @@ async function buy(req, res) {
 
     const upgradeName = req.body?.upgrade_name.toString()   //string
 
-    var user = await UserModel.findById(userId)
-    var userGold = user.gold
-    var userUpgrades = await user.upgrades
+    let userGold = req.user.gold
+    let userUpgrades = await req.user.upgrades
 
     // current upgrade values
-    var currUpgrade = userUpgrades.find(obj => obj.itemName === upgradeName)
+    let currUpgrade = userUpgrades.find(obj => obj.itemName === upgradeName)
 
     if(!currUpgrade)
         return res.status(400).json({ message: "Upgrade not found" })
 
     // target upgrade values
     // makes copy to avoid referencing the original
-    var targetUpgrade = JSON.parse(JSON.stringify(currUpgrade))
+    let targetUpgrade = JSON.parse(JSON.stringify(currUpgrade))
 
     // add +1 to level and multiply price
     targetUpgrade.level++
@@ -73,10 +68,11 @@ async function buy(req, res) {
     // if both are true, subtract user's gold and add upgrade to his "acquired upgrades"
     userGold -= upgradePrice
     currUpgrade.level++
+    currUpgrade.price = currUpgrade.price + 100
 
     // add change to database
-    user.gold = userGold
-    await user.save()
+    req.user.gold = userGold
+    await req.user.save()
 
     return res.status(200).json({ message: "ok", userGold: userGold, upgrade: upgradeName, upgrade_level: upgradeLevel, upgrade_price: upgradePrice })
 }
