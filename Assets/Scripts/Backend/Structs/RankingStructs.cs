@@ -1,5 +1,5 @@
 ﻿[System.Serializable]
-public struct RankingPlayer
+public struct RankingPlayerData
 {
     public string name;
     public string nickname;
@@ -7,7 +7,7 @@ public struct RankingPlayer
 }
 
 [System.Serializable]
-public struct Ranking
+public struct RankingData
 {
-    public RankingPlayer[] rank;
+    public RankingPlayerData[] rank;
 }

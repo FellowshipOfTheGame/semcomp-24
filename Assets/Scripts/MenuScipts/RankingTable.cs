@@ -23,11 +23,11 @@ public class RankingTable : MonoBehaviour
         template.gameObject.SetActive(false);
 
         string jsonString = PlayerPrefs.GetString(Key);
-        Ranking ranking = JsonUtility.FromJson<Ranking>(jsonString);
+        RankingData ranking = JsonUtility.FromJson<RankingData>(jsonString);
 
         scoreEntryTransformList = new List<Transform>();
         
-        foreach(RankingPlayer entry in ranking.rank) 
+        foreach(RankingPlayerData entry in ranking.rank) 
         {
             CreateEntry(entry, container, scoreEntryTransformList);
         }      
@@ -52,7 +52,7 @@ public class RankingTable : MonoBehaviour
         Debug.Log(request.downloadHandler.text);
     }
 
-    private void CreateEntry(RankingPlayer scoreEntry, Transform container, List<Transform> transformList) 
+    private void CreateEntry(RankingPlayerData scoreEntry, Transform container, List<Transform> transformList) 
     {
         float templateHeight = 40f;
         int rank = transformList.Count;
