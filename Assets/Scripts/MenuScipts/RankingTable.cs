@@ -1,31 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class RankingTable : MonoBehaviour
 {
+    public const string Key = "scoreTable";
+
     public Transform container;
     public Transform template;
     //private List<ScoreEntry> scoreEntryList;
     private List<Transform> scoreEntryTransformList;
-    private void Awake() {
+
+    private void OnEnable()
+    {
+        StartCoroutine(GetRanking());
+    }
+
+    private void PopulateRankingList() 
+    {
         template.gameObject.SetActive(false);
 
-        string jsonString = PlayerPrefs.GetString("scoreTable");
-        Scores scores = JsonUtility.FromJson<Scores>(jsonString);
+        string jsonString = PlayerPrefs.GetString(Key);
+        Ranking ranking = JsonUtility.FromJson<Ranking>(jsonString);
 
-        scores.scoresList.Sort((x,y) => y.score.CompareTo(x.score));
         scoreEntryTransformList = new List<Transform>();
         
-        foreach(ScoreEntry entry in scores.scoresList) {
-            CreateEntry(entry,container,scoreEntryTransformList);
-            if(scoreEntryTransformList.Count > 8)
-                break;
+        foreach(RankingPlayer entry in ranking.rank) 
+        {
+            CreateEntry(entry, container, scoreEntryTransformList);
         }      
     }
 
-    private void CreateEntry(ScoreEntry scoreEntry,Transform container,List<Transform> transformList) {
+    private IEnumerator GetRanking()
+    {
+        using UnityWebRequest request = WebRequestFactory.AuthGetJson(Endpoints.Ranking_url);
+
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log(request.error);
+        }
+        else
+        {
+            Debug.Log(request.result);
+            PlayerPrefs.SetString(Key, request.downloadHandler.text);
+            PopulateRankingList();
+        }
+        Debug.Log(request.downloadHandler.text);
+    }
+
+    private void CreateEntry(RankingPlayer scoreEntry, Transform container, List<Transform> transformList) 
+    {
         float templateHeight = 40f;
         int rank = transformList.Count;
         Transform entry = Instantiate(template,container);
@@ -33,19 +61,21 @@ public class RankingTable : MonoBehaviour
         entryRect.anchoredPosition = new Vector2(0,-templateHeight * rank);
 
         entry.Find("PosText").GetComponent<Text>().text = (rank+1).ToString();
-        entry.Find("PontosText").GetComponent<Text>().text = scoreEntry.score.ToString();
+        entry.Find("PontosText").GetComponent<Text>().text = scoreEntry.topScore.ToString();
         entry.Find("NomeText").GetComponent<Text>().text = scoreEntry.name;
         entry.gameObject.SetActive(true);
 
         entry.Find("Background").gameObject.SetActive(rank % 2 == 1);
 
-        if(rank == 0) {
+        if(rank == 0) 
+        {
             entry.Find("PosText").GetComponent<Text>().color = Color.green;
             entry.Find("PontosText").GetComponent<Text>().color = Color.green;
             entry.Find("NomeText").GetComponent<Text>().color = Color.green;
         }
 
-        switch(rank) {
+        switch(rank) 
+        {
             default:
                 entry.Find("Trophy").gameObject.SetActive(false);
                 break;
@@ -60,22 +90,5 @@ public class RankingTable : MonoBehaviour
         }
 
         transformList.Add(entry);
-    }
-
-    private void AddEntry(int score, string name) {
-        ScoreEntry entry = new ScoreEntry { score = score,name = name };
-
-        string jsonString = PlayerPrefs.GetString("scoreTable");
-        Scores scores = JsonUtility.FromJson<Scores>(jsonString);
-
-        scores.scoresList.Add(entry);
-
-        string json = JsonUtility.ToJson(scores);
-        PlayerPrefs.SetString("scoreTable",json);
-        PlayerPrefs.Save();
-    }
-
-    private class Scores {
-        public List<ScoreEntry> scoresList;
     }
 }

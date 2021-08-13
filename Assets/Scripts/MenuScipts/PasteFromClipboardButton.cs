@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 [RequireComponent(typeof(Button))]
 public class PasteFromClipboardButton : MonoBehaviour

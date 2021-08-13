@@ -3,14 +3,17 @@ using System.IO;
 
 public class LoadApiSettings : MonoBehaviour
 {
-    private static readonly string _apiSettingsPath = Path.Combine("Assets", "Resources", "Secrets", "api_settings.json");
+    private const string _apiSettingsPath = "Secrets/api_settings";
+
+    [SerializeField] private TMPro.TextMeshProUGUI textMesh;
 
     private void Awake()
     {
-        var json = File.ReadAllText(_apiSettingsPath);
-        var settings = JsonUtility.FromJson<ApiSettings>(json);
+        var json = Resources.Load<TextAsset>(_apiSettingsPath);
+        var settings = JsonUtility.FromJson<ApiSettings>(json.text);
 
         Endpoints.Base_url = settings.api_url;
+        textMesh.SetText(settings.api_url);
     }
 
     [System.Serializable]

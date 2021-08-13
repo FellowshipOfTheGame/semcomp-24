@@ -3,7 +3,7 @@ using UnityEngine.Networking;
 
 static class WebRequestFactory
 {
-    public static UnityWebRequest PostJson(string url, string data)
+    public static UnityWebRequest PostJson(string url, string data = "{}")
     {
         UnityWebRequest request = new UnityWebRequest(url, "POST");
 
@@ -16,9 +16,19 @@ static class WebRequestFactory
         return request;
     }
 
-    public static UnityWebRequest AuthPostJson(string url, string data)
+    public static UnityWebRequest AuthPostJson(string url, string data = "{}")
     {
         UnityWebRequest request = PostJson(url, data);
+
+        string authCookie = UnityEngine.PlayerPrefs.GetString("Auth", string.Empty);
+        request.SetRequestHeader("Cookie", authCookie);
+
+        return request;
+    }
+
+    public static UnityWebRequest AuthGetJson(string url)
+    {
+        UnityWebRequest request = UnityWebRequest.Get(url);
 
         string authCookie = UnityEngine.PlayerPrefs.GetString("Auth", string.Empty);
         request.SetRequestHeader("Cookie", authCookie);

@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 using System.Security.Cryptography;
 using System.Text;
 
-public class RaceStartTest : MonoBehaviour
+public partial class RaceStartTest : MonoBehaviour
 {
     [SerializeField] private RaceData raceData;
 
@@ -67,14 +67,5 @@ public class RaceStartTest : MonoBehaviour
             Debug.Log(request.result);
         }
         Debug.Log(request.downloadHandler.text);
-    }
-
-    [System.Serializable]
-    private struct RaceData
-    {
-        public int score;
-        public int gold;
-        public string nonce;
-        public string sign;
     }
 }

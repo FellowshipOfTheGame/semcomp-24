@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: cb13c7f588dfe1742b7921043fa40762
   - enabled: 1
+    path: Assets/Scenes/Teste/GoogleSignInTest.unity
+    guid: 5765fc4984bac3f4481e01c3f3895d56
+  - enabled: 1
     path: Assets/Scenes/ObstaclesTest.unity
     guid: 35bccba891d5fd257875883caf33aec8
   m_configObjects: {}

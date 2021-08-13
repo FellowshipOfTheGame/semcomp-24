@@ -18,7 +18,7 @@ public class LoginMenu : MonoBehaviour
         caller.SetActive(false);
     }
     
-    public void OnClick_Login() 
+    public void OnClick_Login()
     {
         Application.OpenURL(Endpoints.Login_url);
 

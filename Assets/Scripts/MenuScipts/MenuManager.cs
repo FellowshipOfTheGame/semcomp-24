@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-public static class MenuManager {
+public static class MenuManager 
+{
     public static bool isInitialised = false;
-    private static GameObject mainMenu, settingsPanel, creditsMenu, storeMenu, rankingMenu;
+    private static GameObject mainMenu, settingsPanel, creditsMenu, storeMenu, rankingMenu, loginMenu;
     
-    public static void Init() {
+    public static void Init() 
+    {
         GameObject canvas = GameObject.Find("Canvas");
         GameObject panel = canvas.transform.Find("Panel").gameObject;
         panel = panel.transform.Find("PanelInit").gameObject;
@@ -13,44 +15,53 @@ public static class MenuManager {
         mainMenu = panel.transform.Find("MainMenu").gameObject;
         storeMenu = panel.transform.Find("Store").gameObject;
         rankingMenu = panel.transform.Find("Ranking").gameObject;
+        loginMenu = panel.transform.Find("LoginPanel").gameObject;
 
         isInitialised = true;
     }
 
-    public static void OpenMenu(Menu menu, GameObject callingMenu) {
+    public static void OpenMenu(MenuEnum menu, GameObject callingMenu) 
+    {
 
         if(!isInitialised)
             Init();
 
-        switch(menu) {
-            case Menu.MAIN_MENU:
+        switch(menu) 
+        {
+            case MenuEnum.MAIN_MENU:
                 mainMenu.SetActive(true);
                 break;
-            case Menu.CREDIT:
+            case MenuEnum.CREDIT:
                 creditsMenu.SetActive(true);
                 break;
-            case Menu.STORE:
+            case MenuEnum.STORE:
                 storeMenu.SetActive(true);
                 break;
-            case Menu.RANKING:
+            case MenuEnum.RANKING:
                 rankingMenu.SetActive(true);
+                break;
+            case MenuEnum.LOGIN:
+                loginMenu.SetActive(true);
                 break;
         }
 
         callingMenu.SetActive(false);
     }
    
-    public static void PlayGame() {
+    public static void PlayGame() 
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     
-    public static void SettingsPop() {
+    public static void SettingsPop() 
+    {
         if(!isInitialised)
             Init();
         settingsPanel.GetComponent<Animator>().SetTrigger("Pop");
     }
 
-    public static void QuitGame() {
+    public static void QuitGame() 
+    {
         Application.Quit();
     }
 }
