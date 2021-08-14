@@ -92,13 +92,22 @@ public class ScoreManager : MonoBehaviour
     private void CalculateScore()
     {
         int currentSpeed = Mathf.FloorToInt(playerRigidbody.velocity.magnitude);
-
+        
         if (currentSpeed > minimumScoringSpeed && currentSpeed >= 1)
         {
-            int i = 0;
-            // while (currentSpeed/maximumSpeed * 100 > ranges[i].GetLimit()) i++;
-            while (!ranges[i].Contain(currentSpeed, maximumSpeed)) i++; // Find the range that contains the current speed value
-            currentRange = i;
+
+            if (currentSpeed < maximumSpeed)
+            {
+                int i = 0;
+                // while (currentSpeed/maximumSpeed * 100 > ranges[i].GetLimit()) i++;
+                while (!ranges[i].Contain(currentSpeed, maximumSpeed))
+                    i++; // Find the range that contains the current speed value
+                currentRange = i;
+            }
+            else
+            {
+                currentRange = ranges.Count - 1;
+            }
 
             // scoreF += constantMultiplier * ranges[currentRange].GetMultiplier() * Time.deltaTime;
             scoreF = Mathf.Lerp(scoreF, scoreF + constantMultiplier * ranges[currentRange].GetMultiplier(), Time.deltaTime);
