@@ -1,13 +1,11 @@
 let GoogleStrategy = require('passport-google-oauth20').Strategy;
-let UserController = require('../controllers/userController');
-let User = require('../models/User');
 
-require('dotenv').config()
-
-const SERVER_HTTP_PORT = process.env.SERVER_HTTP_PORT || 3000
-const SERVER_HTTPS_PORT = process.env.SERVER_HTTPS_PORT || undefined
+const config = require('../config')
+const User = require('../models/User');
+const UserController = require('../controllers/userController');
 
 module.exports = function (passport) {
+
     passport.serializeUser(function(user, done){
         done(null, {
             id: user._id,
@@ -23,19 +21,19 @@ module.exports = function (passport) {
     });
 
     passport.use(new GoogleStrategy({
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: `http${SERVER_HTTPS_PORT ? 's' : ''}://localhost:${SERVER_HTTPS_PORT ? SERVER_HTTPS_PORT : SERVER_HTTP_PORT}/session/login/callback`
-    },
+            clientID: config.GOOGLE_CLIENT_ID,
+            clientSecret: config.GOOGLE_CLIENT_SECRET,
+            callbackURL: config.GOOGLE_CALLBACK_URL,
+        },
         function(accessToken, refreshToken, profile, done) {
             UserController.findOrCreate(profile, (err, user) => {
                 if (err) {
                     console.log(err);
-                    return done(err, null, { message: "Não foi possível criar ou encontrar usuário" })
+                    return done(err, null, { message: "unable to create or find user" })
                 }
 
                 if (!user) {
-                    return done(null, null, { message: "Usuário não criado ou não encontrado" });
+                    return done(null, null, { message: "user not created or not found" });
                 }
                 
                 return done(null, user);
