@@ -24,8 +24,6 @@ module.exports = {
                 name: google_user._json?.name,
                 email: google_user._json?.email,
                 picture: google_user._json?.picture,
-                upgrades: [""],
-                topScores: [0, 0, 0],
             });
         } catch (err) {
             return cb(err, null);
