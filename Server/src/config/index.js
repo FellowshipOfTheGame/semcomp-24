@@ -9,6 +9,7 @@ module.exports = {
     SERVER_TRUST_PROXY: process.env.SERVER_TRUST_PROXY == "1" || false,
     SERVER_PORT: process.env.SERVER_PORT || 3000,
     SERVER_HOST: process.env.SERVER_HOST || 'localhost',
+    SERVER_PATH_PREFIX: process.env.SERVER_PATH_PREFIX || '',
     
     CERTIFICATE_KEY_PATH: process.env.CERTIFICATE_KEY_PATH || undefined,
     CERTIFICATE_CERT_PATH: process.env.CERTIFICATE_CERT_PATH || undefined,

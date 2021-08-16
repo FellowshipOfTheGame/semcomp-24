@@ -38,11 +38,11 @@ app.use((req, res, next) => {
 })
 
 // Routes Configurations
-app.get('/ping', (req, res) => res.json({ message: "pong :)" }))
-app.use('/user', userRoutes)
-app.use('/session', sessionRoutes)
-app.use('/race', raceRoutes)
-app.use('/shop', shopRoutes)
+app.get(`${config.SERVER_PATH_PREFIX}/ping`, (req, res) => res.json({ message: "pong :)" }))
+app.use(`${config.SERVER_PATH_PREFIX}/user`, userRoutes)
+app.use(`${config.SERVER_PATH_PREFIX}/session`, sessionRoutes)
+app.use(`${config.SERVER_PATH_PREFIX}/race`, raceRoutes)
+app.use(`${config.SERVER_PATH_PREFIX}/shop`, shopRoutes)
 
 // Server Listeners
 if(config.ENABLE_HTTPS) { 
