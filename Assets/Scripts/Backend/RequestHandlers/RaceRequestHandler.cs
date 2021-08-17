@@ -7,7 +7,7 @@ namespace SubiNoOnibus.Networking.Requests
 {
     public static class RaceRequestHandler
     {
-        public static IEnumerator StartRace(Action<RaceData> OnSuccess, Action<UnityWebRequest> OnFailure)
+        public static IEnumerator StartRace(Action<RaceData> OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
             using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Race_start_url);
             yield return request.SendWebRequest();
@@ -23,7 +23,7 @@ namespace SubiNoOnibus.Networking.Requests
             }
         }
 
-        public static IEnumerator FinishRace(RaceData raceData, Action OnSuccess, Action<UnityWebRequest> OnFailure)
+        public static IEnumerator FinishRace(RaceData raceData, Action OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
             Cryptography.SetSignature(raceData);
             

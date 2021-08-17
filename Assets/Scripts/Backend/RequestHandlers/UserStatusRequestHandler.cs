@@ -1,29 +1,25 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine.Networking;
+using System;
 
-public class UserStatusRequestHandler : MonoBehaviour
+namespace SubiNoOnibus.Networking.Requests
 {
-    [ContextMenu("Get user status")]
-    public void GetStatus()
+    public static class UserStatusRequestHandler
     {
-        StartCoroutine(GetUserStatus());
-    }
-
-    public IEnumerator GetUserStatus()
-    {
-        using UnityWebRequest request = WebRequestFactory.AuthGetJson(Endpoints.User_status_url);
-
-        yield return request.SendWebRequest();
-
-        if (request.result != UnityWebRequest.Result.Success)
+        public static IEnumerator GetUserStatus(Action OnSuccess, Action OnFailure = null)
         {
-            Debug.Log(request.error);
+            using UnityWebRequest request = WebRequestFactory.AuthGetJson(Endpoints.User_status_url);
+
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                OnFailure?.Invoke();
+            }
+            else
+            {
+                OnSuccess?.Invoke();
+            }
         }
-        else
-        {
-        }
-        Debug.Log(request.responseCode);
-        Debug.Log(request.downloadHandler.text);
     }
 }

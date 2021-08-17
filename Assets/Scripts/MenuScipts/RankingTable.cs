@@ -1,3 +1,4 @@
+using SubiNoOnibus.Networking.Requests;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,14 @@ public class RankingTable : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(GetRanking());
+        
+        StartCoroutine(RankingRequestHandler.GetRanking(OnRankingSuccess));
+    }
+
+    private void OnRankingSuccess(RankingData data)
+    {
+        PlayerPrefs.SetString(Key, JsonUtility.ToJson(data));
+        PopulateRankingList();
     }
 
     private void PopulateRankingList() 
@@ -31,25 +39,6 @@ public class RankingTable : MonoBehaviour
         {
             CreateEntry(entry, container, scoreEntryTransformList);
         }      
-    }
-
-    private IEnumerator GetRanking()
-    {
-        using UnityWebRequest request = WebRequestFactory.AuthGetJson(Endpoints.Ranking_url);
-
-        yield return request.SendWebRequest();
-
-        if (request.result != UnityWebRequest.Result.Success)
-        {
-            Debug.Log(request.error);
-        }
-        else
-        {
-            Debug.Log(request.result);
-            PlayerPrefs.SetString(Key, request.downloadHandler.text);
-            PopulateRankingList();
-        }
-        Debug.Log(request.downloadHandler.text);
     }
 
     private void CreateEntry(RankingPlayerData scoreEntry, Transform container, List<Transform> transformList) 

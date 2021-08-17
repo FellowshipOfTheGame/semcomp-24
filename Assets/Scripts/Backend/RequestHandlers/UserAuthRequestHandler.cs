@@ -7,7 +7,7 @@ namespace SubiNoOnibus.Networking.Requests
 {
     public static class UserAuthRequestHandler
     {
-        public static IEnumerator GetSession(SessionData data, Action OnSuccess, Action<UnityWebRequest> OnFailure)
+        public static IEnumerator GetSession(SessionData data, Action OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
             using UnityWebRequest request = WebRequestFactory.PostJson(Endpoints.Login_get_session_url, JsonUtility.ToJson(data));
 
@@ -26,7 +26,7 @@ namespace SubiNoOnibus.Networking.Requests
             }
         }
 
-        public static IEnumerator Logout(Action OnSuccess, Action<UnityWebRequest> OnFailure)
+        public static IEnumerator Logout(Action OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
             using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Logout_url);
 
