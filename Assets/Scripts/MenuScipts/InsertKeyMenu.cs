@@ -1,10 +1,9 @@
-using System;
-using System.Collections;
+using SubiNoOnibus.Networking.Requests;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class InsertKeyMenu : MonoBehaviour
+public partial class InsertKeyMenu : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private LoginMenu loginMenu;
@@ -39,36 +38,13 @@ public class InsertKeyMenu : MonoBehaviour
 #if UNITY_EDITOR
         Debug.Log("Key inserted: " + keyInputField.text);
 #endif
-        StartCoroutine(GetSession(keyInputField.text));   
-    }
+        var getSessionEnumerator = UserAuthRequestHandler.GetSession(
+            new SessionData(keyInputField.text),
+            SwitchToMainMenu,
+            HandleGetSessionErrors
+        );
 
-    [System.Serializable]
-    private struct GetSessionData
-    {
-        public GetSessionData(string key) => code = key;
-        public string code;
-    }
-
-    private IEnumerator GetSession(string key)
-    {
-        GetSessionData data = new GetSessionData(key);
-        using UnityWebRequest request = WebRequestFactory.PostJson(Endpoints.Login_get_session_url, JsonUtility.ToJson(data));
-        
-        yield return request.SendWebRequest();
-
-        if (request.result != UnityWebRequest.Result.Success)
-        {
-            Debug.Log(request.error);
-            HandleGetSessionErrors(request);
-        }
-        else
-        {
-            string cookie = request.GetResponseHeader("Set-Cookie");
-            PlayerPrefs.SetString("Auth", cookie);
-            
-            SwitchToMainMenu();
-        }
-        Debug.Log(request.downloadHandler.text);
+        StartCoroutine(getSessionEnumerator);
     }
 
     private void HandleGetSessionErrors(UnityWebRequest request)

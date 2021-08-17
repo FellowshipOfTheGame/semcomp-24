@@ -14,12 +14,12 @@ namespace SubiNoOnibus.Networking.Requests
 
             if (request.result != UnityWebRequest.Result.Success)
             {
-                OnFailure(request);
+                OnFailure?.Invoke(request);
             }
             else
             {
                 var raceData = JsonUtility.FromJson<RaceData>(request.downloadHandler.text);
-                OnSuccess(raceData);
+                OnSuccess?.Invoke(raceData);
             }
         }
 
@@ -33,11 +33,11 @@ namespace SubiNoOnibus.Networking.Requests
 
             if (request.result != UnityWebRequest.Result.Success)
             {
-                OnFailure(request);
+                OnFailure?.Invoke(request);
             }
             else
             {
-                OnSuccess();
+                OnSuccess?.Invoke();
             }
         }
     }

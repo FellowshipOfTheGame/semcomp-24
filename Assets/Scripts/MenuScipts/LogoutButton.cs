@@ -1,6 +1,6 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using SubiNoOnibus.Networking.Requests;
 
 [RequireComponent(typeof(Button))]
 public class LogoutButton : MonoBehaviour
@@ -14,23 +14,10 @@ public class LogoutButton : MonoBehaviour
 
     public void OnClick_Logout()
     {
-        StartCoroutine(LogoutRequest());
-    }
-
-    private IEnumerator LogoutRequest()
-    {
-        using UnityEngine.Networking.UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Logout_url);
-
-        yield return request.SendWebRequest();
-
-        if (request.result != UnityEngine.Networking.UnityWebRequest.Result.Success)
-        {
-            Debug.Log(request.error);
-        }
-        else
-        {
-            UnityEngine.Networking.UnityWebRequest.ClearCookieCache();
-            mainMenu.Logout();
-        }
+        var logoutEnumerator = UserAuthRequestHandler.Logout(
+            () => mainMenu.Logout(),
+            (req) => Debug.Log(req.error)
+        );
+        StartCoroutine(logoutEnumerator);
     }
 }
