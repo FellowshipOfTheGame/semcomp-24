@@ -27,6 +27,8 @@ public class VehicleController : MonoBehaviour
     private Rigidbody _rigidbody;
     private Collider[] _colliders;
     
+    public float maximumSpeed { get; private set; }
+    
     #region MonoBehaviour Messages
 
     protected void Start()
@@ -34,6 +36,12 @@ public class VehicleController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _colliders = GetComponents<Collider>();
 
+        // [Vmax] = (F / (m * drag)) - (F / m * t) => [Vmax] = F / m * (1/drag - t)
+        maximumSpeed = GetComponent<VehicleController>().preset.speed / _rigidbody.mass *
+                       (1 / GetComponent<VehicleController>().groundDrag - Time.fixedDeltaTime);
+
+        // Debug.Log("Maximum speed: " + maximumSpeed);
+        
         if (preset is null)
             return;
         forwardForce = preset.speed;
@@ -65,7 +73,7 @@ public class VehicleController : MonoBehaviour
         }
         
         _rigidbody.AddRelativeForce(Vector3.forward * forwardForce);
-        _rigidbody.AddForce(-_rigidbody.velocity); // Goes up to a certain maximum speed
+        // _rigidbody.AddForce(-_rigidbody.velocity); // Goes up to a certain maximum speed
 
         if (turningAngle != 0f)
         {

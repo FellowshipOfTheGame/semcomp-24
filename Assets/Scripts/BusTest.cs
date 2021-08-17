@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BusTest: MonoBehaviour
 {
@@ -7,6 +9,8 @@ public class BusTest: MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI currentSpeedText;
+
+    private int speedMax = Int32.MaxValue;
     
     void Start()
     {
@@ -15,9 +19,23 @@ public class BusTest: MonoBehaviour
 
     void FixedUpdate()
     {
-        currentSpeedText.text = (_rigidbody.velocity.magnitude).ToString("00.00000");
+        currentSpeedText.text = (_rigidbody.velocity.magnitude).ToString("00.00000") + "/" + GetComponent<VehicleController>().maximumSpeed;
+        _rigidbody.velocity = Vector3.ClampMagnitude(_rigidbody.velocity, speedMax);
     }
-    
+
+    private void Update()
+    {
+        if (Keyboard.current.jKey.wasPressedThisFrame)
+        {
+            speedMax = (int) (_rigidbody.velocity.magnitude) - 1;
+        }
+        
+        if (Keyboard.current.kKey.wasPressedThisFrame)
+        {
+            speedMax = (int) (_rigidbody.velocity.magnitude) + 1;
+        }
+    }
+
     public void Resume()
     {
         Time.timeScale = 1f;

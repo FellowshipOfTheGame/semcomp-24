@@ -17,7 +17,7 @@ public class ObstaclePropertiesPreset : ScriptableObject
     [SerializeField] [Range(0, 10)] [Tooltip("Seconds until the obstacle is destroyed after collision with another obstacle")]
     private float destroyCountdownObstacle = 3f;
 
-    [SerializeField]
+    [SerializeField] [Tooltip("Fade effect speed (when the obstacle is destroyed)")]
     private float fadeSpeed = 1.5f;
 
     public int GetBaseDamage()
