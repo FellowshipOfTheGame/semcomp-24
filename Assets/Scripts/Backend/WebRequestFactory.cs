@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using UnityEngine;
 using UnityEngine.Networking;
 
 static class WebRequestFactory
@@ -20,7 +21,7 @@ static class WebRequestFactory
     {
         UnityWebRequest request = PostJson(url, data);
 
-        string authCookie = UnityEngine.PlayerPrefs.GetString("Auth", string.Empty);
+        string authCookie = PlayerPrefs.GetString("Auth", string.Empty);
         request.SetRequestHeader("Cookie", authCookie);
 
         return request;
@@ -30,10 +31,9 @@ static class WebRequestFactory
     {
         UnityWebRequest request = UnityWebRequest.Get(url);
 
-        string authCookie = UnityEngine.PlayerPrefs.GetString("Auth", string.Empty);
+        string authCookie = PlayerPrefs.GetString("Auth", string.Empty);
         request.SetRequestHeader("Cookie", authCookie);
-
+        
         return request;
     }
 }
-

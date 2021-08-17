@@ -59,7 +59,7 @@ public class InsertKeyMenu : MonoBehaviour
         if (request.result != UnityWebRequest.Result.Success)
         {
             Debug.Log(request.error);
-            HandleServerError(request);
+            HandleGetSessionErrors(request);
         }
         else
         {
@@ -71,35 +71,33 @@ public class InsertKeyMenu : MonoBehaviour
         Debug.Log(request.downloadHandler.text);
     }
 
-    private void HandleServerError(UnityWebRequest request)
+    private void HandleGetSessionErrors(UnityWebRequest request)
     {
-        if (request.responseCode != 500L)
-        {
-            Debug.LogError("Get Session resulted in: " + request.responseCode);
-            logInterface.LogError(request.error);
-            OnClick_SwitchToLogin();
-            return;
-        }
-
         string errorMsg = JsonUtility.FromJson<ErrorMessageData>(request.downloadHandler.text);
         
-        if (errorMsg.StartsWith("invalid field", StringComparison.InvariantCultureIgnoreCase))
+        if (errorMsg.StartsWith("invalid field"))
         {
             logInterface.LogError(invalidFieldMsg);
         }
-        else if (errorMsg.Equals("otp code expired", StringComparison.InvariantCultureIgnoreCase))
+        else if (errorMsg.Equals("otp code expired"))
         {
             logInterface.LogError(expiredCodeMsg);
             OnClick_SwitchToLogin();
         }
-        else if (errorMsg.Equals("original session expired", StringComparison.InvariantCultureIgnoreCase))
+        else if (errorMsg.Equals("original session expired"))
         {
             logInterface.LogError("original session expired");
-            //TODO(tijolo): perguntar diferenca de original session para otp code
+            OnClick_SwitchToLogin();
         }
-        else if(errorMsg.Equals("internal server error", StringComparison.InvariantCultureIgnoreCase))
+        else if(errorMsg.Equals("internal server error"))
         {
             logInterface.LogError(serverErrorMsg);
+            OnClick_SwitchToLogin();
+        }
+        else
+        {
+            Debug.LogError("Get Session resulted in: " + request.responseCode);
+            logInterface.LogError(request.error);
             OnClick_SwitchToLogin();
         }
         

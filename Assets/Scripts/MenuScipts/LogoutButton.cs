@@ -29,9 +29,8 @@ public class LogoutButton : MonoBehaviour
         }
         else
         {
-            Debug.Log(request.result);
+            UnityEngine.Networking.UnityWebRequest.ClearCookieCache();
             mainMenu.Logout();
         }
-        Debug.Log(request.downloadHandler.text);
     }
 }
