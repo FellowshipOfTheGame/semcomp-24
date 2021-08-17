@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ExitMenu : MonoBehaviour
 {
-    public void OnClick_Exit() {
-        MenuManager.OpenMenu(Menu.MAIN_MENU,gameObject);
+    public void OnClick_Exit() 
+    {
+        MenuManager.OpenMenu(MenuEnum.MAIN_MENU,gameObject);
     }
 }

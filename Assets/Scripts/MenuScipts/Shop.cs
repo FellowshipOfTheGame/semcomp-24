@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
@@ -24,7 +23,8 @@ public class Shop : MonoBehaviour
     {
         int len = ShopItemsList.Count;
         ItemTemplate = ShopScrollView.GetChild(0).gameObject;  
-        for(int i = 0; i < len;i++) {
+        for(int i = 0; i < len;i++) 
+        {
             g = Instantiate(ItemTemplate,ShopScrollView);
             g.transform.GetChild(0).GetComponent<Image>().sprite = ShopItemsList[i].Image;
             g.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = ShopItemsList[i].Price.ToString();
@@ -39,8 +39,10 @@ public class Shop : MonoBehaviour
         Destroy(ItemTemplate);
     }
 
-    void OnShopItemBtnClicked(int itemIndex) {
-        if(HasEnoughCoins(ShopItemsList[itemIndex].Price)){
+    void OnShopItemBtnClicked(int itemIndex) 
+    {
+        if(HasEnoughCoins(ShopItemsList[itemIndex].Price))
+        {
             UseCoins(ShopItemsList[itemIndex].Price);
             ShopItemsList[itemIndex].isPurchased = true;
             buyButton = ShopScrollView.GetChild(itemIndex).GetChild(2).GetComponent<Button>();
@@ -48,20 +50,21 @@ public class Shop : MonoBehaviour
             buyButton.transform.GetChild(0).GetComponent<Text>().text = "PURCHASED";
             buyButton.transform.GetChild(0).GetComponent<Text>().fontSize = 16;
             SetCoinsUI();
-        } else {
-
         }
     }
 
-    void SetCoinsUI(){
+    void SetCoinsUI()
+    {
         CoinsText.text = Coins.ToString();
     }
 
-    public void UseCoins(int amount) {
+    public void UseCoins(int amount) 
+    {
         Coins -= amount;
     }
 
-    public bool HasEnoughCoins(int amount) {
+    public bool HasEnoughCoins(int amount) 
+    {
         return (Coins >= amount);
     }
 }
