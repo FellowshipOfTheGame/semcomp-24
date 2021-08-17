@@ -98,12 +98,14 @@ public class VehicleController : MonoBehaviour
             {
                 grounded = true;
                 _rigidbody.drag = groundDrag;
+                _rigidbody.freezeRotation = false;
                 return;
             }
         }
 
         grounded = false;
         _rigidbody.drag = airDrag;
+        _rigidbody.freezeRotation = true;
     }
 
     public void ResetGroundDrag()
