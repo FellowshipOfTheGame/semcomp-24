@@ -29,7 +29,7 @@ public class VehicleController : MonoBehaviour
     
     public float maximumSpeed { get; private set; }
 
-    private float groundDragDefault;
+    public float groundDragDefault { get; private set; }
     
     #region MonoBehaviour Messages
 
