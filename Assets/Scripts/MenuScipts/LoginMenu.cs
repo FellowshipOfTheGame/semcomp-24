@@ -1,46 +1,63 @@
 using SubiNoOnibus.Networking.Requests;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class LoginMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject inserKeyPanel;
     [SerializeField] private GameObject loginPanel;
-    [SerializeField] private GameObject initPanel;
+    [SerializeField] private GameObject inserKeyPanel;
+
+    [SerializeField] private TMPro.TMP_InputField keyInputField;
 
     public IEnumerator Start()
     {
-        var authCookie = PlayerPrefs.GetString("Auth", string.Empty);
+        string authCookie = PlayerPrefs.GetString("Auth", string.Empty);
         
         if (string.IsNullOrEmpty(authCookie))
             yield break;
 
-        yield return UserAuthRequestHandler.ValidateSession(OnSessionValidated);
+        yield return UserAuthRequestHandler.ValidateSession(Close);
     }
 
-    private void OnSessionValidated()
+    public void Open()
     {
-        loginPanel.SetActive(false);
-        initPanel.SetActive(true);
+        gameObject.SetActive(true);
     }
-
-    public void SwitchToLoginButton(GameObject caller)
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
+    public void SwitchToLogin()
     {
         loginPanel.SetActive(true);
-        caller.SetActive(false);
+        inserKeyPanel.SetActive(false);
     }
 
-    public void SwitchToMainMenu(GameObject caller)
+    public void SwitchToInsertKey()
     {
-        initPanel.SetActive(true);
-        caller.SetActive(false);
+        loginPanel.SetActive(false);
+        inserKeyPanel.SetActive(true);
     }
-    
+
     public void OnClick_Login()
     {
         Application.OpenURL(Endpoints.Login_url);
 
-        inserKeyPanel.SetActive(true);
-        loginPanel.SetActive(false);
+        SwitchToInsertKey();
+    }
+    public void InsertKey()
+    {
+        var getSessionEnumerator = UserAuthRequestHandler.GetSession(
+            new SessionData(keyInputField.text),
+            Close,
+            HandleGetSessionErrors
+        );
+        StartCoroutine(getSessionEnumerator);
+    }
+
+    private void HandleGetSessionErrors(UnityWebRequest request)
+    {
+        Debug.Log("Error: " + request);
     }
 }
