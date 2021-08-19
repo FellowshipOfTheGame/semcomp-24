@@ -7,16 +7,15 @@ public class Booster : MonoBehaviour
     
     [SerializeField]
     private float duration = 3f;
+
+    [SerializeField]
+    private NitrousSystem.ActivateMode activateMode;
     
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) {
-            NitrousSystem playerNitrous = other.GetComponent<NitrousSystem>();
-    
-            if (!playerNitrous.IsActive())
-            {
-                playerNitrous.Activate(boost, duration);
-            }
+            // Activate nitrous using the specified mode
+            other.GetComponent<NitrousSystem>().Activate(boost, duration, NitrousSystem.ActivateMode.Reset);
         }
     }
 }
