@@ -6,7 +6,8 @@ static class WebRequestFactory
 {
     public static UnityWebRequest PostJson(string url, string data = "{}")
     {
-        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        //UnityWebRequest request = new UnityWebRequest(url, "POST");
+        UnityWebRequest request = new UnityWebRequest(new System.Uri(url), "POST");
 
         byte[] bodyRaw = Encoding.UTF8.GetBytes(data);
         request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
