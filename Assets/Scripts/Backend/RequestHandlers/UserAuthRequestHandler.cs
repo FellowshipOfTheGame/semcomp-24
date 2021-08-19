@@ -7,6 +7,8 @@ namespace SubiNoOnibus.Networking.Requests
 {
     public static class UserAuthRequestHandler
     {
+        private const string authKey = "Auth";
+
         public static IEnumerator GetSession(SessionData data, Action OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
             using UnityWebRequest request = WebRequestFactory.PostJson(Endpoints.Login_get_session_url, JsonUtility.ToJson(data));
@@ -20,7 +22,7 @@ namespace SubiNoOnibus.Networking.Requests
             else
             {
                 string cookie = request.GetResponseHeader("Set-Cookie");
-                PlayerPrefs.SetString("Auth", cookie);
+                PlayerPrefs.SetString(authKey, cookie);
 
                 OnSuccess?.Invoke();
             }
@@ -39,6 +41,8 @@ namespace SubiNoOnibus.Networking.Requests
             else
             {
                 UnityWebRequest.ClearCookieCache();
+                PlayerPrefs.DeleteKey(authKey);
+                
                 OnSuccess?.Invoke();
             }
         }
