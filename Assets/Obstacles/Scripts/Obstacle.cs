@@ -16,7 +16,7 @@ public class Obstacle : MonoBehaviour
     private bool hitObstacle;
     private float fadeSpeed;
 
-    private Renderer renderer;
+    private Renderer _renderer;
 
     void Start()
     {
@@ -26,10 +26,10 @@ public class Obstacle : MonoBehaviour
         destroyCountdownObstacle = obstaclePropertiesPreset.GetDestroyCountdownObstacle();
         fadeSpeed = obstaclePropertiesPreset.GetFadeSpeed();
 
-        renderer = GetComponent<Renderer>();
+        _renderer = GetComponent<Renderer>();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (hitPlayer || hitObstacle) {
             DestroyCountdown();
@@ -128,12 +128,11 @@ public class Obstacle : MonoBehaviour
 
         if ((hitPlayer && collisionTimeCount >= destroyCountdownPlayer) || (hitObstacle && collisionTimeCount >= destroyCountdownObstacle))
         {
-            Color c = renderer.material.color;
-            // c.a = Mathf.Lerp(1f, 0f, 15f * Time.deltaTime);
-            c.a = Mathf.Clamp(c.a - (fadeSpeed * Time.deltaTime), 0f, 1f);
-            renderer.material.color = c;
+            Color c = _renderer.material.color;
+            c.a = Mathf.Lerp(c.a, 0f, fadeSpeed * Time.deltaTime);
+            _renderer.material.color = c;
 
-            if (c.a == 0)
+            if (_renderer.material.color.a < 0.2f)
             {
                 if (hitPlayer)
                 {
@@ -143,25 +142,6 @@ public class Obstacle : MonoBehaviour
                 }
                 Destroy(gameObject);
             }
-        }
-    }
-
-    private IEnumerator Fade()
-    {
-        // Color c = renderer.materials[0].color;
-        // for (float ft = 1f; ft >= 0; ft -= 0.1f) 
-        // {
-        //     c.a = ft;
-        //     renderer.material.color = c;
-        // }
-
-        while (renderer.material.color.a > 0f)
-        {
-            Color c = renderer.material.color;
-            c.a = Mathf.Lerp(1f, 0f, 0.01f * Time.deltaTime);
-            // c.a -= 0.1f * Time.deltaTime;
-            renderer.material.color = c;
-            yield return null;
         }
     }
 }

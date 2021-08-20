@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-	[SerializeField]
 	private int health;
 	
 	[SerializeField]
