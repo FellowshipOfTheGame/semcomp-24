@@ -1,9 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 /**
  * Physics interactions for vehicles
- */
+*/
 public class VehicleController : MonoBehaviour
 {
     // (Easier way to design different types of vehicles
@@ -157,6 +160,20 @@ public class VehicleController : MonoBehaviour
     public void ResetGroundDrag()
     {
         groundDrag = groundDragDefault;
+    }
+    
+    public void SlowFowardForce(float slowValue)
+    {
+        StartCoroutine(Slow(slowValue));
+    }
+
+    IEnumerator Slow(float slowValue)
+    {
+        forwardForce -= slowValue;
+
+        yield return new WaitForSeconds(1f);
+
+        forwardForce += slowValue;
     }
 
     private void UseItem(InputAction.CallbackContext context)
