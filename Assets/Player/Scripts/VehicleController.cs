@@ -28,6 +28,8 @@ public class VehicleController : MonoBehaviour
     private Collider[] _colliders;
     
     public float maximumSpeed { get; private set; }
+
+    public float groundDragDefault { get; private set; }
     
     #region MonoBehaviour Messages
 
@@ -41,6 +43,8 @@ public class VehicleController : MonoBehaviour
                        (1 / GetComponent<VehicleController>().groundDrag - Time.fixedDeltaTime);
 
         // Debug.Log("Maximum speed: " + maximumSpeed);
+
+        groundDragDefault = groundDrag;
         
         if (preset is null)
             return;
@@ -102,4 +106,8 @@ public class VehicleController : MonoBehaviour
         _rigidbody.drag = airDrag;
     }
 
+    public void ResetGroundDrag()
+    {
+        groundDrag = groundDragDefault;
+    }
 }
