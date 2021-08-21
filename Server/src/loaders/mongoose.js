@@ -10,12 +10,16 @@ class Database {
     }
 
     _connect() {
-        mongoose.connect(config.MONGO_CONNECT_URL)
+        mongoose.connect(config.MONGO_CONNECT_URL,{
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true,
+        })
         .then(() => {
-            console.log(`MongoDB at ${config.MONGO_CONNECT_URL} connect successful`)
+            console.log(`at MongoDB: ${config.MONGO_CONNECT_URL} connect successful`)
         })
         .catch(err => {
-            console.error(`MongoDB at ${config.MONGO_CONNECT_URL} connection error`)
+            console.error(`at MongoDB: ${err}`)
             console.error(err)
         })
     }

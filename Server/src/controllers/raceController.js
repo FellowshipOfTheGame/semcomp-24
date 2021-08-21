@@ -5,12 +5,7 @@ const { randomInt, createHmac } = require("crypto")
 const config = require("../config/")
 const UserModel = require("../models/User")
 const RaceModel = require("../models/Race")
-
-// Starting Races Caching DB
-const redis = new Redis({ 
-    port: config.REDIS_PORT, 
-    host: config.REDIS_HOST,
-}); 
+const { nonceClient: redis } = require("../loaders/redis")
 
 // Exporting controller async functions
 module.exports = { 
@@ -61,7 +56,7 @@ async function finish(req, res) {
     if(!sign) return res.status(400).json({ message: "invalid field @signature" })
 
     // Verifying the signature 
-    const reqSign = createHmac('sha256', config.REQUEST_SIGNATURE_KEY).update(JSON.stringify({score, gold, nonce})).digest('hex')
+    const reqSign = createHmac('sha256', config.REQUEST_SIGNATURE_KEY).update(JSON.stringify({score, gold, nonce, sign: ""})).digest('base64')
     if(sign !== reqSign) return res.status(400).json({ message: "incorrect signature" })
 
     // Get nonce and start time in Cache Database
