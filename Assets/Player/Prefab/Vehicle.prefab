@@ -232,11 +232,13 @@ MonoBehaviour:
   - {fileID: 6036709807879933422}
   - {fileID: 6036709807714276438}
   - {fileID: 6036709807405129390}
-  groundCheckDistance: 0.5
+  groundCheckDistance: 0.7
   groundDrag: 2
   airDrag: 0.1
   wheelBase: 4
   turningAngle: 0
+  turningAngleMax: 15
+  rotateBackAngle: 60
 --- !u!114 &407148919
 MonoBehaviour:
   m_ObjectHideFlags: 0
