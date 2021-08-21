@@ -14,6 +14,8 @@ public class OffRoad : MonoBehaviour
     public static bool IsPlayerOffRoad { get; private set; }
     public static bool NitrousRanOut;
 
+    private bool nitrousWasActive; // Was nitrous active when player entered the off-road terrain?
+
     void OnCollisionEnter(Collision other)
     {
         if (other.transform.CompareTag("Player"))
@@ -26,6 +28,7 @@ public class OffRoad : MonoBehaviour
             }
 
             IsPlayerOffRoad = true;
+            nitrousWasActive = playerNitrous.IsActive();
         }
     }
 
@@ -33,7 +36,7 @@ public class OffRoad : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
-            // Gets player drag and checks if the player ran out of nitrous while off-road (if they did, update drag)
+            // Gets player drag and checks if the player ran out of nitrous off-road (if they did, update drag)
             if (groundDragDefault == 0 || NitrousRanOut)
             {
                 groundDragDefault = playerVehicleController.groundDrag;
@@ -41,8 +44,16 @@ public class OffRoad : MonoBehaviour
                 // Debug.Log("Resetting off-road drag");
             }
             
-            // Increasing the drag instead of applying a force gives a smoother effect of acceleration boost
-            playerVehicleController.groundDrag = groundDragDefault * (1 + speedDecreaseFactor);
+            // If nitrous is activated off-road
+            if (!nitrousWasActive && playerNitrous.IsActive())
+            {
+                Debug.Log("You activated the nitrous off-road");
+            }
+            else
+            {
+                // Increasing the drag instead of applying a force gives a smoother acceleration boost
+                playerVehicleController.groundDrag = groundDragDefault * (1 + speedDecreaseFactor);
+            }
         }
     }
     

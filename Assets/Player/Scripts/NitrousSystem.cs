@@ -105,7 +105,7 @@ public class NitrousSystem : MonoBehaviour
      /// 
      /// <seealso cref="ActivateMode"/>
      /// 
-     public void Activate(float boost, float duration, ActivateMode? mode)
+     public void Activate(float boost, float duration, ActivateMode mode = ActivateMode.Reset)
     {
         switch (mode)
         {
@@ -191,7 +191,7 @@ public class NitrousSystem : MonoBehaviour
                 }
                 break;
             }
-            default: case ActivateMode.Reset:
+            case ActivateMode.Reset:
             {
                 this.boost = boost;
                 this.duration = duration;
@@ -214,7 +214,10 @@ public class NitrousSystem : MonoBehaviour
         }
         
         active = true;
-        vehicleController.groundDrag = vehicleController.groundDragDefault * (1 - this.boost);
+        
+        // If player is off-road, use the actual ground drag (modified by OffRoad script) instead of the default one
+        float groundDragDefault = OffRoad.IsPlayerOffRoad ? vehicleController.groundDrag : vehicleController.groundDragDefault;
+        vehicleController.groundDrag = groundDragDefault * (1 - this.boost);
     }
 
      /// <summary>
