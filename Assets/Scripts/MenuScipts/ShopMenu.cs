@@ -2,63 +2,66 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class ShopMenu : MonoBehaviour
+namespace SubiNoOnibus.UI
 {
-    [SerializeField] private PopupMessageWindow logInterface;
-    
-    private ShopUpgrades shopUpgrades;
-    private int gold;
-
-    private void OnEnable()
+    public class ShopMenu : MonoBehaviour
     {
-        StartCoroutine(GetShopUpgrades());
-    }
+        [SerializeField] private PopupMessageWindow logInterface;
 
-    private IEnumerator GetShopUpgrades()
-    {
-        using UnityWebRequest request = WebRequestFactory.AuthGetJson(Endpoints.Shop_url);
+        private ShopUpgrades shopUpgrades;
+        private int gold;
 
-        yield return request.SendWebRequest();
-
-        if (request.result != UnityWebRequest.Result.Success)
+        private void OnEnable()
         {
-            Debug.Log(request.error);
-            HandleGetShopUpgradesError(request);
+            StartCoroutine(GetShopUpgrades());
         }
-        else
+
+        private IEnumerator GetShopUpgrades()
         {
-            Debug.Log(request.result);
+            using UnityWebRequest request = WebRequestFactory.AuthGetJson(Endpoints.Shop_url);
+
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(request.error);
+                HandleGetShopUpgradesError(request);
+            }
+            else
+            {
+                Debug.Log(request.result);
+                Debug.Log(request.downloadHandler.text);
+
+                shopUpgrades = JsonUtility.FromJson<ShopUpgrades>(request.downloadHandler.text);
+                PopulateShopList();
+            }
             Debug.Log(request.downloadHandler.text);
-            
-            shopUpgrades = JsonUtility.FromJson<ShopUpgrades>(request.downloadHandler.text);
-            PopulateShopList();
-        }
-        Debug.Log(request.downloadHandler.text);
-    }
-
-    private void HandleGetShopUpgradesError(UnityWebRequest request)
-    {
-        string errorMsg = JsonUtility.FromJson<ErrorMessageData>(request.downloadHandler.text);
-
-        if (request.responseCode == 401)
-        {
-            
-        }
-        else if (request.responseCode == 404)
-        {
-
         }
 
-        logInterface.LogError(errorMsg);
-    }
-
-    private void PopulateShopList()
-    {
-        gold = shopUpgrades.gold;
-        Debug.Log("gold: " + gold);
-        foreach(var item in shopUpgrades.shop)
+        private void HandleGetShopUpgradesError(UnityWebRequest request)
         {
-            Debug.Log($"{item.itemName} ({item.level}): {item.price}");
+            string errorMsg = JsonUtility.FromJson<ErrorMessageData>(request.downloadHandler.text);
+
+            if (request.responseCode == 401)
+            {
+
+            }
+            else if (request.responseCode == 404)
+            {
+
+            }
+
+            logInterface.LogError(errorMsg);
+        }
+
+        private void PopulateShopList()
+        {
+            gold = shopUpgrades.gold;
+            Debug.Log("gold: " + gold);
+            foreach (var item in shopUpgrades.shop)
+            {
+                Debug.Log($"{item.itemName} ({item.level}): {item.price}");
+            }
         }
     }
 }

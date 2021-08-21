@@ -1,46 +1,99 @@
 using SubiNoOnibus.Networking.Requests;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class LoginMenu : MonoBehaviour
+namespace SubiNoOnibus.UI
 {
-    [SerializeField] private GameObject inserKeyPanel;
-    [SerializeField] private GameObject loginPanel;
-    [SerializeField] private GameObject initPanel;
-
-    public IEnumerator Start()
+    public class LoginMenu : MonoBehaviour, IMenu
     {
-        var authCookie = PlayerPrefs.GetString("Auth", string.Empty);
-        
-        if (string.IsNullOrEmpty(authCookie))
-            yield break;
+        [SerializeField] private PopupMessageWindow logger;
 
-        yield return UserAuthRequestHandler.ValidateSession(OnSessionValidated);
-    }
+        [SerializeField] private GameObject loginPanel;
+        [SerializeField] private GameObject inserKeyPanel;
 
-    private void OnSessionValidated()
-    {
-        loginPanel.SetActive(false);
-        initPanel.SetActive(true);
-    }
+        [SerializeField] private TMPro.TMP_InputField keyInputField;
 
-    public void SwitchToLoginButton(GameObject caller)
-    {
-        loginPanel.SetActive(true);
-        caller.SetActive(false);
-    }
+        [Header("Error Messages")]
+        [SerializeField] private string serverErrorMsg;
+        [SerializeField] private string expiredErrorMsg;
+        [SerializeField] private string invalidCodeErrorMsg;
 
-    public void SwitchToMainMenu(GameObject caller)
-    {
-        initPanel.SetActive(true);
-        caller.SetActive(false);
-    }
-    
-    public void OnClick_Login()
-    {
-        Application.OpenURL(Endpoints.Login_url);
+        public IEnumerator Start()
+        {
+            string authCookie = PlayerPrefs.GetString("Auth", string.Empty);
 
-        inserKeyPanel.SetActive(true);
-        loginPanel.SetActive(false);
+            if (string.IsNullOrEmpty(authCookie))
+                yield break;
+
+            yield return UserAuthRequestHandler.ValidateSession(Close);
+        }
+
+        public void Open()
+        {
+            SwitchToLogin();
+            gameObject.SetActive(true);
+        }
+        public void Close()
+        {
+            gameObject.SetActive(false);
+        }
+        public void SwitchToLogin()
+        {
+            loginPanel.SetActive(true);
+            inserKeyPanel.SetActive(false);
+        }
+
+        public void SwitchToInsertKey()
+        {
+            loginPanel.SetActive(false);
+            inserKeyPanel.SetActive(true);
+        }
+
+        public void OnClick_Login()
+        {
+            Application.OpenURL(Endpoints.Login_url);
+
+            SwitchToInsertKey();
+        }
+        public void InsertKey()
+        {
+            string key = keyInputField.text.Trim();
+
+            IEnumerator getSessionRequest = UserAuthRequestHandler.GetSession
+            (
+                new SessionData(key),
+                Close,
+                HandleGetSessionErrors
+            );
+
+            StartCoroutine(getSessionRequest);
+        }
+
+        private void HandleGetSessionErrors(UnityWebRequest request)
+        {
+            string message = string.Empty;
+            bool shouldSwitchToLogin = true;
+
+            string error = (string)JsonUtility.FromJson<ErrorMessageData>(request.downloadHandler.text);
+            if (error.StartsWith("invalid "))
+            {
+                message = invalidCodeErrorMsg;
+                shouldSwitchToLogin = false;
+            }
+            else if (error.StartsWith("otp ") || error.StartsWith("original "))
+            {
+                message = expiredErrorMsg;
+            }
+            else if (request.responseCode == 500)
+            {
+                message = serverErrorMsg;
+            }
+
+            if (shouldSwitchToLogin)
+                SwitchToLogin();
+
+            logger.LogError(message);
+        }
     }
 }

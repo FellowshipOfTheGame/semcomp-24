@@ -11,7 +11,6 @@ public class PopupMessageWindow : MonoBehaviour, SubiNoOnibus.ILogger
 
     private void Awake()
     {
-        textMesh = GetComponentInChildren<TMPro.TextMeshProUGUI>();
         GetComponentInChildren<UnityEngine.UI.Button>().onClick.AddListener(CloseWindow);
     }
 
