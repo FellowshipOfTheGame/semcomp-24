@@ -157,11 +157,11 @@ public class VehicleController : MonoBehaviour
         _rigidbody.freezeRotation = true;
     }
 
-<<<<<<< Updated upstream
     public void ResetGroundDrag()
     {
         groundDrag = groundDragDefault;
-=======
+    }
+    
     public void SlowFowardForce(float slowValue)
     {
         StartCoroutine(Slow(slowValue));
@@ -174,7 +174,6 @@ public class VehicleController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         forwardForce += slowValue;
->>>>>>> Stashed changes
     }
 
     private void UseItem(InputAction.CallbackContext context)
