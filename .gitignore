@@ -74,3 +74,4 @@ crashlytics-build.properties
 
 # Env files
 .env*
+/[Aa]ssets/[Rr]esources/[Ss]ecrets/*
