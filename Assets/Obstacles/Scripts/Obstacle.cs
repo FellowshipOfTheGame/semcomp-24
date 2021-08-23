@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
@@ -83,7 +82,7 @@ public class Obstacle : MonoBehaviour
 
                 int finalDamage = baseDamage + (int) Mathf.Floor(damage2 / 4f);
                 player.GetComponent<HealthSystem>().Damage(finalDamage);
-                Debug.Log("Damage: " + finalDamage);
+                // Debug.Log("Damage: " + finalDamage);
 
                 // Decrease vehicle speed according to the damage dealt by the obstacle
                 other.rigidbody.AddRelativeForce(new Vector3(0, 0, -finalDamage * vehicleSpeedDecrease));
@@ -134,12 +133,12 @@ public class Obstacle : MonoBehaviour
 
             if (_renderer.material.color.a < 0.2f)
             {
-                if (hitPlayer)
-                {
-                    Debug.Log("Destroying obstacle after collision with player (" + collisionTimeCount + " s)");
-                } else {
-                    Debug.Log("Destroying obstacle after collision with another obstacle (" + collisionTimeCount + " s)");
-                }
+                // if (hitPlayer)
+                // {
+                //     Debug.Log("Destroying obstacle after collision with player (" + collisionTimeCount + " s)");
+                // } else {
+                //     Debug.Log("Destroying obstacle after collision with another obstacle (" + collisionTimeCount + " s)");
+                // }
                 Destroy(gameObject);
             }
         }

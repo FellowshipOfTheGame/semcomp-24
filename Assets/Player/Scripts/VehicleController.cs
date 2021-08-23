@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /**
  * Physics interactions for vehicles
@@ -174,6 +173,16 @@ public class VehicleController : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         forwardForce += slowValue;
+    }
+
+    public float GetCurrentSpeed()
+    {
+        return _rigidbody.velocity.magnitude;
+    }
+
+    public float GetMaximumSpeed()
+    {
+        return maximumSpeed;
     }
 
     private void UseItem(InputAction.CallbackContext context)
