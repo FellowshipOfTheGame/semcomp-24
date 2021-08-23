@@ -7,6 +7,8 @@ public abstract class Generator : MonoBehaviour
     [SerializeField] protected float threshold;
     [SerializeField] protected Vector3 area;
     private Vector3 nextPosition;
+    [SerializeField] private GameObject road;
+    [SerializeField] private float roadHeight;
 
     protected abstract Segment GetNext();
 
@@ -40,9 +42,14 @@ public abstract class Generator : MonoBehaviour
         Vector3 minNext = nextPosition - (area / 2);
         Vector3 maxNext = nextPosition + (area / 2);
         Vector3 offset = new Vector3(area.x / nextSegment.Width, area.y, area.z / nextSegment.Length);
+        
+        Debug.Log(offset);
 
-        Vector3 startPosition = new Vector3(minNext.x + offset.x, nextPosition.y, maxNext.z - offset.z);
+        Vector3 startPosition = new Vector3(minNext.x + offset.x, nextPosition.y - roadHeight / 2, maxNext.z - offset.z);
         Vector3 currentPosition = startPosition;
+
+        GameObject roadObject = Instantiate(road, new Vector3(nextPosition.x, nextPosition.y - roadHeight, nextPosition.z), Quaternion.identity);
+        Destroy(roadObject, 15);
 
         for (int i = 0; i < nextSegment.Width; i++)
         {

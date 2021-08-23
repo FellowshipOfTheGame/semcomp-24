@@ -16,12 +16,14 @@ public class OffRoad : MonoBehaviour
 
     private bool nitrousWasActive; // Was nitrous active when player entered the off-road terrain?
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Player"))
         {
             if (player == null)
             {
+                Debug.Log("Entrou aqui");
+                
                 player = other.gameObject;
                 playerVehicleController = player.GetComponent<VehicleController>();
                 playerNitrous = player.GetComponent<NitrousSystem>();
@@ -32,7 +34,7 @@ public class OffRoad : MonoBehaviour
         }
     }
 
-    void OnCollisionStay(Collision other)
+    void OnTriggerStay(Collider other)
     {
         if (other.transform.CompareTag("Player"))
         {
@@ -57,7 +59,7 @@ public class OffRoad : MonoBehaviour
         }
     }
     
-    void OnCollisionExit(Collision other)
+    void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {

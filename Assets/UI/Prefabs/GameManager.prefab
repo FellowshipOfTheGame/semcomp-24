@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3995385674325696507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3995385674325696505}
+  - component: {fileID: 3995385674325696510}
+  - component: {fileID: 3995385674325696504}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3995385674325696505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995385674325696507}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3995385674325696510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995385674325696507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba088ea750a4dc5d99a8071c3d46816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  startRaceCountdownTime: 5
+  startRaceCountdownPanel: {fileID: 0}
+  startRaceCountdownCircle: {fileID: 0}
+  startRaceCountdownText: {fileID: 0}
+  HUDPanel: {fileID: 0}
+  UIControls: {fileID: 0}
+  speedometer: {fileID: 0}
+  turbo: {fileID: 0}
+  turboSprites:
+  - {fileID: 21300000, guid: 936bb093de3154f8fad29009c9c7e59f, type: 3}
+  - {fileID: 21300000, guid: 0f7a08d96d51dfa33b72443eb9d14f9e, type: 3}
+  - {fileID: 21300000, guid: 27893d17b306253ad90bbe16e716ab82, type: 3}
+  - {fileID: 21300000, guid: 31c7745c83f8425f992a379c81b99323, type: 3}
+  - {fileID: 21300000, guid: 8aed06cc355dced1d99ddd9452a62c7b, type: 3}
+  burning: {fileID: 0}
+  scoreMultiplier: {fileID: 0}
+  scoreMultiplierSprites:
+  - {fileID: 21300000, guid: be77d9d764370a60eb55011abb097250, type: 3}
+  - {fileID: 21300000, guid: bdd93939ca6fca692aef035b7720bac8, type: 3}
+  - {fileID: 21300000, guid: c7b29d38d34b13277b592c0426f9ea49, type: 3}
+  - {fileID: 21300000, guid: 044c66edde31901269552357d1187859, type: 3}
+  - {fileID: 21300000, guid: 9231b2d7a11f4d413be8ba3f2367d8a5, type: 3}
+  scoreMultiplierColors:
+  - {r: 0.1764706, g: 0.19215687, b: 0.2, a: 1}
+  - {r: 0.74509805, g: 0.10980392, b: 0.14117648, a: 1}
+  - {r: 0.8627451, g: 0.70980394, b: 0.05882353, a: 1}
+  - {r: 0.25882354, g: 0.8784314, b: 0.12156863, a: 1}
+  - {r: 0.9372549, g: 0.9372549, b: 0.9372549, a: 1}
+  scoreMultiplierText: {fileID: 0}
+  timerText: {fileID: 0}
+  coinsText: {fileID: 0}
+  scoreText: {fileID: 0}
+--- !u!114 &3995385674325696504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995385674325696507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c73a9c653bf642288df27de3ca0e746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constantMultiplier: 3
+  minimumScoringSpeed: 0
+  ranges:
+  - multiplier: 1
+    upperLimit: 50
+  - multiplier: 1.5
+    upperLimit: 75
+  - multiplier: 3.35
+    upperLimit: 90
+  - multiplier: 5
+    upperLimit: 100
+  scoreText: {fileID: 0}
