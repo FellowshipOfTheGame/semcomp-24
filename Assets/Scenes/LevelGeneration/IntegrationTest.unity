@@ -161,6 +161,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6036709807576084205, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: m_Size.y
+      value: 1.4827316
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036709807576084205, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: m_Center.y
+      value: -0.24136555
+      objectReference: {fileID: 0}
     - target: {fileID: 6036709807576084207, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -728,7 +736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   follow: {fileID: 108651215}
   threshold: 45
-  area: {x: 42, y: 0, z: 5}
+  area: {x: 42, y: 0, z: 10}
   road: {fileID: 6066277585264546669, guid: bb760f6a0773bca48853183fde85088b, type: 3}
   roadHeight: 1
   segments:
