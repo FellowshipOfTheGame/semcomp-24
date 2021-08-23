@@ -33,9 +33,6 @@ internal class SpeedRange
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject player;
-    
     [SerializeField] [Range(1f, 50f)] [Tooltip("A constant by which the score will be multiplied. A higher value will result in a higher score.")]
     private float constantMultiplier = 10f;
     
@@ -57,15 +54,9 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
+        GameObject player = GetComponent<RaceManager>().player;
         playerRigidbody = player.GetComponent<Rigidbody>();
-        
-        // [Vmax] = (F / (m * drag)) - (F / m * t) => [Vmax] = F / m * (1/drag - t)
-        // maximumSpeed = player.GetComponent<VehicleController>().preset.speed / playerRigidbody.mass *
-        //                (1 / player.GetComponent<VehicleController>().groundDrag - Time.fixedDeltaTime);
-
-        // Debug.Log("Maximum speed: " + maximumSpeed);
-
-        maximumSpeed = player.GetComponent<VehicleController>().maximumSpeed;
+        maximumSpeed = player.GetComponent<VehicleController>().GetMaximumSpeed();
     }
 
     void FixedUpdate()
@@ -118,6 +109,16 @@ public class ScoreManager : MonoBehaviour
     public long GetScore()
     {
         return score;
+    }
+
+    public float GetMultiplier()
+    {
+        return ranges[currentRange].GetMultiplier();
+    }
+
+    public int GetRange()
+    {
+        return currentRange;
     }
 
     public void GrantBonus(int bonus)
