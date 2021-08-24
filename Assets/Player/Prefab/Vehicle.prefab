@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 6036709807576084204}
   - component: {fileID: 407148919}
   - component: {fileID: 3450803821602236937}
+  - component: {fileID: 2565623165293259774}
   - component: {fileID: 8284381887647273626}
   m_Layer: 0
   m_Name: Vehicle
@@ -236,7 +237,6 @@ MonoBehaviour:
   groundDrag: 2
   airDrag: 0.1
   wheelBase: 4
-  turningAngle: 0
   turningAngleMax: 15
   rotateBackAngle: 60
 --- !u!114 &407148919
@@ -265,6 +265,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectTimeText: {fileID: 0}
+  boostChainMax: 3
+  boostChainControl: 0.05
+--- !u!114 &2565623165293259774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6036709807576084203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23f5c4371ad4bde9834784a0a333ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedDecreaseFactor: 1
 --- !u!114 &8284381887647273626
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -56,10 +56,12 @@ public class NitrousSystem : MonoBehaviour
     private string boostChainCountText;
     
     private VehicleController vehicleController;
+    private OffRoad offRoad;
     
     void Start()
     {
         vehicleController = GetComponent<VehicleController>();
+        offRoad = GetComponent<OffRoad>();
     }
 
     void Update()
@@ -216,7 +218,7 @@ public class NitrousSystem : MonoBehaviour
         active = true;
         
         // If player is off-road, use the actual ground drag (modified by OffRoad script) instead of the default one
-        float groundDragDefault = OffRoad.IsPlayerOffRoad ? vehicleController.groundDrag : vehicleController.groundDragDefault;
+        float groundDragDefault = offRoad.IsPlayerOffRoad ? vehicleController.groundDrag : vehicleController.groundDragDefault;
         vehicleController.groundDrag = groundDragDefault * (1 - this.boost);
     }
 
@@ -232,11 +234,11 @@ public class NitrousSystem : MonoBehaviour
         boostChainCount = 0;
 
         // If the player is off the road, set the flag that indicates they've ran out of nitrous
-        if (OffRoad.IsPlayerOffRoad)
-        {
-            OffRoad.NitrousRanOut = true;
+        // if (vehicleController.IsPlayerOffRoad)
+        // {
+            // OffRoad.NitrousRanOut = true;
             // Debug.Log("You ran out of nitrous while you were off the road");
-        }
+        // }
     }
 
     private void Timer()

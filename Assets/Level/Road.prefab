@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 1248095780452475724}
   m_Layer: 6
   m_Name: Estrada
-  m_TagString: Untagged
+  m_TagString: Road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +165,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 45, y: 0.001, z: 25}
+  m_Size: {x: 28, y: 0.001, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6066277584575657694
 GameObject:
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 5114192867401406339}
   m_Layer: 6
   m_Name: OffRoadRight
-  m_TagString: Untagged
+  m_TagString: OffRoad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 7667041005335806959}
   m_Layer: 6
   m_Name: OffRoadLeft
-  m_TagString: Untagged
+  m_TagString: OffRoad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
