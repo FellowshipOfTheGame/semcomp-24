@@ -1,3 +1,6 @@
+const { createHmac } = require("crypto")
+
+const config = require("../config/")
 const User = require('../models/User');
 
 module.exports = {
@@ -68,14 +71,21 @@ module.exports = {
         if(!req.user){ 
             return res.status(400).json({ message: "invalid user session" });
         } else { 
-            return res.json({ 
+
+            let userInfo = { 
                 message: "ok", 
                 name: req.user.name,
-                nickname: req.user.nickname,
-                topScore: req.user.topScore,
                 gold: req.user.gold,
                 runs: req.user.runs,
-            })
+                topScore: req.user.topScore,
+                upgrades: req.user.upgrades.map((i) => { 
+                    return { itemName: i.itemName, level: i.level } 
+                }),
+                sign: ""
+            }
+            
+            userInfo.sign =  createHmac('sha256', config.RESPONSE_SIGNATURE_KEY).update(JSON.stringify(userInfo)).digest('base64')
+            return res.json(userInfo)
         }
     }
 }
