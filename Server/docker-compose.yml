@@ -25,10 +25,10 @@ services:
         image: redis
         container_name: semcomp-24-game-redis
         restart: unless-stopped
-        # ports:
-        #     - 6379:6379
-        expose: 
-            - 6379
+        ports:
+             - 6379:6379
+        # expose: 
+        #    - 6379
         # Use ports in development but change to expose in production.
         # Reason: expose allow only inter-service communications and 
         # can be reached by other services using the 'semcomp-24-game-redis.server_default' DNS
