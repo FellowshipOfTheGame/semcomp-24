@@ -14,11 +14,6 @@ module.exports = {
     ranking
 }
 
-// Init global ranking variable
-const rankingMazSize = 10
-let   globalRank     = { rank: [], minScore: -1, updatedAt: new Date() }
-loadRanking()
-
 // Controller Functions
 async function start(req, res) {
     const userId = req.user._id
@@ -91,9 +86,6 @@ async function finish(req, res) {
         })
         .then(( ) => new RaceModel({ userId, score, gold, startedAt, finishedAt}).save())
         .then(( ) => { 
-            if( newPersonalRecord && globalRank.minScore < score ) 
-                updateRanking(userId, req.user.name, score)
-
             return res.json({ message: "ok", isPersonalRecord: newPersonalRecord }) 
         })
         .catch((err) => { 
@@ -104,59 +96,39 @@ async function finish(req, res) {
 }
 
 async function ranking(req, res) {
-    return res.json({ 
-        message: "ok",
-        updatedAt: globalRank.updatedAt,
-        rank: globalRank.rank.map((item) => { 
-            return { 
-                name: item.name,
-                topScore: item.topScore,
-                topScoreDate: item.topScoreDate
-            }
-        }) 
-    })
-}
 
-// Auxiliar Functions 
-async function loadRanking(){
-    await UserModel.find().select('name topScore topScoreDate')
+    // Using lean + indexed search to optimize performance
+    UserModel.find().lean()
+    .select('name topScore topScoreDate')
     .sort({topScore: -1, topScoreDate: 1})
-    .limit(rankingMazSize)
-    .exec().then((docs) => {
-        const N             = docs.length
-        globalRank.rank     = docs
-        globalRank.minScore = (N >= rankingMazSize) ? globalRank.rank[N-1].topScore : -1
-    })
-    .catch((err) => { console.error(`at loadRanking(): error loading ranking ${err}`) })
-}
+    .exec()
+    .then((ranking) => {
 
-function updateRanking(_id, name, topScore){ 
-    // Flag to know if user is already in ranking
-    let isInRanking = false
+        let personal = { position: -1, topScore: -1 }
+        
+        if(req.user?._id !== undefined) { 
+            const userPos = ranking.findIndex((u) => req.user._id.equals(u._id))
 
-    // If user is already in ranking then update his score
-    for(let i = 0; isInRanking === false && i < globalRank.rank.length; i++){
-        if(_id.equals(globalRank.rank[i]._id)){
-            if(topScore < globalRank.rank[i].topScore) 
-                return  // If he did not beat his own best topScore then ignore
-            
-            isInRanking = true
-            globalRank.rank[i].topScore = topScore
+            if(userPos >= 0){ 
+                personal.position = userPos+1
+                personal.topScore = ranking[userPos].topScore
+            }
         }
-    }
 
-    // If not in ranking need to append to the ranking list
-    if(isInRanking === false) 
-        globalRank.rank.push({_id, name, topScore})
-    
-    // Reordering the ranking
-    globalRank.rank.sort((a,b) => (b.topScore > a.topScore) ? 1 : -1)
-
-    // Remove ranking overflow
-    globalRank.rank = globalRank.rank.slice(0,rankingMazSize)
-    
-    // Update min score and update time
-    const N = globalRank.rank.length
-    globalRank.minScore  = (N >= rankingMazSize) ? globalRank.rank[N-1].topScore : -1
-    globalRank.updatedAt = new Date()
+        return res.json({ 
+            message: "ok", 
+            personal: personal,
+            rank: ranking.map((u) => { 
+                return { 
+                    topScore: u.topScore,
+                    name: u.name,
+                    topScoreDate: u.topScoreDate
+                }
+            })
+        })
+    })
+    .catch((err) => { 
+        console.error(`at /race/ranking: error loading ranking ${err}`) 
+        return res.status(500).json({ message: "internal server error" })
+    })
 }
