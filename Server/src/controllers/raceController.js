@@ -119,13 +119,14 @@ async function ranking(req, res) {
             message: "ok", 
             personal: personal,
             rank: ranking.map((u) => { 
-                return { 
-                    topScore: u.topScore,
-                    name: u.name,
-                    topScoreDate: u.topScoreDate
-                }
-            })
+                    return { 
+                        topScore: u.topScore,
+                        name: u.name,
+                        topScoreDate: u.topScoreDate
+                    }
+                }).slice(0, 10) // Return only first 10 users to avoid giant HTTP responses
         })
+        
     })
     .catch((err) => { 
         console.error(`at /race/ranking: error loading ranking ${err}`) 
