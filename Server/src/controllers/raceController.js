@@ -45,7 +45,7 @@ async function finish(req, res) {
     const gold  = parseInt(req.body?.gold)
     const nonce = req.body?.nonce?.toString().trim()
     const sign  = req.body?.sign?.toString().trim()
-    const finishedAt = new Date().toISOString().trim()
+    const finishedAt = new Date().toISOString()
 
     let newPersonalRecord = false
 
@@ -82,9 +82,11 @@ async function finish(req, res) {
         UserModel.findById(userId)
         .then((doc) => { 
             doc.gold += gold
+            doc.goldAcc += gold
             doc.runs += 1
             newPersonalRecord = doc.topScore < score
             doc.topScore = (newPersonalRecord) ? score : doc.topScore
+            doc.topScoreDate = (newPersonalRecord) ? new Date().toISOString() : doc.topScoreDate
             return doc.save() 
         })
         .then(( ) => new RaceModel({ userId, score, gold, startedAt, finishedAt}).save())
