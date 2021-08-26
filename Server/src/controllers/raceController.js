@@ -109,9 +109,9 @@ async function ranking(req, res) {
         updatedAt: globalRank.updatedAt,
         rank: globalRank.rank.map((item) => { 
             return { 
-                name: item.name, 
-                nickname: item.nickname, 
-                topScore: item.topScore
+                name: item.name,
+                topScore: item.topScore,
+                topScoreDate: item.topScoreDate
             }
         }) 
     })
@@ -119,8 +119,10 @@ async function ranking(req, res) {
 
 // Auxiliar Functions 
 async function loadRanking(){
-    await UserModel.find().select('name nickname topScore').sort({topScore: -1}).limit(rankingMazSize).exec()
-    .then((docs) => {
+    await UserModel.find().select('name topScore topScoreDate')
+    .sort({topScore: -1, topScoreDate: 1})
+    .limit(rankingMazSize)
+    .exec().then((docs) => {
         const N             = docs.length
         globalRank.rank     = docs
         globalRank.minScore = (N >= rankingMazSize) ? globalRank.rank[N-1].topScore : -1
@@ -128,7 +130,7 @@ async function loadRanking(){
     .catch((err) => { console.error(`at loadRanking(): error loading ranking ${err}`) })
 }
 
-function updateRanking(_id, nickname, topScore){ 
+function updateRanking(_id, name, topScore){ 
     // Flag to know if user is already in ranking
     let isInRanking = false
 
@@ -145,7 +147,7 @@ function updateRanking(_id, nickname, topScore){
 
     // If not in ranking need to append to the ranking list
     if(isInRanking === false) 
-        globalRank.rank.push({_id, nickname, topScore})
+        globalRank.rank.push({_id, name, topScore})
     
     // Reordering the ranking
     globalRank.rank.sort((a,b) => (b.topScore > a.topScore) ? 1 : -1)
