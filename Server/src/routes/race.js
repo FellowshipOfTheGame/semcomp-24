@@ -2,14 +2,14 @@
 const routes = require('express').Router();
 
 // Middlewares
-const SessionMiddleware = require('../middlewares/Session.middleware');
+// None until now....
 
 // Controllers
 const raceController = require('../controllers/raceController')
 
 // Routes
-routes.post('/start', SessionMiddleware.isAuth, raceController.start)
-routes.post('/finish', SessionMiddleware.isAuth, raceController.finish)
+routes.post('/start', raceController.start)
+routes.post('/finish', raceController.finish)
 routes.get('/ranking', raceController.ranking)
 
 // Export routes

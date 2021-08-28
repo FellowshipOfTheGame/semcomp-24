@@ -16,8 +16,9 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-# Expose HTTP/HTTPS Default port
+# Expose HTTP and HTTPS Default
 EXPOSE 3000
+EXPOSE 3030
 
 # Start node
 CMD [ "node", "./src/index.js" ]

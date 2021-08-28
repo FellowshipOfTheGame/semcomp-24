@@ -2,14 +2,9 @@
 const express = require('express');
 const routes = express.Router();
 
-// Middlewares
-const SessionMiddleware = require('../middlewares/Session.middleware');
-
-// Controllers
-const UserController = require('../controllers/userController');
-
 // Routes
-routes.get('/status', SessionMiddleware.isAuth, UserController.getInfoWithSession)
+routes.post('/register', (req, res) => res.json({ serverStatus: "OK" }))
+routes.get('/status', (req, res) => res.json({ serverStatus: "OK" }))
 
 // Export routes
 module.exports = routes;
