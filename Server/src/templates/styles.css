@@ -1,0 +1,29 @@
+body {
+    background: url("img/ARTEMENUINICIAR.png") no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.div-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 60%;
+}
+
+.div-text {
+    text-align: center;
+    height: 50px;
+    width: 70%;
+    margin-bottom: 10px;
+    background-color: skyblue;
+    line-height: 50px;
+}
+
+button {
+    height: 50px;
+    width: 70%;
+    color: blue;
+}
