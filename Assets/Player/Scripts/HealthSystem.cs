@@ -84,16 +84,21 @@ public class HealthSystem : MonoBehaviour
 
 	public bool IsDead()
 	{
-		return health <= 0;
+		return (health <= 0);
 	}
 
 	public void Damage(int damageAmount)
 	{
+		if (health <= 0)
+		{
+			return;
+		}
+
 		damageAmount = Mathf.Clamp(damageAmount, 0, health);
 		SetHealth(health - damageAmount);
 
 		OnHealthChangeEventArgs onHealthChangeEventArgs = new OnHealthChangeEventArgs();
-		onHealthChangeEventArgs.Damaged = true;
+		onHealthChangeEventArgs.Damaged = (damageAmount > 0);
 		onHealthChangeEventArgs.DamageAmount = damageAmount;
 		
 		if (OnHealthChange != null)
@@ -109,6 +114,11 @@ public class HealthSystem : MonoBehaviour
 
 	public void Heal(int healAmount)
 	{
+		if (health <= 0)
+		{
+			return;
+		}
+		
 		healAmount = Mathf.Clamp(healAmount, 0, healthMax - health);
 		SetHealth(health + healAmount);
 
