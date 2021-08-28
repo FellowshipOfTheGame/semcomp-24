@@ -2,9 +2,15 @@
 const express = require('express');
 const routes = express.Router();
 
+// Middlewares
+const SessionMiddleware = require('../middlewares/Session.middleware');
+
+// Controllers
+const shopController = require('../controllers/shopController')
+
 // Routes
-routes.get('/', (req, res) => res.json({ serverStatus: "OK" }))
-routes.post('/buy-upgrades', (req, res) => res.json({ serverStatus: "OK" }))
+routes.get('/', SessionMiddleware.isAuth, shopController.shop)
+routes.post('/buy-upgrades', SessionMiddleware.isAuth, shopController.buy)
 
 // Export routes
 module.exports = routes;

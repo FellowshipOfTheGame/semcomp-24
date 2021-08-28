@@ -1,0 +1,65 @@
+const mongoose = require('mongoose');
+
+const UpgradesModel = require("../models/UserUpgrades")
+
+const UserSchema = new mongoose.Schema({
+    created_at: {
+        type: Date,
+        required: true,
+    },
+
+    google_id: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    nickname: {
+        type: String,
+        // unique: true,
+        maxlength: 20,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    picture: {
+        type: String,
+    },
+
+    gold: {
+        type: Number,
+        default: 0,
+        min: 0,
+    },
+    runs: {
+        type: Number,
+        default: 0,
+    },
+    upgrades: {
+        type: [UpgradesModel],
+        default:[{
+            itemName: "Max_Life",
+        }, {
+            itemName: "Base_Acceleration",
+        }, {
+            itemName: "Traction",
+        }, {
+            itemName: "Booster",
+        }, {
+            itemName: "Nitro",
+        }, {
+            itemName: "Bus_Stop",
+        }]
+    },
+    topScore: {
+        type: Number,
+        default: 0,
+    }
+});
+
+module.exports = mongoose.model('User', UserSchema);
