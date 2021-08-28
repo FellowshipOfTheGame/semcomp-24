@@ -28,7 +28,7 @@ public class OffRoad : MonoBehaviour
             if (groundDragDefault == 0 || nitrousRanOut)
             {
                 groundDragDefault = vehicleController.groundDrag;
-                Debug.Log("Resetting off-road drag");
+                // Debug.Log("Resetting off-road drag");
 
                 if (nitrousRanOut)
                 {
@@ -40,7 +40,7 @@ public class OffRoad : MonoBehaviour
 
             if (nitrousActivatedOffRoad)
             {
-                Debug.Log("You activated the nitrous off-road");
+                // Debug.Log("You activated the nitrous off-road");
             }
             else
             {
@@ -59,17 +59,17 @@ public class OffRoad : MonoBehaviour
             if (nitrousWasActive)
             {
                 groundDragDefault = 0;
-                Debug.Log("You entered off-road with the nitrous active");
+                // Debug.Log("You entered off-road with the nitrous active");
             }
             else
             {
-                Debug.Log("You are now off-road");
+                // Debug.Log("You are now off-road");
             }
         }
         
         if (other.gameObject.CompareTag("Road"))
         {
-            Debug.Log("You are now on the road");
+            // Debug.Log("You are now on the road");
             IsPlayerOffRoad = false;
             groundDragDefault = 0;
             nitrousWasActive = false;

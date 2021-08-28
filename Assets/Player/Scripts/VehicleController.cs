@@ -63,14 +63,17 @@ public class VehicleController : MonoBehaviour
         playerInput.Player.UseItem.Disable();
     }
 
+    protected void Awake()
+    {
+        // [Vmax] = (F / (m * drag)) - (F / m * t) => [Vmax] = a * (1/drag - t)
+        maximumSpeed = preset.speed * (1 / groundDrag - Time.fixedDeltaTime);
+        // Debug.Log("Maximum speed: " + maximumSpeed);
+    }
+
     protected void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _colliders = GetComponents<Collider>();
-
-        // [Vmax] = (F / (m * drag)) - (F / m * t) => [Vmax] = a * (1/drag - t)
-        maximumSpeed = GetComponent<VehicleController>().preset.speed * (1 / GetComponent<VehicleController>().groundDrag - Time.fixedDeltaTime);
-        // Debug.Log("Maximum speed: " + maximumSpeed);
 
         groundDragDefault = groundDrag;
         

@@ -71,10 +71,21 @@ public class HealthBar : MonoBehaviour
 		// Calculates current and next index based on indicators array lenght
 		int currentIndex = Mathf.FloorToInt((100 - currentHealthPercentage) / indicatorPercentage); 
 		int nextIndex = Mathf.FloorToInt((100 - nextHealthPercentage) / indicatorPercentage);
+	
+		// Avoid array index out of bounds exception. As soon as the health value gets to zero, the race should end anyway, so this is "just to be extra sure"
+		if (currentHealthPercentage <= 0)
+		{
+			currentIndex = indicators.Length - 1;
+		}
 
+		if (nextHealthPercentage <= 0)
+		{
+			nextIndex = indicators.Length - 1;
+		}
+		
 		/* DEBUG
 		
-		Debug.Log($"current health percentage: {currentHealthPercentage} = 100 * ({healthSystem.GetHealth() + amount} / {healthSystem.GetHealthMax()})");
+		Debug.Log($"current health percentage: {currentHealthPercentage} = 100 * ({healthSystem.GetHealth() - eventArgs.Amount} / {healthSystem.GetHealthMax()})");
 		Debug.Log($"next health percentage: {nextHealthPercentage} = 100 * ({healthSystem.GetHealth()} / {healthSystem.GetHealthMax()})");
 		Debug.Log($"indicator percentage: {indicatorPercentage} = 100 * (1 / {indicators.Length})");
 		Debug.Log($"current index: {currentIndex} = floor[(100 - {currentHealthPercentage}) / {indicatorPercentage}] ");
@@ -99,6 +110,6 @@ public class HealthBar : MonoBehaviour
 			}
 		}
 
-		Debug.Log("Health: " + healthSystem.GetHealth());
+		// Debug.Log("Health: " + healthSystem.GetHealth());
 	}
 }
