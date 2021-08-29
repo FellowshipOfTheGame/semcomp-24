@@ -67,4 +67,7 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
+// Add custom index to optimize Ranking Loading
+UserSchema.index({topScore: -1, topScoreDate: 1})
+
 module.exports = mongoose.model('User', UserSchema);
