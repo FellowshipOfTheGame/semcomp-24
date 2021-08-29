@@ -104,7 +104,7 @@ async function ranking(req, res) {
     .exec()
     .then((ranking) => {
 
-        let personal = { position: -1, topScore: -1 }
+        let personal = { position: -1, topScore: -1, name: '' }
         
         if(req.user?._id !== undefined) { 
             const userPos = ranking.findIndex((u) => req.user._id.equals(u._id))
@@ -112,6 +112,7 @@ async function ranking(req, res) {
             if(userPos >= 0){ 
                 personal.position = userPos+1
                 personal.topScore = ranking[userPos].topScore
+                personal.name = req.user.name
             }
         }
 

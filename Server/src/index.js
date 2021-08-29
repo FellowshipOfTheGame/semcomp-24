@@ -31,10 +31,13 @@ app.use(session.sessionLoader())
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Enable cors to all origins (because we are an API)
+// Enable cors to all origins (because we are an API after all :P)
 app.use(cors({
-    origin: ['https://fog-icmc.itch.io'],
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    credentials: true,
+    origin: '*',
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
 }))
 
 // Security and Log Configurations
