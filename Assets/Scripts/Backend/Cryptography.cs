@@ -8,9 +8,9 @@ namespace SubiNoOnibus.Networking
     public static class Cryptography
     {
         public static string request_signature_key;
-        //public static string response_signature_key;
+        public static string response_signature_key;
 
-        public static void SetSignature(RaceData raceData)
+        public static string GetSignature(RaceData raceData)
         {
             raceData.sign = string.Empty;
 
@@ -23,7 +23,7 @@ namespace SubiNoOnibus.Networking
                 signature = Convert.ToBase64String(hmacSha256.ComputeHash(dataToHmac));
             }
 
-            raceData.sign = signature;
+            return signature;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace SubiNoOnibus.UI
 
         public IEnumerator Start()
         {
-            string authCookie = PlayerPrefs.GetString("Auth", string.Empty);
+            string authCookie = PlayerPrefs.GetString(UserAuthRequestHandler.authKey, string.Empty);
 
             if (string.IsNullOrEmpty(authCookie))
                 yield break;

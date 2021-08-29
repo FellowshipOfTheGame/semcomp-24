@@ -18,6 +18,7 @@ namespace SubiNoOnibus.Networking.Requests
             }
             else
             {
+                UserAuthRequestHandler.SaveAuthCookie(request);
                 var raceData = JsonUtility.FromJson<RaceData>(request.downloadHandler.text);
                 OnSuccess?.Invoke(raceData);
             }
@@ -25,9 +26,10 @@ namespace SubiNoOnibus.Networking.Requests
 
         public static IEnumerator FinishRace(RaceData raceData, Action OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
-            Cryptography.SetSignature(raceData);
-            
-            using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Race_finish_url, JsonUtility.ToJson(raceData));
+            raceData.sign = Cryptography.GetSignature(raceData);
+            string data = JsonUtility.ToJson(raceData);
+            Debug.Log(data);
+            using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Race_finish_url, data);
             
             yield return request.SendWebRequest();
 

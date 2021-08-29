@@ -22,7 +22,7 @@ public class RaceStartTest : MonoBehaviour
     public void StartCoroutineStartRace()
     {
         var startRaceEnumerator = RaceRequestHandler.StartRace(
-            (raceData) => Debug.Log(raceData),
+            (raceData) => this.raceData = raceData,
             (req) => Debug.Log(req.error)
         );
         StartCoroutine(startRaceEnumerator);

@@ -8,7 +8,7 @@ namespace SubiNoOnibus.Networking.Requests
     {
         public static IEnumerator GetUserStatus(Action OnSuccess, Action OnFailure = null)
         {
-            using UnityWebRequest request = WebRequestFactory.AuthGetJson(Endpoints.User_status_url);
+            using UnityWebRequest request = WebRequestFactory.AuthGet(Endpoints.User_status_url);
 
             yield return request.SendWebRequest();
 
@@ -18,6 +18,7 @@ namespace SubiNoOnibus.Networking.Requests
             }
             else
             {
+                UserAuthRequestHandler.SaveAuthCookie(request);
                 OnSuccess?.Invoke();
             }
         }
