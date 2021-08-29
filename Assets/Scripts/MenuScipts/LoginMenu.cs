@@ -50,10 +50,10 @@ namespace SubiNoOnibus.UI
             inserKeyPanel.SetActive(true);
         }
 
-        public void OnClick_Login()
+        public void OnPress_Login()
         {
-            Application.OpenURL(Endpoints.Login_url);
-
+            WebLink.OpenLinkJSPlugin(Endpoints.Login_url);
+            
             SwitchToInsertKey();
         }
         public void InsertKey()
