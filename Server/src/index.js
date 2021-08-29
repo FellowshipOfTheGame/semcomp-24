@@ -2,7 +2,9 @@
 const express = require('express');
 const https = require('https');
 const passport = require('passport');
+const cors = require('cors')
 const fs = require('fs');
+
 
 // Singletons & Libraries Loaders
 require('./loaders/mongoose')
@@ -28,6 +30,12 @@ app.use(session.cookieLoader())
 app.use(session.sessionLoader())
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Enable cors to all origins (because we are an API)
+app.use(cors({
+    origin: ['https://fog-icmc.itch.io'],
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}))
 
 // Security and Log Configurations
 // TODO (https://expressjs.com/pt-br/advanced/best-practice-security.html)
