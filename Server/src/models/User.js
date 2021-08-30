@@ -17,11 +17,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    nickname: {
-        type: String,
-        // unique: true,
-        maxlength: 20,
-    },
     email: {
         type: String,
         required: true,
@@ -32,6 +27,11 @@ const UserSchema = new mongoose.Schema({
     },
 
     gold: {
+        type: Number,
+        default: 0,
+        min: 0,
+    },
+    goldAcc: { 
         type: Number,
         default: 0,
         min: 0,
@@ -59,7 +59,15 @@ const UserSchema = new mongoose.Schema({
     topScore: {
         type: Number,
         default: 0,
-    }
+    },
+    topScoreDate: {
+        type: Date,
+        required: true,
+        default: Date.now
+    },
 });
+
+// Add custom index to optimize Ranking Loading
+UserSchema.index({topScore: -1, topScoreDate: 1})
 
 module.exports = mongoose.model('User', UserSchema);
