@@ -8,6 +8,7 @@ using SubiNoOnibus.Networking.Requests;
 public class RaceManager : MonoBehaviour
 {
     [SerializeField] public GameObject player;
+    [SerializeField] private RaceData raceData;
 
     [Space(10)]
     [Header(("Menu"))]
@@ -42,13 +43,17 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI coinsText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI scoreBonusText;
+    [SerializeField] private TextMeshProUGUI coinsBonusText;
 
     [SerializeField] private Button itemButton;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemDurationText;
 
     private HealthSystem healthSystem;
-    
+
+    private TimeTravel timeTravel; 
+        
     private Animator burningAnimator;
     
     private float timer;
@@ -66,30 +71,33 @@ public class RaceManager : MonoBehaviour
     public float Timer => timer;
     public int Coins => coins;
     public int ItemsUsed => itemsUsedCount;
-    public long Score { get; private set; }
-    
-    [SerializeField] private RaceData raceData;
-    
+    public int Score { get; private set; }
+
+    private Coroutine scoreBonusTextCoroutine;
 
     private void OnEnable()
     {
         healthSystem = player.GetComponent<HealthSystem>();
+        scoreManager = GetComponent<ScoreManager>();
+        
         healthSystem.OnDie += GameOver;
+        scoreManager.OnScoreBonusGrant += ScoreBonusFeedback;
     }
 
     private void OnDisable()
     {
         healthSystem.OnDie -= GameOver;
+        scoreManager.OnScoreBonusGrant -= ScoreBonusFeedback;
     }
 
     void Start()
     {
         vehicle = player.GetComponent<VehicleController>();
+        timeTravel = GetComponent<TimeTravel>();
         burningAnimator = burning.GetComponent<Animator>();
         // scoreMultiplier.sprite = scoreMultiplierSprites[0];
         scoreMultiplier.color = scoreMultiplierColors[0];
-        scoreManager = GetComponent<ScoreManager>();
-        
+
         startRaceCountdownCircleFill = startRaceCountdownSign.GetComponentsInChildren<Image>()[1];
 
         StartRace();
@@ -111,9 +119,12 @@ public class RaceManager : MonoBehaviour
         
         // Update speedometer
         speedometer.fillAmount = Mathf.Clamp01(vehicle.GetCurrentSpeed() / vehicle.GetMaximumSpeed());
+        
+        // Update time travel bar
+        turbo.sprite = turboSprites[timeTravel.CurrentStage];
 
         // Burn animation (when player exceeds maximum speed)
-        bool burn = vehicle.GetCurrentSpeed() > vehicle.GetMaximumSpeed();
+        bool burn = vehicle.GetCurrentSpeed() > vehicle.GetMaximumSpeed() + 1f;
         burning.enabled = burn;
         burningAnimator.SetBool("Burn", burn);
 
@@ -126,7 +137,53 @@ public class RaceManager : MonoBehaviour
         timerText.text = System.TimeSpan.FromSeconds(timer).ToString("mm\\:ss\\:ff");
         
         // Update the score text
-        scoreText.text = scoreManager.GetScore().ToString("000,000", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+        scoreText.text = scoreManager.GetScore().ToString("000,000 PTS", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+    }
+    
+    private void ScoreBonusFeedback(object sender, OnScoreBonusGrantEventArgs eventArgs)
+    {
+        scoreBonusText.text = $"+{eventArgs.BonusAmount} PTS";
+
+        if (scoreBonusTextCoroutine != null)
+        {
+            StopCoroutine(scoreBonusTextCoroutine);
+        }
+
+        scoreBonusTextCoroutine = StartCoroutine(FadeBonusText(scoreBonusText));
+    }
+
+    private IEnumerator FadeBonusText(TextMeshProUGUI bonusText)
+    {
+        bonusText.gameObject.SetActive(true);
+        
+        Color c = bonusText.color;
+        
+        if (bonusText.color.a < 1f)
+        {
+            c.a = 1f;
+            bonusText.color = c;
+        }
+        
+        c.a = 0f;
+
+        float fadeInSpeed = 3f;
+        float fadeOutSpeed = 0.5f;
+
+        while (c.a < 1f)
+        {
+            c.a += Time.deltaTime * fadeInSpeed;
+            bonusText.color = c;
+            yield return null;
+        }
+        
+        while (c.a > 0f)
+        {
+            c.a -= Time.deltaTime * fadeOutSpeed;
+            bonusText.color = c;
+            yield return null;
+        }
+        
+        bonusText.gameObject.SetActive(false);
     }
 
     // Called when player dies

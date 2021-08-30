@@ -38,10 +38,11 @@ public class OnHealthChangeEventArgs : System.EventArgs
 
 public class HealthSystem : MonoBehaviour
 {
-	private int health;
-	
 	[SerializeField]
 	private int healthMax;
+	
+	private int health;
+	private bool invulnerable;
 
 	public event System.EventHandler<OnHealthChangeEventArgs> OnHealthChange;
 	public event System.EventHandler OnDie;
@@ -86,6 +87,16 @@ public class HealthSystem : MonoBehaviour
 	{
 		return (health <= 0);
 	}
+	
+	public void SetInvulnerable(bool invulnerable)
+	{
+		this.invulnerable = invulnerable;
+	}
+	
+	public bool IsInvulnerable()
+	{
+		return invulnerable;
+	}
 
 	public void Damage(int damageAmount)
 	{
@@ -97,10 +108,12 @@ public class HealthSystem : MonoBehaviour
 		damageAmount = Mathf.Clamp(damageAmount, 0, health);
 		SetHealth(health - damageAmount);
 
-		OnHealthChangeEventArgs onHealthChangeEventArgs = new OnHealthChangeEventArgs();
-		onHealthChangeEventArgs.Damaged = (damageAmount > 0);
-		onHealthChangeEventArgs.DamageAmount = damageAmount;
-		
+		OnHealthChangeEventArgs onHealthChangeEventArgs = new OnHealthChangeEventArgs
+		{
+			Damaged = (damageAmount > 0),
+			DamageAmount = damageAmount
+		};
+
 		if (OnHealthChange != null)
 			OnHealthChange(this, onHealthChangeEventArgs);
 
