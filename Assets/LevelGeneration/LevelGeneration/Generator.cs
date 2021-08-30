@@ -43,11 +43,11 @@ public abstract class Generator : MonoBehaviour
         Vector3 maxNext = nextPosition + (area / 2);
         Vector3 offset = new Vector3(area.x / nextSegment.Width, area.y, area.z / nextSegment.Length);
 
-        Vector3 startPosition = new Vector3(minNext.x + offset.x, nextPosition.y - roadHeight / 2, maxNext.z - offset.z);
+        Vector3 startPosition = new Vector3(minNext.x + offset.x / 2f, nextPosition.y - roadHeight / 2, maxNext.z - offset.z / 2f);
         Vector3 currentPosition = startPosition;
 
         GameObject roadObject = Instantiate(road, new Vector3(nextPosition.x, nextPosition.y - roadHeight, nextPosition.z), Quaternion.identity);
-        Destroy(roadObject, 15);
+        //Destroy(roadObject, 15);
 
         for (int i = 0; i < nextSegment.Length; i++)
         {
@@ -62,7 +62,7 @@ public abstract class Generator : MonoBehaviour
 
                 GameObject prefab = set.GetRandom();
                 GameObject instance = Instantiate(prefab, currentPosition, Quaternion.identity);
-                Destroy(instance, 15); // TODO Pooling
+                //Destroy(instance, 15); // TODO Pooling
                 currentPosition.x += offset.x;
             }
 

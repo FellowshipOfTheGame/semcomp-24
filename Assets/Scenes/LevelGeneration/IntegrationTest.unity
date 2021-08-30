@@ -681,11 +681,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   follow: {fileID: 108651215}
   threshold: 100
-  area: {x: 42, y: 0, z: 50}
+  area: {x: 28, y: 0, z: 50}
   road: {fileID: 6066277585264546669, guid: bb760f6a0773bca48853183fde85088b, type: 3}
   roadHeight: 1
   segments:
-  - {fileID: 11400000, guid: 283d6a3513ae9174680ffb40aacbba1a, type: 2}
+  - {fileID: 11400000, guid: 764efc1a7a71185438a9d1d7becae22e, type: 2}
 --- !u!114 &1853063964 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4239996900545307723, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}

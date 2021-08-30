@@ -105,7 +105,7 @@ public class VehicleController : MonoBehaviour
         {
             return;
         }
-        
+
         _rigidbody.AddRelativeForce(Vector3.forward * forwardForce, ForceMode.Acceleration);
         // _rigidbody.AddForce(-_rigidbody.velocity, ForceMode.Acceleration); // Goes up to a certain maximum speed
         
