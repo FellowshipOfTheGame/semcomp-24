@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultObstaclePropertiesPreset
   m_EditorClassIdentifier: 
   baseDamage: 3
-  vehicleSpeedDecrease: 50
+  vehicleSpeedDecrease: 3
   destroyCountdownPlayer: 1
   destroyCountdownObstacle: 3
   fadeSpeed: 3.5

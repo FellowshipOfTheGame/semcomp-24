@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   speed: 30
-  handling: 1.5
+  handling: 1

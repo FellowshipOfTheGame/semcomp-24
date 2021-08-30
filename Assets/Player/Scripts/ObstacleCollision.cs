@@ -9,6 +9,7 @@ public class ObstacleCollision : MonoBehaviour
     private TimeTravel timeTravel;
     
     private HealthSystem healthSystem;
+    private VehicleController controller;
 
     private Rigidbody _rigidbody;
 
@@ -17,6 +18,7 @@ public class ObstacleCollision : MonoBehaviour
         healthSystem = GetComponent<HealthSystem>();
         scoreManager = raceManager.GetComponent<ScoreManager>();
         timeTravel = raceManager.GetComponent<TimeTravel>();
+        controller = GetComponent<VehicleController>();
         
         _rigidbody = GetComponent<Rigidbody>();
     }
@@ -85,7 +87,8 @@ public class ObstacleCollision : MonoBehaviour
             else
             {
                 // Decrease vehicle speed according to the damage dealt by the obstacle
-                _rigidbody.AddRelativeForce(other.relativeVelocity.normalized * (finalDamage * obstacle.VehicleSpeedDecrease));
+                //_rigidbody.AddRelativeForce(other.relativeVelocity.normalized * (finalDamage * obstacle.VehicleSpeedDecrease));
+                controller.forwardForce -= (int) Mathf.Floor(damage2 / 4f) * obstacle.VehicleSpeedDecrease;
             }
             
             // Debug.Log(finalDamage);

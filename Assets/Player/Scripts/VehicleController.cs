@@ -18,13 +18,18 @@ public class VehicleController : MonoBehaviour
     public float groundCheckDistance = 0.5f;
     public float groundDrag = 3f;
     public float airDrag = 0.1f;
+
+    public Transform rodaDaFrente1;
+    public Transform rodaDaFrente2;
     
     [Header("Turning")]
     [Tooltip("Distance between wheels")] public float wheelBase = 2f;
     private float turningAngle; // Current turning wheel angle
     
-    private float forwardForce = 80f;
+    public float forwardForce = 80f;
     private bool grounded; // State management
+
+    private float currentForwardForce;
     
     // Components
     private Rigidbody _rigidbody;
@@ -79,15 +84,18 @@ public class VehicleController : MonoBehaviour
         
         if (preset is null)
             return;
-        forwardForce = preset.speed;
+        //forwardForce = preset.speed;
+        forwardForce = 0;
     }
 
     protected void Update()
     {
+        forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, Time.deltaTime * 1f);
+
         // Checks rotation boundaries
         bool turnRight = (vehicleRotation.y <= turningAngleMax || vehicleRotation.y > 180);
         bool turnLeft = (vehicleRotation.y >= (360 - turningAngleMax) || vehicleRotation.y <= 180);
-        
+
         if (turnLeft || turnRight)
         {
             turningAngle = movement.ReadValue<float>() * 90f;
@@ -95,6 +103,41 @@ public class VehicleController : MonoBehaviour
         else
         {
             turningAngle = 0f;
+        }
+
+        if (movement.ReadValue<float>() != 0f)
+        {
+            if (vehicleRotation.y <= 180) // direita
+            {
+                if (movement.ReadValue<float>() > 0) // input para a direita
+                {
+                    rodaDaFrente1.localRotation = Quaternion.Euler(rodaDaFrente1.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente1.localEulerAngles.y, -90 + transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente1.localEulerAngles.z);
+                    rodaDaFrente2.localRotation = Quaternion.Euler(rodaDaFrente2.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente2.localEulerAngles.y, 90 + transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente2.localEulerAngles.z);
+                }
+                else // input para a esquerda
+                {
+                    rodaDaFrente1.localRotation = Quaternion.Euler(rodaDaFrente1.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente1.localEulerAngles.y, -90 - transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente1.localEulerAngles.z);
+                    rodaDaFrente2.localRotation = Quaternion.Euler(rodaDaFrente2.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente2.localEulerAngles.y, 90 - transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente2.localEulerAngles.z);
+                }
+            }
+            else // esquerda
+            {
+                if (movement.ReadValue<float>() > 0) // input para a direita
+                {
+                    rodaDaFrente1.localRotation = Quaternion.Euler(rodaDaFrente1.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente1.localEulerAngles.y, -90 - transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente1.localEulerAngles.z);
+                    rodaDaFrente2.localRotation = Quaternion.Euler(rodaDaFrente2.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente2.localEulerAngles.y, 90 - transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente2.localEulerAngles.z);
+                }
+                else // input para a esquerda
+                {
+                    rodaDaFrente1.localRotation = Quaternion.Euler(rodaDaFrente1.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente1.localEulerAngles.y, -90 + transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente1.localEulerAngles.z);
+                    rodaDaFrente2.localRotation = Quaternion.Euler(rodaDaFrente2.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente2.localEulerAngles.y, 90 + transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente2.localEulerAngles.z);
+                }
+            }
+        }
+        else
+        {
+            rodaDaFrente1.localRotation = Quaternion.Euler(rodaDaFrente1.localEulerAngles.x, Mathf.MoveTowardsAngle(rodaDaFrente1.localEulerAngles.y, -90, Time.deltaTime * 20f), rodaDaFrente1.localEulerAngles.z);
+            rodaDaFrente2.localRotation = Quaternion.Euler(rodaDaFrente2.localEulerAngles.x, Mathf.MoveTowardsAngle(rodaDaFrente2.localEulerAngles.y, 90, Time.deltaTime * 20f), rodaDaFrente2.localEulerAngles.z);
         }
     }
 
