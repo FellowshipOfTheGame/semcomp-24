@@ -56,7 +56,7 @@ namespace SubiNoOnibus.Networking.Requests
             }
         }
 
-        public static IEnumerator ValidateSession(Action OnSuccess)
+        public static IEnumerator ValidateSession(Action OnSuccess, Action OnFailure = null)
         {
             using UnityWebRequest request = WebRequestFactory.AuthGet(Endpoints.Session_validate_url);
 
@@ -65,6 +65,10 @@ namespace SubiNoOnibus.Networking.Requests
             if (request.result == UnityWebRequest.Result.Success)
             {
                 OnSuccess?.Invoke();
+            }
+            else
+            {
+                OnFailure?.Invoke();
             }
         }
     }

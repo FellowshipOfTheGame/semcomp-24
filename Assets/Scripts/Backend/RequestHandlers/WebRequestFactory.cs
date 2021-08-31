@@ -23,9 +23,10 @@ static class WebRequestFactory
     {
         UnityWebRequest request = PostJson(url, data);
 
+#if !UNITY_WEBGL
         string authCookie = PlayerPrefs.GetString(UserAuthRequestHandler.authKey, string.Empty);
         request.SetRequestHeader("Cookie", authCookie);
-
+#endif
         return request;
     }
 
@@ -33,9 +34,10 @@ static class WebRequestFactory
     {
         UnityWebRequest request = UnityWebRequest.Get(url);
 
+#if !UNITY_WEBGL
         string authCookie = PlayerPrefs.GetString(UserAuthRequestHandler.authKey, string.Empty);
         request.SetRequestHeader("Cookie", authCookie);
-        
+#endif        
         return request;
     }
 }
