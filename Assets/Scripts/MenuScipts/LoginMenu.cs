@@ -19,14 +19,33 @@ namespace SubiNoOnibus.UI
         [SerializeField] private string expiredErrorMsg;
         [SerializeField] private string invalidCodeErrorMsg;
 
-        public IEnumerator Start()
+        private void Start()
         {
-            string authCookie = PlayerPrefs.GetString("Auth", string.Empty);
+            StartCoroutine(ValidateCookie());
+        }
+
+        public IEnumerator ValidateCookie()
+        {
+            string authCookie = PlayerPrefs.GetString(UserAuthRequestHandler.authKey, string.Empty);
 
             if (string.IsNullOrEmpty(authCookie))
                 yield break;
 
             yield return UserAuthRequestHandler.ValidateSession(Close);
+        }
+
+        public void InsertKey()
+        {
+            string key = keyInputField.text.Trim();
+
+            IEnumerator getSessionRequest = UserAuthRequestHandler.GetSession
+            (
+                new SessionData(key),
+                Close,
+                HandleGetSessionErrors
+            );
+
+            StartCoroutine(getSessionRequest);
         }
 
         public void Open()
@@ -50,24 +69,11 @@ namespace SubiNoOnibus.UI
             inserKeyPanel.SetActive(true);
         }
 
-        public void OnClick_Login()
+        public void OnPress_Login()
         {
-            Application.OpenURL(Endpoints.Login_url);
-
+            WebLink.OpenLinkJSPlugin(Endpoints.Login_url);
+            
             SwitchToInsertKey();
-        }
-        public void InsertKey()
-        {
-            string key = keyInputField.text.Trim();
-
-            IEnumerator getSessionRequest = UserAuthRequestHandler.GetSession
-            (
-                new SessionData(key),
-                Close,
-                HandleGetSessionErrors
-            );
-
-            StartCoroutine(getSessionRequest);
         }
 
         private void HandleGetSessionErrors(UnityWebRequest request)
