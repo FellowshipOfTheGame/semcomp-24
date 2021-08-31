@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38b0ec23be444604c850034f0fc7b837, type: 3}
-  m_Name: Default
+  m_Script: {fileID: 11500000, guid: b3c440a1f76ae32c1a845f1af02daf78, type: 3}
+  m_Name: CacambaMaterialsSet
   m_EditorClassIdentifier: 
-  speed: 30
-  handling: 0.25
+  _presentMaterial: {fileID: 2100000, guid: 3fed91909b80cc04b951f2648279728a, type: 2}
+  _pastMaterial: {fileID: 2100000, guid: 9e20864186721df1abf2c59741299667, type: 2}

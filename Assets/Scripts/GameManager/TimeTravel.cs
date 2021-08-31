@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 
 public class TimeTravel : MonoBehaviour
 {
@@ -14,6 +14,13 @@ public class TimeTravel : MonoBehaviour
     [SerializeField] private int stages = 5;
 
     [Space(10)]
+    [Header("Bonuses")]
+    [Space(10)]
+    
+    [SerializeField] private int scoreBonus = 300;
+    // [SerializeField] private int coinsBonus = 100;
+
+    [Space(10)]
     [Header("Graphics (post-processing)")]
     [Space(10)]
     
@@ -21,7 +28,6 @@ public class TimeTravel : MonoBehaviour
     [SerializeField] private GameObject portalPrefab;
 
     private GameObject player;
-    private VehicleController vehicle;
     private HealthSystem healthSystem;
     private ScoreManager scoreManager;
 
@@ -31,10 +37,11 @@ public class TimeTravel : MonoBehaviour
     private float counter;
     private TimeTravelPortal portal;
 
+    private enum Period { Past, Present }
+
     void Start()
     {
         player = GetComponent<RaceManager>().player;
-        vehicle = player.GetComponent<VehicleController>();
         healthSystem = player.GetComponent<HealthSystem>();
         
         scoreManager = GetComponent<ScoreManager>();
@@ -71,6 +78,8 @@ public class TimeTravel : MonoBehaviour
         float decreaseRate = (100f / duration);
 
         GeneratePortal();
+        
+        scoreManager.GrantBonus(scoreBonus);
 
         while (counter > 0)
         {
@@ -80,6 +89,8 @@ public class TimeTravel : MonoBehaviour
             {
                 CurrentStage = Mathf.RoundToInt(counter / (100f / (stages - 2))) + 1;
             }
+            
+            ChangeMaterials(Period.Past);
 
             yield return null;
         }
@@ -87,6 +98,8 @@ public class TimeTravel : MonoBehaviour
         GeneratePortal();
 
         yield return new WaitUntil(() => portal.Out);
+        
+        ChangeMaterials(Period.Present);
         
         InThePast = false;
         healthSystem.SetInvulnerable(false);
@@ -105,6 +118,24 @@ public class TimeTravel : MonoBehaviour
         else
         {
             portal.transform.position = portalPosition;
+        }
+    }
+
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void ChangeMaterials(Period period)
+    {
+        foreach (GameObject _gameObject in GameObject.FindGameObjectsWithTag("Obstacle"))
+        {
+            Obstacle obstacle = _gameObject.GetComponent<Obstacle>();
+            foreach (Renderer _renderer in _gameObject.GetComponentsInChildren<Renderer>())
+            {
+                _renderer.material = period switch
+                {
+                    Period.Present => obstacle.PresentMaterial,
+                    Period.Past => obstacle.PastMaterial,
+                    _ => throw new ArgumentOutOfRangeException(nameof(period), period, null)
+                };
+            }
         }
     }
 }

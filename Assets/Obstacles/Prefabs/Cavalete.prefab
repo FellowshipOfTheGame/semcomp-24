@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePropertiesPreset: {fileID: 11400000, guid: 509523b936bc196d4be472548eedaf01, type: 2}
+  materials: {fileID: 11400000, guid: 16e0f0f3132f42bcbaa8c475dc63d80f, type: 2}
 --- !u!1001 &898013052129892460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112,23 +113,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 516da5d531fedaf438030a116e0a17c2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 516da5d531fedaf438030a116e0a17c2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071067
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 516da5d531fedaf438030a116e0a17c2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000030908616
+      value: 0.7069834
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 516da5d531fedaf438030a116e0a17c2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000030908623
+      value: 0.7072302
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 516da5d531fedaf438030a116e0a17c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -89.98
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 516da5d531fedaf438030a116e0a17c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -136,8 +137,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 516da5d531fedaf438030a116e0a17c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 516da5d531fedaf438030a116e0a17c2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a92e7ef9d747f34f8768ca55470e00d, type: 2}
     - target: {fileID: 919132149155446097, guid: 516da5d531fedaf438030a116e0a17c2, type: 3}
       propertyPath: m_Name
       value: CavaleteZForward

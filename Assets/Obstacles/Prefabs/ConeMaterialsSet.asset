@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38b0ec23be444604c850034f0fc7b837, type: 3}
-  m_Name: Default
+  m_Script: {fileID: 11500000, guid: b3c440a1f76ae32c1a845f1af02daf78, type: 3}
+  m_Name: ConeMaterialsSet
   m_EditorClassIdentifier: 
-  speed: 30
-  handling: 0.25
+  _presentMaterial: {fileID: 2100000, guid: 726c63c58634ffe4d922ab89db2e05e4, type: 2}
+  _pastMaterial: {fileID: 2100000, guid: f0f0363e6d3debf5198d0c54917fc407, type: 2}

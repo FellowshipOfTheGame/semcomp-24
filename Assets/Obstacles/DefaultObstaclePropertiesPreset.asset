@@ -16,4 +16,4 @@ MonoBehaviour:
   vehicleSpeedDecrease: 50
   destroyCountdownPlayer: 1
   destroyCountdownObstacle: 3
-  fadeSpeed: 3.5
+  fadeSpeed: 5

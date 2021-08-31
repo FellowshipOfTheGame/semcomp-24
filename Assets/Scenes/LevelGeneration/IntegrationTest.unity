@@ -141,6 +141,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 89286938720686673, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: raceManager
+      value: 
+      objectReference: {fileID: 987757884}
+    - target: {fileID: 847439272864004725, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: raceManager
+      value: 
+      objectReference: {fileID: 987757884}
     - target: {fileID: 3450803821602236937, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: effectTimeText
       value: 
@@ -233,20 +241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpeedText: {fileID: 337264424}
---- !u!114 &108651225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 108651216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a822aad40e62d7bdbe594be287a82ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raceManager: {fileID: 987757884}
-  scoreBonusMultiplier: 10
 --- !u!1001 &200573368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -717,6 +711,7 @@ MonoBehaviour:
   duration: 30
   increaseRate: 5
   stages: 5
+  scoreBonus: 300
   globalVolume: {fileID: 295057689}
   portalPrefab: {fileID: 1920802284332158919, guid: 935e15d81df6e62fbb4a99abff917e8e, type: 3}
 --- !u!114 &987757884 stripped
@@ -786,10 +781,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   follow: {fileID: 108651215}
   threshold: 100
-  area: {x: 42, y: 0, z: 50}
+  area: {x: 28, y: 0, z: 50}
   road: {fileID: 6066277585264546669, guid: bb760f6a0773bca48853183fde85088b, type: 3}
   roadHeight: 1
   segments:
+  - {fileID: 11400000, guid: 38e959b6d63236e7f909b24ec9e58ab1, type: 2}
   - {fileID: 11400000, guid: 283d6a3513ae9174680ffb40aacbba1a, type: 2}
 --- !u!114 &1853063964 stripped
 MonoBehaviour:
