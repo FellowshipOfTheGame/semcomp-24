@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Traffic;
+    src: url(font/TRAFFIC3.TTF);
+}
+
 body {
     background: url("img/ARTEMENUINICIAR.png") no-repeat center center fixed;
     background-size: cover;
@@ -14,16 +19,24 @@ body {
 }
 
 .div-text {
+    font-family: Traffic;
     text-align: center;
-    height: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 70%;
     margin-bottom: 10px;
-    background-color: skyblue;
-    line-height: 50px;
+    color: white;
+    background-color: green;    
+    border: 2px solid white;
+    border-radius: 5px;
 }
 
 button {
+    font-family: Traffic;
     height: 50px;
     width: 70%;
-    color: blue;
+    color: white;
+    background-color: green;
+    border: 2px solid white;
+    border-radius: 5px;
 }
