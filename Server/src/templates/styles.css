@@ -3,19 +3,26 @@
     src: url(font/TRAFFIC3.TTF);
 }
 
+img {
+    height: 50%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
 body {
-    background: url("img/ARTEMENUINICIAR.png") no-repeat center center fixed;
+    background: url("img/FUNDOMENUINICIAL.png") no-repeat center center fixed;
     background-size: cover;
     height: 100%;
     overflow: hidden;
 }
 
 .div-content {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     position: relative;
-    top: 60%;
 }
 
 .div-text {
@@ -24,6 +31,7 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
     width: 70%;
+    margin-top: 40px;
     margin-bottom: 10px;
     color: white;
     background-color: green;    
