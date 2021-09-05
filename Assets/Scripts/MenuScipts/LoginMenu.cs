@@ -26,11 +26,12 @@ namespace SubiNoOnibus.UI
 
         public IEnumerator ValidateCookie()
         {
+#if !UNITY_WEBGL
             string authCookie = PlayerPrefs.GetString(UserAuthRequestHandler.authKey, string.Empty);
 
             if (string.IsNullOrEmpty(authCookie))
                 yield break;
-
+#endif
             yield return UserAuthRequestHandler.ValidateSession(Close);
         }
 
