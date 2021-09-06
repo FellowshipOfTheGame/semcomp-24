@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using SubiNoOnibus.Networking.Requests;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -22,19 +23,21 @@ static class WebRequestFactory
     {
         UnityWebRequest request = PostJson(url, data);
 
-        string authCookie = PlayerPrefs.GetString("Auth", string.Empty);
+#if !UNITY_WEBGL
+        string authCookie = PlayerPrefs.GetString(UserAuthRequestHandler.authKey, string.Empty);
         request.SetRequestHeader("Cookie", authCookie);
-
+#endif
         return request;
     }
 
-    public static UnityWebRequest AuthGetJson(string url)
+    public static UnityWebRequest AuthGet(string url)
     {
         UnityWebRequest request = UnityWebRequest.Get(url);
 
-        string authCookie = PlayerPrefs.GetString("Auth", string.Empty);
+#if !UNITY_WEBGL
+        string authCookie = PlayerPrefs.GetString(UserAuthRequestHandler.authKey, string.Empty);
         request.SetRequestHeader("Cookie", authCookie);
-        
+#endif        
         return request;
     }
 }

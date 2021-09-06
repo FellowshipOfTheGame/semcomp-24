@@ -7,7 +7,17 @@ namespace SubiNoOnibus.Networking.Requests
 {
     public static class UserAuthRequestHandler
     {
-        private const string authKey = "Auth";
+        public const string authKey = "Auth";
+
+        public static void SaveAuthCookie(UnityWebRequest request)
+        {
+            string cookie = request.GetResponseHeader("Set-Cookie");
+            
+            if (!string.IsNullOrEmpty(cookie))
+            {
+                PlayerPrefs.SetString(authKey, cookie);
+            }
+        }
 
         public static IEnumerator GetSession(SessionData data, Action OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
@@ -21,8 +31,7 @@ namespace SubiNoOnibus.Networking.Requests
             }
             else
             {
-                string cookie = request.GetResponseHeader("Set-Cookie");
-                PlayerPrefs.SetString(authKey, cookie);
+                SaveAuthCookie(request);
 
                 OnSuccess?.Invoke();
             }
@@ -47,15 +56,19 @@ namespace SubiNoOnibus.Networking.Requests
             }
         }
 
-        public static IEnumerator ValidateSession(Action OnSuccess)
+        public static IEnumerator ValidateSession(Action OnSuccess, Action OnFailure = null)
         {
-            using UnityWebRequest request = WebRequestFactory.AuthGetJson(Endpoints.Session_validate_url);
+            using UnityWebRequest request = WebRequestFactory.AuthGet(Endpoints.Session_validate_url);
 
             yield return request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.Success)
             {
                 OnSuccess?.Invoke();
+            }
+            else
+            {
+                OnFailure?.Invoke();
             }
         }
     }

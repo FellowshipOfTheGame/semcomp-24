@@ -18,7 +18,7 @@ namespace SubiNoOnibus.UI
 
         private IEnumerator GetShopUpgrades()
         {
-            using UnityWebRequest request = WebRequestFactory.AuthGetJson(Endpoints.Shop_url);
+            using UnityWebRequest request = WebRequestFactory.AuthGet(Endpoints.Shop_url);
 
             yield return request.SendWebRequest();
 

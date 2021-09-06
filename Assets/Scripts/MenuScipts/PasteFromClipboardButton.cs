@@ -14,7 +14,11 @@ namespace SubiNoOnibus.UI
 #if UNITY_EDITOR
             UnityEngine.Assertions.Assert.IsNotNull(inputField, "Make sure to set the input field in " + gameObject.name);
 #endif
+#if UNITY_WEBGL
+            gameObject.SetActive(false);
+#else
             GetComponent<Button>().onClick.AddListener(OnClick_PasteFromClipboard);
+#endif
         }
 
         private void OnClick_PasteFromClipboard()

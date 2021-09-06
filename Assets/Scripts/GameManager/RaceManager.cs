@@ -202,7 +202,7 @@ public class RaceManager : MonoBehaviour
         // TODO: get player active item from ItemManager
         
         var startRaceEnumerator = RaceRequestHandler.StartRace(
-            (raceData) => Debug.Log(raceData),
+            (raceData) => this.raceData = raceData,
             (req) => Debug.Log(req.error)
         );
         
@@ -220,7 +220,9 @@ public class RaceManager : MonoBehaviour
             () => Debug.Log("Success"), 
             (req) =>
             {
-                Debug.Log(req.responseCode);
+                string errorMsg = (string) JsonUtility.FromJson<ErrorMessageData>(req.downloadHandler.text);
+                Debug.Log($"{req.responseCode}: {req.error}");
+                Debug.Log(errorMsg);
             }
         );
         
