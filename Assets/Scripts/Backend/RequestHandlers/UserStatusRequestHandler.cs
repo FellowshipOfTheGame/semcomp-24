@@ -8,6 +8,7 @@ namespace SubiNoOnibus.Networking.Requests
     {
         public static IEnumerator GetUserStatus(Action OnSuccess, Action OnFailure = null)
         {
+            RaycastBlockEvent.Invoke(true);
             using UnityWebRequest request = WebRequestFactory.AuthGet(Endpoints.User_status_url);
 
             yield return request.SendWebRequest();
@@ -21,6 +22,7 @@ namespace SubiNoOnibus.Networking.Requests
                 UserAuthRequestHandler.SaveAuthCookie(request);
                 OnSuccess?.Invoke();
             }
+            RaycastBlockEvent.Invoke(false);
         }
     }
 }

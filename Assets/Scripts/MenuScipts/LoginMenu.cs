@@ -19,19 +19,21 @@ namespace SubiNoOnibus.UI
         [SerializeField] private string expiredErrorMsg;
         [SerializeField] private string invalidCodeErrorMsg;
 
-        private void Start()
-        {
-            StartCoroutine(ValidateCookie());
-        }
-
         public IEnumerator ValidateCookie()
         {
+            RaycastBlockEvent.Invoke(true);
+#if !UNITY_WEBGL
             string authCookie = PlayerPrefs.GetString(UserAuthRequestHandler.authKey, string.Empty);
 
             if (string.IsNullOrEmpty(authCookie))
+            {
+                Open();
+                RaycastBlockEvent.Invoke(false);
                 yield break;
-
-            yield return UserAuthRequestHandler.ValidateSession(Close);
+            }
+#endif
+            yield return UserAuthRequestHandler.ValidateSession(Close, Open);
+            RaycastBlockEvent.Invoke(false);
         }
 
         public void InsertKey()

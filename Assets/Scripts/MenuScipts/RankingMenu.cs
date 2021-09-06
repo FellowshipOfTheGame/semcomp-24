@@ -9,8 +9,6 @@ namespace SubiNoOnibus.UI
 
         public void Open()
         {
-            gameObject.SetActive(true);
-
             var getRankingRequest = RankingRequestHandler.GetRanking
             (
                 PopulateRankingList,
@@ -22,7 +20,7 @@ namespace SubiNoOnibus.UI
 
         public void Close()
         {
-            gameObject.SetActive(false);
+            EnableUI(false);
         }
 
 
@@ -42,14 +40,23 @@ namespace SubiNoOnibus.UI
                 playerRankingsUI[i].IsPersonal(isPersonal);
                 playerRankingsUI[i].IsDisplayed(true);
             }
-
-            //1,2 ou 3 > 3
+            
             if(data.personal.position > playerRankingsUI.Length - 1)
             {
                 var personal = data.personal;
                 playerRankingsUI[playerRankingsUI.Length - 1].SetStatus(personal.name, personal.topScore, personal.position);
                 playerRankingsUI[playerRankingsUI.Length - 1].IsDisplayed(true);
                 playerRankingsUI[playerRankingsUI.Length - 1].IsPersonal(true);
+            }
+
+            EnableUI(true);
+        }
+
+        private void EnableUI(bool value)
+        {
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(value);
             }
         }
     }

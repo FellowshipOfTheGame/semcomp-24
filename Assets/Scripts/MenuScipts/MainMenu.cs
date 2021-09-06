@@ -17,6 +17,7 @@ namespace SubiNoOnibus.UI
         private void Awake()
         {
             SetupButtonsCallback();
+            StartCoroutine(loginMenu.ValidateCookie());
         }
 
         private void SetupButtonsCallback()
