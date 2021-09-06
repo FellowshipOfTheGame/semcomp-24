@@ -10568,6 +10568,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4429250330757445620, guid: 90c7ba616c1e84449b71de2d67df49b1, type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429250330757445620, guid: 90c7ba616c1e84449b71de2d67df49b1, type: 3}
       propertyPath: upOrDown
       value: 0
       objectReference: {fileID: 0}
@@ -10581,7 +10585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4429250330757445620, guid: 90c7ba616c1e84449b71de2d67df49b1, type: 3}
       propertyPath: leftOrRight
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4429250330757445620, guid: 90c7ba616c1e84449b71de2d67df49b1, type: 3}
       propertyPath: moveLeftRight
