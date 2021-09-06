@@ -1,9 +1,13 @@
 using UnityEngine;
 
-/**
- * Por enquanto vazia, uso intencionado é gerenciar operações
- * relacionadas a aparência (ex, adicionar o canhão)
- */
 public class VehicleRenderer : MonoBehaviour
 {
+    [SerializeField] private GameObject boostParticle;
+    
+    public void ActivateBoostEffect()
+    {
+        GameObject boostEffect = Instantiate(boostParticle, transform);
+        Destroy(boostEffect, 2f);
+    }
+    
 }

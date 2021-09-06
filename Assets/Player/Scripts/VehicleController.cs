@@ -34,7 +34,8 @@ public class VehicleController : MonoBehaviour
     // Components
     private Rigidbody _rigidbody;
     private Collider[] _colliders;
-    
+    private ItemSystem itemSystem;
+
     public float maximumSpeed { get; private set; }
 
     public float groundDragDefault { get; private set; }
@@ -79,6 +80,7 @@ public class VehicleController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _colliders = GetComponents<Collider>();
+        itemSystem = GetComponent<ItemSystem>();
 
         groundDragDefault = groundDrag;
         
@@ -233,6 +235,6 @@ public class VehicleController : MonoBehaviour
 
     private void UseItem(InputAction.CallbackContext context)
     {
-        Debug.Log("Use item");
+        itemSystem.ActivateItem();
     }
 }
