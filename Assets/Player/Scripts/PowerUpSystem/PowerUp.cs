@@ -4,7 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public abstract class PowerUp : MonoBehaviour
 {
-    protected abstract void OnActivate(VehicleController controller, VehicleRenderer renderer);
+    public Sprite icon;
+    
+    public abstract void OnActivate(VehicleController controller, VehicleRenderer renderer);
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,10 +14,8 @@ public abstract class PowerUp : MonoBehaviour
 #if UNITY_EDITOR
         Debug.Log($"Collected {this}");
 #endif
-            
-        VehicleController otherController = other.gameObject.GetComponent<VehicleController>();
-        VehicleRenderer otherRenderer = other.gameObject.GetComponent<VehicleRenderer>();
-            
-        OnActivate(otherController, otherRenderer);
+        ItemSystem itemSystem = other.gameObject.GetComponent<ItemSystem>();
+        itemSystem.ReplaceIfNull(this);
+        Destroy(gameObject);
     }
 }

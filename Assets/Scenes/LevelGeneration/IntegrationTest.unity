@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571343, b: 0.30692208, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -145,6 +145,10 @@ PrefabInstance:
       propertyPath: effectTimeText
       value: 
       objectReference: {fileID: 101022696}
+    - target: {fileID: 3533758671949009302, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad7ceb8a89e507c42be1d3f6c7d41084, type: 2}
     - target: {fileID: 6036709807576084203, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: m_Name
       value: Vehicle
@@ -153,6 +157,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6036709807576084204, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: rodaDaFrente1
+      value: 
+      objectReference: {fileID: 1247772086}
+    - target: {fileID: 6036709807576084204, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: rodaDaFrente2
+      value: 
+      objectReference: {fileID: 843111856}
     - target: {fileID: 6036709807576084207, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -197,6 +209,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6092390117275322244, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad7ceb8a89e507c42be1d3f6c7d41084, type: 2}
+    - target: {fileID: 7205801627082178328, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad7ceb8a89e507c42be1d3f6c7d41084, type: 2}
+    - target: {fileID: 8689233873794209285, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad7ceb8a89e507c42be1d3f6c7d41084, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d631381dd253e844aad50db5bef83152, type: 3}
 --- !u!4 &108651215 stripped
@@ -209,6 +233,32 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6036709807576084203, guid: d631381dd253e844aad50db5bef83152, type: 3}
   m_PrefabInstance: {fileID: 108651214}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &108651217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108651216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7d6f0ba268d8c43a6297f69707565d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconHUD: {fileID: 1853063964}
+--- !u!114 &108651218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108651216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b9ce2a60c466b488832e70f3cc7276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostParticle: {fileID: 5301650118046252476, guid: 95e620192065d2b4a8a957ae93b8df20, type: 3}
 --- !u!114 &108651219 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 407148919, guid: d631381dd253e844aad50db5bef83152, type: 3}
@@ -695,8 +745,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
+--- !u!4 &843111856 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7807893900232531829, guid: d631381dd253e844aad50db5bef83152, type: 3}
+  m_PrefabInstance: {fileID: 108651214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &987757882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3995385674325696507, guid: 83ebad7730f866342a4709103e727d45, type: 3}
@@ -730,6 +785,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba088ea750a4dc5d99a8071c3d46816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1247772086 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5856988595180296522, guid: d631381dd253e844aad50db5bef83152, type: 3}
+  m_PrefabInstance: {fileID: 108651214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1446350835 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8513348198818089515, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
@@ -781,16 +841,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1634761246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b014385a19e843f3a9a228ad47d9e7a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 370dbf791ef7a5a4d9631079667a7d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   follow: {fileID: 108651215}
-  threshold: 100
+  threshold: 200
   area: {x: 28, y: 0, z: 50}
   road: {fileID: 6066277585264546669, guid: bb760f6a0773bca48853183fde85088b, type: 3}
-  roadHeight: 1
-  segments:
-  - {fileID: 11400000, guid: 764efc1a7a71185438a9d1d7becae22e, type: 2}
+  roadHeight: 0.5
+  starterSegment: {fileID: 11400000, guid: ee7134e78e35601469792c799c6166c8, type: 2}
+  sets:
+  - segments:
+    - {fileID: 11400000, guid: 283d6a3513ae9174680ffb40aacbba1a, type: 2}
+    weight: 0.5
+  - segments:
+    - {fileID: 11400000, guid: 2be86446101cb374baf824f0b8b46286, type: 2}
+    weight: 0.5
 --- !u!114 &1853063964 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4239996900545307723, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
@@ -1039,6 +1105,10 @@ PrefabInstance:
       propertyPath: raceManager
       value: 
       objectReference: {fileID: 987757884}
+    - target: {fileID: 8611986403858898889, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
 --- !u!114 &2019770665 stripped
@@ -1249,5 +1319,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
