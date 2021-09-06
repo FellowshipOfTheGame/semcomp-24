@@ -1,9 +1,13 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-[Serializable]
+public class OnScoreBonusGrantEventArgs : System.EventArgs
+{
+    public int BonusAmount { get; set; }
+}
+
+[System.Serializable]
 internal class SpeedRange
 {
     [SerializeField] [Tooltip("The score multiplier that will be applied in this range")]
@@ -49,8 +53,9 @@ public class ScoreManager : MonoBehaviour
 
     private float maximumSpeed;
     private int currentRange;
-    private float scoreF;
-    private long score;
+    private float score;
+
+    public event System.EventHandler<OnScoreBonusGrantEventArgs> OnScoreBonusGrant;
 
     void Start()
     {
@@ -101,14 +106,13 @@ public class ScoreManager : MonoBehaviour
             }
 
             // scoreF += constantMultiplier * ranges[currentRange].GetMultiplier() * Time.deltaTime;
-            scoreF = Mathf.Lerp(scoreF, scoreF + constantMultiplier * ranges[currentRange].GetMultiplier(), Time.deltaTime);
-            score = Mathf.FloorToInt(scoreF);
+            score = Mathf.Lerp(score, score + constantMultiplier * ranges[currentRange].GetMultiplier(), Time.deltaTime);
         }
     }
 
-    public long GetScore()
+    public int GetScore()
     {
-        return score;
+        return Mathf.RoundToInt(score);
     }
 
     public float GetMultiplier()
@@ -121,8 +125,23 @@ public class ScoreManager : MonoBehaviour
         return currentRange;
     }
 
+    public int GetMaxRange()
+    {
+        return ranges.Count - 1;
+    }
+
     public void GrantBonus(int bonus)
     {
         score += bonus;
+        
+        OnScoreBonusGrantEventArgs onBonusGrantedEventArgs = new OnScoreBonusGrantEventArgs
+        {
+            BonusAmount = bonus
+        };
+
+        if (OnScoreBonusGrant != null)
+        {
+            OnScoreBonusGrant(this, onBonusGrantedEventArgs);
+        }
     }
 }
