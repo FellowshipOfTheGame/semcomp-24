@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38b0ec23be444604c850034f0fc7b837, type: 3}
-  m_Name: Default
+  m_Script: {fileID: 11500000, guid: 2242a55d1645a78459076a9952750ea6, type: 3}
+  m_Name: TestPowerUpSystem
   m_EditorClassIdentifier: 
-  speed: 30
-  handling: 1
+  members:
+  - {fileID: 4578457051448230561, guid: 1a2a3fb908376ff4daa1a98307d72c55, type: 3}

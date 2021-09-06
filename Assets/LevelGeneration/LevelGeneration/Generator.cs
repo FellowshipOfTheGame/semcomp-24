@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Generator : MonoBehaviour
@@ -9,20 +10,50 @@ public abstract class Generator : MonoBehaviour
     private Vector3 nextPosition;
     [SerializeField] private GameObject road;
     [SerializeField] private float roadHeight;
+    [SerializeField] private Segment starterSegment;
+    
+    public List<GameObject> LoadedObjects { get; private set; }
+    public List<GameObject> LoadedRoads { get; private set; }
 
     protected abstract Segment GetNext();
 
     private void Start()
     {
+        LoadedObjects = new List<GameObject>();
+        LoadedRoads = new List<GameObject>();
+        
         nextPosition = follow.position;
+        BuildNext(starterSegment);
+        UpdateNextPosition();
     }
 
     private void Update()
     {
         if (CheckThreshold())
         {
-            BuildNext();
+            BuildNext(GetNext());
             UpdateNextPosition();
+        }
+
+        if (LoadedObjects[0] == null)
+        {
+            LoadedObjects.RemoveAt(0);
+        }
+        
+        if (LoadedObjects.Count > 0 && follow.position.z - LoadedObjects[0].transform.position.z >= 0f &&
+            Vector3.Distance(follow.position, LoadedObjects[0].transform.position) >= threshold)
+        {
+            GameObject obj = LoadedObjects[0];
+            LoadedObjects.Remove(obj);
+            Destroy(obj);
+        }
+        
+        if (LoadedRoads.Count > 0 && follow.position.z - LoadedRoads[0].transform.position.z >= 0f &&
+            Vector3.Distance(follow.position, LoadedRoads[0].transform.position) >= threshold)
+        {
+            GameObject obj = LoadedRoads[0];
+            LoadedRoads.Remove(obj);
+            Destroy(obj);
         }
         
 #if UNITY_EDITOR
@@ -35,19 +66,17 @@ public abstract class Generator : MonoBehaviour
 #endif
     }
 
-    private void BuildNext()
+    private void BuildNext(Segment nextSegment)
     {
-        Segment nextSegment = GetNext();
-
         Vector3 minNext = nextPosition - (area / 2);
         Vector3 maxNext = nextPosition + (area / 2);
         Vector3 offset = new Vector3(area.x / nextSegment.Width, area.y, area.z / nextSegment.Length);
 
-        Vector3 startPosition = new Vector3(minNext.x + offset.x, nextPosition.y - roadHeight / 2, maxNext.z - offset.z);
+        Vector3 startPosition = new Vector3(minNext.x + offset.x / 2f, nextPosition.y - roadHeight / 2, maxNext.z - offset.z / 2f);
         Vector3 currentPosition = startPosition;
 
         GameObject roadObject = Instantiate(road, new Vector3(nextPosition.x, nextPosition.y - roadHeight, nextPosition.z), Quaternion.identity);
-        Destroy(roadObject, 15);
+        LoadedRoads.Add(roadObject);
 
         for (int i = 0; i < nextSegment.Length; i++)
         {
@@ -62,7 +91,7 @@ public abstract class Generator : MonoBehaviour
 
                 GameObject prefab = set.GetRandom();
                 GameObject instance = Instantiate(prefab, currentPosition, Quaternion.identity);
-                Destroy(instance, 15); // TODO Pooling
+                LoadedObjects.Add(instance);
                 currentPosition.x += offset.x;
             }
 
