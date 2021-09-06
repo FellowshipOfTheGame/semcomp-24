@@ -90,7 +90,7 @@ public abstract class Generator : MonoBehaviour
                 }
 
                 GameObject prefab = set.GetRandom();
-                GameObject instance = Instantiate(prefab, currentPosition, Quaternion.identity);
+                GameObject instance = Instantiate(prefab, currentPosition, prefab.transform.rotation);
                 LoadedObjects.Add(instance);
                 currentPosition.x += offset.x;
             }

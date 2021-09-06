@@ -1,43 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingLogic : MonoBehaviour
 {
+    [Header("General")]
+
     [SerializeField]
     private int speed;
 
     [SerializeField]
-    private GameObject movingObstacle;
-
-    [SerializeField]
-    private Rigidbody _rigidbody;
-
-    [SerializeField]
-    [Range(0, 360)]
-    private int rotation;
-
-    [SerializeField]
-    [Range(-1, 1)]
-    private int upOrDown;
-
-    [SerializeField]
-    [Range(-1, 1)]
-    private int leftOrRight;
+    [Tooltip("Obstacle orientation. If left unchecked, moves backwards")]
+    private bool forward;
+    
+    [Header("Tira-Tampa")]
 
     //verifica se o obstáculo do qual você colocou é para ser um tiratampa
     [SerializeField]
     private bool isTiraTampa;
-
-    [SerializeField]
-    private bool moveUpDown;
-
-    [SerializeField]
-    private bool moveLeftRight;
-
+    
     //tempo para destruir o tiratampa
     [SerializeField]
+    [Tooltip("Only for Tira-Tampa")]
     private int timeToDestroy;
+    
+    [Header("Animations")]
 
     [SerializeField]
     private string idleAnimation;
@@ -46,45 +31,27 @@ public class MovingLogic : MonoBehaviour
     private string deathAnimation;
 
     [SerializeField]
-    private Animator animation;
+    private Animator animator;
+    
+    private Rigidbody _rigidbody;
 
     void Start()
     {
-        movingObstacle.transform.Rotate(0.0f, rotation, 0,0f);
+        _rigidbody = GetComponent<Rigidbody>();
 
-        //se for o tiratampa...
-        if(isTiraTampa)
+        if (!forward)
         {
-            //chama a rotina para destruir o tiratampa depois de X segundos
-            StartCoroutine(destroyAfterSeconds(timeToDestroy));
+            _rigidbody.rotation = Quaternion.Euler(Vector3.up * 180);
+        }
+
+        if (isTiraTampa)
+        {
+            Destroy(gameObject, timeToDestroy);
         }
     }
    
     void FixedUpdate()
     {
-        Move();
-    }
-
-    void Move()
-    {
-        if(moveUpDown)
-        {
-            _rigidbody.AddForce(upOrDown * Vector3.forward * speed);
-        }
-        else
-        {
-            if(moveLeftRight)
-            {
-                _rigidbody.AddForce(leftOrRight * Vector3.right * speed);
-            }
-        }
-    }
-
-    //rotina que quando chamada destroi o obstaculo após X segundos
-    IEnumerator destroyAfterSeconds(int timeToDestroy)
-    {
-        yield return new WaitForSeconds(timeToDestroy);
-
-        Destroy(gameObject);
+        _rigidbody.AddRelativeForce(Vector3.forward *  speed, ForceMode.Acceleration);
     }
 }
