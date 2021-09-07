@@ -27,7 +27,7 @@ const config = require("./config/");
 var app = express();
 
 
-app.set('trust proxy', config.SERVER_TRUST_PROXY)
+app.set('trust proxy', true)
 app.use(express.json())
 app.use(session.cookieLoader())
 app.use(session.sessionLoader())
@@ -38,10 +38,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Enable cors to all origins (because we are an API after all :P)
 app.use(cors({
     credentials: true,
-    origin: '*',
+    origin: /^https:\/\/[a-zA-Z0-9]*\.ssl\.hwcdn\.net$/,
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     "preflightContinue": false,
+    exposedHeaders: ["set-cookie"],
 }))
 
 // Security and Log Configurations
