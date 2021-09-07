@@ -4,11 +4,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] private ObstaclePropertiesPreset obstaclePropertiesPreset;
-    [SerializeField] private ObstacleMaterialsSet materials;
 
-    public Material PresentMaterial => materials.PresentMaterial;
-    public Material PastMaterial => materials.PastMaterial;
-    
     public int BaseDamage => obstaclePropertiesPreset.GetBaseDamage();
     public int VehicleSpeedDecrease => obstaclePropertiesPreset.GetVehicleSpeedDecrease();
     public float DestroyCountdownPlayer => obstaclePropertiesPreset.GetDestroyCountdownPlayer();

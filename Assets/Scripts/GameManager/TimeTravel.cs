@@ -1,7 +1,11 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
+
+public class OnTimeTravelEventArgs : System.EventArgs
+{
+    public TimeTravel.Period Period { get; set; }
+}
 
 public class TimeTravel : MonoBehaviour
 {
@@ -37,7 +41,9 @@ public class TimeTravel : MonoBehaviour
     private float counter;
     private TimeTravelPortal portal;
 
-    private enum Period { Past, Present }
+    public static event System.EventHandler<OnTimeTravelEventArgs> OnTimeTravel;
+    
+    public enum Period { Past, Present }
 
     void Start()
     {
@@ -78,7 +84,17 @@ public class TimeTravel : MonoBehaviour
         float decreaseRate = (100f / duration);
 
         GeneratePortal();
-        
+
+        if (OnTimeTravel != null)
+        {
+            OnTimeTravelEventArgs e = new OnTimeTravelEventArgs() 
+            {
+                Period = Period.Past
+            };
+            
+            OnTimeTravel(this, e);
+        }
+
         scoreManager.GrantBonus(scoreBonus);
 
         while (counter > 0)
@@ -89,8 +105,6 @@ public class TimeTravel : MonoBehaviour
             {
                 CurrentStage = Mathf.RoundToInt(counter / (100f / (stages - 2))) + 1;
             }
-            
-            ChangeMaterials(Period.Past);
 
             yield return null;
         }
@@ -98,9 +112,17 @@ public class TimeTravel : MonoBehaviour
         GeneratePortal();
 
         yield return new WaitUntil(() => portal.Out);
-        
-        ChangeMaterials(Period.Present);
-        
+
+        if (OnTimeTravel != null)
+        {
+            OnTimeTravelEventArgs e = new OnTimeTravelEventArgs()
+            {
+                Period = Period.Present
+            };
+            
+            OnTimeTravel(this, e);
+        }
+
         InThePast = false;
         healthSystem.SetInvulnerable(false);
     }
@@ -118,24 +140,6 @@ public class TimeTravel : MonoBehaviour
         else
         {
             portal.transform.position = portalPosition;
-        }
-    }
-
-    // ReSharper disable Unity.PerformanceAnalysis
-    private void ChangeMaterials(Period period)
-    {
-        foreach (GameObject _gameObject in GameObject.FindGameObjectsWithTag("Obstacle"))
-        {
-            Obstacle obstacle = _gameObject.GetComponent<Obstacle>();
-            foreach (Renderer _renderer in _gameObject.GetComponentsInChildren<Renderer>())
-            {
-                _renderer.material = period switch
-                {
-                    Period.Present => obstacle.PresentMaterial,
-                    Period.Past => obstacle.PastMaterial,
-                    _ => throw new ArgumentOutOfRangeException(nameof(period), period, null)
-                };
-            }
         }
     }
 }

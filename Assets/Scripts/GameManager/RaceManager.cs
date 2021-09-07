@@ -66,6 +66,7 @@ public class RaceManager : MonoBehaviour
     private float distanceTraveled;
 
     private VehicleController vehicle;
+    private NitrousSystem nitrous;
 
     public int Distance => Mathf.RoundToInt(distanceTraveled);
     public float Timer => timer;
@@ -93,11 +94,11 @@ public class RaceManager : MonoBehaviour
     void Start()
     {
         vehicle = player.GetComponent<VehicleController>();
+        nitrous = player.GetComponent<NitrousSystem>();
         timeTravel = GetComponent<TimeTravel>();
         burningAnimator = burning.GetComponent<Animator>();
         // scoreMultiplier.sprite = scoreMultiplierSprites[0];
         scoreMultiplier.color = scoreMultiplierColors[0];
-
         startRaceCountdownCircleFill = startRaceCountdownSign.GetComponentsInChildren<Image>()[1];
 
         StartRace();
@@ -238,13 +239,13 @@ public class RaceManager : MonoBehaviour
         turbo.sprite = turboSprites[timeTravel.CurrentStage];
 
         // Burn animation (when player exceeds maximum speed)
-        bool burn = vehicle.GetCurrentSpeed() > vehicle.GetMaximumSpeed() + 1f;
+        bool burn = nitrous.IsActive();
         burning.enabled = burn;
         burningAnimator.SetBool("Burn", burn);
 
         if (burn)
         {
-            burningAnimator.speed = Mathf.Clamp01(vehicle.GetCurrentSpeed() / vehicle.GetMaximumSpeed() - 0.5f);
+            burningAnimator.speed = Mathf.Clamp01(vehicle.GetCurrentSpeed() / vehicle.GetActualMaximumSpeed());
         }
         
         // Update the timer

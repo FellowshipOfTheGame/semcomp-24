@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 /**
  * Physics interactions for vehicles
@@ -60,6 +59,7 @@ public class VehicleController : MonoBehaviour
     protected void OnDisable()
     {
         movement.Disable();
+        playerInput.Player.UseItem.performed -= UseItem;
         playerInput.Player.UseItem.Disable();
     }
 
@@ -153,6 +153,8 @@ public class VehicleController : MonoBehaviour
                 return;
             }
         }
+        
+        _rigidbody.rotation = Quaternion.Lerp(_rigidbody.rotation, Quaternion.identity, Time.deltaTime/2);
 
         grounded = false;
         _rigidbody.drag = airDrag;
@@ -186,6 +188,11 @@ public class VehicleController : MonoBehaviour
     public float GetMaximumSpeed()
     {
         return maximumSpeed;
+    }
+
+    public float GetActualMaximumSpeed()
+    {
+        return preset.speed * (1 / groundDrag - Time.fixedDeltaTime);
     }
 
     private void UseItem(InputAction.CallbackContext context)
