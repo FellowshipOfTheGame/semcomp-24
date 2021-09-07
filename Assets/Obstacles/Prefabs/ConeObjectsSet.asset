@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29f5a8826297dfe93b4f664216fa5ca3, type: 3}
-  m_Name: DefaultObstaclePropertiesPreset
+  m_Script: {fileID: 11500000, guid: b3c440a1f76ae32c1a845f1af02daf78, type: 3}
+  m_Name: ConeMaterialsSet
   m_EditorClassIdentifier: 
-  baseDamage: 3
-  vehicleSpeedDecrease: 3
-  destroyCountdownPlayer: 1
-  destroyCountdownObstacle: 3
-  fadeSpeed: 5
+  _presentObject: {fileID: 8880439268216535399, guid: 8e71ac51b928dd64898528b48918717f, type: 3}
+  _pastObject: {fileID: 159101094437538824, guid: ea9e0723d2f3c14f7ab55f2c7cdc9c86, type: 3}

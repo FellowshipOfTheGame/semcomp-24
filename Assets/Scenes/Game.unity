@@ -772,6 +772,7 @@ MonoBehaviour:
   duration: 30
   increaseRate: 5
   stages: 5
+  scoreBonus: 300
   globalVolume: {fileID: 295057689}
   portalPrefab: {fileID: 1920802284332158919, guid: 935e15d81df6e62fbb4a99abff917e8e, type: 3}
 --- !u!114 &987757884 stripped
