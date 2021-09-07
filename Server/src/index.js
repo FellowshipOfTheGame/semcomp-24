@@ -4,6 +4,7 @@ const https = require('https');
 const passport = require('passport');
 const cors = require('cors')
 const fs = require('fs');
+const path = require('path')
 
 
 // Singletons & Libraries Loaders
@@ -17,6 +18,7 @@ const userRoutes = require('./routes/user')
 const sessionRoutes = require('./routes/session')
 const raceRoutes = require('./routes/race')
 const shopRoutes = require('./routes/shop')
+const viewsRoutes = require('./routes/views')
 
 // Enviroments Variables
 const config = require("./config/");
@@ -24,12 +26,14 @@ const config = require("./config/");
 // Server Configurations & Middlewares
 var app = express();
 
+
 app.set('trust proxy', config.SERVER_TRUST_PROXY)
 app.use(express.json())
 app.use(session.cookieLoader())
 app.use(session.sessionLoader())
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Enable cors to all origins (because we are an API after all :P)
 app.use(cors({
@@ -49,11 +53,13 @@ app.use((req, res, next) => {
 })
 
 // Routes Configurations
+
 app.get(`${config.SERVER_PATH_PREFIX}/ping`, (req, res) => res.json({ message: "pong :)" }))
 app.use(`${config.SERVER_PATH_PREFIX}/user`, userRoutes)
 app.use(`${config.SERVER_PATH_PREFIX}/session`, sessionRoutes)
 app.use(`${config.SERVER_PATH_PREFIX}/race`, raceRoutes)
 app.use(`${config.SERVER_PATH_PREFIX}/shop`, shopRoutes)
+app.use(`${config.SERVER_PATH_PREFIX}`, viewsRoutes)
 
 // Server Listeners
 if(config.ENABLE_HTTPS) { 

@@ -3,6 +3,7 @@ const Redis = require("ioredis")
 const passport = require('passport')
 const { v4: uuidv4, validate: uuidValidate } = require('uuid')
 
+const config = require('../config')
 const { otpClient: redis } = require("../loaders/redis")
 
 // Exporting controller async functions
@@ -19,9 +20,12 @@ async function loginCallback(req, res) {
     redis.set(`otp-${otpCode}`, req.sessionID, "EX", 3*60, (err) => { // Expire in 3 minutes        
         if(err){
             console.error(`at /session/login/callback: Error in set opt to session ${req.sessionID}`)
-            return res.status(500).json({ message: "internal server error" })
+            // return res.status(500).json({ message: "internal server error" })
+            return res.redirect(`${config.SERVER_PATH_PREFIX}/?auth=failed`)
+
         }
-        return res.json({ message: "ok", otpCode: otpCode })
+        // return res.json({ message: "ok", otpCode: otpCode })
+        res.redirect(`${config.SERVER_PATH_PREFIX}/codigo-login?code=${otpCode}`)
     }) 
 }
 
