@@ -28,6 +28,10 @@ header img {
     box-sizing: border-box;
 }
 
+@media screen and (max-width: 800px) {
+    header img { max-height: 150px; }
+}
+
 /* Footer */
 footer { 
     width: 100%;
@@ -62,6 +66,9 @@ footer a:hover { text-decoration: underline; }
 .placa.yellow > * { border-color: #000; }
 .placa.red { background-image: linear-gradient(#cb515c, #8b1b26); }
 
+@media screen and (max-width: 440px) {
+    .placa { text-align: center; }
+}
 
 /* Botão */
 .button { 

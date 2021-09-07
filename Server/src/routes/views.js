@@ -34,11 +34,29 @@ routes.get('/informacoes', async (req, res) => {
     })
 })
 
+routes.get('/codigo-login', async (req, res) => { 
+    ejs.renderFile(`${templates}/index.html`, 
+        {
+            title: 'Código de Login',
+            main:  'access-code.html',
+            public: publicUrl,
+        },
+        function(err, html) { 
+        return res.send(html)
+    })
+})
 
-
-
-// routes.post('/loginCode', SessionMiddleware.isAuth, raceController.finish)
-// routes.get('/politicas-e-termos', raceController.ranking)
+routes.get('*', async (req, res) => { 
+    ejs.renderFile(`${templates}/index.html`, 
+        {
+            title: '404 Página Não Encontrada',
+            main:  '404.html',
+            public: publicUrl,
+        },
+        function(err, html) { 
+        return res.send(html)
+    })
+})
 
 // Export routes
 module.exports = routes;
