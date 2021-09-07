@@ -1,16 +1,36 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="styles.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>           
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title><%= title %> - Subi no Ônibus</title>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Jogo Subi no Ônibus (infinite runner) desenvolvido para a SEMCOMP 24!">
+    <meta name="keywords" content="Semcomp 24, ICMC, USP, Jogo, Game, Inifinite Runner">
 
-        <div class="div-content">
-            <img src="img/LOGOMENUINICIAL.png">
-            <div class="div-text">
-                Para autorizar você precisa fazer login com o Google
-            </div>
-            <button>Fazer login com o Google</button>
-        </div>
-    </body>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header>
+        <a href="">
+            <img src="images/logo.png" title="Subi no Ônibus Logo" alt="Subi no Ônibus - Logotipo do Jogo">
+        </a>
+    </header>
+
+    <!-- Main with variable content -->
+    <%- include('about.html') -%>
+
+
+    
+    
+    <!-- Footer with copyright and links -->
+    <footer>
+        <p class="copyright">
+            <a href="https://semcomp.icmc.usp.br/" target="_blank">© Semcomp 2021</a> | 
+            <a href="informacoes/#privacidade">Políticas de Privacidade</a> | 
+            <a href="informacoes/#termos-uso">Termos de Uso</a> | 
+            <a href="informacoes/#fale-conosco">Fale Conosco</a>
+        </p>
+    </footer>
+</body>
 </html>
