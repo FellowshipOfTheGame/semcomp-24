@@ -6,30 +6,27 @@
     <meta name="description" content="Jogo Subi no Ônibus (infinite runner) desenvolvido para a SEMCOMP 24!">
     <meta name="keywords" content="Semcomp 24, ICMC, USP, Jogo, Game, Inifinite Runner">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="<%= public %>/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
     <!-- Header with Logo -->
     <header>
-        <a href="">
-            <img src="images/logo.png" title="Subi no Ônibus Logo" alt="Subi no Ônibus - Logotipo do Jogo">
+        <a href="<%= public %>/">
+            <img src="<%= public %>/images/logo.png" title="Subi no Ônibus Logo" alt="Subi no Ônibus - Logotipo do Jogo">
         </a>
     </header>
 
     <!-- Main with variable content -->
-    <%- include('about.html') -%>
-
-
-    
+    <%- include(main) -%>
     
     <!-- Footer with copyright and links -->
     <footer>
         <p class="copyright">
             <a href="https://semcomp.icmc.usp.br/" target="_blank">© Semcomp 2021</a> | 
-            <a href="informacoes/#privacidade">Políticas de Privacidade</a> | 
-            <a href="informacoes/#termos-uso">Termos de Uso</a> | 
-            <a href="informacoes/#fale-conosco">Fale Conosco</a>
+            <a href="<%= public %>/informacoes/#privacidade">Políticas de Privacidade</a> | 
+            <a href="<%= public %>/informacoes/#termos-uso">Termos de Uso</a> | 
+            <a href="<%= public %>/informacoes/#fale-conosco">Fale Conosco</a>
         </p>
     </footer>
 </body>

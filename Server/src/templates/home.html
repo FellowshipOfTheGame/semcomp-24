@@ -1,0 +1,26 @@
+<main id="home">
+    
+    <section id="auth-error" class="placa red" style="display: none; margin-bottom: 20px;">
+        <div>
+            <h3 style="margin: 0;">Erro de Autenticação!</h3>
+            <p style="margin: 0;">Ocorreu um erro no login, tente novamente ou selecione outra plataforma!</p>
+        </div>
+    </section>
+
+    <section class="placa">
+        <div>
+            <h1>Login & Cadastro</h1>
+            <p>Para acessar o jogo você deve fazer login usando uma das plataformas:</p>
+            <p><a class="button yellow" href="<%= public %>/session/login"><span>Fazer Login com o Google</span></a></p>
+            <!-- <p><a class="button" href="#"><span>Fazer Login com o Facebook</span></a></p> -->
+            <!-- <p><a class="button red" href="#"><span>Fazer Login com o Twitter</span></a></p> -->
+        </div>
+    </section>
+</main>
+
+<script async>
+    const urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get('auth') === 'failed'){ 
+        document.getElementById('auth-error').style.display = "";
+    }
+</script>
