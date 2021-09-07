@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +25,8 @@ public abstract class Generator : MonoBehaviour
         nextPosition = follow.position;
         BuildNext(starterSegment);
         UpdateNextPosition();
+        
+        StartCoroutine(ClearObjectsListEnumerator());
     }
 
     private void Update()
@@ -35,27 +37,6 @@ public abstract class Generator : MonoBehaviour
             UpdateNextPosition();
         }
 
-        if (LoadedObjects[0] == null)
-        {
-            LoadedObjects.RemoveAt(0);
-        }
-        
-        if (LoadedObjects.Count > 0 && follow.position.z - LoadedObjects[0].transform.position.z >= 0f &&
-            Vector3.Distance(follow.position, LoadedObjects[0].transform.position) >= threshold)
-        {
-            GameObject obj = LoadedObjects[0];
-            LoadedObjects.Remove(obj);
-            Destroy(obj);
-        }
-        
-        if (LoadedRoads.Count > 0 && follow.position.z - LoadedRoads[0].transform.position.z >= 0f &&
-            Vector3.Distance(follow.position, LoadedRoads[0].transform.position) >= threshold)
-        {
-            GameObject obj = LoadedRoads[0];
-            LoadedRoads.Remove(obj);
-            Destroy(obj);
-        }
-        
 #if UNITY_EDITOR
         Vector3 minNext = new Vector3(nextPosition.x - area.x / 2, 0, nextPosition.z - area.z / 2);
         Vector3 maxNext = new Vector3(nextPosition.x + area.x / 2, 0, nextPosition.z+ area.z / 2);
@@ -88,9 +69,18 @@ public abstract class Generator : MonoBehaviour
                     currentPosition.x += offset.x;
                     continue;
                 }
-
+                
                 GameObject prefab = set.GetRandom();
+
+                // Swap objects according to current period of time 
+                
+                if (prefab.TryGetComponent(out SwapOnTimeTravel prefabSwap))
+                {
+                    prefab = TimeTravel.InThePast ? prefabSwap.PastObject : prefabSwap.PresentObject;
+                }
+
                 GameObject instance = Instantiate(prefab, currentPosition, prefab.transform.rotation);
+
                 LoadedObjects.Add(instance);
                 currentPosition.x += offset.x;
             }
@@ -110,4 +100,32 @@ public abstract class Generator : MonoBehaviour
         return Vector3.Distance(follow.position, nextPosition) <= threshold;
     }
 
+    private IEnumerator ClearObjectsListEnumerator()
+    {
+        yield return new WaitForSeconds(10f);
+        
+        ClearObjectsList(LoadedObjects);
+        ClearObjectsList(LoadedRoads);
+
+        StartCoroutine(ClearObjectsListEnumerator());
+    }
+
+    private void ClearObjectsList(List<GameObject> list)
+    {
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            if (list[i] == null)
+            {
+                list.RemoveAt(i);
+                continue;
+            }
+            
+            if (follow.position.z - list[i].transform.position.z >= threshold)
+            {
+                GameObject obj = list[i];
+                list.Remove(list[i]);
+                Destroy(obj);
+            }
+        }
+    }
 }

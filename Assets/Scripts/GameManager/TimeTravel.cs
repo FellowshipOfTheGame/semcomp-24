@@ -35,7 +35,7 @@ public class TimeTravel : MonoBehaviour
     private HealthSystem healthSystem;
     private ScoreManager scoreManager;
 
-    public bool InThePast { get; private set; }
+    public static bool InThePast { get; private set; }
     public int CurrentStage { get; private set; }
     
     private float counter;

@@ -6,8 +6,7 @@ public class ObstacleCollision : MonoBehaviour
     [SerializeField] private float scoreBonusMultiplier = 10f;
 
     private ScoreManager scoreManager;
-    private TimeTravel timeTravel;
-    
+
     private HealthSystem healthSystem;
     private VehicleController controller;
 
@@ -17,7 +16,6 @@ public class ObstacleCollision : MonoBehaviour
     {
         healthSystem = GetComponent<HealthSystem>();
         scoreManager = raceManager.GetComponent<ScoreManager>();
-        timeTravel = raceManager.GetComponent<TimeTravel>();
         controller = GetComponent<VehicleController>();
         
         _rigidbody = GetComponent<Rigidbody>();
@@ -79,7 +77,7 @@ public class ObstacleCollision : MonoBehaviour
                 healthSystem.Damage(finalDamage);
             }
 
-            if (timeTravel.InThePast)
+            if (TimeTravel.InThePast)
             {
                 healthSystem.Heal(finalDamage);
                 scoreManager.GrantBonus(Mathf.RoundToInt(finalDamage * scoreBonusMultiplier));
