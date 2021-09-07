@@ -54,6 +54,10 @@ const UserSchema = new mongoose.Schema({
             itemName: "Nitro",
         }, {
             itemName: "Bus_Stop",
+        }, {
+            itemName: "Shield",
+        }, {
+            itemName: "Laser",
         }]
     },
     topScore: {

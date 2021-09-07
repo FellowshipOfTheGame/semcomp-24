@@ -5,7 +5,7 @@ const UpgradesSchema = new mongoose.Schema({
     itemName: { 
         type: String,
         required: true,
-        enum: ["Max_Life", "Base_Acceleration", "Traction", "Booster", "Nitro", "Bus_Stop"]
+        enum: ["Max_Life", "Base_Acceleration", "Traction", "Booster", "Nitro", "Bus_Stop", "Shield", "Laser"]
     },
 
     level: {
