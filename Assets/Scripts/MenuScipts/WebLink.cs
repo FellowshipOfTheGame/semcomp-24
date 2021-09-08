@@ -12,6 +12,8 @@ public static class WebLink
 #endif
 	}
 
+#if UNITY_WEBGL && !UNITY_EDITOR
 	[DllImport("__Internal")]
 	private static extern void openWindow(string url);
+#endif
 }
