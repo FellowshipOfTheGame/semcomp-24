@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BusStopRight
   m_EditorClassIdentifier: 
   members:
-  - {fileID: 5062499472762960053, guid: 7f5bf6aec22ef2b0eb89064834b48ae2, type: 3}
+  - {fileID: 4532276521754643119, guid: 7f5bf6aec22ef2b0eb89064834b48ae2, type: 3}

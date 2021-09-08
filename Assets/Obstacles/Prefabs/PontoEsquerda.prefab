@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5062499472762960054}
-  m_Layer: 0
-  m_Name: Ponto
-  m_TagString: Untagged
+  m_Layer: 9
+  m_Name: PontoEsquerda
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,9 +41,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7192355765609012437}
   - component: {fileID: 7192355765609012436}
-  - component: {fileID: 7192355765609012432}
   - component: {fileID: 8627748138832867384}
   - component: {fileID: 8627748138832867383}
+  - component: {fileID: 7192355765609012432}
   m_Layer: 0
   m_Name: BusStop
   m_TagString: Untagged
@@ -76,21 +76,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7192355765609012432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7192355765609012443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c6367f26b7fca459944bc520832a12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healAmount: 10
+  m_Size: {x: 1, y: 1, z: 40}
+  m_Center: {x: 0, y: 0, z: 20}
 --- !u!33 &8627748138832867384
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -140,6 +127,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7192355765609012432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192355765609012443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c6367f26b7fca459944bc520832a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healAmount: 10
 --- !u!1 &8627748138436205356
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,11 +152,11 @@ GameObject:
   - component: {fileID: 8627748138436205329}
   - component: {fileID: 8627748138436205328}
   - component: {fileID: 8627748138436205359}
-  - component: {fileID: 8627748138436205357}
   - component: {fileID: 8627748138436205358}
+  - component: {fileID: 8627748138436205357}
   m_Layer: 9
   m_Name: Ponto
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,7 +169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8627748138436205356}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.1, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children:
   - {fileID: 7192355765609012437}
@@ -241,19 +241,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8627748138436205357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8627748138436205356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1828c36b7bc5c7fda304867e4151267, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePropertiesPreset: {fileID: 11400000, guid: 509523b936bc196d4be472548eedaf01, type: 2}
 --- !u!65 &8627748138436205358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -267,3 +254,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.057785176, y: 0.020813607, z: 0.050144058}
   m_Center: {x: 0, y: -0.0003850911, z: 0.029692193}
+--- !u!114 &8627748138436205357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8627748138436205356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1828c36b7bc5c7fda304867e4151267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePropertiesPreset: {fileID: 11400000, guid: 509523b936bc196d4be472548eedaf01, type: 2}

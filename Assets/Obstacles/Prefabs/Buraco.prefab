@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8141297651304322413}
   - component: {fileID: 8141297651304322412}
   m_Layer: 0
-  m_Name: Hole
+  m_Name: Buraco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,4 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca43bbe117e3fad409a030ae1c8d2c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlowAmount: 40
+  SlowAmount: 10

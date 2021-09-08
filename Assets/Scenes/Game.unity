@@ -822,7 +822,13 @@ MonoBehaviour:
   sets:
   - segments:
     - {fileID: 11400000, guid: f6752dd8ff584ce0bbda5e2848e3e972, type: 2}
-    weight: 1
+    weight: 0.8
+  - segments:
+    - {fileID: 11400000, guid: 964730e2ef17e60c8a0d681a648998e5, type: 2}
+    weight: 0.1
+  - segments:
+    - {fileID: 11400000, guid: 07fb43e107f439ec7a02f690ac868d1b, type: 2}
+    weight: 0.1
 --- !u!114 &1853063964 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4239996900545307723, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}

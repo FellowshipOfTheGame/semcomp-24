@@ -33,11 +33,8 @@ public class SwapOnTimeTravel : MonoBehaviour
             TimeTravel.Period.Past => PastObject,
             _ => throw new System.ArgumentOutOfRangeException(nameof(e.Period), e.Period, null)
         };
-
-        if (newGameObject != null)
-        {
-            Instantiate(newGameObject, _transform.position, _transform.rotation);
-        }
+        
+        Generator.LoadedObjects.Add(Instantiate(newGameObject, _transform.position, _transform.rotation));
 
         Destroy(gameObject);
     }

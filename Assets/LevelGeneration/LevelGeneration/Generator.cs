@@ -12,7 +12,7 @@ public abstract class Generator : MonoBehaviour
     [SerializeField] private float roadHeight;
     [SerializeField] private Segment starterSegment;
     
-    public List<GameObject> LoadedObjects { get; private set; }
+    public static List<GameObject> LoadedObjects { get; private set; }
     public List<GameObject> LoadedRoads { get; private set; }
 
     protected abstract Segment GetNext();

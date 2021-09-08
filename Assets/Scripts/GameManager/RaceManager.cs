@@ -101,8 +101,6 @@ public class RaceManager : MonoBehaviour
         scoreMultiplier.color = scoreMultiplierColors[0];
         startRaceCountdownCircleFill = startRaceCountdownSign.GetComponentsInChildren<Image>()[1];
 
-        healthSystem.SetInvulnerable(true);
-
         StartRace();
     }
     
