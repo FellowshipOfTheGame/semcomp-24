@@ -5,7 +5,7 @@
 html { scroll-behavior: smooth; }
 
 body { 
-    background: url("images/bg.png") no-repeat 30% bottom fixed;
+    background: url("images/bg.jpg") no-repeat 30% bottom fixed;
     background-size: cover;
 
     display: flex;

@@ -26,14 +26,13 @@ const config = require("./config/");
 // Server Configurations & Middlewares
 var app = express();
 
-
 app.set('trust proxy', true)
 app.use(express.json())
 app.use(session.cookieLoader())
 app.use(session.sessionLoader())
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(config.SERVER_PATH_PREFIX, express.static(path.join(__dirname, 'public')));
 
 // Enable cors to all origins (because we are an API after all :P)
 app.use(cors({
