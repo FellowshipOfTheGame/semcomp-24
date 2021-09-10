@@ -68,6 +68,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fusca
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 70c5ee51594f69d44a12f8a3c9af9331, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 70c5ee51594f69d44a12f8a3c9af9331, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70c5ee51594f69d44a12f8a3c9af9331, type: 3}
 --- !u!1 &70974970978285026 stripped

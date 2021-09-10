@@ -68,6 +68,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: "caminh\xE3o"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ad58b7f950519bf45ad69d96e4d83dcb, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ad58b7f950519bf45ad69d96e4d83dcb, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad58b7f950519bf45ad69d96e4d83dcb, type: 3}
 --- !u!1 &3508732414648758779 stripped
@@ -137,6 +145,14 @@ PrefabInstance:
     - target: {fileID: 7305960074823135605, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
       propertyPath: speed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305960074823135605, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: acceleration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305960074823135605, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: maximumSpeed
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
