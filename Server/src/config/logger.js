@@ -1,4 +1,5 @@
 const winston = require('winston');
+require('winston-mongodb');
 
 const config = require('./index')
 
@@ -8,7 +9,9 @@ const format = winston.format.printf(({ level, message, label }) => {
 
 const logger = winston.createLogger({
     transports: [
-        new winston.transports.Console(),
+        new winston.transports.Console({
+            format: winston.format.colorize()
+        }),
         new winston.transports.File({
             filename: 'error.log',
             level: 'error'
@@ -17,8 +20,17 @@ const logger = winston.createLogger({
             filename: 'info.log',
             level: 'info'
         }),
+        new winston.transports.MongoDB({
+            level: 'info',
+            db: config.MONGO_CONNECT_URL,
+            collection: 'logs',
+            format: winston.format.combine(
+                winston.format.json(),
+                format
+            ),
+            useUnifiedTopology: true
+        })
     ],
-    meta: true,
     format: winston.format.combine(
         // winston.format.colorize(),
         winston.format.simple(),
@@ -28,13 +40,24 @@ const logger = winston.createLogger({
 
 const raceLogger = winston.createLogger({
     transports: [
-        new winston.transports.Console(),
+        new winston.transports.Console({
+            format: winston.format.colorize()
+        }),
         new winston.transports.File({
             filename: 'race.log',
             level: 'info'
         }),
+        new winston.transports.MongoDB({
+            level: 'info',
+            db: config.MONGO_CONNECT_URL,
+            collection: 'race_logs',
+            format: winston.format.combine(
+                winston.format.json(),
+                format
+            ),
+            useUnifiedTopology: true
+        })
     ],
-    meta: true,
     format: winston.format.combine(
         // winston.format.colorize(),
         winston.format.simple(),
