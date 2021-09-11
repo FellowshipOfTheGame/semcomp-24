@@ -84,6 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5898439706474547995}
+  - component: {fileID: 4287769386435282110}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -115,6 +116,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 306, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4287769386435282110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2431540080811163891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3347882d217ad0c458debae4342875a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteArray: {fileID: 11400000, guid: 5fed41105a321b84fa53e6e97e5ca585, type: 2}
+  background: {fileID: 8909270467062015096}
+  buyButton: {fileID: 8994440970381598801}
+  itemValueTxt: {fileID: 7647646488132846812}
 --- !u!1 &3082111411352096764
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +224,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.3
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
