@@ -28,7 +28,9 @@ const logger = winston.createLogger({
                 winston.format.json(),
                 format
             ),
-            useUnifiedTopology: true
+            options: {
+                useUnifiedTopology: true
+            },
         })
     ],
     format: winston.format.combine(
@@ -55,7 +57,9 @@ const raceLogger = winston.createLogger({
                 winston.format.json(),
                 format
             ),
-            useUnifiedTopology: true
+            options: {
+                useUnifiedTopology: true
+            },
         })
     ],
     format: winston.format.combine(
