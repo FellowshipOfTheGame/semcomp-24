@@ -17,7 +17,7 @@ public class Obstacle : MonoBehaviour
     private Collider _collider;
     private Collider playerCollider;
     
-    private Coroutine destroyObstacleCoroutine;
+    public Coroutine DestroyObstacleCoroutine;
 
     void Start()
     {
@@ -37,36 +37,40 @@ public class Obstacle : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && !HitPlayer)
         {
             // If countdown was already triggered by an obstacle hit, cancel it
-            if (destroyObstacleCoroutine != null)
+            if (DestroyObstacleCoroutine != null)
             {
-                StopCoroutine(destroyObstacleCoroutine);
+                StopCoroutine(DestroyObstacleCoroutine);
             }
             
-            StartCoroutine(DestroyCountdown(DestroyCountdownPlayer));
+            DestroyObstacleCoroutine = StartCoroutine(DestroyCountdown(DestroyCountdownPlayer));
 
             playerCollider = other.collider;
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
             // If countdown was already triggered by a player hit, do nothing
-            if (destroyObstacleCoroutine == null)
+            if (DestroyObstacleCoroutine == null)
             {
-                destroyObstacleCoroutine = StartCoroutine(DestroyCountdown(DestroyCountdownObstacle));
+                DestroyObstacleCoroutine = StartCoroutine(DestroyCountdown(DestroyCountdownObstacle));
             }
         }
     }
-    
-    private IEnumerator DestroyCountdown(float countdownTime)
+
+    private IEnumerator DestroyCountdown(float countdown)
     {
-        yield return new WaitForSeconds(countdownTime);
-        
-        foreach (Renderer _renderer in renderers)
-        {
-            StartCoroutine(FadeOut(_renderer));
-        }
+        yield return new WaitForSeconds(countdown);
+        FadeOut();
     }
 
-    private IEnumerator FadeOut(Renderer _renderer)
+    public void FadeOut()
+    {
+        foreach (Renderer _renderer in renderers)
+        {
+            StartCoroutine(FadeOutEnumerator(_renderer));
+        }
+    }
+    
+    private IEnumerator FadeOutEnumerator(Renderer _renderer)
     {
         Color c = _renderer.material.color;
 

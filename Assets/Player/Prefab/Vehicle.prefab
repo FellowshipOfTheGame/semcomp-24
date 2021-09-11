@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 680376510}
   - component: {fileID: 680376512}
   - component: {fileID: 680376511}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: WheelsColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
-  m_Height: 2.3
+  m_Height: 2.5
   m_Direction: 0
   m_Center: {x: -0.1, y: 0.08, z: 4.59}
 --- !u!136 &680376511
@@ -57,7 +57,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
-  m_Height: 2.3
+  m_Height: 2.5
   m_Direction: 0
   m_Center: {x: -0.1, y: 0.08, z: -3.5}
 --- !u!1 &6036709807405129391
@@ -150,7 +150,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 1
 --- !u!65 &6036709807576084205
 BoxCollider:
@@ -186,11 +186,11 @@ MonoBehaviour:
   - {fileID: 6036709807879933422}
   - {fileID: 6036709807714276438}
   - {fileID: 6036709807405129390}
-  groundCheckDistance: 0.7
-  groundDrag: 2
+  groundCheckDistance: 0.5
+  groundDrag: 1
   airDrag: 0.1
-  rodaDaFrente1: {fileID: 0}
-  rodaDaFrente2: {fileID: 0}
+  rodaDaFrente1: {fileID: 5856988595180296522}
+  rodaDaFrente2: {fileID: 7807893900232531829}
   wheelBase: 4
   forwardForce: 80
   turningAngleMax: 15
@@ -501,5 +501,15 @@ PrefabInstance:
 --- !u!4 &1974575885416866646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
+  m_PrefabInstance: {fileID: 2084501642634216637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5856988595180296522 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3628327712297181705, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
+  m_PrefabInstance: {fileID: 2084501642634216637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7807893900232531829 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1101529156557808696, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
   m_PrefabInstance: {fileID: 2084501642634216637}
   m_PrefabAsset: {fileID: 0}

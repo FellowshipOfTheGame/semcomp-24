@@ -161,14 +161,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 6036709807576084204, guid: d631381dd253e844aad50db5bef83152, type: 3}
-      propertyPath: rodaDaFrente1
-      value: 
-      objectReference: {fileID: 1247772086}
-    - target: {fileID: 6036709807576084204, guid: d631381dd253e844aad50db5bef83152, type: 3}
-      propertyPath: rodaDaFrente2
-      value: 
-      objectReference: {fileID: 843111856}
     - target: {fileID: 6036709807576084207, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -715,11 +707,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
---- !u!4 &843111856 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7807893900232531829, guid: d631381dd253e844aad50db5bef83152, type: 3}
-  m_PrefabInstance: {fileID: 108651214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &987757882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3995385674325696507, guid: 83ebad7730f866342a4709103e727d45, type: 3}
@@ -754,11 +741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba088ea750a4dc5d99a8071c3d46816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1247772086 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5856988595180296522, guid: d631381dd253e844aad50db5bef83152, type: 3}
-  m_PrefabInstance: {fileID: 108651214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1446350835 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8513348198818089515, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
@@ -822,13 +804,17 @@ MonoBehaviour:
   sets:
   - segments:
     - {fileID: 11400000, guid: f6752dd8ff584ce0bbda5e2848e3e972, type: 2}
-    weight: 0.8
+    - {fileID: 11400000, guid: f0faf031165323413a72d99e385208c9, type: 2}
+    weight: 0.5
   - segments:
     - {fileID: 11400000, guid: 964730e2ef17e60c8a0d681a648998e5, type: 2}
     weight: 0.1
   - segments:
     - {fileID: 11400000, guid: 07fb43e107f439ec7a02f690ac868d1b, type: 2}
     weight: 0.1
+  - segments:
+    - {fileID: 11400000, guid: 50e2fc2f02cb16472b38d2f582b7ac8d, type: 2}
+    weight: 0.3
 --- !u!114 &1853063964 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4239996900545307723, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}

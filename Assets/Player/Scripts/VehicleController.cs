@@ -49,6 +49,8 @@ public class VehicleController : MonoBehaviour
     private InputAction movement;
 
     private Vector3 vehicleRotation;
+
+    private RigidbodyConstraints rigidbodyDefaultConstraints;
     
     #region MonoBehaviour Messages
 
@@ -88,6 +90,8 @@ public class VehicleController : MonoBehaviour
             return;
         //forwardForce = preset.speed;
         forwardForce = 0;
+
+        rigidbodyDefaultConstraints = _rigidbody.constraints;
     }
 
     protected void Update()
@@ -194,7 +198,7 @@ public class VehicleController : MonoBehaviour
             {
                 grounded = true;
                 _rigidbody.drag = groundDrag;
-                _rigidbody.freezeRotation = false;
+                _rigidbody.constraints = rigidbodyDefaultConstraints;
                 return;
             }
         }
@@ -203,7 +207,7 @@ public class VehicleController : MonoBehaviour
 
         grounded = false;
         _rigidbody.drag = airDrag;
-        _rigidbody.freezeRotation = true;
+        _rigidbody.constraints = RigidbodyConstraints.FreezeRotation | rigidbodyDefaultConstraints;
     }
 
     public void ResetGroundDrag()

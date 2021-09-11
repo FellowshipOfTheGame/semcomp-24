@@ -74,16 +74,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6beedac28117a204bb454daa9b7d658d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumSpeed: 25
-  acceleration: 5
+  maximumSpeed: 35
+  randomizeMaximumSpeed: 1
+  acceleration: 1
   forward: 1
   lookAtLayers:
     serializedVersion: 2
     m_Bits: 512
   brakingDistance: 10
-  laneWidth: 3.5
-  isTiraTampa: 0
-  timeToDestroy: 0
-  idleAnimation: 
-  deathAnimation: 
-  animator: {fileID: 0}
+  fieldOfView: 3.5
