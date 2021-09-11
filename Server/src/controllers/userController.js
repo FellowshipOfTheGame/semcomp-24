@@ -3,6 +3,8 @@ const { createHmac } = require("crypto")
 const config = require("../config/")
 const User = require('../models/User');
 
+const { logger } = require('../config/logger');
+
 module.exports = {
     async findOrCreate (google_user, cb) {
         if (!google_user.id) {
@@ -32,6 +34,10 @@ module.exports = {
             return cb(err, null);
         }
 
+        logger.info({
+            message: `User ${user._id} created successfully`
+        });
+
         return cb(null, user);
     },
 
@@ -44,7 +50,9 @@ module.exports = {
             var user = await User.findById(req.query.user_id)
                                  .select("name nickname email picture");
         } catch (err) {
-            console.log(err);
+            logger.error({
+                message: `at User.show(): failed to find user ${req.query.user_id}`
+            })
             return res.status(500).json({ message: "internal server error" });
         }
 
@@ -60,7 +68,9 @@ module.exports = {
             var users = await User.find({})
                                   .select("nickname photo");
         } catch (err) {
-            console.log(err);
+            logger.error({
+                message: `at User.showAll(): failed to find all users`
+            })
             return res.status(500).json({ message: "internal server error" });
         }
 

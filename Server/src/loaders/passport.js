@@ -4,6 +4,8 @@ const config = require('../config')
 const User = require('../models/User');
 const UserController = require('../controllers/userController');
 
+const { logger } = require('../config/logger');
+
 module.exports = function (passport) {
 
     passport.serializeUser(function(user, done){
@@ -28,7 +30,9 @@ module.exports = function (passport) {
         function(accessToken, refreshToken, profile, done) {
             UserController.findOrCreate(profile, (err, user) => {
                 if (err) {
-                    console.log(err);
+                    logger.error({
+                        message: `at Google Login: ${err}`
+                    })
                     return done(err, null, { message: "unable to create or find user" })
                 }
 

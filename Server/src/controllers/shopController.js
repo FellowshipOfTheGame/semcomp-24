@@ -2,6 +2,8 @@
 
 const UserModel = require("../models/User")
 
+const { logger } = require('../config/logger');
+
 // Exporting controller async functions
 module.exports = { 
     shop,
@@ -66,8 +68,13 @@ async function buy(req, res) {
         return res.status(400).json({ message: "user already maximized this upgrade" })
     
     // check if user has enough gold for the transaction
-    if(upgradePrice > userGold)
+    if(upgradePrice > userGold) {
+        logger.warn({
+            message: `at Shop.buy(): Failed to save upgrade ${upgradeName} to user ${userId}. Not enough money.`
+        })
+
         return res.status(400).json({ message: "user doesn't have enough gold" })
+    }
 
     // if both are true, subtract user's gold and add upgrade to his "acquired upgrades"
     userGold -= upgradePrice
@@ -79,12 +86,18 @@ async function buy(req, res) {
 
     try {
         await req.user.save()
-        .then(() => { 
+        .then(() => {
+            logger.info({
+                message: `Saved upgrade ${upgradeName} to user ${userId}`
+            }) 
             return res.status(200).json({ message: "ok", gold: userGold, itemName: upgradeName, level: upgradeLevel, price: upgradePrice })
         })
     }
     catch (err) {
-        console.error(`Failed to save upgrade ${upgradeName} to user ${userId}. ${err}`)
+        logger.error({
+            message: `at Shop.buy(): Failed to save upgrade ${upgradeName} to user ${userId}. Error: ${err}`
+        });
+
         return res.status(500).json({ message: "Internal server error" });
     }
 }

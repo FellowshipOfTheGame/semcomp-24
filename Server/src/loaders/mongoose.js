@@ -1,6 +1,7 @@
 // Dependencies
 const mongoose = require('mongoose');
 const config = require("../config");
+const { logger } = require("../config/logger");
 
 // Database Singleton (using Mongoose)
 class Database {
@@ -16,11 +17,14 @@ class Database {
             useCreateIndex: true,
         })
         .then(() => {
-            console.log(`at MongoDB: ${config.MONGO_CONNECT_URL} connect successful`)
+            logger.info({
+                message: `at MongoDB: ${config.MONGO_CONNECT_URL} connect successful`
+            })
         })
         .catch(err => {
-            console.error(`at MongoDB: ${err}`)
-            console.error(err)
+            logger.error({
+                message: `at MongoDB: ${err}`
+            })
         })
     }
 }

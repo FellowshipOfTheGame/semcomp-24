@@ -2,6 +2,7 @@ const session = require('express-session')
 const redis = require('redis')
 const IORedis = require("ioredis")
 const redisStore = require('connect-redis')(session)
+const { logger } = require('../config/logger')
 
 const config = require("../config")
 
@@ -31,11 +32,15 @@ const clientList = [ sessionClient, otpClient, nonceClient ]
 
 clientList.forEach(client => { 
     client.on('connect', () => {
-        console.log(`at Redis[${client.options.db}]: Frequency connected!`)
+        logger.info({
+            message: `at Redis[${client.options.db}]: Frequency connected!`
+        })
     })
     
     client.on('error', (err) => {
-        console.error(`at Redis[${client.options.db}]: ${err}`)
+        logger.error({
+            message: `at Redis[${client.options.db}]: ${err}`
+        })
     })
 })
 
