@@ -23,7 +23,6 @@ public class ShopCard : MonoBehaviour
     public void SetShopItem(ShopItem item)
     {
         _item = item;
-
         itemValueTxt.SetText(item.price.ToString());
 
         int index = item.level - 1;

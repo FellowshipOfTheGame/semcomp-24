@@ -59,6 +59,10 @@ namespace SubiNoOnibus.UI
             {
                 card.SetShopItem(newItem);
             }
+            else
+            {
+                Debug.LogWarning("Incoming item with no correspondent ShopCard: " + newItem);
+            }
         }
 
         private void HandleGetShopUpgradesSuccess(ShopUpgrades shopUpgrades)
