@@ -14,6 +14,7 @@ namespace SubiNoOnibus.UI
         [SerializeField] private Transform cardsContainer;
         [SerializeField] private TMPro.TextMeshProUGUI goldAmountTxt;
 
+        [SerializeField]
         private ShopUpgrades _shopUpgrades;
         private int _gold = 0;
         private Dictionary<string, ShopCard> _shopCards;
@@ -53,16 +54,12 @@ namespace SubiNoOnibus.UI
         }
         private void HandleBuyUpgradeSuccess(NewShopItem newItem)
         {
-            Gold = newItem.gold;
-
             if(_shopCards.TryGetValue(newItem.itemName, out ShopCard card))
-            {
                 card.SetShopItem(newItem);
-            }
             else
-            {
                 Debug.LogWarning("Incoming item with no correspondent ShopCard: " + newItem);
-            }
+
+            Gold = newItem.gold;
         }
 
         private void HandleGetShopUpgradesSuccess(ShopUpgrades shopUpgrades)
@@ -80,9 +77,6 @@ namespace SubiNoOnibus.UI
 
         private void PopulateShopList()
         {
-            Gold = _shopUpgrades.gold;
-            
-            
             foreach (ShopItem item in _shopUpgrades.shop)
             {
                 if (_shopCards.TryGetValue(item.itemName, out ShopCard card))
@@ -94,14 +88,23 @@ namespace SubiNoOnibus.UI
                     Debug.LogWarning("Incoming item with no correspondent ShopCard: " + item);
                 }
             }
-
-            EnableVisuals(true);
+            
+            Gold = _shopUpgrades.gold;
         }
 
         private void UpdateGoldAmount(int amount)
         {
             _gold = amount;
             goldAmountTxt.SetText(_gold.ToString());
+            UpdateBuyButtons();
+        }
+        
+        private void UpdateBuyButtons()
+        {
+            foreach(var shopCard in _shopCards.Values)
+            {
+                shopCard.UpdateButtonInteraction(Gold);
+            }
         }
 
         private void Awake()
