@@ -28,7 +28,7 @@ async function shop(req, res) {
     // if user already has an upgrade maximized, do not display it
     shopUpgrades = shopUpgrades.filter(function(obj) {
         obj.level++ // add +1 to level
-        return (obj.level < 4);
+        return (obj.level > -1);
     })
     .map((obj) => {return { itemName: obj.itemName, level: obj.level, price: obj.price }})
 
@@ -80,7 +80,7 @@ async function buy(req, res) {
     try {
         await req.user.save()
         .then(() => { 
-            return res.status(200).json({ message: "ok", gold: userGold, itemName: upgradeName, level: upgradeLevel, price: upgradePrice })
+            return res.status(200).json({ message: "ok", gold: userGold, itemName: upgradeName, level: currUpgrade.level, price: currUpgrade.price })
         })
     }
     catch (err) {
