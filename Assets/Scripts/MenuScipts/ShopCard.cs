@@ -9,9 +9,12 @@ public class ShopCard : MonoBehaviour
     [SerializeField] private Image background;
     [SerializeField] private Button buyButton;
     [SerializeField] private TMPro.TextMeshProUGUI itemValueTxt;
+    [SerializeField] private TMPro.TextMeshProUGUI itemDescriptionTxt;
     
     private ShopItem _item;
     private ShopMenu _shopMenu;
+    private string _initialDescription = "";
+
 
     public bool CanBePurchased(int goldAmount) => goldAmount >= _item?.price;
     public bool IsItemLastLevel() => _item?.level >= spriteArray.sprites.Length;
@@ -25,6 +28,7 @@ public class ShopCard : MonoBehaviour
     {
         _item = item;
         itemValueTxt.SetText(item.price.ToString());
+        SetDescriptionValue();
 
         int index = item.level - 1;
         try
@@ -48,10 +52,21 @@ public class ShopCard : MonoBehaviour
     }
 
     private void EnableButtonInteraction(bool value) => buyButton.interactable = value;
+    
+    private void SetDescriptionValue()
+    {
+        float value = _item.level;
+        string result = _initialDescription.Replace("$", value.ToString());
+        itemDescriptionTxt.SetText(result);
+    }
 
     private void BuyItem()
     {
         _shopMenu.TryBuyItem(_item);
     }
 
+    private void Awake()
+    {
+        _initialDescription = itemDescriptionTxt.text;
+    }
 }

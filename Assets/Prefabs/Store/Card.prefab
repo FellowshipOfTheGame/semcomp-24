@@ -132,6 +132,7 @@ MonoBehaviour:
   background: {fileID: 8909270467062015096}
   buyButton: {fileID: 8994440970381598801}
   itemValueTxt: {fileID: 7647646488132846812}
+  itemDescriptionTxt: {fileID: 5985416038981770942}
 --- !u!1 &3082111411352096764
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,13 +225,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 19.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 17
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -260,7 +261,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 7, y: 6, z: 6, w: 6}
+  m_margin: {x: 11, y: 6, z: 10, w: 10}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
