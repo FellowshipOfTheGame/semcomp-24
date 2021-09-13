@@ -10,6 +10,6 @@ public static class Endpoints
     public static string Race_finish_url => Base_url + "/race/finish";
     public static string Ranking_url => Base_url + "/race/ranking";
     public static string Shop_url => Base_url + "/shop";
-    public static string Shop_buy_url => Base_url + "/shop/buy";
+    public static string Shop_buy_url => Base_url + "/shop/buy-upgrades";
     public static string User_status_url => Base_url + "/user/status";
 }
