@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: TestPowerUpSystem
   m_EditorClassIdentifier: 
   members:
-  - {fileID: 4578457051448230561, guid: 1a2a3fb908376ff4daa1a98307d72c55, type: 3}
+  - {fileID: 3322440421399226958, guid: e9d1aefb3c4caf045b2cb1a3f71e5eff, type: 3}
+  - {fileID: 1480342596421178711, guid: 0def4b295fcd20549b984dcdab96daac, type: 3}

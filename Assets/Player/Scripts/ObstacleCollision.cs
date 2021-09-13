@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ObstacleCollision : MonoBehaviour
@@ -6,10 +7,10 @@ public class ObstacleCollision : MonoBehaviour
     [SerializeField] private float scoreBonusMultiplier = 10f;
 
     private ScoreManager scoreManager;
-    private TimeTravel timeTravel;
-    
+
     private HealthSystem healthSystem;
     private VehicleController controller;
+    private VehicleRenderer renderer;
 
     private Rigidbody _rigidbody;
 
@@ -17,8 +18,8 @@ public class ObstacleCollision : MonoBehaviour
     {
         healthSystem = GetComponent<HealthSystem>();
         scoreManager = raceManager.GetComponent<ScoreManager>();
-        timeTravel = raceManager.GetComponent<TimeTravel>();
         controller = GetComponent<VehicleController>();
+        renderer = GetComponent<VehicleRenderer>();
         
         _rigidbody = GetComponent<Rigidbody>();
     }
@@ -27,7 +28,10 @@ public class ObstacleCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            Obstacle obstacle = other.gameObject.GetComponent<Obstacle>();
+            if (!other.gameObject.TryGetComponent(out Obstacle obstacle))
+            {
+                throw new NullReferenceException($"{other.gameObject.name} has the obstacle tag, but doesn't have an obstacle component!");
+            }
 
             if (obstacle.HitPlayer)
             {
@@ -37,17 +41,17 @@ public class ObstacleCollision : MonoBehaviour
             obstacle.HitPlayer = true;
 
             // Simple damage calculation based only on the vehicle relative speed
-            float damage1 = other.relativeVelocity.magnitude;
+            // float damage1 = other.relativeVelocity.magnitude;
 
             // Damage calculation based on the dot product of the two vectors obtained from the collision
 
             // Equation 1
             float collisionDot1 = Vector3.Dot(other.relativeVelocity.normalized, other.GetContact(0).normal);
-            float damage2 = other.relativeVelocity.magnitude * Mathf.Abs(collisionDot1);
+            float damage2 = (other.relativeVelocity.magnitude * Mathf.Abs(collisionDot1)) / 4f;
 
             // Equation 2
-            float collisionDot2 = Vector3.Dot((obstacle.transform.position - other.GetContact(0).point).normalized, other.GetContact(0).normal);
-            float damage3 = other.relativeVelocity.magnitude * Mathf.Abs(collisionDot2);
+            // float collisionDot2 = Vector3.Dot((obstacle.transform.position - other.GetContact(0).point).normalized, other.GetContact(0).normal);
+            // float damage3 = other.relativeVelocity.magnitude * Mathf.Abs(collisionDot2);
 
             /*// DEBUG ---------------
             
@@ -72,23 +76,31 @@ public class ObstacleCollision : MonoBehaviour
             
             // ---------------------*/
 
-            int finalDamage = obstacle.BaseDamage + (int) Mathf.Floor(damage2 / 4f);
+            int finalDamage = obstacle.BaseDamage + Mathf.RoundToInt(damage2);
 
             if (!healthSystem.IsInvulnerable())
             {
-                healthSystem.Damage(finalDamage);
+                if (healthSystem.HasShield())
+                {
+                    healthSystem.DecreaseShield();
+                    if (!healthSystem.HasShield())
+                        renderer.DeactivateShieldeEffect();
+                }
+                else
+                {
+                    healthSystem.Damage(finalDamage);
+                }
             }
 
-            if (timeTravel.InThePast)
+            if (TimeTravel.InThePast)
             {
-                healthSystem.Heal(finalDamage);
                 scoreManager.GrantBonus(Mathf.RoundToInt(finalDamage * scoreBonusMultiplier));
             }
             else
             {
                 // Decrease vehicle speed according to the damage dealt by the obstacle
                 //_rigidbody.AddRelativeForce(other.relativeVelocity.normalized * (finalDamage * obstacle.VehicleSpeedDecrease));
-                controller.forwardForce -= (int) Mathf.Floor(damage2 / 4f) * obstacle.VehicleSpeedDecrease;
+                controller.forwardForce -= Mathf.Clamp(controller.forwardForce, 0, damage2 * obstacle.VehicleSpeedDecrease);
             }
             
             // Debug.Log(finalDamage);

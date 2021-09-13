@@ -28,7 +28,7 @@ async function shop(req, res) {
     // if user already has an upgrade maximized, do not display it
     shopUpgrades = shopUpgrades.filter(function(obj) {
         obj.level++ // add +1 to level
-        return (obj.level < 4);
+        return (obj.level > -1);
     })
     .map((obj) => {return { itemName: obj.itemName, level: obj.level, price: obj.price }})
 
@@ -41,6 +41,7 @@ async function shop(req, res) {
 async function buy(req, res) { 
 
     const userId = req.user._id  //string
+    console.log(userId)
     const upgradeName = req.body?.itemName.toString()   //string
     let userGold = req.user.gold
     let userUpgrades = req.user.upgrades
@@ -58,8 +59,8 @@ async function buy(req, res) {
     // add +1 to level
     targetUpgrade.level++
 
-    const upgradeLevel = targetUpgrade.level
-    const upgradePrice = targetUpgrade.price
+    let upgradeLevel = targetUpgrade.level
+    let upgradePrice = targetUpgrade.price
 
     // check if user has already maximized the upgrade 
     if(upgradeLevel > 3)
@@ -71,6 +72,9 @@ async function buy(req, res) {
 
     // if both are true, subtract user's gold and add upgrade to his "acquired upgrades"
     userGold -= upgradePrice
+    upgradeLevel = upgradeLevel + 1
+    upgradePrice = upgradePrice + 100
+
     currUpgrade.level++
     currUpgrade.price = currUpgrade.price + 100
 

@@ -12,7 +12,7 @@ public class FixedTrackCamera : MonoBehaviour
     {
         Vector3 position;
         position.x = track.position.x;
-        position.y = transform.position.y;
+        position.y = track.position.y + distance;
         position.z = track.position.z - distance;
         transform.position = position;
 

@@ -16,9 +16,7 @@ namespace SubiNoOnibus.UI
 
         public void Open()
         {
-            distanceText.text = raceManager.Distance < 1000
-                ? $"{raceManager.Distance} m"
-                : $"{raceManager.Distance / 1000f} km";
+            distanceText.text = $"{raceManager.Distance} m";
             timeText.text = System.TimeSpan.FromSeconds(raceManager.Timer).ToString("mm\\:ss\\:ff");
             coinsText.text = $"x{raceManager.Coins}";
             itemsUsedText.text = raceManager.ItemsUsed.ToString();
