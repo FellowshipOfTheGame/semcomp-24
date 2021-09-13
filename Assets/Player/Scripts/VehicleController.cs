@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 /**
  * Physics interactions for vehicles
@@ -9,18 +10,18 @@ public class VehicleController : MonoBehaviour
 {
     // (Easier way to design different types of vehicles
     [Header("General")]
-    public VehicleStatPreset preset;
     
+    public VehicleStatPreset preset;
+
     [Header("Physics")]
+    
+    public float acceleration = 1f;
     public LayerMask whatIsGround;
     public Transform[] groundDetection;
     public float groundCheckDistance = 0.5f;
     public float groundDrag = 3f;
     public float airDrag = 0.1f;
 
-    public Transform rodaDaFrente1;
-    public Transform rodaDaFrente2;
-    
     [Header("Turning")]
     [Tooltip("Distance between wheels")] public float wheelBase = 2f;
     private float turningAngle; // Current turning wheel angle
@@ -44,6 +45,12 @@ public class VehicleController : MonoBehaviour
     
     [Tooltip("The maximum angle the vehicle can rotate before rotating back to player's original position")]
     public float rotateBackAngle = 60f;
+    
+    [Header("Wheels (aesthetic)")]
+    
+    [SerializeField] private Transform frontLeftWheel;
+    [SerializeField] private Transform frontRightWheel;
+    [SerializeField] private float wheelsRotationSpeed = 5f;
     
     private PlayerInput playerInput;
     private InputAction movement;
@@ -96,55 +103,39 @@ public class VehicleController : MonoBehaviour
 
     protected void Update()
     {
-        forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, Time.deltaTime * 1f);
+        forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, acceleration * Time.deltaTime);
 
-        // Checks rotation boundaries
+        // Check rotation boundaries
         bool turnRight = (vehicleRotation.y <= turningAngleMax || vehicleRotation.y > 180);
         bool turnLeft = (vehicleRotation.y >= (360 - turningAngleMax) || vehicleRotation.y <= 180);
+        
+        float turningInput = movement.ReadValue<float>();
+        turningAngle = turnLeft || turnRight ? turningInput * 90f : 0f;
 
-        if (turnLeft || turnRight)
-        {
-            turningAngle = movement.ReadValue<float>() * 90f;
-        }
-        else
-        {
-            turningAngle = 0f;
-        }
+        Vector3 wheelRotationLeft = frontLeftWheel.localEulerAngles;
+        Vector3 wheelRotationRight = frontRightWheel.localEulerAngles;
 
-        if (movement.ReadValue<float>() != 0f)
+        if (turningInput != 0f)
         {
-            if (vehicleRotation.y <= 180) // direita
+            if (vehicleRotation.y <= 180 && turningInput > 0 || vehicleRotation.y > 180 && turningInput < 0) // input para a direita virado para e esquerda ou input para e esquerda virado para a direita 
             {
-                if (movement.ReadValue<float>() > 0) // input para a direita
-                {
-                    rodaDaFrente1.localRotation = Quaternion.Euler(rodaDaFrente1.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente1.localEulerAngles.y, -90 + transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente1.localEulerAngles.z);
-                    rodaDaFrente2.localRotation = Quaternion.Euler(rodaDaFrente2.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente2.localEulerAngles.y, 90 + transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente2.localEulerAngles.z);
-                }
-                else // input para a esquerda
-                {
-                    rodaDaFrente1.localRotation = Quaternion.Euler(rodaDaFrente1.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente1.localEulerAngles.y, -90 - transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente1.localEulerAngles.z);
-                    rodaDaFrente2.localRotation = Quaternion.Euler(rodaDaFrente2.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente2.localEulerAngles.y, 90 - transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente2.localEulerAngles.z);
-                }
+                wheelRotationLeft.y = Mathf.LerpAngle(wheelRotationLeft.y, -90 + transform.localEulerAngles.y, wheelsRotationSpeed * Time.deltaTime);
+                wheelRotationRight.y = Mathf.LerpAngle(wheelRotationRight.y, 90 + transform.localEulerAngles.y, wheelsRotationSpeed * Time.deltaTime);
             }
-            else // esquerda
+            else if (vehicleRotation.y <= 180 && turningInput < 0 || vehicleRotation.y > 180 && turningInput > 0) // input para a esquerda virado para a esquerda ou input para a direita virado para a esquerda
             {
-                if (movement.ReadValue<float>() > 0) // input para a direita
-                {
-                    rodaDaFrente1.localRotation = Quaternion.Euler(rodaDaFrente1.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente1.localEulerAngles.y, -90 - transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente1.localEulerAngles.z);
-                    rodaDaFrente2.localRotation = Quaternion.Euler(rodaDaFrente2.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente2.localEulerAngles.y, 90 - transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente2.localEulerAngles.z);
-                }
-                else // input para a esquerda
-                {
-                    rodaDaFrente1.localRotation = Quaternion.Euler(rodaDaFrente1.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente1.localEulerAngles.y, -90 + transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente1.localEulerAngles.z);
-                    rodaDaFrente2.localRotation = Quaternion.Euler(rodaDaFrente2.localEulerAngles.x, Mathf.LerpAngle(rodaDaFrente2.localEulerAngles.y, 90 + transform.localEulerAngles.y, Time.deltaTime * 20f), rodaDaFrente2.localEulerAngles.z);
-                }
+                wheelRotationLeft.y = Mathf.LerpAngle(wheelRotationLeft.y, -90 - transform.localEulerAngles.y, wheelsRotationSpeed * Time.deltaTime);
+                wheelRotationRight.y = Mathf.LerpAngle(wheelRotationRight.y, 90 - transform.localEulerAngles.y, wheelsRotationSpeed * Time.deltaTime);
             }
         }
         else
         {
-            rodaDaFrente1.localRotation = Quaternion.Euler(rodaDaFrente1.localEulerAngles.x, Mathf.MoveTowardsAngle(rodaDaFrente1.localEulerAngles.y, -90, Time.deltaTime * 20f), rodaDaFrente1.localEulerAngles.z);
-            rodaDaFrente2.localRotation = Quaternion.Euler(rodaDaFrente2.localEulerAngles.x, Mathf.MoveTowardsAngle(rodaDaFrente2.localEulerAngles.y, 90, Time.deltaTime * 20f), rodaDaFrente2.localEulerAngles.z);
+            wheelRotationLeft.y = Mathf.MoveTowardsAngle(wheelRotationLeft.y, -90, wheelsRotationSpeed * Time.deltaTime);
+            wheelRotationRight.y = Mathf.MoveTowardsAngle(wheelRotationRight.y, 90, wheelsRotationSpeed * Time.deltaTime);
         }
+
+        frontLeftWheel.localRotation = Quaternion.Euler(wheelRotationLeft);
+        frontRightWheel.localRotation = Quaternion.Euler(wheelRotationRight);
     }
 
     protected void FixedUpdate()
@@ -180,11 +171,13 @@ public class VehicleController : MonoBehaviour
             {
                 // Rotation direction
                 vehicleRotation.y = vehicleRotation.y <= 180 ? rotateBackAngle : (360 - rotateBackAngle);
-                _rigidbody.rotation = Quaternion.Euler(vehicleRotation);
             }
             
             // Debug.Log("Rotate back");
         }
+        
+        vehicleRotation.z = 0f;
+        _rigidbody.rotation = Quaternion.Euler(vehicleRotation);
     }
 
     #endregion

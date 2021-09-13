@@ -6,7 +6,22 @@ ModelImporter:
   - first:
       74: -6264086052232557698
     second: Cylinder.003|Cylinder.001Action.001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Ar\xE1uc\xE1ria"
+    second: {fileID: 2100000, guid: 05c42fbfb5928508fab031c02b1250bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Ar\xE1uc\xE1ria.001"
+    second: {fileID: 2100000, guid: ff6bbd68deceb9bffb25cdc89cf19236, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: araucaria-araucaria-angustifolia-
+    second: {fileID: 2100000, guid: e44fd998d42821429b64c65584a1e3a0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

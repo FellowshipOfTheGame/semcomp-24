@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ObstacleCollision : MonoBehaviour
@@ -25,7 +26,10 @@ public class ObstacleCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            Obstacle obstacle = other.gameObject.GetComponent<Obstacle>();
+            if (!other.gameObject.TryGetComponent(out Obstacle obstacle))
+            {
+                throw new NullReferenceException($"{other.gameObject.name} has the obstacle tag, but doesn't have an obstacle component!");
+            }
 
             if (obstacle.HitPlayer)
             {

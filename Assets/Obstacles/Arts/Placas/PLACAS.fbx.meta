@@ -3,7 +3,12 @@ guid: 5bd2bf7392adca64ab34c6c5430d6e3f
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PLACA FRENTE
+    second: {fileID: 2100000, guid: e521bcc553282387ba22d6d7c06976db, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

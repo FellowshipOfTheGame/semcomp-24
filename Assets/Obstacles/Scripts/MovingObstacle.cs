@@ -32,9 +32,11 @@ public class MovingObstacle : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Collider _collider;
-    private Transform _transform;
-    
+
     private float currentSpeed;
+    
+    private Animator animator;
+    private static readonly int AnimatorSpeed = Animator.StringToHash("Speed");
 
     private Color debugRayColor;
 
@@ -42,7 +44,7 @@ public class MovingObstacle : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponentInChildren<Collider>();
-        _transform = transform;
+        animator = GetComponentInChildren<Animator>();
 
         if (!forward)
         {
@@ -64,13 +66,21 @@ public class MovingObstacle : MonoBehaviour
         }
 
         _rigidbody.AddRelativeForce(Vector3.forward * currentSpeed, ForceMode.Acceleration);
+
+        if (animator != null)
+        {
+            animator.SetFloat(AnimatorSpeed, currentSpeed);
+        }
     }
 
     private bool LookAhead(ref float speed)
     {
         bool didHit = false;
-        
-        Ray ray = new Ray(_transform.position, _transform.forward);
+
+        Vector3 direction = transform.forward;
+        Vector3 origin =  transform.position + (direction * _collider.bounds.extents.z);
+
+        Ray ray = new Ray(origin, direction);
         float radius = fieldOfView > 0 ? fieldOfView / 2f : _collider.bounds.extents.x;
 
         if (Physics.SphereCast(ray, radius, out RaycastHit hit, brakingDistance, lookAtLayers))
@@ -83,7 +93,7 @@ public class MovingObstacle : MonoBehaviour
         }
 
         debugRayColor = hit.collider == null ? Color.yellow : Color.red;
-        Debug.DrawRay(_transform.position, _transform.forward * (1 + brakingDistance), debugRayColor);
+        Debug.DrawRay(origin, direction * (1 + brakingDistance), debugRayColor);
 
         return didHit;
     }
@@ -96,7 +106,6 @@ public class MovingObstacle : MonoBehaviour
         }
         
         Gizmos.color = debugRayColor;
-        float radius = fieldOfView > 0 ? fieldOfView / 2f : _collider.bounds.extents.x;
-        Gizmos.DrawWireSphere(_transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, fieldOfView > 0 ? fieldOfView / 2f : _collider.bounds.extents.x);
     }
 }

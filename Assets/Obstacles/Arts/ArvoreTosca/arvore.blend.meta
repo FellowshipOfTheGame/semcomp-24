@@ -6,7 +6,22 @@ ModelImporter:
   - first:
       74: -623603649343465320
     second: Scene
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arvore
+    second: {fileID: 2100000, guid: 70c320a1e862ced1c90044eeed723324, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arvore2
+    second: {fileID: 2100000, guid: a700b0be2a83d547b97fa949b98b9861, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arvore3
+    second: {fileID: 2100000, guid: b804f86410ff9603ba0f50aaa16066ed, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

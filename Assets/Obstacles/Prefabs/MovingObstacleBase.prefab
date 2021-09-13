@@ -81,5 +81,5 @@ MonoBehaviour:
   lookAtLayers:
     serializedVersion: 2
     m_Bits: 512
-  brakingDistance: 10
+  brakingDistance: 3.25
   fieldOfView: 3.5

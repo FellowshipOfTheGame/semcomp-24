@@ -26,7 +26,7 @@ public class TiraTampa : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Obstacle"))
         {
             obstacle.StopCoroutine(obstacle.DestroyObstacleCoroutine);
 
