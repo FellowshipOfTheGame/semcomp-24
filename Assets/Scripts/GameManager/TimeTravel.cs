@@ -1,7 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Serialization;
+
+public class OnTimeTravelEventArgs : System.EventArgs
+{
+    public TimeTravel.Period Period { get; set; }
+}
 
 public class TimeTravel : MonoBehaviour
 {
@@ -14,6 +18,13 @@ public class TimeTravel : MonoBehaviour
     [SerializeField] private int stages = 5;
 
     [Space(10)]
+    [Header("Bonuses")]
+    [Space(10)]
+    
+    [SerializeField] private int scoreBonus = 300;
+    // [SerializeField] private int coinsBonus = 100;
+
+    [Space(10)]
     [Header("Graphics (post-processing)")]
     [Space(10)]
     
@@ -21,20 +32,22 @@ public class TimeTravel : MonoBehaviour
     [SerializeField] private GameObject portalPrefab;
 
     private GameObject player;
-    private VehicleController vehicle;
     private HealthSystem healthSystem;
     private ScoreManager scoreManager;
 
-    public bool InThePast { get; private set; }
+    public static bool InThePast { get; private set; }
     public int CurrentStage { get; private set; }
     
     private float counter;
     private TimeTravelPortal portal;
 
+    public static event System.EventHandler<OnTimeTravelEventArgs> OnTimeTravel;
+    
+    public enum Period { Past, Present }
+
     void Start()
     {
         player = GetComponent<RaceManager>().player;
-        vehicle = player.GetComponent<VehicleController>();
         healthSystem = player.GetComponent<HealthSystem>();
         
         scoreManager = GetComponent<ScoreManager>();
@@ -72,6 +85,18 @@ public class TimeTravel : MonoBehaviour
 
         GeneratePortal();
 
+        if (OnTimeTravel != null)
+        {
+            OnTimeTravelEventArgs e = new OnTimeTravelEventArgs() 
+            {
+                Period = Period.Past
+            };
+            
+            OnTimeTravel(this, e);
+        }
+
+        scoreManager.GrantBonus(scoreBonus);
+
         while (counter > 0)
         {
             counter -= Time.deltaTime * decreaseRate;
@@ -87,7 +112,17 @@ public class TimeTravel : MonoBehaviour
         GeneratePortal();
 
         yield return new WaitUntil(() => portal.Out);
-        
+
+        if (OnTimeTravel != null)
+        {
+            OnTimeTravelEventArgs e = new OnTimeTravelEventArgs()
+            {
+                Period = Period.Present
+            };
+            
+            OnTimeTravel(this, e);
+        }
+
         InThePast = false;
         healthSystem.SetInvulnerable(false);
     }

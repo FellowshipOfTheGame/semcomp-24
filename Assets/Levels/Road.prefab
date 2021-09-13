@@ -91,8 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5628372221636506306}
   m_Layer: 6
-  m_Name: "Cal\xE7ada"
-  m_TagString: Untagged
+  m_Name: OffRoad
+  m_TagString: OffRoad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 251283569021343587}
   - component: {fileID: 1248095780452475724}
   m_Layer: 6
-  m_Name: Estrada
+  m_Name: Road
   m_TagString: Road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3278065530363194176}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 28, y: 0.001, z: 10000}
@@ -257,10 +257,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6066277584575657694}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6066277584594499732
 GameObject:
@@ -792,7 +792,7 @@ GameObject:
   - component: {fileID: 6066277585411575366}
   - component: {fileID: 6066277585411575367}
   - component: {fileID: 6066277585411575364}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SideLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 6066277585941949294}
   - component: {fileID: 6066277585941949295}
   - component: {fileID: 6066277585941949292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SideRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1060,10 +1060,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6066277586221125970}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6677088007465355670
 GameObject:
