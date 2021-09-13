@@ -6,7 +6,7 @@ public class ItemSystem : MonoBehaviour
 {
     [SerializeField] private Image iconHUD;
     private VehicleController controller;
-    private VehicleRenderer renderer;
+    private VehicleRenderer _renderer;
     
     public delegate void OnPowerUpActive(PowerUp powerUp);
     public event OnPowerUpActive OnPowerUpActiveEvent;
@@ -16,7 +16,7 @@ public class ItemSystem : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<VehicleController>();
-        renderer = GetComponent<VehicleRenderer>();
+        _renderer = GetComponent<VehicleRenderer>();
         iconHUD.enabled = false;
     }
 
@@ -25,7 +25,7 @@ public class ItemSystem : MonoBehaviour
         if (currentPowerUp is null)
             return;
 
-        currentPowerUp.OnActivate(controller, renderer);
+        currentPowerUp.OnActivate(controller, _renderer);
         OnPowerUpActiveEvent?.Invoke(currentPowerUp);
         currentPowerUp = null;
         iconHUD.enabled = false;

@@ -49,7 +49,7 @@ public class OffRoad : MonoBehaviour
         }
     }
 
-    void OnCollisionStay(Collision other)
+    void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("OffRoad") && !IsPlayerOffRoad)
         {
