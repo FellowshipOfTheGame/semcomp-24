@@ -138,6 +138,7 @@ public class RaceManager : MonoBehaviour
         
         // Update the score text
         scoreText.text = scoreManager.GetScore().ToString("000,000 PTS", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+        coinsText.text = coins.ToString("D6", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
     }
     
     private void ScoreBonusFeedback(object sender, OnScoreBonusGrantEventArgs eventArgs)
@@ -229,6 +230,11 @@ public class RaceManager : MonoBehaviour
         StartCoroutine(finishRaceEnumerator);
     }
 
+    public void AddCoin(int amount)
+    {
+        this.coins += amount;
+    }
+    
     public IEnumerator Countdown(int countdown)
     {
         Time.timeScale = 0f;
