@@ -80,6 +80,6 @@ MonoBehaviour:
   forward: 1
   lookAtLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
   brakingDistance: 3.25
   fieldOfView: 3.5

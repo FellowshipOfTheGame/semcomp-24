@@ -93,6 +93,7 @@ public abstract class Generator : MonoBehaviour
     private void UpdateNextPosition()
     {
         nextPosition += Vector3.forward * area.z;
+        Debug.Log(nextPosition);
     }
     
     private bool CheckThreshold()

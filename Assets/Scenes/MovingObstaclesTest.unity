@@ -966,6 +966,55 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1001 &1457904046
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4569119828363182557, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+      propertyPath: m_Name
+      value: Trem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452561128086884966, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452561128086884966, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452561128086884966, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452561128086884966, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 54.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452561128086884966, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452561128086884966, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452561128086884966, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979351473968685011, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457017614214301734, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
 --- !u!1001 &1486440603
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -161,6 +161,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6036709807576084204, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: groundCheckDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6036709807576084207, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -741,6 +745,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba088ea750a4dc5d99a8071c3d46816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1100745365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1100745367}
+  - component: {fileID: 1100745366}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Road
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1100745366
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100745365}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1000, y: 0.001, z: 100000000}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1100745367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100745365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1446350835 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8513348198818089515, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
@@ -814,7 +862,10 @@ MonoBehaviour:
     weight: 0.1
   - segments:
     - {fileID: 11400000, guid: 50e2fc2f02cb16472b38d2f582b7ac8d, type: 2}
-    weight: 0.3
+    weight: 0.1
+  - segments:
+    - {fileID: 11400000, guid: b4f28b95fd193b06c959466e9016b7c7, type: 2}
+    weight: 0.2
 --- !u!114 &1853063964 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4239996900545307723, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
