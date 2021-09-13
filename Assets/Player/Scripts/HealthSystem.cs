@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class OnHealthChangeEventArgs : System.EventArgs
 {
@@ -43,6 +44,10 @@ public class HealthSystem : MonoBehaviour
 	
 	private int health;
 	private bool invulnerable;
+	
+	private bool hasShield;
+	private int shieldLeft;
+	private float shieldTimer;
 
 	public event System.EventHandler<OnHealthChangeEventArgs> OnHealthChange;
 	public event System.EventHandler OnDie;
@@ -98,6 +103,33 @@ public class HealthSystem : MonoBehaviour
 		return invulnerable;
 	}
 
+	public void ActivateShield(int protectionTimes, float duration)
+	{
+		this.hasShield = true;
+		this.shieldLeft = protectionTimes;
+		this.shieldTimer = duration;
+	}
+
+	public void EndShield()
+	{
+		this.hasShield = false;
+#if UNITY_EDITOR
+		Debug.Log("Shield ended");
+#endif
+	}
+
+	public bool HasShield()
+	{
+		return this.hasShield;
+	}
+
+	public void DecreaseShield()
+	{
+		this.shieldLeft--;
+		if (shieldLeft == 0)
+			EndShield();
+	}
+
 	public void Damage(int damageAmount)
 	{
 		if (health <= 0)
@@ -146,5 +178,23 @@ public class HealthSystem : MonoBehaviour
 
 	void Awake() {
 		ResetHealth();
+	}
+
+	private void Update()
+	{
+		if (hasShield)
+		{
+			if (shieldTimer <= 0f)
+			{
+#if UNITY_EDITOR
+				Debug.Log("Shield time ended");
+#endif
+				hasShield = false;
+			}
+			else
+			{
+				shieldTimer -= Time.deltaTime;
+			}
+		}
 	}
 }

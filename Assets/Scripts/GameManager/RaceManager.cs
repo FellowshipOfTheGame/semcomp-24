@@ -110,6 +110,37 @@ public class RaceManager : MonoBehaviour
         distanceTraveled += vehicle.GetCurrentSpeed() * Time.deltaTime;
         UpdateUI();
     }
+
+    private void UpdateUI()
+    {
+        // Update the score multiplier text and color
+        // scoreMultiplier.sprite = scoreMultiplierSprites[scoreManager.GetRange()];
+        scoreMultiplier.color = Color.Lerp(scoreMultiplier.color, scoreMultiplierColors[scoreManager.GetRange()], 1f * Time.deltaTime);
+        scoreMultiplierText.text = System.Math.Round(scoreManager.GetMultiplier(), 1).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US")) + "x";
+        
+        // Update speedometer
+        speedometer.fillAmount = Mathf.Clamp01(vehicle.GetCurrentSpeed() / vehicle.GetMaximumSpeed());
+        
+        // Update time travel bar
+        turbo.sprite = turboSprites[timeTravel.CurrentStage];
+
+        // Burn animation (when player exceeds maximum speed)
+        bool burn = vehicle.GetCurrentSpeed() > vehicle.GetMaximumSpeed() + 1f;
+        burning.enabled = burn;
+        burningAnimator.SetBool("Burn", burn);
+
+        if (burn)
+        {
+            burningAnimator.speed = Mathf.Clamp01(vehicle.GetCurrentSpeed() / vehicle.GetMaximumSpeed() - 0.5f);
+        }
+        
+        // Update the timer
+        timerText.text = System.TimeSpan.FromSeconds(timer).ToString("mm\\:ss\\:ff");
+        
+        // Update the score text
+        scoreText.text = scoreManager.GetScore().ToString("000,000 PTS", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+        coinsText.text = coins.ToString("D6", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+    }
     
     // Called when player dies
     private void GameOver(object sender, System.EventArgs e)
@@ -154,6 +185,11 @@ public class RaceManager : MonoBehaviour
         StartCoroutine(finishRaceEnumerator);
     }
 
+    public void AddCoin(int amount)
+    {
+        this.coins += amount;
+    }
+    
     public IEnumerator Countdown(int countdown)
     {
         Time.timeScale = 0f;

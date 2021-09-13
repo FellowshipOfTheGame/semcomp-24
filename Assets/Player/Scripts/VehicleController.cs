@@ -54,7 +54,6 @@ public class VehicleController : MonoBehaviour
     
     private PlayerInput playerInput;
     private InputAction movement;
-
     private Vector3 vehicleRotation;
 
     private RigidbodyConstraints rigidbodyDefaultConstraints;
@@ -103,6 +102,11 @@ public class VehicleController : MonoBehaviour
 
     protected void Update()
     {
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            UseItem(new InputAction.CallbackContext());
+        }
+
         forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, acceleration * Time.deltaTime);
 
         // Check rotation boundaries
@@ -181,7 +185,7 @@ public class VehicleController : MonoBehaviour
     }
 
     #endregion
-    
+
     // Raycast down from each of the Transforms in groundDetection
     private void CheckForGround()
     {
@@ -241,4 +245,5 @@ public class VehicleController : MonoBehaviour
     {
         itemSystem.ActivateItem();
     }
+
 }

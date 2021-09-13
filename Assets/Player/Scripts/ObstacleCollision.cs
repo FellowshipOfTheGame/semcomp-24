@@ -10,6 +10,7 @@ public class ObstacleCollision : MonoBehaviour
 
     private HealthSystem healthSystem;
     private VehicleController controller;
+    private VehicleRenderer renderer;
 
     private Rigidbody _rigidbody;
 
@@ -18,6 +19,7 @@ public class ObstacleCollision : MonoBehaviour
         healthSystem = GetComponent<HealthSystem>();
         scoreManager = raceManager.GetComponent<ScoreManager>();
         controller = GetComponent<VehicleController>();
+        renderer = GetComponent<VehicleRenderer>();
         
         _rigidbody = GetComponent<Rigidbody>();
     }
@@ -78,7 +80,16 @@ public class ObstacleCollision : MonoBehaviour
 
             if (!healthSystem.IsInvulnerable())
             {
-                healthSystem.Damage(finalDamage);
+                if (healthSystem.HasShield())
+                {
+                    healthSystem.DecreaseShield();
+                    if (!healthSystem.HasShield())
+                        renderer.DeactivateShieldeEffect();
+                }
+                else
+                {
+                    healthSystem.Damage(finalDamage);
+                }
             }
 
             if (TimeTravel.InThePast)
