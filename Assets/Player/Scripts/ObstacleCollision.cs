@@ -83,7 +83,6 @@ public class ObstacleCollision : MonoBehaviour
 
             if (TimeTravel.InThePast)
             {
-                healthSystem.Heal(finalDamage);
                 scoreManager.GrantBonus(Mathf.RoundToInt(finalDamage * scoreBonusMultiplier));
             }
             else

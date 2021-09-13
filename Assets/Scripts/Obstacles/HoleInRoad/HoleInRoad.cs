@@ -7,7 +7,7 @@ public class HoleInRoad : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             // Debug.Log("Hole Collide");
 
