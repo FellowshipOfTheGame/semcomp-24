@@ -36,7 +36,7 @@ public class SwapOnTimeTravel : MonoBehaviour
 
         if (newGameObject != null)
         {
-            Generator.LoadedObjects.Add(Instantiate(newGameObject, _transform.position, _transform.rotation));
+            Generator.LoadedObjects.Add(Instantiate(newGameObject, _transform.position, _transform.rotation, transform.parent));
         }
 
         Destroy(gameObject);

@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6452561128086884966}
+  - component: {fileID: 5704599852602912616}
   m_Layer: 11
   m_Name: Trem
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5704599852602912616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569119828363182557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494a40f6eec14665bedd02a96f5db790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsSet: {fileID: 11400000, guid: 1dc7b89ccb6b6bdce9a98a6e24d0014c, type: 2}
 --- !u!1 &6011752171039614979
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,9 +56,9 @@ GameObject:
   m_Component:
   - component: {fileID: 833600907762944973}
   - component: {fileID: 7979351473968685011}
+  - component: {fileID: 8095338487123573186}
   - component: {fileID: 5824064234958484806}
   - component: {fileID: 188584102431333672}
-  - component: {fileID: 8095338487123573186}
   m_Layer: 11
   m_Name: Trem
   m_TagString: Obstacle
@@ -128,6 +142,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8095338487123573186
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011752171039614979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.2, y: 4.3496385, z: 541.2098}
+  m_Center: {x: -1.1517913e-13, y: 2.3251808, z: -264.10495}
 --- !u!114 &5824064234958484806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,19 +193,6 @@ MonoBehaviour:
     m_Bits: 0
   brakingDistance: 10
   fieldOfView: 0
---- !u!65 &8095338487123573186
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6011752171039614979}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.2, y: 4.3496385, z: 541.2098}
-  m_Center: {x: -1.1517913e-13, y: 2.3251808, z: -264.10495}
 --- !u!1001 &439188552524892229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,22 +419,6 @@ PrefabInstance:
     - target: {fileID: 1679716901501723912, guid: 85354b751088d88fa964eb07c697f5e5, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1679716901501723912, guid: 85354b751088d88fa964eb07c697f5e5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 42
-      objectReference: {fileID: 0}
-    - target: {fileID: 1679716901501723912, guid: 85354b751088d88fa964eb07c697f5e5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1679716901501723912, guid: 85354b751088d88fa964eb07c697f5e5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1679716901501723912, guid: 85354b751088d88fa964eb07c697f5e5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1679716901501723915, guid: 85354b751088d88fa964eb07c697f5e5, type: 3}
       propertyPath: m_Name
