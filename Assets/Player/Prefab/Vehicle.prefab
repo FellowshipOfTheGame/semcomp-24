@@ -45,7 +45,7 @@ CapsuleCollider:
   m_Radius: 0.35
   m_Height: 2.5
   m_Direction: 0
-  m_Center: {x: -0.1, y: 0.08, z: 4.99}
+  m_Center: {x: -0.1, y: 0.08, z: 4.62}
 --- !u!136 &680376511
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ CapsuleCollider:
   m_Radius: 0.35
   m_Height: 2.5
   m_Direction: 0
-  m_Center: {x: -0.1, y: 0.08, z: -3.7}
+  m_Center: {x: -0.1, y: 0.08, z: -3.42}
 --- !u!1 &6036709807405129391
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 64
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!65 &6036709807576084205
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b9ce2a60c466b488832e70f3cc7276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostParticle: {fileID: 5301650118046252476, guid: 95e620192065d2b4a8a957ae93b8df20, type: 3}
+  shieldEffect: {fileID: 0}
 --- !u!1 &6036709807610969999
 GameObject:
   m_ObjectHideFlags: 0

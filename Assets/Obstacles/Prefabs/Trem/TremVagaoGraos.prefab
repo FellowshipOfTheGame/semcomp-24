@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 2480731389114047132}
   - component: {fileID: 2480731389114047106}
   - component: {fileID: 2480731389114047107}
-  - component: {fileID: 2129290413320880987}
   m_Layer: 0
   m_Name: TremGraos
   m_TagString: Untagged
@@ -92,7 +91,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6425539541630428629, guid: bebec081e2dfb474b851e8cc7b9457d0, type: 3}
+  - {fileID: 2100000, guid: fe6032cfb76d538bc8ccc5afa0834b46, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,19 +113,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2129290413320880987
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480731389114047133}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8.1, y: 2.1009305, z: 2.0000029}
-  m_Center: {x: 0.5500002, y: -1.7004646, z: 0}
 --- !u!1 &2480731390456397643
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +172,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5113495270610068753, guid: bebec081e2dfb474b851e8cc7b9457d0, type: 3}
+  - {fileID: 2100000, guid: 984845409199eefcd8879d433cafa0f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

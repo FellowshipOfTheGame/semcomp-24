@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c440a1f76ae32c1a845f1af02daf78, type: 3}
+  m_Name: TremLocomotivaObjectsSet
+  m_EditorClassIdentifier: 
+  _presentObject: {fileID: 8687519536696025054, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+  _pastObject: {fileID: 236829283699923342, guid: 5a5e87385babeb60b846ecfe7d6416c7, type: 3}

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 
 public class OnTimeTravelEventArgs : System.EventArgs
 {
@@ -24,11 +25,12 @@ public class TimeTravel : MonoBehaviour
     [SerializeField] private int scoreBonus = 300;
     // [SerializeField] private int coinsBonus = 100;
 
+    [FormerlySerializedAs("pastGlobalVolume")]
     [Space(10)]
     [Header("Graphics (post-processing)")]
     [Space(10)]
     
-    [SerializeField] private Volume globalVolume;
+    [SerializeField] private GameObject globalVolumePast;
     [SerializeField] private GameObject portalPrefab;
 
     private GameObject player;
@@ -135,7 +137,7 @@ public class TimeTravel : MonoBehaviour
         if (portal == null)
         {
             portal = Instantiate(portalPrefab, portalPosition, Quaternion.identity).GetComponent<TimeTravelPortal>();
-            portal.GlobalVolume = globalVolume;
+            portal.GlobalVolumePast = globalVolumePast;
         }
         else
         {
