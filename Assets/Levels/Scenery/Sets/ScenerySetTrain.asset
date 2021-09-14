@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3c440a1f76ae32c1a845f1af02daf78, type: 3}
-  m_Name: TremObjectsSet
+  m_Script: {fileID: 11500000, guid: 2242a55d1645a78459076a9952750ea6, type: 3}
+  m_Name: ScenerySetTrain
   m_EditorClassIdentifier: 
-  _presentObject: {fileID: 4569119828363182557, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
-  _pastObject: {fileID: 83421886144227952, guid: 4bd18395259a25bc9990f765c57be67e, type: 3}
+  members:
+  - {fileID: 6066277585264546669, guid: 8b732f552978a9fc59babe3b0f4a815b, type: 3}

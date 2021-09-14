@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scenery/Segment", fileName = "NewSegment")]
 public class Segment : ScriptableObject
 {
+    [SerializeField] public int trainSegment;
     [SerializeField] [Min(1)] private int width = 3;
     [SerializeField] [Min(1)] private int length = 2;
     [SerializeField] private ObjectSet[] segment = new ObjectSet[6];

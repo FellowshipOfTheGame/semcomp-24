@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c59cbec1325b64db21014ea83013d6, type: 3}
   m_Name: TrainSegment
   m_EditorClassIdentifier: 
+  trainSegment: 0
   width: 13
-  length: 3
+  length: 2
   segment:
   - {fileID: 0}
   - {fileID: 0}
@@ -32,20 +33,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 11400000, guid: 61c8d9236d8274a80a944a0634471597, type: 2}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
