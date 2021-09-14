@@ -20,6 +20,7 @@ namespace SubiNoOnibus.Networking.Requests
             }
             else
             {
+                UserAuthRequestHandler.SaveAuthCookie(request);
                 var shopUpgrades = JsonUtility.FromJson<ShopUpgrades>(request.downloadHandler.text);
                 OnSuccess?.Invoke(shopUpgrades);
             }
@@ -40,6 +41,7 @@ namespace SubiNoOnibus.Networking.Requests
             }
             else
             {
+                UserAuthRequestHandler.SaveAuthCookie(request);
                 var shopItem = JsonUtility.FromJson<NewShopItem>(request.downloadHandler.text);
                 OnSuccess?.Invoke(shopItem);
             }
