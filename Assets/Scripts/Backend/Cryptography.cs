@@ -33,12 +33,9 @@ namespace SubiNoOnibus.Networking
         public static bool IsSignatureValid(UserStatus userStatus)
         {
             string incomingSignature = userStatus.sign;
-
             userStatus.sign = string.Empty;
+
             string ourSignature = GetSignature(userStatus, response_signature_key);
-            
-            Debug.Log($"{incomingSignature}");
-            Debug.Log($"{ourSignature}");
             
             return incomingSignature == ourSignature;
         }
