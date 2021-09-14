@@ -13,7 +13,7 @@ public class ShopCard : MonoBehaviour
     
     private ShopItem _item;
     private ShopMenu _shopMenu;
-    private string _initialDescription = "";
+    private string _initialDescription = string.Empty;
 
 
     public bool CanBePurchased(int goldAmount) => goldAmount >= _item?.price;
@@ -55,6 +55,9 @@ public class ShopCard : MonoBehaviour
     
     private void SetDescriptionValue()
     {
+        if(string.IsNullOrEmpty(_initialDescription))
+            _initialDescription = itemDescriptionTxt.text;
+
         float value = _item.level;
         string result = _initialDescription.Replace("$", value.ToString());
         itemDescriptionTxt.SetText(result);
@@ -63,10 +66,5 @@ public class ShopCard : MonoBehaviour
     private void BuyItem()
     {
         _shopMenu.TryBuyItem(_item);
-    }
-
-    private void Awake()
-    {
-        _initialDescription = itemDescriptionTxt.text;
     }
 }
