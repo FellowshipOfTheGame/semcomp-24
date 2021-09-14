@@ -78,6 +78,9 @@ MonoBehaviour:
   randomizeMaximumSpeed: 1
   acceleration: 1
   forward: 1
+  brake: 1
+  wakeOnProximity: 0
+  wakeDistance: 0
   lookAtLayers:
     serializedVersion: 2
     m_Bits: 2560

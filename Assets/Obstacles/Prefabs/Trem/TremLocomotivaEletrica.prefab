@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5113495270610068753, guid: bebec081e2dfb474b851e8cc7b9457d0, type: 3}
+  - {fileID: 2100000, guid: 984845409199eefcd8879d433cafa0f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,7 +124,6 @@ GameObject:
   - component: {fileID: 6887129078416437736}
   - component: {fileID: 7255459505671317099}
   - component: {fileID: 1312958388366759071}
-  - component: {fileID: 8695786816889527757}
   m_Layer: 0
   m_Name: TremEletrico
   m_TagString: Untagged
@@ -173,7 +172,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8588271917354221118, guid: bebec081e2dfb474b851e8cc7b9457d0, type: 3}
+  - {fileID: 2100000, guid: e3df344efd63ab6228239eb719350ac9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -195,16 +194,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8695786816889527757
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8818520306852611280}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8.85, y: 3, z: 2.0000029}
-  m_Center: {x: 0.62500024, y: -1.6999998, z: 0}
