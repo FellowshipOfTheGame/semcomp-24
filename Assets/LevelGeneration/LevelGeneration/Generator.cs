@@ -7,9 +7,12 @@ public abstract class Generator : MonoBehaviour
     [SerializeField] protected Transform follow;
     [SerializeField] protected float threshold;
     [SerializeField] protected Vector3 area;
+    [SerializeField] protected Vector3 areaOffset;
+    [SerializeField] protected bool flip;
     private Vector3 nextPosition;
-    [SerializeField] private GameObject road;
+    [SerializeField] private GameObject[] roads;
     [SerializeField] private float roadHeight;
+    [SerializeField] private bool useSegments = true;
     [SerializeField] private Segment starterSegment;
     
     public static List<GameObject> LoadedObjects { get; private set; }
@@ -17,12 +20,14 @@ public abstract class Generator : MonoBehaviour
 
     protected abstract Segment GetNext();
 
+    public Segment currentSegment { get; private set; }
+
     private void Start()
     {
         LoadedObjects = new List<GameObject>();
         LoadedRoads = new List<GameObject>();
         
-        nextPosition = follow.position;
+        nextPosition = follow.position + areaOffset;
         BuildNext(starterSegment);
         UpdateNextPosition();
         
@@ -33,7 +38,8 @@ public abstract class Generator : MonoBehaviour
     {
         if (CheckThreshold())
         {
-            BuildNext(GetNext());
+            currentSegment = GetNext();
+            BuildNext(currentSegment);
             UpdateNextPosition();
         }
 
@@ -49,15 +55,21 @@ public abstract class Generator : MonoBehaviour
 
     private void BuildNext(Segment nextSegment)
     {
+        int index = Random.Range(0, roads.Length);
+        GameObject roadObject = Instantiate(roads[index], new Vector3(nextPosition.x, nextPosition.y - roadHeight, nextPosition.z), Quaternion.identity);
+        LoadedRoads.Add(roadObject);
+
+        if (!useSegments)
+        {
+            return;
+        }
+        
         Vector3 minNext = nextPosition - (area / 2);
         Vector3 maxNext = nextPosition + (area / 2);
         Vector3 offset = new Vector3(area.x / nextSegment.Width, area.y, area.z / nextSegment.Length);
 
         Vector3 startPosition = new Vector3(minNext.x + offset.x / 2f, nextPosition.y - roadHeight / 2, maxNext.z - offset.z / 2f);
         Vector3 currentPosition = startPosition;
-
-        GameObject roadObject = Instantiate(road, new Vector3(nextPosition.x, nextPosition.y - roadHeight, nextPosition.z), Quaternion.identity);
-        LoadedRoads.Add(roadObject);
 
         for (int i = 0; i < nextSegment.Length; i++)
         {
@@ -79,7 +91,7 @@ public abstract class Generator : MonoBehaviour
                     prefab = TimeTravel.InThePast ? prefabSwap.PastObject : prefabSwap.PresentObject;
                 }
 
-                GameObject instance = Instantiate(prefab, currentPosition, prefab.transform.rotation);
+                GameObject instance = Instantiate(prefab, currentPosition, flip ? Quaternion.Euler(new Vector3(0, 180, 0)) : prefab.transform.rotation);
 
                 LoadedObjects.Add(instance);
                 currentPosition.x += offset.x;
@@ -93,7 +105,6 @@ public abstract class Generator : MonoBehaviour
     private void UpdateNextPosition()
     {
         nextPosition += Vector3.forward * area.z;
-        Debug.Log(nextPosition);
     }
     
     private bool CheckThreshold()

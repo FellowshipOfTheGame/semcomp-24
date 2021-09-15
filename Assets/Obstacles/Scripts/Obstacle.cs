@@ -19,6 +19,8 @@ public class Obstacle : MonoBehaviour
     
     public Coroutine DestroyObstacleCoroutine;
 
+    private bool fadeOutReady;
+
     void Start()
     {
         renderers = GetComponentsInChildren<Renderer>();
@@ -68,15 +70,19 @@ public class Obstacle : MonoBehaviour
         {
             StartCoroutine(FadeOutEnumerator(_renderer));
         }
+
+        fadeOutReady = true;
     }
     
     private IEnumerator FadeOutEnumerator(Renderer _renderer)
     {
+        yield return new WaitUntil(() => fadeOutReady);
+        
         Color c = _renderer.material.color;
 
         while (_renderer.material.color.a >= 0.2f)
         {
-            if (_renderer.material.color.a >= 0.7f && _renderer.material.color.a <= 0.8f)
+            if (_renderer.material.color.a >= 0.9f && _renderer.material.color.a <= 1f)
             {
                 if (playerCollider != null)
                 {

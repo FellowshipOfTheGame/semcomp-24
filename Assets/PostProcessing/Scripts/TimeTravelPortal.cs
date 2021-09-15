@@ -1,18 +1,14 @@
-using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class TimeTravelPortal : MonoBehaviour
 {
-    [SerializeField] private VolumeProfile pastVolumeProfile;
     [SerializeField] private float enterBlendDistance = 10f;
     [SerializeField] private float exitBlendDistance = 5f;
 
-    public Volume GlobalVolume { get; set; }
+    public GameObject GlobalVolumePast { get; set; }
 
     private Volume localVolume;
-    
-    private VolumeProfile defaultVolumeProfile;
 
     private int enteredCount;
     private int exitedCount;
@@ -29,16 +25,11 @@ public class TimeTravelPortal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (defaultVolumeProfile == null)
-            {
-                defaultVolumeProfile = GlobalVolume.profile;
-            }
-            
             enteredCount++;
 
             if (enteredCount == 1)
             {
-                GlobalVolume.profile = pastVolumeProfile;
+                GlobalVolumePast.SetActive(true);
             }
         }
     }
@@ -55,7 +46,7 @@ public class TimeTravelPortal : MonoBehaviour
                     localVolume.blendDistance = exitBlendDistance;
                     break;
                 case 2:
-                    GlobalVolume.profile = defaultVolumeProfile;
+                    GlobalVolumePast.SetActive(false);
                     enteredCount = 0;
                     exitedCount = 0;
                     localVolume.blendDistance = enterBlendDistance;

@@ -3,7 +3,32 @@ guid: bebec081e2dfb474b851e8cc7b9457d0
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TremBase
+    second: {fileID: 2100000, guid: 984845409199eefcd8879d433cafa0f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TremContainer
+    second: {fileID: 2100000, guid: e25c0a8283585ed8bba16b313a0ed0db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TremEletrico
+    second: {fileID: 2100000, guid: e3df344efd63ab6228239eb719350ac9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TremGraos
+    second: {fileID: 2100000, guid: fe6032cfb76d538bc8ccc5afa0834b46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TremVapor
+    second: {fileID: 2100000, guid: 2b62de46cfd3220598fa9287376cb73b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

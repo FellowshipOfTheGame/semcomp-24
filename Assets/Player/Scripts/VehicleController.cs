@@ -245,5 +245,4 @@ public class VehicleController : MonoBehaviour
     {
         itemSystem.ActivateItem();
     }
-
 }

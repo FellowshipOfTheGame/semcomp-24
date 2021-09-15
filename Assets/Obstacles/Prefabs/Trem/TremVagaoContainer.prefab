@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 7009789568670953463}
   - component: {fileID: 7009789568670953465}
   - component: {fileID: 7009789568670953464}
-  - component: {fileID: 2491480694676808492}
   m_Layer: 0
   m_Name: TremContainer
   m_TagString: Untagged
@@ -92,7 +91,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5945887517072569208, guid: bebec081e2dfb474b851e8cc7b9457d0, type: 3}
+  - {fileID: 2100000, guid: e25c0a8283585ed8bba16b313a0ed0db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,19 +113,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2491480694676808492
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7009789568670953462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8.339999, y: 2.2000008, z: 1.8600038}
-  m_Center: {x: 0.4799999, y: -1.7499998, z: 0}
 --- !u!1 &7009789569730702714
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +172,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5113495270610068753, guid: bebec081e2dfb474b851e8cc7b9457d0, type: 3}
+  - {fileID: 2100000, guid: 984845409199eefcd8879d433cafa0f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
