@@ -163,7 +163,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6036709807576084204, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: acceleration
-      value: 2
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036709807576084204, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: initialForwardForce
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6036709807576084207, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: m_RootOrder
@@ -943,7 +947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   follow: {fileID: 108651215}
   threshold: 500
-  area: {x: 42, y: 0, z: 150}
+  area: {x: 42, y: 0, z: 100}
   areaOffset: {x: 0, y: 0, z: 0}
   flip: 0
   roads:
@@ -951,28 +955,35 @@ MonoBehaviour:
   - {fileID: 6066277585264546669, guid: fe53711575cd3c64c802c591b88f9231, type: 3}
   roadHeight: 0.5
   useSegments: 1
-  starterSegment: {fileID: 11400000, guid: ee7134e78e35601469792c799c6166c8, type: 2}
+  starterSegment: {fileID: 11400000, guid: 558102f4322e0ab9686ee89e3c214e27, type: 2}
   sets:
   - segments:
-    - {fileID: 11400000, guid: f6752dd8ff584ce0bbda5e2848e3e972, type: 2}
-    - {fileID: 11400000, guid: f0faf031165323413a72d99e385208c9, type: 2}
-    weight: 0.005
-  - segments:
-    - {fileID: 11400000, guid: 964730e2ef17e60c8a0d681a648998e5, type: 2}
-    weight: 0.001
-  - segments:
-    - {fileID: 11400000, guid: 07fb43e107f439ec7a02f690ac868d1b, type: 2}
-    weight: 0.001
-  - segments:
-    - {fileID: 11400000, guid: 50e2fc2f02cb16472b38d2f582b7ac8d, type: 2}
-    weight: 0.001
-  - segments:
-    - {fileID: 11400000, guid: b4f28b95fd193b06c959466e9016b7c7, type: 2}
-    weight: 0.002
-  - segments:
+    - {fileID: 11400000, guid: 8e5e613f25cdc75659759faa704d0bda, type: 2}
     - {fileID: 11400000, guid: 62b28cacd195a1c738fc71ece33af723, type: 2}
-    - {fileID: 11400000, guid: ee7134e78e35601469792c799c6166c8, type: 2}
-    weight: 0.9
+    - {fileID: 11400000, guid: aa1364247a5aa405f8a814623047d85d, type: 2}
+    - {fileID: 11400000, guid: ffd301f8cbd824f7882f0ee2281bfa96, type: 2}
+    - {fileID: 11400000, guid: db0981f316a4a81bc8268de119afa526, type: 2}
+    - {fileID: 11400000, guid: a5e22c75f7ed09a6585f5c2d3ed57ce0, type: 2}
+    - {fileID: 11400000, guid: 089937fc9e8c0e76eb23c5766cc65c47, type: 2}
+    - {fileID: 11400000, guid: d567cf1e42f08293880e0d7ee28cc248, type: 2}
+    - {fileID: 11400000, guid: c2247512fda2b3a9f8a7542b15ee131a, type: 2}
+    - {fileID: 11400000, guid: e102021be4b1efabbb5c5ffff253386a, type: 2}
+    - {fileID: 11400000, guid: b0e7011335d98c7969a56fea3366244f, type: 2}
+    - {fileID: 11400000, guid: d95f7568e5f5f2175a6f6ab80ebd1962, type: 2}
+    - {fileID: 11400000, guid: 0382e2d05574eb1329e8a825f31ea898, type: 2}
+    - {fileID: 11400000, guid: 5a8ec9e8c68dd12b789f0ae986282d84, type: 2}
+    - {fileID: 11400000, guid: ccf15e859817aae5e89197881c5da8e0, type: 2}
+    - {fileID: 11400000, guid: ed7a4880300d592d2a3b9abbe8cb1bb3, type: 2}
+    weight: 0
+  - segments:
+    - {fileID: 11400000, guid: a5e22c75f7ed09a6585f5c2d3ed57ce0, type: 2}
+    - {fileID: 11400000, guid: 089937fc9e8c0e76eb23c5766cc65c47, type: 2}
+    - {fileID: 11400000, guid: d567cf1e42f08293880e0d7ee28cc248, type: 2}
+    - {fileID: 11400000, guid: c2247512fda2b3a9f8a7542b15ee131a, type: 2}
+    weight: 0
+  - segments:
+    - {fileID: 11400000, guid: a5e22c75f7ed09a6585f5c2d3ed57ce0, type: 2}
+    weight: 1
 --- !u!114 &1634761249
 MonoBehaviour:
   m_ObjectHideFlags: 0
