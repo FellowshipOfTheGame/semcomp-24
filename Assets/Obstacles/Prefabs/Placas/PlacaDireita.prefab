@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6254666723910395152, guid: 59dd1f0d89105b655be6ea804596016e, type: 3}
+      propertyPath: obstaclePropertiesPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: 76e4568d4279132a98c40cee8cef4578, type: 2}
     - target: {fileID: 6547773521371769700, guid: 59dd1f0d89105b655be6ea804596016e, type: 3}
       propertyPath: m_Name
       value: PlacaDireita

@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1828c36b7bc5c7fda304867e4151267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePropertiesPreset: {fileID: 11400000, guid: 509523b936bc196d4be472548eedaf01, type: 2}
+  obstaclePropertiesPreset: {fileID: 11400000, guid: 8e6be16416784e5629019d1c2b203923, type: 2}
 --- !u!114 &188584102431333672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,13 +180,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6beedac28117a204bb454daa9b7d658d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumSpeed: 14
+  maximumSpeed: 12
   randomizeMaximumSpeed: 0
-  acceleration: 100
+  acceleration: 150
   forward: 1
   brake: 0
   wakeOnProximity: 1
-  wakeDistance: 150
+  wakeDistance: 220
   useParentPosition: 1
   lookAtLayers:
     serializedVersion: 2

@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1828c36b7bc5c7fda304867e4151267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePropertiesPreset: {fileID: 11400000, guid: 509523b936bc196d4be472548eedaf01, type: 2}
+  obstaclePropertiesPreset: {fileID: 11400000, guid: e6e267233095e9f92988e812c5a1c389, type: 2}
 --- !u!114 &-4384161354162981573
 MonoBehaviour:
   m_ObjectHideFlags: 0

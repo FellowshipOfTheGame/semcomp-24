@@ -134,9 +134,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7305960074823135601, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: obstaclePropertiesPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: e6e267233095e9f92988e812c5a1c389, type: 2}
     - target: {fileID: 7305960074823135604, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
       propertyPath: m_Name
       value: Fusca
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305960074823135605, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: wakeDistance
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305960074823135605, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: wakeOnProximity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}

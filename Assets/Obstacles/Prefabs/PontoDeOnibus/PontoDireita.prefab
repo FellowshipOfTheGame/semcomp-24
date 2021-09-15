@@ -79,5 +79,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8627748138436205357, guid: 76e2afdebdb5ad842a1e219507b67757, type: 3}
+      propertyPath: obstaclePropertiesPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: e6e267233095e9f92988e812c5a1c389, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76e2afdebdb5ad842a1e219507b67757, type: 3}

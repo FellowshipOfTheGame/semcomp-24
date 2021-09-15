@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1685429143219244402, guid: 9b8f3d54d6addf1ab9c37b4eb11f6e64, type: 3}
+      propertyPath: obstaclePropertiesPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e6be16416784e5629019d1c2b203923, type: 2}
     - target: {fileID: 1685429143219244403, guid: 9b8f3d54d6addf1ab9c37b4eb11f6e64, type: 3}
       propertyPath: m_RootOrder
       value: 0
