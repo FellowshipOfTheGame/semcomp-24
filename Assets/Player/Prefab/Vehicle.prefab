@@ -109,7 +109,9 @@ GameObject:
   - component: {fileID: 847439272864004725}
   - component: {fileID: 6095949563745021327}
   - component: {fileID: 1822952218701299703}
-  m_Layer: 0
+  - component: {fileID: 108651224}
+  - component: {fileID: 108651217}
+  m_Layer: 7
   m_Name: Vehicle
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -187,7 +189,7 @@ MonoBehaviour:
   - {fileID: 6036709807879933422}
   - {fileID: 6036709807714276438}
   - {fileID: 6036709807405129390}
-  groundCheckDistance: 0.5
+  groundCheckDistance: 1
   groundDrag: 1
   airDrag: 0.1
   wheelBase: 4
@@ -289,7 +291,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b9ce2a60c466b488832e70f3cc7276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldEffect: {fileID: 0}
+  shieldEffect: {fileID: 4622252919096137203, guid: da4af0db463309b4ab5222feaba3f2d5, type: 3}
+--- !u!114 &108651224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6036709807576084203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed63841fe11dac430a2efec02d370a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSpeedText: {fileID: 0}
+--- !u!114 &108651217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6036709807576084203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52be8f028bc4d8d4d8cccfeef739183f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raceManager: {fileID: 0}
 --- !u!1 &6036709807610969999
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,11 +505,11 @@ PrefabInstance:
     - target: {fileID: -5915533115164175061, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7971046a8e753644d9965a2b4e92ce42, type: 2}
+      objectReference: {fileID: 2100000, guid: ad7ceb8a89e507c42be1d3f6c7d41084, type: 2}
     - target: {fileID: -4007878508135742663, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7971046a8e753644d9965a2b4e92ce42, type: 2}
+      objectReference: {fileID: 2100000, guid: ad7ceb8a89e507c42be1d3f6c7d41084, type: 2}
     - target: {fileID: -1461304994638716399, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -489,7 +517,7 @@ PrefabInstance:
     - target: {fileID: -509604579369518171, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7971046a8e753644d9965a2b4e92ce42, type: 2}
+      objectReference: {fileID: 2100000, guid: ad7ceb8a89e507c42be1d3f6c7d41084, type: 2}
     - target: {fileID: 919132149155446097, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
       propertyPath: m_Name
       value: busao_2021-08-28
@@ -497,7 +525,7 @@ PrefabInstance:
     - target: {fileID: 7240661307008340664, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7971046a8e753644d9965a2b4e92ce42, type: 2}
+      objectReference: {fileID: 2100000, guid: ad7ceb8a89e507c42be1d3f6c7d41084, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
 --- !u!4 &1974575885416866646 stripped

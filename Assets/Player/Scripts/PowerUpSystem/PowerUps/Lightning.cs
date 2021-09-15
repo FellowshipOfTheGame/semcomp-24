@@ -14,7 +14,7 @@ public class Lightning : PowerUp
         Debug.Log("Raio acertou " + num);
         for (int i = 0; i < num; i++)
         {
-            Destroy(results[i].collider.gameObject);
+            results[i].transform.gameObject.GetComponent<Obstacle>().FadeOut();
         }
     }
 }

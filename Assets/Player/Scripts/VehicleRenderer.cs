@@ -6,6 +6,7 @@ public class VehicleRenderer : MonoBehaviour
 {
     // Shield Effect
     [SerializeField] private GameObject shieldEffect;
+    [SerializeField] private ParticleSystem speedLines;
     private GameObject shieldEffectInstance;
     private Coroutine shieldCoroutine;
 
@@ -13,6 +14,10 @@ public class VehicleRenderer : MonoBehaviour
     {
         shieldEffectInstance = Instantiate(shieldEffect, transform);
         shieldEffectInstance.SetActive(false);
+    }
+
+    private void Update()
+    {
     }
 
     public void ActivateShieldeEffect(float duration)
@@ -24,6 +29,14 @@ public class VehicleRenderer : MonoBehaviour
     {
         StopCoroutine(shieldCoroutine);
         shieldEffectInstance.SetActive(false);
+    }
+
+    public void ActivateSpeedLines(float time)
+    {
+        speedLines.Stop();
+        var main = speedLines.main;
+        main.duration = time;
+        speedLines.Play();
     }
 
     private IEnumerator Shield(float duration)
