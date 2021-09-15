@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2242a55d1645a78459076a9952750ea6, type: 3}
+  m_Name: Veiculos
+  m_EditorClassIdentifier: 
+  members:
+  - {fileID: 1040477494156599615, guid: e572d62fca09773a89cb8d776f7b3eb3, type: 3}
+  - {fileID: 2440442405674910695, guid: 4a08c587311d23e6dac09c70bf87d9c0, type: 3}
+  - {fileID: 1040477494156599615, guid: fc8ee7ede22484fafb1a378c2c9261d7, type: 3}
+  - {fileID: 9219983179789611246, guid: 0ea4a9bbc58432ac2a420050b6f1bc99, type: 3}
+  - {fileID: 1075727432103781337, guid: 139b089cae6d7ead69597bda33544a6e, type: 3}
+  - {fileID: 1075727432103781337, guid: 4e60289b380ee9fa1b4e726e2ab55bba, type: 3}
+  - {fileID: 1075727432103781337, guid: eaf54a11357210e69a02e8d87c80cfb9, type: 3}
+  - {fileID: 1075727432103781337, guid: de794b4b1a00328d9ac38edc18f2af6c, type: 3}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2242a55d1645a78459076a9952750ea6, type: 3}
+  m_Name: AcostamentoVolta
+  m_EditorClassIdentifier: 
+  members:
+  - {fileID: 8141297651304322409, guid: 47c0b576a1759e249ad6ef39a4982524, type: 3}
+  - {fileID: 2637525596908754829, guid: fe371d916bb7fbc46a1cc7fcb4d5f9a9, type: 3}
+  - {fileID: 4643875059449206073, guid: 848d4eb1132572447809ef9d70049650, type: 3}
+  - {fileID: 898013052307929375, guid: 941a38380f378e141b9dc3b5e018c66b, type: 3}
+  - {fileID: 8880439268216535399, guid: 8e71ac51b928dd64898528b48918717f, type: 3}
+  - {fileID: 9219983179789611246, guid: 0ea4a9bbc58432ac2a420050b6f1bc99, type: 3}
+  - {fileID: 1075727432103781337, guid: de794b4b1a00328d9ac38edc18f2af6c, type: 3}
+  - {fileID: 8206588658605259442, guid: 7412773795732146e8f8348befe090ca, type: 3}
