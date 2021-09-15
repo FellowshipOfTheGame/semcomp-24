@@ -68,5 +68,6 @@ public class ShopCard : MonoBehaviour
     private void Awake()
     {
         _initialDescription = itemDescriptionTxt.text;
+        Debug.Log(_initialDescription);
     }
 }
