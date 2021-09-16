@@ -260,6 +260,7 @@ public class RaceManager : MonoBehaviour
         
         // Update the score text
         scoreText.text = scoreManager.GetScore().ToString("000,000 PTS", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+        coinsText.text = coins.ToString("D6", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
     }
     
     private void ScoreBonusFeedback(object sender, OnScoreBonusGrantEventArgs eventArgs)
