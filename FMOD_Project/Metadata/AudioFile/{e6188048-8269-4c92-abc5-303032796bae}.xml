@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{e6188048-8269-4c92-abc5-303032796bae}">
+		<property name="assetPath">
+			<value>SFX_MENU_CLICK NEGATIVO B (MAIS LONGO).wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.44777777777777777</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{4d1e8fbf-52f6-40f5-bfb3-44c35fa536af}</destination>
+		</relationship>
+	</object>
+</objects>

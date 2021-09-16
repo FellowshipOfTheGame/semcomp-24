@@ -179,7 +179,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preset: {fileID: 11400000, guid: 5fc40ecfe4806844080af202987ff611, type: 2}
-  acceleration: 1
+  accelerationRanges:
+  - acceleration: 4
+    upperLimit: 20
+  - acceleration: 1
+    upperLimit: 50
+  - acceleration: 0.5
+    upperLimit: 100
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -193,6 +199,7 @@ MonoBehaviour:
   airDrag: 0.1
   wheelBase: 4
   forwardForce: 80
+  initialForwardForce: 0
   turningAngleMax: 15
   rotateBackAngle: 60
   frontLeftWheel: {fileID: 5856988595180296522}
@@ -292,6 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldEffect: {fileID: 4622252919096137203, guid: da4af0db463309b4ab5222feaba3f2d5, type: 3}
   speedLines: {fileID: 0}
+  lightning: {fileID: 0}
 --- !u!114 &108651217
 MonoBehaviour:
   m_ObjectHideFlags: 0
