@@ -74,7 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6011752171039614979}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -70, y: 0, z: 0}
+  m_LocalPosition: {x: -30, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3176908547351806417}
@@ -180,13 +180,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6beedac28117a204bb454daa9b7d658d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumSpeed: 12
+  maximumSpeed: 13
   randomizeMaximumSpeed: 0
-  acceleration: 150
+  acceleration: 1000000
   forward: 1
   brake: 0
   wakeOnProximity: 1
-  wakeDistance: 220
+  wakeDistance: 400
   useParentPosition: 1
   lookAtLayers:
     serializedVersion: 2

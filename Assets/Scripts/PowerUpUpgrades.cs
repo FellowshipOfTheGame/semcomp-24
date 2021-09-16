@@ -214,7 +214,7 @@ public class PowerUpUpgrades : MonoBehaviour
 
     private void OnFailure(UnityWebRequest request)
     {
-        
+        Debug.LogError("Failed on fetch userStatus");
     }
     
 }

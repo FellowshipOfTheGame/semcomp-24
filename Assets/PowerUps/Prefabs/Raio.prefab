@@ -61,7 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 245b847c6f2576f4b9b9fb79b874a03d, type: 3}
-  size: {x: 3, y: 10, z: 50}
+  size: {x: 3, y: 10, z: 150}
+  maxTargets: 8
   collisionLayer:
     serializedVersion: 2
     m_Bits: 512

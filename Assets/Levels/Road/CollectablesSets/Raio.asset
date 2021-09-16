@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2242a55d1645a78459076a9952750ea6, type: 3}
-  m_Name: Moedas Reto
+  m_Name: Raio
   m_EditorClassIdentifier: 
   members: []

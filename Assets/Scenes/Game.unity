@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.30322725, g: 0.12813418, b: 0.342678, a: 1}
+  m_IndirectSpecularColor: {r: 0.3074335, g: 0.12843846, b: 0.33836013, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -175,7 +175,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6036709807576084204, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: acceleration
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036709807576084204, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: initialForwardForce
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6036709807576084207, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: m_RootOrder
@@ -1473,21 +1477,8 @@ MonoBehaviour:
   starterSegment: {fileID: 11400000, guid: ee7134e78e35601469792c799c6166c8, type: 2}
   sets:
   - segments:
-    - {fileID: 11400000, guid: f6752dd8ff584ce0bbda5e2848e3e972, type: 2}
-    - {fileID: 11400000, guid: f0faf031165323413a72d99e385208c9, type: 2}
-    weight: 0.5
-  - segments:
-    - {fileID: 11400000, guid: 964730e2ef17e60c8a0d681a648998e5, type: 2}
-    weight: 0.1
-  - segments:
-    - {fileID: 11400000, guid: 07fb43e107f439ec7a02f690ac868d1b, type: 2}
-    weight: 0.1
-  - segments:
-    - {fileID: 11400000, guid: 50e2fc2f02cb16472b38d2f582b7ac8d, type: 2}
-    weight: 0.1
-  - segments:
     - {fileID: 11400000, guid: b4f28b95fd193b06c959466e9016b7c7, type: 2}
-    weight: 0.2
+    weight: 1
 --- !u!114 &1634761249
 MonoBehaviour:
   m_ObjectHideFlags: 0
