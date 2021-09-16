@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2242a55d1645a78459076a9952750ea6, type: 3}
+  m_Name: ObstaculosMoveis
+  m_EditorClassIdentifier: 
+  members:
+  - {fileID: 1685429143219244407, guid: 9b8f3d54d6addf1ab9c37b4eb11f6e64, type: 3}
+  - {fileID: 7416165175133123965, guid: a5059442b5ff5ab8795daafdcf4c438e, type: 3}
+  - {fileID: 1040477494156599615, guid: e572d62fca09773a89cb8d776f7b3eb3, type: 3}
+  - {fileID: 2440442405674910695, guid: 4a08c587311d23e6dac09c70bf87d9c0, type: 3}
+  - {fileID: 3116176268154378664, guid: e7e2e8cc1c24bab23ad8dfaba39c0a10, type: 3}
+  - {fileID: 3116176268154378664, guid: 21d0a571367be5e9d8f36faa76542000, type: 3}
+  - {fileID: 1075727432103781337, guid: 139b089cae6d7ead69597bda33544a6e, type: 3}
+  - {fileID: 1075727432103781337, guid: eaf54a11357210e69a02e8d87c80cfb9, type: 3}
+  - {fileID: 3537762476993421312, guid: 61e7088188444ed3fa8b00e06743626c, type: 3}
+  - {fileID: 5144782942866108517, guid: dcaafeb7e211ae8f2a5d3b66a3aa06a8, type: 3}

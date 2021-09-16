@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5144782942866108512, guid: dcaafeb7e211ae8f2a5d3b66a3aa06a8, type: 3}
+      propertyPath: obstaclePropertiesPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e6be16416784e5629019d1c2b203923, type: 2}
     - target: {fileID: 5144782942866108513, guid: dcaafeb7e211ae8f2a5d3b66a3aa06a8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -41,6 +45,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5144782942866108513, guid: dcaafeb7e211ae8f2a5d3b66a3aa06a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144782942866108516, guid: dcaafeb7e211ae8f2a5d3b66a3aa06a8, type: 3}
+      propertyPath: wakeDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144782942866108516, guid: dcaafeb7e211ae8f2a5d3b66a3aa06a8, type: 3}
+      propertyPath: wakeOnProximity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5144782942866108517, guid: dcaafeb7e211ae8f2a5d3b66a3aa06a8, type: 3}

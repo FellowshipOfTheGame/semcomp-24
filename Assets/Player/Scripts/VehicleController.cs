@@ -27,6 +27,7 @@ public class VehicleController : MonoBehaviour
     private float turningAngle; // Current turning wheel angle
     
     public float forwardForce = 80f;
+    public float initialForwardForce = 0f;
     private bool grounded; // State management
 
     private float currentForwardForce;
@@ -95,7 +96,7 @@ public class VehicleController : MonoBehaviour
         if (preset is null)
             return;
         //forwardForce = preset.speed;
-        forwardForce = 0;
+        forwardForce = initialForwardForce;
 
         rigidbodyDefaultConstraints = _rigidbody.constraints;
     }
