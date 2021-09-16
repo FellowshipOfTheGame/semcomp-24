@@ -197,6 +197,7 @@ public class RaceManager : MonoBehaviour
         startRaceCountdownSign.SetActive(false);
         HUDPanel.SetActive(true);
         UIControls.SetActive(true);
+        RaycastBlockEvent.Invoke(false);
         
         startRaceCountdownText.text = "GO!";
 
