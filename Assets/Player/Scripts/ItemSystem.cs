@@ -12,19 +12,21 @@ public class ItemSystem : MonoBehaviour
     public event OnPowerUpActive OnPowerUpActiveEvent;
     
     private PowerUp currentPowerUp;
+    private bool hasPowerUp;
 
     private void Start()
     {
         controller = GetComponent<VehicleController>();
         _renderer = GetComponent<VehicleRenderer>();
         iconHUD.enabled = false;
+        hasPowerUp = false;
     }
 
     public void ActivateItem()
     {
         if (currentPowerUp is null)
             return;
-
+        hasPowerUp = false;
         currentPowerUp.OnActivate(controller, _renderer);
         OnPowerUpActiveEvent?.Invoke(currentPowerUp);
         currentPowerUp = null;
@@ -40,16 +42,11 @@ public class ItemSystem : MonoBehaviour
 
     public void ReplaceIfNull(PowerUp newPowerUp)
     {
-        if (currentPowerUp == null)
+        if (!hasPowerUp)
         {
             ReplaceItem(newPowerUp);
+            hasPowerUp = true;
         }
-#if  UNITY_EDITOR
-        else
-        {
-            Debug.Log("Could not replace");
-        }
-#endif
     }
     
 }

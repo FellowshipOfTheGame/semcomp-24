@@ -3,7 +3,7 @@ using UnityEngine;
 public class BusStop : MonoBehaviour
 {
     [SerializeField]
-    private int healAmount;
+    public int healAmount;
     
     void OnTriggerEnter(Collider other)
     {
