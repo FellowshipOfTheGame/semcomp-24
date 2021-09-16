@@ -246,6 +246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeMedium
       objectReference: {fileID: 0}
+    - target: {fileID: 8982822186542323338, guid: f2371697b7aad1f43b63250b11369577, type: 3}
+      propertyPath: obstaclePropertiesPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: e6e267233095e9f92988e812c5a1c389, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2371697b7aad1f43b63250b11369577, type: 3}
 --- !u!4 &6139329952368412956 stripped

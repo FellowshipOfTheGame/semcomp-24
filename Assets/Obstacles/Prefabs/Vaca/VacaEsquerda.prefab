@@ -577,6 +577,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7305960074823135601, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: obstaclePropertiesPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e6be16416784e5629019d1c2b203923, type: 2}
     - target: {fileID: 7305960074823135603, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
       propertyPath: m_Mass
       value: 0.1
@@ -606,8 +610,16 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7305960074823135605, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: wakeDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305960074823135605, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
       propertyPath: brakingDistance
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305960074823135605, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: wakeOnProximity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7305960074823135605, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
       propertyPath: lookAtLayers.m_Bits

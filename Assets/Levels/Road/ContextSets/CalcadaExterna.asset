@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2242a55d1645a78459076a9952750ea6, type: 3}
+  m_Name: CalcadaExterna
+  m_EditorClassIdentifier: 
+  members:
+  - {fileID: 4727093338802216789, guid: 97d97fe1e8f2f83a8b95d7fc5341dfab, type: 3}
+  - {fileID: 5941305738986767243, guid: 8e92d93771db99a0ca83c8edc7f6f222, type: 3}
+  - {fileID: 5691213365739182868, guid: 04fe848f3b97f6959a5bb9ffee9164b6, type: 3}
+  - {fileID: 898013052307929375, guid: 941a38380f378e141b9dc3b5e018c66b, type: 3}
+  - {fileID: 8880439268216535399, guid: 8e71ac51b928dd64898528b48918717f, type: 3}
+  - {fileID: 8206588658605259442, guid: 7412773795732146e8f8348befe090ca, type: 3}

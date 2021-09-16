@@ -250,6 +250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeSmall
       objectReference: {fileID: 0}
+    - target: {fileID: 8982822186542323338, guid: f2371697b7aad1f43b63250b11369577, type: 3}
+      propertyPath: obstaclePropertiesPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: 76e4568d4279132a98c40cee8cef4578, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2371697b7aad1f43b63250b11369577, type: 3}
 --- !u!4 &5105543071814505922 stripped
