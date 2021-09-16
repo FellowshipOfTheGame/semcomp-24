@@ -147,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 987757884}
     - target: {fileID: 407148919, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: healthMax
-      value: 500000
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 847439272864004725, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: raceManager
@@ -228,6 +228,10 @@ PrefabInstance:
     - target: {fileID: 6036709807576084207, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6036709807576084211, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: m_AngularDrag
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6092390117275322244, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1481,7 +1485,7 @@ MonoBehaviour:
   starterSegment: {fileID: 11400000, guid: ee7134e78e35601469792c799c6166c8, type: 2}
   sets:
   - segments:
-    - {fileID: 11400000, guid: b4f28b95fd193b06c959466e9016b7c7, type: 2}
+    - {fileID: 11400000, guid: b3448675e1e6f456d823fb2db25c4ddd, type: 2}
     weight: 1
 --- !u!114 &1634761249
 MonoBehaviour:
