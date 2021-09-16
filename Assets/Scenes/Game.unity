@@ -145,6 +145,10 @@ PrefabInstance:
       propertyPath: raceManager
       value: 
       objectReference: {fileID: 987757884}
+    - target: {fileID: 407148919, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: healthMax
+      value: 500000
+      objectReference: {fileID: 0}
     - target: {fileID: 847439272864004725, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: raceManager
       value: 
@@ -175,11 +179,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6036709807576084204, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: acceleration
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6036709807576084204, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: initialForwardForce
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6036709807576084207, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: m_RootOrder
