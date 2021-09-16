@@ -4,6 +4,24 @@ using UnityEngine.Networking;
 
 public class PowerUpUpgrades : MonoBehaviour
 {
+    [Header("Default values on request failure")]
+    [Header("Booster")]
+    public float boosterBoost;
+    public float boosterDuration;
+    [Header("Bus stop")]
+    public int amountHealed;
+    [Header("Lightning")]
+    public Vector3 size;
+    public int maxTargets;
+    [Header("Nitro")]
+    public float nitroBoost;
+    public float nitroDuration;
+    [Header("Player Health")]
+    public int maxHealth;
+    [Header("Shield")]
+    public int maxHits;
+    public float maxDuration;
+
     public BoosterPreset boosterPreset0;
     public BoosterPreset boosterPreset1;
     public BoosterPreset boosterPreset2;
@@ -217,25 +235,25 @@ public class PowerUpUpgrades : MonoBehaviour
         playerPrefab.GetComponent<HealthSystem>().SetHealthMax(playerHealth0Preset0.starterHealth);
         
         Booster booster = boosterPrefab.GetComponent<Booster>();
-        booster.boost = boosterPreset0.boost;
-        booster.duration = boosterPreset0.duration;
+        booster.boost = boosterBoost;
+        booster.duration = boosterDuration;
         
         Nitro nitro = nitroPrefab.GetComponent<Nitro>();
-        nitro.boost = nitroPreset0.boost;
-        nitro.duration = nitroPreset0.duration;
+        nitro.boost = nitroBoost;
+        nitro.duration = nitroDuration;
         
         BusStop busStop0 = busStopPrefab0.GetComponentInChildren<BusStop>();
         BusStop busStop1 = busStopPrefab1.GetComponentInChildren<BusStop>();
-        busStop0.healAmount = busStopPreset0.healAmount;
-        busStop1.healAmount = busStopPreset0.healAmount;
+        busStop0.healAmount = amountHealed;
+        busStop1.healAmount = amountHealed;
         
         Shield shield = shieldPrefab.GetComponent<Shield>();
-        shield.protectionTimes = shieldPreset0.maxHits;
-        shield.duration = shieldPreset0.maxDuration;
+        shield.protectionTimes = maxHits;
+        shield.duration = maxDuration;
         
         Lightning lightning = lightningPrefab.GetComponent<Lightning>();
-        lightning.size = lightningPreset0.size;
-        lightning.maxTargets = lightningPreset0.maxTargets;
+        lightning.size = size;
+        lightning.maxTargets = maxTargets;
     }
     
 }
