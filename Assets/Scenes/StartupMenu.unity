@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -865,6 +865,8 @@ GameObject:
   - component: {fileID: 205697476}
   - component: {fileID: 205697475}
   - component: {fileID: 205697474}
+  - component: {fileID: 205697477}
+  - component: {fileID: 205697478}
   m_Layer: 5
   m_Name: PlayBtn
   m_TagString: Untagged
@@ -973,6 +975,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205697472}
   m_CullTransparentMesh: 1
+--- !u!114 &205697477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205697472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/MENU/Sele\xE7\xE3o positiva A"
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &205697478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205697472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cd2184a86381438c63d21d918df52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &215084443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2471,6 +2508,8 @@ GameObject:
   - component: {fileID: 775673623}
   - component: {fileID: 775673622}
   - component: {fileID: 775673621}
+  - component: {fileID: 775673624}
+  - component: {fileID: 775673625}
   m_Layer: 5
   m_Name: BackBtn
   m_TagString: Untagged
@@ -2592,6 +2631,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775673619}
   m_CullTransparentMesh: 1
+--- !u!114 &775673624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775673619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/MENU/Sele\xE7\xE3o negativa B"
+  PlayEvent: 15
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &775673625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775673619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cd2184a86381438c63d21d918df52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &804910439
 GameObject:
   m_ObjectHideFlags: 0
@@ -3084,6 +3158,8 @@ GameObject:
   - component: {fileID: 920637389}
   - component: {fileID: 920637388}
   - component: {fileID: 920637387}
+  - component: {fileID: 920637390}
+  - component: {fileID: 920637391}
   m_Layer: 5
   m_Name: RankingBtn
   m_TagString: Untagged
@@ -3204,6 +3280,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920637385}
   m_CullTransparentMesh: 1
+--- !u!114 &920637390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920637385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/MENU/Sele\xE7\xE3o positiva A"
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &920637391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920637385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cd2184a86381438c63d21d918df52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &937969560
 GameObject:
   m_ObjectHideFlags: 0
@@ -3381,6 +3492,8 @@ GameObject:
   - component: {fileID: 985152811}
   - component: {fileID: 985152810}
   - component: {fileID: 985152809}
+  - component: {fileID: 985152813}
+  - component: {fileID: 985152812}
   m_Layer: 5
   m_Name: OkayBtn
   m_TagString: Untagged
@@ -3490,6 +3603,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985152807}
   m_CullTransparentMesh: 1
+--- !u!114 &985152812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985152807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cd2184a86381438c63d21d918df52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &985152813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985152807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/MENU/Sele\xE7\xE3o positiva A"
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &994425990
 GameObject:
   m_ObjectHideFlags: 0
@@ -3502,6 +3650,8 @@ GameObject:
   - component: {fileID: 994425993}
   - component: {fileID: 994425992}
   - component: {fileID: 994425994}
+  - component: {fileID: 994425995}
+  - component: {fileID: 994425996}
   m_Layer: 5
   m_Name: StoreBtn
   m_TagString: Untagged
@@ -3622,6 +3772,41 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &994425995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994425990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/MENU/Sele\xE7\xE3o positiva A"
+  PlayEvent: 15
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &994425996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994425990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cd2184a86381438c63d21d918df52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1009059890
 GameObject:
   m_ObjectHideFlags: 0
@@ -4740,6 +4925,8 @@ GameObject:
   - component: {fileID: 1452337412}
   - component: {fileID: 1452337411}
   - component: {fileID: 1452337410}
+  - component: {fileID: 1452337413}
+  - component: {fileID: 1452337414}
   m_Layer: 5
   m_Name: ExitBtn
   m_TagString: Untagged
@@ -4848,6 +5035,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452337408}
   m_CullTransparentMesh: 1
+--- !u!114 &1452337413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452337408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/MENU/Sele\xE7\xE3o negativa B"
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &1452337414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452337408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cd2184a86381438c63d21d918df52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1468812487 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5898439706474547995, guid: f2053c548dbd571458730d722d267390, type: 3}
@@ -4924,6 +5146,8 @@ GameObject:
   - component: {fileID: 1496034925}
   - component: {fileID: 1496034924}
   - component: {fileID: 1496034923}
+  - component: {fileID: 1496034926}
+  - component: {fileID: 1496034927}
   m_Layer: 5
   m_Name: NextBtn
   m_TagString: Untagged
@@ -5045,6 +5269,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496034921}
   m_CullTransparentMesh: 1
+--- !u!114 &1496034926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496034921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/MENU/Sele\xE7\xE3o positiva B"
+  PlayEvent: 15
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &1496034927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496034921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cd2184a86381438c63d21d918df52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1501782541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5380,6 +5639,8 @@ GameObject:
   - component: {fileID: 1608179089}
   - component: {fileID: 1608179088}
   - component: {fileID: 1608179090}
+  - component: {fileID: 1608179091}
+  - component: {fileID: 1608179092}
   m_Layer: 5
   m_Name: BackBtn
   m_TagString: Untagged
@@ -5500,6 +5761,41 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1608179091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608179086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/MENU/Sele\xE7\xE3o negativa A"
+  PlayEvent: 15
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &1608179092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608179086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cd2184a86381438c63d21d918df52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1640141827
 GameObject:
   m_ObjectHideFlags: 0
@@ -5664,6 +5960,7 @@ GameObject:
   - component: {fileID: 1658627733}
   - component: {fileID: 1658627732}
   - component: {fileID: 1658627735}
+  - component: {fileID: 1658627736}
   m_Layer: 5
   m_Name: LoginBtn
   m_TagString: Untagged
@@ -5800,6 +6097,41 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1658627736}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1658627736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658627730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/MENU/Sele\xE7\xE3o positiva B"
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1001 &1720102530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6035,6 +6367,8 @@ GameObject:
   - component: {fileID: 1772670713}
   - component: {fileID: 1772670712}
   - component: {fileID: 1772670711}
+  - component: {fileID: 1772670714}
+  - component: {fileID: 1772670715}
   m_Layer: 5
   m_Name: LogoutBtn
   m_TagString: Untagged
@@ -6143,6 +6477,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772670709}
   m_CullTransparentMesh: 1
+--- !u!114 &1772670714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772670709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/MENU/Sele\xE7\xE3o negativa A"
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &1772670715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772670709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cd2184a86381438c63d21d918df52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1783267717 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5898439706474547995, guid: f2053c548dbd571458730d722d267390, type: 3}
@@ -6160,6 +6529,8 @@ GameObject:
   - component: {fileID: 1930608236}
   - component: {fileID: 1930608235}
   - component: {fileID: 1930608234}
+  - component: {fileID: 1930608238}
+  - component: {fileID: 1930608237}
   m_Layer: 5
   m_Name: CloseBtn
   m_TagString: Untagged
@@ -6280,6 +6651,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930608232}
   m_CullTransparentMesh: 1
+--- !u!114 &1930608237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930608232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7cd2184a86381438c63d21d918df52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1930608238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930608232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/MENU/Sele\xE7\xE3o negativa A"
+  PlayEvent: 15
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1001 &1936333044
 PrefabInstance:
   m_ObjectHideFlags: 0
