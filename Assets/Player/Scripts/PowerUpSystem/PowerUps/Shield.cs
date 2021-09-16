@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Shield : PowerUp
 {
-    [SerializeField] private int protectionTimes;
-    [SerializeField] private float duration;
+    [SerializeField] public int protectionTimes;
+    [SerializeField] public float duration;
 
     public override void OnActivate(VehicleController controller, VehicleRenderer renderer)
     {

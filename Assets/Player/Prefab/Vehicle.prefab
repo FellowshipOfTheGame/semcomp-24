@@ -109,7 +109,6 @@ GameObject:
   - component: {fileID: 847439272864004725}
   - component: {fileID: 6095949563745021327}
   - component: {fileID: 1822952218701299703}
-  - component: {fileID: 108651224}
   - component: {fileID: 108651217}
   m_Layer: 7
   m_Name: Vehicle
@@ -292,19 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldEffect: {fileID: 4622252919096137203, guid: da4af0db463309b4ab5222feaba3f2d5, type: 3}
---- !u!114 &108651224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6036709807576084203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed63841fe11dac430a2efec02d370a60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentSpeedText: {fileID: 0}
+  speedLines: {fileID: 0}
 --- !u!114 &108651217
 MonoBehaviour:
   m_ObjectHideFlags: 0

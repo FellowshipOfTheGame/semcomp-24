@@ -3,13 +3,13 @@ using UnityEngine;
 public class Booster : MonoBehaviour
 {
     [SerializeField] [Range(0f, 1f)]
-    private float boost;
+    public float boost;
     
     [SerializeField]
-    private float duration = 3f;
+    public float duration = 3f;
 
     [SerializeField]
-    private NitrousSystem.ActivateMode activateMode;
+    public NitrousSystem.ActivateMode activateMode;
     
     void OnTriggerEnter(Collider other)
     {
