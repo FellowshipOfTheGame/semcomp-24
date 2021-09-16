@@ -3,6 +3,24 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
+[System.Serializable]
+internal class AccelerationRange
+{
+    [SerializeField]
+    private float acceleration;
+    
+    [SerializeField] [Range(0, 100)]
+    private int upperLimit;
+
+    public static float reference;
+
+    public float Acceleration => acceleration;
+
+    public bool Contain(float value)
+    {
+        return (value / reference * 100 <= upperLimit);
+    }
+}
 /**
  * Physics interactions for vehicles
 */
@@ -12,10 +30,18 @@ public class VehicleController : MonoBehaviour
     [Header("General")]
     
     public VehicleStatPreset preset;
-
-    [Header("Physics")]
     
-    public float acceleration = 1f;
+    [FormerlySerializedAs("acceleration")]
+    [Header("Physics")]
+
+    // public float acceleration = 1f;
+
+    // [SerializeField]
+    // private AccelerationRange[] acceleration;
+    
+    [SerializeField]
+    private AccelerationRange[] accelerationRanges;
+    
     public LayerMask whatIsGround;
     public Transform[] groundDetection;
     public float groundCheckDistance = 0.5f;
@@ -99,6 +125,8 @@ public class VehicleController : MonoBehaviour
         forwardForce = initialForwardForce;
 
         rigidbodyDefaultConstraints = _rigidbody.constraints;
+
+        AccelerationRange.reference = maximumSpeed;
     }
 
     protected void Update()
@@ -108,7 +136,13 @@ public class VehicleController : MonoBehaviour
             UseItem(new InputAction.CallbackContext());
         }
 
-        forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, acceleration * Time.deltaTime);
+        int i = 0;
+        while (!accelerationRanges[i].Contain(GetCurrentSpeed())) i++;
+        
+        Debug.Log(accelerationRanges[i].Acceleration);
+
+        // forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, acceleration[i].Acceleration * Time.deltaTime);
+        forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, accelerationRanges[i].Acceleration * Time.deltaTime);
 
         // Check rotation boundaries
         bool turnRight = (vehicleRotation.y <= turningAngleMax || vehicleRotation.y > 180);
