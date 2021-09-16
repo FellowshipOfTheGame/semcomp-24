@@ -6,13 +6,14 @@ using UnityEngine;
 public class FixedTrackCamera : MonoBehaviour
 {
     [SerializeField] private Transform track;
+    [SerializeField] private float height;
     [SerializeField] private float distance;
     
     private void Update()
     {
         Vector3 position;
         position.x = track.position.x;
-        position.y = track.position.y + distance;
+        position.y = track.position.y + height;
         position.z = track.position.z - distance;
         transform.position = position;
 
