@@ -51,6 +51,11 @@ public class OffRoad : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
+        if (TimeTravel.InThePast)
+        {
+            return;
+        }
+        
         if (other.gameObject.CompareTag("OffRoad") && !IsPlayerOffRoad)
         {
             IsPlayerOffRoad = true;
