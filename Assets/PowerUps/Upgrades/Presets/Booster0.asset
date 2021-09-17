@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Booster0
   m_EditorClassIdentifier: 
   boost: 0.1
-  duration: 1
+  duration: 2

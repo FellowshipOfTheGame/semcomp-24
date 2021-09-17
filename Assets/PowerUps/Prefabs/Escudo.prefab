@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: ee6a5790c8fa142498e7dd4853a9081e, type: 3}
-  protectionTimes: 3
-  duration: 45
+  protectionTimes: 4
+  duration: 15
 --- !u!114 &810672008975289275
 MonoBehaviour:
   m_ObjectHideFlags: 0
