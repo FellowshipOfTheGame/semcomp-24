@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1990480144636715958}
   - component: {fileID: 2042274527213379551}
   - component: {fileID: 6287091350211338888}
+  - component: {fileID: 3211416506775526069}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -95,6 +96,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3211416506775526069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2311101975492248708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/\xD4NIBUS_FOLEY/BUS FOLEY_RAMPANDO"
+  PlayEvent: 7
+  StopEvent: 8
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &3259666738366714159
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,6 +163,7 @@ GameObject:
   - component: {fileID: 866613272634665965}
   - component: {fileID: 3162128817868758823}
   - component: {fileID: 1857720315202960145}
+  - component: {fileID: 8988134199856833687}
   m_Layer: 6
   m_Name: "rampaminh\xE3o"
   m_TagString: Untagged
@@ -222,3 +247,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9533784, y: 1.2339752, z: 2.5248833}
   m_Center: {x: 0, y: -3.282415, z: 1.242519}
+--- !u!114 &8988134199856833687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522623151885811442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/OBST\xC1CULOS/IMPACTO6 (VIDRO)"
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0

@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using UnityEngine;
 
@@ -20,11 +21,13 @@ public class Obstacle : MonoBehaviour
     public Coroutine DestroyObstacleCoroutine;
 
     private bool fadeOutReady;
+    private StudioEventEmitter _eventEmitter;
 
     void Start()
     {
         renderers = GetComponentsInChildren<Renderer>();
         _collider = GetComponent<Collider>();
+        _eventEmitter = gameObject.GetComponent<StudioEventEmitter>();
 
         if (_collider == null)
         {
@@ -38,6 +41,7 @@ public class Obstacle : MonoBehaviour
         // Only the first hit deals damage and decreases player speed
         if (other.gameObject.CompareTag("Player") && !HitPlayer)
         {
+            _eventEmitter?.Play();
             // If countdown was already triggered by an obstacle hit, cancel it
             if (DestroyObstacleCoroutine != null)
             {
@@ -50,6 +54,7 @@ public class Obstacle : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
+            _eventEmitter?.Play();
             // If countdown was already triggered by a player hit, do nothing
             if (DestroyObstacleCoroutine == null)
             {
