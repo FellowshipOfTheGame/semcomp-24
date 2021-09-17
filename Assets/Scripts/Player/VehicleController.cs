@@ -10,7 +10,7 @@ public class AccelerationRange
     [SerializeField]
     private float acceleration;
     
-    [SerializeField] [Range(0, 100)]
+    [SerializeField]
     private int upperLimit;
 
     public static float reference;
@@ -59,7 +59,7 @@ public class VehicleController : MonoBehaviour
     public float rotateBackAngle = 60f;
 
     [Tooltip("The compensation force that is applied in the x component of the forward force")]
-    public float compensationForce = 10f;
+    public float compensationForceControl = 3f;
     
     private float turningAngle; // Current turning wheel angle
     
@@ -75,6 +75,8 @@ public class VehicleController : MonoBehaviour
     private Rigidbody _rigidbody;
     private Collider[] _colliders;
     private ItemSystem itemSystem;
+
+    public BoxCollider VehicleCollider { get; private set; }
 
     public float maximumSpeed { get; private set; }
 
@@ -118,6 +120,8 @@ public class VehicleController : MonoBehaviour
         _colliders = GetComponents<Collider>();
         itemSystem = GetComponent<ItemSystem>();
 
+        VehicleCollider = GetComponent<BoxCollider>(); 
+
         groundDragDefault = groundDrag;
         
         if (preset is null)
@@ -134,16 +138,6 @@ public class VehicleController : MonoBehaviour
 
     protected void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            UseItem(new InputAction.CallbackContext());
-        }
-
-        int i = 0;
-        while (!accelerationRanges[i].Contain(GetCurrentSpeed())) i++;
-        
-        forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, accelerationRanges[i].Acceleration * Time.deltaTime);
-
         // Check rotation boundaries
         bool turnRight = (vehicleRotation.y <= turningAngleMax || vehicleRotation.y > 180);
         bool turnLeft = (vehicleRotation.y >= (360 - turningAngleMax) || vehicleRotation.y <= 180);
@@ -185,10 +179,18 @@ public class VehicleController : MonoBehaviour
             return;
         }
 
+        int i = 0;
+        while (!accelerationRanges[i].Contain(GetCurrentSpeed())) i++;
+        
+        forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, accelerationRanges[i].Acceleration * Time.deltaTime);
+        
         _rigidbody.AddRelativeForce(Vector3.forward * forwardForce, ForceMode.Acceleration);
 
-        Vector3 compensationDirection = turningAngle > 0 ? Vector3.right : turningAngle < 0 ? Vector3.left : Vector3.zero;
-        _rigidbody.AddRelativeForce(compensationDirection * compensationForce, ForceMode.Acceleration);
+        if (i > 1)
+        {
+            Vector3 compensationDirection = turningAngle > 0 ? Vector3.right : turningAngle < 0 ? Vector3.left : Vector3.zero;
+            _rigidbody.AddRelativeForce(compensationDirection * Mathf.Clamp((forwardForce / compensationForceControl), -preset.speed, preset.speed), ForceMode.Acceleration);
+        }
         
         // _rigidbody.AddForce(-_rigidbody.velocity, ForceMode.Acceleration); // Goes up to a certain maximum speed
         
@@ -199,28 +201,28 @@ public class VehicleController : MonoBehaviour
             _rigidbody.AddRelativeTorque(Vector3.up * angularSpeed, ForceMode.Acceleration);
         }
         
-        // vehicleRotation = _rigidbody.rotation.eulerAngles;
-        //
-        // // Checks for rotation boundaries
-        // if (vehicleRotation.y > rotateBackAngle && vehicleRotation.y < (360 - rotateBackAngle))
-        // {
-        //     // Really extreme case. Snap back to original rotation
-        //     if (vehicleRotation.y > 150 && vehicleRotation.y < 220)
-        //     {
-        //         _rigidbody.rotation = Quaternion.identity;
-        //         vehicleRotation = _rigidbody.rotation.eulerAngles;
-        //     }
-        //     else
-        //     {
-        //         // Rotation direction
-        //         vehicleRotation.y = vehicleRotation.y <= 180 ? rotateBackAngle : (360 - rotateBackAngle);
-        //     }
-        //     
-        //     // Debug.Log("Rotate back");
-        // }
-        //
-        // vehicleRotation.z = 0f;
-        // _rigidbody.rotation = Quaternion.Euler(vehicleRotation);
+        vehicleRotation = _rigidbody.rotation.eulerAngles;
+        
+        // Checks for rotation boundaries
+        if (vehicleRotation.y > rotateBackAngle && vehicleRotation.y < (360 - rotateBackAngle))
+        {
+            // Really extreme case. Snap back to original rotation
+            if (vehicleRotation.y > 150 && vehicleRotation.y < 220)
+            {
+                _rigidbody.rotation = Quaternion.identity;
+                vehicleRotation = _rigidbody.rotation.eulerAngles;
+            }
+            else
+            {
+                // Rotation direction
+                vehicleRotation.y = vehicleRotation.y <= 180 ? rotateBackAngle : (360 - rotateBackAngle);
+            }
+            
+            // Debug.Log("Rotate back");
+        }
+        
+        vehicleRotation.z = 0f;
+        _rigidbody.rotation = Quaternion.Euler(vehicleRotation);
     }
 
     #endregion
