@@ -36,8 +36,9 @@ public class VehicleRenderer : MonoBehaviour
         shieldAnimator.Play("ShieldDeactivate");
     }
 
-    public void ActivateLightning()
+    public void ActivateLightning(Vector3 size)
     {
+        lightning.transform.localScale = new Vector3(lightning.transform.localScale.x, lightning.transform.localScale.y, size.z);
         lightningAnimator.Play("FadeInOut", 0, 0);
     }
 

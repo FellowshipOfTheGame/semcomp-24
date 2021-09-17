@@ -15,7 +15,12 @@ public class LevelGenerator : Generator
 
     protected override Segment GetNext()
     {
-        float randomNumber = UnityEngine.Random.Range(0f, 1f);
+        float weightSum = 0f;
+        foreach (WeightedSet set in sets)
+        {
+            weightSum += set.weight;
+        }
+        float randomNumber = UnityEngine.Random.Range(0f, weightSum);
         float cumulative = 0f;
         int index;
         

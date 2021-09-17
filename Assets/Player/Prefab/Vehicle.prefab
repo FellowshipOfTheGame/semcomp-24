@@ -134,6 +134,7 @@ Transform:
   - {fileID: 6036709807405129390}
   - {fileID: 680376510}
   - {fileID: 4077327872582745221}
+  - {fileID: 7066330756564745632}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -147,7 +148,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 2
+  m_AngularDrag: 5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -186,6 +187,8 @@ MonoBehaviour:
     upperLimit: 50
   - acceleration: 0.5
     upperLimit: 100
+  forwardForce: 80
+  initialForwardForce: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -197,11 +200,11 @@ MonoBehaviour:
   groundCheckDistance: 1
   groundDrag: 1
   airDrag: 0.1
+  centerOfMass: {fileID: 7066330756564745632}
   wheelBase: 4
-  forwardForce: 80
-  initialForwardForce: 0
   turningAngleMax: 15
   rotateBackAngle: 60
+  compensationForce: 13.333333
   frontLeftWheel: {fileID: 5856988595180296522}
   frontRightWheel: {fileID: 7807893900232531829}
   wheelsRotationSpeed: 5
@@ -402,6 +405,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6036709807576084207}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8165410336361835209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7066330756564745632}
+  m_Layer: 7
+  m_Name: CenterOfMass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7066330756564745632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8165410336361835209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.01, z: 1.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6036709807576084207}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8755368214779387642
 GameObject:
