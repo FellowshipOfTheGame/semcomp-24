@@ -745,7 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a387fa897f3d64942b9994388dd0b4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableEvent: "event:/MENU/Sele\xE7\xE3o positiva A"
+  interactableEvent: event:/MENU/Comprar habilidades
   nonInteractableEvent: "event:/MENU/Sele\xE7\xE3o negativa A"
 --- !u!1 &8837408753022871769
 GameObject:

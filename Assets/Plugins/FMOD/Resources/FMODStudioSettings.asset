@@ -269,10 +269,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   SwitchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
-  sourceProjectPath: "FMOD_Project/\xD4NIBUS_FMOD_01.fspro"
-  sourceBankPath: FMOD_Project/Build
+  HasSourceProject: 0
+  HasPlatforms: 0
+  sourceProjectPath: "\xD4NIBUS_FMOD_04/\xD4NIBUS_FMOD_04.fspro"
+  sourceBankPath: "\xD4NIBUS_FMOD_04/Build/Desktop"
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -296,8 +296,7 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - Music
-  - SFX
+  - Gameplay
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
