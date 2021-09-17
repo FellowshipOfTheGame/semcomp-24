@@ -17,6 +17,6 @@ public class Lightning : PowerUp
         {
             results[i].transform.gameObject.GetComponent<Obstacle>().FadeOut();
         }
-        renderer.ActivateLightning();
+        renderer.ActivateLightning(size);
     }
 }

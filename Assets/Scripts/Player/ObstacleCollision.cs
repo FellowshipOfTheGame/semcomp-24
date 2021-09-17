@@ -96,7 +96,7 @@ public class ObstacleCollision : MonoBehaviour
             {
                 scoreManager.GrantBonus(Mathf.RoundToInt(finalDamage * scoreBonusMultiplier));
             }
-            else
+            else if (!healthSystem.HasShield())
             {
                 // Decrease vehicle speed according to the damage dealt by the obstacle
                 //_rigidbody.AddRelativeForce(other.relativeVelocity.normalized * (finalDamage * obstacle.VehicleSpeedDecrease));
