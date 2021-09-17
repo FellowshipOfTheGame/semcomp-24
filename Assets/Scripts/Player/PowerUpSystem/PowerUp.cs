@@ -5,8 +5,12 @@ using UnityEngine;
 public abstract class PowerUp : MonoBehaviour
 {
     public Sprite icon;
+    public FMODUnity.StudioEventEmitter eventEmitter;
     
-    public abstract void OnActivate(VehicleController controller, VehicleRenderer renderer);
+    public virtual void OnActivate(VehicleController controller, VehicleRenderer renderer)
+    {
+        eventEmitter.Play();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

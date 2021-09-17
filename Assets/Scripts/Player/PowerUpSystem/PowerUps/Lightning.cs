@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//TODO: call OnActivate from base
 public class Lightning : PowerUp
 {
     public Vector3 size;

@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 4220947340997960508}
   - component: {fileID: 3130355365855808844}
   - component: {fileID: 7283342288037131670}
+  - component: {fileID: -2542928841546210766}
   m_Layer: 0
   m_Name: Nitro
   m_TagString: Untagged
@@ -158,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 66ed325cd1cb9804784a0a845e0dd394, type: 3}
+  eventEmitter: {fileID: -2542928841546210766}
   boost: 0.6
   duration: 8
 --- !u!114 &7283342288037131670
@@ -175,6 +177,29 @@ MonoBehaviour:
   floatingMagnitude: 0.8
   floatingSpeed: 0.4
   rotationSpeed: 20
+--- !u!114 &-2542928841546210766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761799879409561140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/GAMEPLAY SFX/Nitro
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1001 &4761799878311260024
 PrefabInstance:
   m_ObjectHideFlags: 0
