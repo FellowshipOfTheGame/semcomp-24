@@ -139,7 +139,7 @@ public class VehicleController : MonoBehaviour
         int i = 0;
         while (!accelerationRanges[i].Contain(GetCurrentSpeed())) i++;
         
-        Debug.Log(accelerationRanges[i].Acceleration);
+        //Debug.Log(accelerationRanges[i].Acceleration);
 
         // forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, acceleration[i].Acceleration * Time.deltaTime);
         forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, accelerationRanges[i].Acceleration * Time.deltaTime);

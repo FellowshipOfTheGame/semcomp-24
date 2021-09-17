@@ -8,6 +8,7 @@ using SubiNoOnibus.Networking.Requests;
 public class RaceManager : MonoBehaviour
 {
     [SerializeField] public GameObject player;
+    [SerializeField] public DynamicMusic musicPlayer;
     [SerializeField] private RaceData raceData;
 
     [Space(10)]
@@ -197,12 +198,19 @@ public class RaceManager : MonoBehaviour
         startRaceCountdownSign.SetActive(false);
         HUDPanel.SetActive(true);
         UIControls.SetActive(true);
+
+        musicPlayer.BeginMusic();
         
         startRaceCountdownText.text = "GO!";
 
         yield return new WaitForSeconds(3);
         
         startRaceCountdownText.enabled = false;
+    }
+
+    public void Pause()
+    {
+        musicPlayer.PauseMusic(true);
     }
     
     // TODO: ObtainItem and UseItem methods

@@ -21,7 +21,11 @@ public class TimeTravel : MonoBehaviour
     [Space(10)]
     [Header("Bonuses")]
     [Space(10)]
-    
+    [SerializeField] private DynamicMusic musicPlayer;
+
+    [Space(10)]
+    [Header("Bonuses")]
+    [Space(10)]
     [SerializeField] private int scoreBonus = 300;
     // [SerializeField] private int coinsBonus = 100;
 
@@ -32,6 +36,7 @@ public class TimeTravel : MonoBehaviour
     
     [SerializeField] private GameObject globalVolumePast;
     [SerializeField] private GameObject portalPrefab;
+
 
     private GameObject player;
     private HealthSystem healthSystem;
@@ -83,7 +88,19 @@ public class TimeTravel : MonoBehaviour
         healthSystem.SetInvulnerable(true);
         CurrentStage = stages - 1;
 
-        float decreaseRate = (100f / duration);
+        const float transitionDuration = 3.5f;
+        float decreaseRate = (100f / transitionDuration);
+        
+        musicPlayer.BeginTransition();
+        while (counter > 0)
+        {
+            counter -= Time.deltaTime * decreaseRate;
+            yield return null;
+        }
+        musicPlayer.EndTransition();
+        
+        counter = 100f;
+        decreaseRate = (100f / duration);
 
         GeneratePortal();
 
@@ -103,7 +120,7 @@ public class TimeTravel : MonoBehaviour
         {
             counter -= Time.deltaTime * decreaseRate;
             
-            if (counter <= 100 - (decreaseRate * 1f))
+            if (counter <= 100 - decreaseRate)
             {
                 CurrentStage = Mathf.RoundToInt(counter / (100f / (stages - 2))) + 1;
             }
