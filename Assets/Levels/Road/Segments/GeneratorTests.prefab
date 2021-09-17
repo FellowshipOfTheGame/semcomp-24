@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2004649143416114348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2004649143416114349}
+  - component: {fileID: 2004649143416114322}
+  - component: {fileID: 2004649143416114320}
+  - component: {fileID: 2004649143416114323}
+  m_Layer: 0
+  m_Name: GeneratorTests
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2004649143416114349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004649143416114348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2004649143416114322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004649143416114348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 370dbf791ef7a5a4d9631079667a7d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  follow: {fileID: 0}
+  threshold: 500
+  area: {x: 42, y: 0, z: 100}
+  areaOffset: {x: 0, y: 0, z: 0}
+  flip: 0
+  roads:
+  - {fileID: 442126565969431469, guid: 301ec04a4fae02b08b2572c1b5a35310, type: 3}
+  - {fileID: 752195518846494412, guid: 9a58a56e3e85f186cbab3c5e2cea85b5, type: 3}
+  - {fileID: 4606971220580913277, guid: 63af011769ff822b4a078c2731708f9c, type: 3}
+  roadHeight: 0.5
+  useSegments: 1
+  starterSegment: {fileID: 11400000, guid: ee7134e78e35601469792c799c6166c8, type: 2}
+  sets:
+  - segments:
+    - {fileID: 11400000, guid: ded9f995ea03bec97b223c03f2963317, type: 2}
+    - {fileID: 11400000, guid: c14e390718e9c4344a9b6909e60b1046, type: 2}
+    - {fileID: 11400000, guid: 692218244484270b3be4bc93c06e909c, type: 2}
+    - {fileID: 11400000, guid: 00b4f6b882c7564709cc4ce42b50dca8, type: 2}
+    - {fileID: 11400000, guid: 0ddca84c43a04bd77a24ea9875aad323, type: 2}
+    - {fileID: 11400000, guid: 3b8ac67bb84419ce6a60e8cd3290e06b, type: 2}
+    - {fileID: 11400000, guid: 23d30184a1c5a60359e09fc0137f1103, type: 2}
+    - {fileID: 11400000, guid: 6f538c6f5e6f73cffae9235c185a0f98, type: 2}
+    - {fileID: 11400000, guid: 6fe248326a7316d94b79086d7f49621a, type: 2}
+    - {fileID: 11400000, guid: 73ddd8b6cb0c4ed83a8789376a818c30, type: 2}
+    - {fileID: 11400000, guid: 093d22d7c7c198b08a2c72754bdd7f4f, type: 2}
+    - {fileID: 11400000, guid: 50875f96d5c6e7931b14358776857e47, type: 2}
+    - {fileID: 11400000, guid: 52caf58047900842dabb53afcf6cff4a, type: 2}
+    - {fileID: 11400000, guid: 47ff2784031bc2d73af04b1c24af9570, type: 2}
+    - {fileID: 11400000, guid: 7843cc687129cfd419c5954c4ab398e8, type: 2}
+    - {fileID: 11400000, guid: 9f62d5dfd0d1bd20e9b46e3146d8d272, type: 2}
+    - {fileID: 11400000, guid: 68a845b55e90fd25c92da4a8041e7bbe, type: 2}
+    - {fileID: 11400000, guid: 3f3f56b8d8d99c4b6aff1ed86a781380, type: 2}
+    - {fileID: 11400000, guid: ded9f995ea03bec97b223c03f2963317, type: 2}
+    - {fileID: 11400000, guid: c14e390718e9c4344a9b6909e60b1046, type: 2}
+    - {fileID: 11400000, guid: 692218244484270b3be4bc93c06e909c, type: 2}
+    - {fileID: 11400000, guid: 00b4f6b882c7564709cc4ce42b50dca8, type: 2}
+    - {fileID: 11400000, guid: 0ddca84c43a04bd77a24ea9875aad323, type: 2}
+    - {fileID: 11400000, guid: ded9f995ea03bec97b223c03f2963317, type: 2}
+    - {fileID: 11400000, guid: c14e390718e9c4344a9b6909e60b1046, type: 2}
+    weight: 2
+  - segments: []
+    weight: 0
+  - segments: []
+    weight: 0
+  - segments:
+    - {fileID: 11400000, guid: 3b8ac67bb84419ce6a60e8cd3290e06b, type: 2}
+    - {fileID: 11400000, guid: 23d30184a1c5a60359e09fc0137f1103, type: 2}
+    - {fileID: 11400000, guid: 6f538c6f5e6f73cffae9235c185a0f98, type: 2}
+    - {fileID: 11400000, guid: 6fe248326a7316d94b79086d7f49621a, type: 2}
+    weight: 1
+--- !u!114 &2004649143416114320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004649143416114348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df67b81239b8a671fbc24ed3ca7bfd00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  follow: {fileID: 0}
+  threshold: 500
+  area: {x: 42, y: 0, z: 100}
+  areaOffset: {x: 42.1, y: 0, z: 0}
+  flip: 0
+  roads:
+  - {fileID: 6066277585264546669, guid: ed2e547789b61b724be8180cb5eba0df, type: 3}
+  roadHeight: 0.5
+  useSegments: 1
+  starterSegment: {fileID: 11400000, guid: 894364cd546ef0021a47d0b4413cc652, type: 2}
+  segment: {fileID: 11400000, guid: 894364cd546ef0021a47d0b4413cc652, type: 2}
+  sceneryTrainSegment: {fileID: 11400000, guid: 473bc58dabc1552349989d062d3879df, type: 2}
+  levelGenerator: {fileID: 2004649143416114322}
+  levelTrainSegments:
+  - {fileID: 11400000, guid: b4f28b95fd193b06c959466e9016b7c7, type: 2}
+--- !u!114 &2004649143416114323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004649143416114348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df67b81239b8a671fbc24ed3ca7bfd00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  follow: {fileID: 0}
+  threshold: 500
+  area: {x: 42, y: 0, z: 100}
+  areaOffset: {x: -42.1, y: 0, z: 0}
+  flip: 1
+  roads:
+  - {fileID: 6066277585264546669, guid: ed2e547789b61b724be8180cb5eba0df, type: 3}
+  roadHeight: 0.5
+  useSegments: 1
+  starterSegment: {fileID: 11400000, guid: 894364cd546ef0021a47d0b4413cc652, type: 2}
+  segment: {fileID: 11400000, guid: 894364cd546ef0021a47d0b4413cc652, type: 2}
+  sceneryTrainSegment: {fileID: 11400000, guid: 473bc58dabc1552349989d062d3879df, type: 2}
+  levelGenerator: {fileID: 2004649143416114322}
+  levelTrainSegments:
+  - {fileID: 11400000, guid: b4f28b95fd193b06c959466e9016b7c7, type: 2}

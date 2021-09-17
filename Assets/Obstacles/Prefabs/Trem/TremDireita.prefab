@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: forward
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 833600907762944973, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4569119828363182557, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
       propertyPath: m_Name
       value: TremDireita

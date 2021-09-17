@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c59cbec1325b64db21014ea83013d6, type: 3}
+  m_Name: TrafficJam 2
+  m_EditorClassIdentifier: 
+  trainSegment: 0
+  width: 12
+  length: 4
+  segment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 310630f89eb2fff718a5bb17d6bfa6a2, type: 2}
+  - {fileID: 11400000, guid: 310630f89eb2fff718a5bb17d6bfa6a2, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 84e9ccb0ef8123b9a9d87c71c2e96b49, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 0b9259050950427799703804f2d498de, type: 2}
+  - {fileID: 11400000, guid: 310630f89eb2fff718a5bb17d6bfa6a2, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 84e9ccb0ef8123b9a9d87c71c2e96b49, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 310630f89eb2fff718a5bb17d6bfa6a2, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 5e611b44d5364885689adf97b27c8a24, type: 2}
+  - {fileID: 11400000, guid: 5e611b44d5364885689adf97b27c8a24, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 242df59cded993b828400389cc50793b, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 557ffe8f1ccc8a3e58f61d5b6a9ab956, type: 2}
+  - {fileID: 11400000, guid: 84e9ccb0ef8123b9a9d87c71c2e96b49, type: 2}
+  - {fileID: 11400000, guid: c5b321c5d3a1f4503afc2b245f391656, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: c1c8b09418f7e492e9f55ba5f08ad184, type: 2}
+  - {fileID: 11400000, guid: 84e9ccb0ef8123b9a9d87c71c2e96b49, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 5e611b44d5364885689adf97b27c8a24, type: 2}

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2242a55d1645a78459076a9952750ea6, type: 3}
   m_Name: "Sinaliza\xE7ao"
   m_EditorClassIdentifier: 
-  members: []
+  members:
+  - {fileID: 898013052307929375, guid: 941a38380f378e141b9dc3b5e018c66b, type: 3}
+  - {fileID: 8880439268216535399, guid: 8e71ac51b928dd64898528b48918717f, type: 3}
