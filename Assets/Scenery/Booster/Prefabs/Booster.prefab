@@ -109,5 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boost: 0.5
-  duration: 3
+  duration: 8
   activateMode: 3

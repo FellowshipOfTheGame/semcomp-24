@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2242a55d1645a78459076a9952750ea6, type: 3}
-  m_Name: TremDir
+  m_Name: ItemOuMoeda
   m_EditorClassIdentifier: 
   members:
-  - {fileID: 4569119828363182557, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+  - {fileID: 3322440421399226958, guid: e9d1aefb3c4caf045b2cb1a3f71e5eff, type: 3}
+  - {fileID: 4761799879409561140, guid: 85677399a90811b468d95b49b19b4680, type: 3}
+  - {fileID: 1480342596421178711, guid: 0def4b295fcd20549b984dcdab96daac, type: 3}
+  - {fileID: 4105675765349522796, guid: ad6070cc895cc3d41a4142dd66ccdf9d, type: 3}

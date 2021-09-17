@@ -71,7 +71,7 @@ public class MovingObstacle : MonoBehaviour
 
         if (!forward)
         {
-            transform.rotation = Quaternion.Euler(Vector3.up * 180);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + Vector3.up * 180);
         }
 
         if (randomizeMaximumSpeed)

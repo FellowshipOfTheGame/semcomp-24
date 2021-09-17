@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Shield1
   m_EditorClassIdentifier: 
   maxHits: 2
-  maxDuration: 5
+  maxDuration: 10

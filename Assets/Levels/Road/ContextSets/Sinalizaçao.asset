@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2242a55d1645a78459076a9952750ea6, type: 3}
-  m_Name: TremEsq
+  m_Name: "Sinaliza\xE7ao"
   m_EditorClassIdentifier: 
-  members:
-  - {fileID: 4569119828363182557, guid: 1c45b7ae11dd06cc3bd48f9469bc0b19, type: 3}
+  members: []

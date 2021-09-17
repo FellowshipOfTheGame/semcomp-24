@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7aef019ca6c794487da9a1a7036adf, type: 3}
   m_Name: BusStop1
   m_EditorClassIdentifier: 
-  healAmount: 20
+  healAmount: 30
