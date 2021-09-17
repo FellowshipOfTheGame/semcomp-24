@@ -10,8 +10,8 @@ public class HoleInRoad : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Debug.Log("Hole Collide");
-
-            other.gameObject.GetComponent<VehicleController>().SlowFowardForce(slowAmount);
+            VehicleController vehicleController = other.gameObject.GetComponent<VehicleController>();
+            vehicleController.forwardForce -= Mathf.Clamp(vehicleController.forwardForce, 0, slowAmount);
         }
     }
 }
