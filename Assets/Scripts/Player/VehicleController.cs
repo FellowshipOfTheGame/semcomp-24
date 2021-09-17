@@ -28,9 +28,12 @@ public class VehicleController : MonoBehaviour
 {
     // (Easier way to design different types of vehicles
     [Header("General")]
-    
     public VehicleStatPreset preset;
     
+    [Header("SFX's")]
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter landingEventEmitter;
+
     [FormerlySerializedAs("acceleration")]
     [Header("Physics")]
 
@@ -84,7 +87,7 @@ public class VehicleController : MonoBehaviour
     private Vector3 vehicleRotation;
 
     private RigidbodyConstraints rigidbodyDefaultConstraints;
-    
+
     #region MonoBehaviour Messages
 
     protected void OnEnable()
@@ -137,7 +140,14 @@ public class VehicleController : MonoBehaviour
         }
 
         int i = 0;
-        while (!accelerationRanges[i].Contain(GetCurrentSpeed())) i++;
+        try
+        {
+            while (!accelerationRanges[i].Contain(GetCurrentSpeed())) i++;
+        }
+        catch
+        {
+            i = accelerationRanges.Length - 1;
+        }
         
         //Debug.Log(accelerationRanges[i].Acceleration);
 
@@ -228,6 +238,9 @@ public class VehicleController : MonoBehaviour
         {
             if (Physics.Raycast(t.position, Vector3.down, groundCheckDistance, whatIsGround))
             {
+                if(!grounded)
+                    landingEventEmitter.Play();
+                
                 grounded = true;
                 _rigidbody.drag = groundDrag;
                 _rigidbody.constraints = rigidbodyDefaultConstraints;
