@@ -139,6 +139,7 @@ public class RaceManager : MonoBehaviour
     private void GameOver(object sender, System.EventArgs e)
     {
         EndRace();
+        musicPlayer.TriggerGameOver();
         gameOverMenu.Open();
     }
     
