@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 6095949563745021327}
   - component: {fileID: 1822952218701299703}
   - component: {fileID: 108651217}
+  - component: {fileID: 3569172652181902057}
   m_Layer: 7
   m_Name: Vehicle
   m_TagString: Player
@@ -136,6 +137,7 @@ Transform:
   - {fileID: 4077327872582745221}
   - {fileID: 7066330756564745632}
   - {fileID: 3100041402938328277}
+  - {fileID: 4083327346726062085}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -181,6 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preset: {fileID: 11400000, guid: 5fc40ecfe4806844080af202987ff611, type: 2}
+  landingEventEmitter: {fileID: 8859263428831341725}
+  motorEventEmmiter: {fileID: 828919795751822662}
   accelerationRanges:
   - acceleration: 4
     upperLimit: 20
@@ -289,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconHUD: {fileID: 0}
+  button: {fileID: 0}
 --- !u!114 &1822952218701299703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +322,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceManager: {fileID: 0}
+--- !u!114 &3569172652181902057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6036709807576084203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a748a6eb30cf91e41911ae910fc1b3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxX: 20
+  maxY: -10
 --- !u!1 &6036709807610969999
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +456,86 @@ Transform:
   m_Father: {fileID: 6036709807576084207}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8346120856951825244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4083327346726062085}
+  - component: {fileID: 828919795751822662}
+  - component: {fileID: 8859263428831341725}
+  m_Layer: 0
+  m_Name: EventEmitters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4083327346726062085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346120856951825244}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6036709807576084207}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &828919795751822662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346120856951825244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/MOTOR 2
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: RPM
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &8859263428831341725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346120856951825244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/\xD4NIBUS_FOLEY/BUS FOLEY_ATERRISSANDO"
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &8755368214779387642
 GameObject:
   m_ObjectHideFlags: 0

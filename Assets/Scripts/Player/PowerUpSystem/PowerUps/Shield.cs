@@ -7,6 +7,7 @@ public class Shield : PowerUp
 
     public override void OnActivate(VehicleController controller, VehicleRenderer renderer)
     {
+        base.OnActivate(controller, renderer);
 #if UNITY_EDITOR
         Debug.Log("Aquired shield");
 #endif

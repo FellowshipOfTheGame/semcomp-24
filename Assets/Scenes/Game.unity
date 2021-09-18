@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3074335, g: 0.12843846, b: 0.33836013, a: 1}
+  m_IndirectSpecularColor: {r: 0.30766535, g: 0.12841761, b: 0.3389242, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -371,6 +371,10 @@ PrefabInstance:
       propertyPath: mediumIndex
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
+      propertyPath: musicPlayer
+      value: 
+      objectReference: {fileID: 698830686}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: speedometer
       value: 
@@ -816,6 +820,74 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 6299522467821212268, guid: 57cb017a02534094a893f80b5b7832ef, type: 3}
   m_PrefabInstance: {fileID: 691474684}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &698830685
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1423371949855194529, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423371949855194529, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423371949855194529, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423371949855194529, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423371949855194529, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423371949855194529, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423371949855194529, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423371949855194529, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423371949855194529, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423371949855194529, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423371949855194529, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716216946927880720, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+      propertyPath: m_Name
+      value: GameBackgroundMusic
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+--- !u!114 &698830686 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6773407298842715814, guid: f928c878f180f3b4abbce8ed97df4b10, type: 3}
+  m_PrefabInstance: {fileID: 698830685}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ecc3223af302554d940ec356c9edc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &796283041
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,9 +898,9 @@ GameObject:
   m_Component:
   - component: {fileID: 796283046}
   - component: {fileID: 796283045}
-  - component: {fileID: 796283044}
   - component: {fileID: 796283043}
   - component: {fileID: 796283042}
+  - component: {fileID: 796283044}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -884,14 +956,20 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &796283044
-AudioListener:
+--- !u!114 &796283044
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796283041}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!20 &796283045
 Camera:
   m_ObjectHideFlags: 0
@@ -1076,6 +1154,7 @@ MonoBehaviour:
   duration: 30
   increaseRate: 5
   stages: 5
+  musicPlayer: {fileID: 698830686}
   scoreBonus: 300
   globalVolumePast: {fileID: 1296826862}
   portalPrefab: {fileID: 1920802284332158919, guid: 935e15d81df6e62fbb4a99abff917e8e, type: 3}
@@ -1561,7 +1640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1208725856776151759, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -5.000122
+      value: -5.0001526
       objectReference: {fileID: 0}
     - target: {fileID: 1264862396970869360, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1721,7 +1800,7 @@ PrefabInstance:
       objectReference: {fileID: 987757884}
     - target: {fileID: 3070912153445736156, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -5.000122
+      value: -5.0001526
       objectReference: {fileID: 0}
     - target: {fileID: 3304559857694667704, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
       propertyPath: m_AnchoredPosition.x

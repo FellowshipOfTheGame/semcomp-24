@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3435313394159200647}
   - component: {fileID: 1671772406687630600}
   - component: {fileID: 810672008975289275}
+  - component: {fileID: -5294621572201083839}
+  - component: {fileID: 3758021391939591156}
   m_Layer: 0
   m_Name: Escudo
   m_TagString: Untagged
@@ -61,6 +63,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: ee6a5790c8fa142498e7dd4853a9081e, type: 3}
+  useEventEmitter: {fileID: -5294621572201083839}
+  pickupEventEmitter: {fileID: 3758021391939591156}
   protectionTimes: 4
   duration: 15
 --- !u!114 &810672008975289275
@@ -78,6 +82,52 @@ MonoBehaviour:
   floatingMagnitude: 0.8
   floatingSpeed: 0.4
   rotationSpeed: 20
+--- !u!114 &-5294621572201083839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3322440421399226958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/GAMEPLAY SFX/Escudo
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &3758021391939591156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3322440421399226958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/GAMEPLAY SFX/COLETA_POWERUP
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &6638556065072123457
 GameObject:
   m_ObjectHideFlags: 0

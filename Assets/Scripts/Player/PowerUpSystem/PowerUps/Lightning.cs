@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//TODO: call OnActivate from base
 public class Lightning : PowerUp
 {
     public Vector3 size;
@@ -8,6 +8,8 @@ public class Lightning : PowerUp
     
     public override void OnActivate(VehicleController controller, VehicleRenderer renderer)
     {
+        base.OnActivate(controller, renderer);
+
         RaycastHit[] results = new RaycastHit[32];
         int num = Physics.BoxCastNonAlloc(controller.transform.position, size, controller.transform.forward, results, controller.transform.rotation, size.z, collisionLayer);
         Debug.Log("Raio acertou " + num);

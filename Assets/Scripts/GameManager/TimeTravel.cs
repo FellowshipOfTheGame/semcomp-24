@@ -21,7 +21,11 @@ public class TimeTravel : MonoBehaviour
     [Space(10)]
     [Header("Bonuses")]
     [Space(10)]
-    
+    [SerializeField] private DynamicMusic musicPlayer;
+
+    [Space(10)]
+    [Header("Bonuses")]
+    [Space(10)]
     [SerializeField] private int scoreBonus = 300;
     // [SerializeField] private int coinsBonus = 100;
 
@@ -33,9 +37,11 @@ public class TimeTravel : MonoBehaviour
     [SerializeField] private GameObject globalVolumePast;
     [SerializeField] private GameObject portalPrefab;
 
+
     private GameObject player;
     private HealthSystem healthSystem;
     private ScoreManager scoreManager;
+    private VehicleRenderer vehicleRenderer;
 
     public static bool InThePast { get; private set; }
     public int CurrentStage { get; private set; }
@@ -51,6 +57,7 @@ public class TimeTravel : MonoBehaviour
     {
         player = GetComponent<RaceManager>().player;
         healthSystem = player.GetComponent<HealthSystem>();
+        vehicleRenderer = player.GetComponent<VehicleRenderer>();
         
         scoreManager = GetComponent<ScoreManager>();
     }
@@ -83,7 +90,19 @@ public class TimeTravel : MonoBehaviour
         healthSystem.SetInvulnerable(true);
         CurrentStage = stages - 1;
 
-        float decreaseRate = (100f / duration);
+        const float transitionDuration = 3.5f;
+        float decreaseRate = (100f / transitionDuration);
+        
+        musicPlayer.BeginTransition();
+        while (counter > 0)
+        {
+            counter -= Time.deltaTime * decreaseRate;
+            yield return null;
+        }
+        musicPlayer.EndTransition();
+        
+        counter = 100f;
+        decreaseRate = (100f / duration);
 
         GeneratePortal();
 
@@ -103,7 +122,7 @@ public class TimeTravel : MonoBehaviour
         {
             counter -= Time.deltaTime * decreaseRate;
             
-            if (counter <= 100 - (decreaseRate * 1f))
+            if (counter <= 100 - decreaseRate)
             {
                 CurrentStage = Mathf.RoundToInt(counter / (100f / (stages - 2))) + 1;
             }
@@ -125,6 +144,12 @@ public class TimeTravel : MonoBehaviour
             OnTimeTravel(this, e);
         }
 
+        if (!healthSystem.HasShield())
+        {
+            healthSystem.ActivateShield(1, 5f);
+            vehicleRenderer.ActivateShieldeEffect(5f);
+        }
+        
         InThePast = false;
         healthSystem.SetInvulnerable(false);
     }
