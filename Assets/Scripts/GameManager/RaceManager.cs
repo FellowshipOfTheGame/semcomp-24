@@ -9,6 +9,12 @@ public class RaceManager : MonoBehaviour
 {
     [SerializeField] public GameObject player;
     [SerializeField] private RaceData raceData;
+    
+    [Space(10)]
+    [Header("SFX")]
+    [SerializeField] public DynamicMusic musicPlayer;
+    [SerializeField] public FMODUnity.StudioEventEmitter normalCountEventEmitter;
+    [SerializeField] public FMODUnity.StudioEventEmitter lastCountEventEmitter;
 
     [Space(10)]
     [Header(("Menu"))]
@@ -183,7 +189,10 @@ public class RaceManager : MonoBehaviour
         
         float wait = 0.5f;
         float count = countdown + wait;
+        int lastSecond = Mathf.RoundToInt(count);
 
+        normalCountEventEmitter.Play();
+        
         startRaceCountdownPanel.gameObject.SetActive(true);
         startRaceCountdownPanel.enabled = true;
         startRaceCountdownSign.SetActive(true);
@@ -193,11 +202,17 @@ public class RaceManager : MonoBehaviour
 
         while (count >= wait)
         {
+            if (Mathf.RoundToInt(count) != lastSecond)
+            {
+                normalCountEventEmitter.Play();
+                lastSecond = Mathf.RoundToInt(count);
+            }
+
             if (count <= countdown)
             {
                 startRaceCountdownText.text = Mathf.Round(count).ToString();
             }
-            
+
             if (startRaceCountdownCircleFill.fillAmount == 0f)
             {
                 startRaceCountdownCircleFill.fillAmount = 1f;
@@ -215,12 +230,20 @@ public class RaceManager : MonoBehaviour
         startRaceCountdownSign.SetActive(false);
         HUDPanel.SetActive(true);
         UIControls.SetActive(true);
+
+        lastCountEventEmitter.Play();
+        musicPlayer.BeginMusic();
         
         startRaceCountdownText.text = "GO!";
 
         yield return new WaitForSeconds(3);
         
         startRaceCountdownText.enabled = false;
+    }
+
+    public void Pause()
+    {
+        musicPlayer.PauseMusic(true);
     }
     
     // TODO: ObtainItem and UseItem methods

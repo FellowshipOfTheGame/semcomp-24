@@ -10,6 +10,7 @@ namespace SubiNoOnibus.UI
         
         public void Open()
         {
+            raceManager.Pause();
             Time.timeScale = 0f;
             gameObject.SetActive(true);
         }

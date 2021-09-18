@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1361347118971880861}
   - component: {fileID: 1361347118971880860}
   - component: {fileID: 1361347118971880863}
+  - component: {fileID: -3279509079930790104}
   m_Layer: 0
   m_Name: Booster
   m_TagString: Untagged
@@ -111,3 +112,27 @@ MonoBehaviour:
   boost: 0.5
   duration: 8
   activateMode: 3
+  eventEmitter: {fileID: -3279509079930790104}
+--- !u!114 &-3279509079930790104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361347118971880862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/GAMEPLAY SFX/Boost
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
