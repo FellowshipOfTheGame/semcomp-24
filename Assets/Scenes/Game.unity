@@ -222,6 +222,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6095949563745021327, guid: d631381dd253e844aad50db5bef83152, type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 536773391}
+    - target: {fileID: 6095949563745021327, guid: d631381dd253e844aad50db5bef83152, type: 3}
       propertyPath: iconHUD
       value: 
       objectReference: {fileID: 1853063964}
@@ -353,11 +357,11 @@ PrefabInstance:
       objectReference: {fileID: 2019770669}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: easyTarget
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: hardTarget
-      value: 0.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: itemButton
@@ -365,7 +369,7 @@ PrefabInstance:
       objectReference: {fileID: 536773391}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: mediumIndex
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: speedometer
@@ -377,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 1446350835}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: mediumTarget
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: coinsBonusText
@@ -386,7 +390,7 @@ PrefabInstance:
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: levelGenerator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 614977749}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: scoreBonusText
       value: 
@@ -405,7 +409,7 @@ PrefabInstance:
       objectReference: {fileID: 2019770675}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: progressionTimeScale
-      value: 0.005
+      value: 0.011111111
       objectReference: {fileID: 0}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: startRaceCountdownSign
@@ -735,6 +739,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &614977749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2004649143416114322, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+  m_PrefabInstance: {fileID: 2031818982}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 370dbf791ef7a5a4d9631079667a7d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &691474684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1302,16 +1317,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6fbe3f733693b488db4795955d1fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boosterBoost: 0
-  boosterDuration: 0
-  amountHealed: 0
-  size: {x: 0, y: 0, z: 0}
-  maxTargets: 0
-  nitroBoost: 0
-  nitroDuration: 0
-  maxHealth: 0
-  maxHits: 0
-  maxDuration: 0
+  boosterBoost: 0.2
+  boosterDuration: 2
+  amountHealed: 15
+  size: {x: 0, y: 0, z: 50}
+  maxTargets: 2
+  nitroBoost: 0.2
+  nitroDuration: 2
+  maxHealth: 50
+  maxHits: 4
+  maxDuration: 10
   boosterPreset0: {fileID: 11400000, guid: 269de8ccb78af0a428a1b945c29bfe0c, type: 2}
   boosterPreset1: {fileID: 11400000, guid: 946754e071b6ba2469f4c30e233aa8f7, type: 2}
   boosterPreset2: {fileID: 11400000, guid: d02ffddcb59fb314b9f3673afe17be23, type: 2}
@@ -1897,6 +1912,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2004649143416114320, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: follow
+      value: 
+      objectReference: {fileID: 108651215}
+    - target: {fileID: 2004649143416114322, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: follow
+      value: 
+      objectReference: {fileID: 108651215}
+    - target: {fileID: 2004649143416114322, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: starterSegment
+      value: 
+      objectReference: {fileID: 11400000, guid: 558102f4322e0ab9686ee89e3c214e27, type: 2}
+    - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: follow
+      value: 
+      objectReference: {fileID: 108651215}
     - target: {fileID: 2004649143416114348, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
       propertyPath: m_Name
       value: Generator

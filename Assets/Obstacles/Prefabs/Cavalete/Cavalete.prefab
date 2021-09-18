@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 898013052307929372}
   - component: {fileID: 2876069370047620783}
   - component: {fileID: 2221861433903408520}
-  - component: {fileID: 2162285840215449398}
   m_Layer: 9
   m_Name: Cavalete
   m_TagString: Obstacle
@@ -76,19 +75,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePropertiesPreset: {fileID: 11400000, guid: 76e4568d4279132a98c40cee8cef4578, type: 2}
---- !u!114 &2162285840215449398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898013052307929375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494a40f6eec14665bedd02a96f5db790, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsSet: {fileID: 11400000, guid: 16e0f0f3132f42bcbaa8c475dc63d80f, type: 2}
 --- !u!1001 &898013052129892460
 PrefabInstance:
   m_ObjectHideFlags: 0

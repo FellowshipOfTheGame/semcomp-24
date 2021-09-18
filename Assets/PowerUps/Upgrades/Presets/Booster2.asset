@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f81c668cb281d4282dd4cf72a341dc, type: 3}
   m_Name: Booster2
   m_EditorClassIdentifier: 
-  boost: 0.3
+  boost: 0.2
   duration: 6

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Nitro2
   m_EditorClassIdentifier: 
   boost: 0.5
-  duration: 6
+  duration: 3

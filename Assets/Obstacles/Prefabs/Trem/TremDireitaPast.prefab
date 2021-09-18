@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TremDireitaPast
       objectReference: {fileID: 0}
+    - target: {fileID: 5550041337886187673, guid: caa5cb8232bd064819ca3d4d0ed4e573, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7947812432147836768, guid: caa5cb8232bd064819ca3d4d0ed4e573, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

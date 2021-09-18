@@ -65,7 +65,7 @@ MonoBehaviour:
   maxTargets: 8
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
 --- !u!114 &695258625996066346
 MonoBehaviour:
   m_ObjectHideFlags: 0
