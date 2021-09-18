@@ -52,12 +52,6 @@ public class HealthSystem : MonoBehaviour
 	public event System.EventHandler<OnHealthChangeEventArgs> OnHealthChange;
 	public event System.EventHandler OnDie;
 
-	public HealthSystem(int healthMax)
-	{
-		this.healthMax = healthMax;
-		health = healthMax;
-	}
-
 	public void SetHealth(int health)
 	{
 		this.health = Mathf.Clamp(health, 0, healthMax);
@@ -66,6 +60,7 @@ public class HealthSystem : MonoBehaviour
 	public void SetHealthMax(int healthMax)
 	{
 		this.healthMax = healthMax;
+		ResetHealth();
 	}
 
 	public void ResetHealth()

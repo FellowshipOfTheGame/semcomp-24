@@ -5,8 +5,13 @@ using UnityEngine;
 public abstract class PowerUp : MonoBehaviour
 {
     public Sprite icon;
+    public FMODUnity.StudioEventEmitter useEventEmitter;
+    public FMODUnity.StudioEventEmitter pickupEventEmitter;
     
-    public abstract void OnActivate(VehicleController controller, VehicleRenderer renderer);
+    public virtual void OnActivate(VehicleController controller, VehicleRenderer renderer)
+    {
+        useEventEmitter.Play();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +19,7 @@ public abstract class PowerUp : MonoBehaviour
 #if UNITY_EDITOR
         Debug.Log($"Collected {this}");
 #endif
+        pickupEventEmitter.Play();
         ItemSystem itemSystem = other.gameObject.GetComponent<ItemSystem>();
         itemSystem.ReplaceIfNull(this);
         Destroy(gameObject);
