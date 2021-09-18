@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DynamicMusic : MonoBehaviour
@@ -29,5 +30,17 @@ public class DynamicMusic : MonoBehaviour
     public void PauseMusic(bool value)
     {
         eventEmitter.EventInstance.setPaused(value);
+    }
+
+    public void TriggerGameOver()
+    {
+        StartCoroutine(TriggerGameOverCoroutine());
+    }
+
+    private IEnumerator TriggerGameOverCoroutine()
+    {
+        eventEmitter.SetParameter(eventEmitter.Params[1].ID, 1);
+        yield return new WaitForSeconds(1f);
+        eventEmitter.SetParameter(eventEmitter.Params[1].ID, 0);
     }
 }
