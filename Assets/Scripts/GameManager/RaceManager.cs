@@ -2,16 +2,30 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using SubiNoOnibus.UI;
+using SubiNoOnibus.Networking.Requests;
 
 public class RaceManager : MonoBehaviour
 {
     [SerializeField] public GameObject player;
+    [SerializeField] private RaceData raceData;
+    
+    [Space(10)]
+    [Header("SFX")]
+    [SerializeField] public DynamicMusic musicPlayer;
+    [SerializeField] public FMODUnity.StudioEventEmitter normalCountEventEmitter;
+    [SerializeField] public FMODUnity.StudioEventEmitter lastCountEventEmitter;
 
     [Space(10)]
-    [Header("Gameplay")]
+    [Header(("Menu"))]
+    
+    [SerializeField] private GameOverMenu gameOverMenu;
+    
+    [Space(10)]
+    [Header("Start Race Countdown")]
     [SerializeField] private int startRaceCountdownTime = 3;
     [SerializeField] private Image startRaceCountdownPanel;
-    [SerializeField] private GameObject startRaceCountdownCircle;
+    [SerializeField] private GameObject startRaceCountdownSign;
     [SerializeField] private TextMeshProUGUI startRaceCountdownText;
 
     [Space(10)]
@@ -35,136 +49,305 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI coinsText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI scoreBonusText;
+    [SerializeField] private TextMeshProUGUI coinsBonusText;
+
+    [SerializeField] private Button itemButton;
+    [SerializeField] private Image itemIcon;
+    [SerializeField] private TextMeshProUGUI itemDurationText;
+
+    [Header("Game progression")]
+    [SerializeField] private LevelGenerator levelGenerator;
+    [SerializeField] private float progressionTimeScale;
+    [SerializeField] private int easyIndex;
+    [SerializeField] private int mediumIndex;
+    [SerializeField] private int hardIndex;
+    [Tooltip("Weight on easy set moves towards this value")]
+    [SerializeField] private float easyTarget;
+    [Tooltip("Weight on medium set moves towards this value")]
+    [SerializeField] private float mediumTarget;
+    [Tooltip("Weight on hard set moves towards this value")]
+    [SerializeField] private float hardTarget;
 
     private HealthSystem healthSystem;
-    
+
+    private TimeTravel timeTravel; 
+        
     private Animator burningAnimator;
     
     private float timer;
-    private bool timerActive;
     private int coins;
     private ScoreManager scoreManager;
 
     private Image startRaceCountdownCircleFill;
     
-    private int usedItemsCount;
-    private int distanceTraveled;
+    private int itemsUsedCount;
+    private float distanceTraveled;
 
     private VehicleController vehicle;
+    private NitrousSystem nitrous;
+
+    public int Distance => Mathf.RoundToInt(distanceTraveled);
+    public float Timer => timer;
+    public int Coins => coins;
+    public int ItemsUsed => itemsUsedCount;
+    public int Score { get; private set; }
+
+    private Coroutine scoreBonusTextCoroutine;
 
     private void OnEnable()
     {
         healthSystem = player.GetComponent<HealthSystem>();
+        scoreManager = GetComponent<ScoreManager>();
+        
         healthSystem.OnDie += GameOver;
+        scoreManager.OnScoreBonusGrant += ScoreBonusFeedback;
     }
 
     private void OnDisable()
     {
         healthSystem.OnDie -= GameOver;
+        scoreManager.OnScoreBonusGrant -= ScoreBonusFeedback;
     }
 
     void Start()
     {
         vehicle = player.GetComponent<VehicleController>();
+        nitrous = player.GetComponent<NitrousSystem>();
+        timeTravel = GetComponent<TimeTravel>();
         burningAnimator = burning.GetComponent<Animator>();
         // scoreMultiplier.sprite = scoreMultiplierSprites[0];
         scoreMultiplier.color = scoreMultiplierColors[0];
-        scoreManager = GetComponent<ScoreManager>();
-        
-        startRaceCountdownCircleFill = startRaceCountdownCircle.GetComponentsInChildren<Image>()[1];
-        Debug.Log(startRaceCountdownCircleFill.sprite.name);
-        
+        startRaceCountdownCircleFill = startRaceCountdownSign.GetComponentsInChildren<Image>()[1];
+
         StartRace();
     }
     
-    void Update()
+    void FixedUpdate()
     {
-        // scoreMultiplier.sprite = scoreMultiplierSprites[scoreManager.GetRange()];
-        scoreMultiplier.color = Color.Lerp(scoreMultiplier.color, scoreMultiplierColors[scoreManager.GetRange()], 1f * Time.deltaTime);
+        timer += Time.deltaTime;
+        distanceTraveled += vehicle.GetCurrentSpeed() * Time.deltaTime;
+
+        if (easyIndex != -1) levelGenerator.sets[easyIndex].weight = Mathf.MoveTowards(levelGenerator.sets[easyIndex].weight, easyTarget, Time.deltaTime * progressionTimeScale);
+        if (mediumIndex != -1) levelGenerator.sets[mediumIndex].weight = Mathf.MoveTowards(levelGenerator.sets[mediumIndex].weight, mediumTarget, Time.deltaTime * progressionTimeScale);
+        if (hardIndex != -1) levelGenerator.sets[hardIndex].weight = Mathf.MoveTowards(levelGenerator.sets[hardIndex].weight, hardTarget, Time.deltaTime * progressionTimeScale);
         
-        scoreMultiplierText.text = System.Math.Round(scoreManager.GetMultiplier(), 1).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US")) + "x";
-        
-        speedometer.fillAmount = Mathf.Clamp01(vehicle.GetCurrentSpeed() / vehicle.GetMaximumSpeed());
-
-        bool burn = vehicle.GetCurrentSpeed() > vehicle.GetMaximumSpeed();
-        burning.enabled = burn;
-        burningAnimator.SetBool("Burn", burn);
-
-        if (burn)
-        {
-            burningAnimator.speed = Mathf.Clamp01(vehicle.GetCurrentSpeed() / vehicle.GetMaximumSpeed() - 0.5f);
-        }
-
-        if (timerActive)
-            timer += Time.deltaTime;
-
-        scoreText.text = scoreManager.GetScore().ToString("000,000", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
-        
-        timerText.text = System.TimeSpan.FromSeconds(timer).ToString("mm\\:ss\\:ff");
+        UpdateUI();
     }
 
+    // Called when player dies
     private void GameOver(object sender, System.EventArgs e)
     {
         EndRace();
-        // Call game over menu
+        musicPlayer.TriggerGameOver();
+        gameOverMenu.Open();
     }
-
-    private void StartRace()
+    
+    public void StartRace()
     {
-        Time.timeScale = 0f;
         HUDPanel.SetActive(false);
         UIControls.SetActive(false);
+        StartCoroutine(Countdown(startRaceCountdownTime));
+        
+        // TODO: get player active item from ItemManager
+        
+        var startRaceEnumerator = RaceRequestHandler.StartRace(
+            (raceData) => this.raceData = raceData,
+            (req) => Debug.Log(req.error)
+        );
+        
+        StartCoroutine(startRaceEnumerator);
+    }
+
+    public void EndRace()
+    {
+        Score = scoreManager.GetScore();
+
+        raceData.gold = Coins;
+        raceData.score = Score;
+
+        var finishRaceEnumerator = RaceRequestHandler.FinishRace(raceData, 
+            () => Debug.Log("Success"), 
+            (req) =>
+            {
+                string errorMsg = (string) JsonUtility.FromJson<ErrorMessageData>(req.downloadHandler.text);
+                Debug.Log($"{req.responseCode}: {req.error}");
+                Debug.Log(errorMsg);
+            }
+        );
+        
+        StartCoroutine(finishRaceEnumerator);
+    }
+
+    public void AddCoin(int amount)
+    {
+        this.coins += amount;
+    }
+    
+    public IEnumerator Countdown(int countdown)
+    {
+        Time.timeScale = 0f;
+        
+        float wait = 0.5f;
+        float count = countdown + wait;
+        int lastSecond = Mathf.RoundToInt(count);
+
+        normalCountEventEmitter.Play();
+        
         startRaceCountdownPanel.gameObject.SetActive(true);
         startRaceCountdownPanel.enabled = true;
-        startRaceCountdownCircle.SetActive(true);
+        startRaceCountdownSign.SetActive(true);
+        startRaceCountdownCircleFill.fillAmount = 1f;
         startRaceCountdownText.enabled = true;
-        StartCoroutine(Countdown());
-    }
+        startRaceCountdownText.text = countdown.ToString();
 
-    private void EndRace()
-    {
-        timerActive = false;
-    }
-
-    private IEnumerator Countdown()
-    {
-        float wait = 0.5f;
-        float count = startRaceCountdownTime + wait;
-        startRaceCountdownCircleFill.fillAmount = 0f;
-
-        while (count > 0)
+        while (count >= wait)
         {
-            if (count <= startRaceCountdownTime && count >= 1)
+            if (Mathf.RoundToInt(count) != lastSecond)
+            {
+                normalCountEventEmitter.Play();
+                lastSecond = Mathf.RoundToInt(count);
+            }
+
+            if (count <= countdown)
             {
                 startRaceCountdownText.text = Mathf.Round(count).ToString();
             }
-            
-            startRaceCountdownCircleFill.fillAmount += Time.unscaledDeltaTime / (startRaceCountdownTime + wait);
 
-            if (startRaceCountdownCircleFill.fillAmount == 1f)
+            if (startRaceCountdownCircleFill.fillAmount == 0f)
             {
-                startRaceCountdownCircleFill.fillAmount = 0f;
+                startRaceCountdownCircleFill.fillAmount = 1f;
             }
-
-            count -= Time.unscaledDeltaTime;
             
+            startRaceCountdownCircleFill.fillAmount -= Time.unscaledDeltaTime / countdown;
+            
+            count -= Time.unscaledDeltaTime;
+
             yield return null;
         }
 
-        
         Time.timeScale = 1f;
-        timerActive = true;
         startRaceCountdownPanel.enabled = false;
-        startRaceCountdownCircle.SetActive(false);
+        startRaceCountdownSign.SetActive(false);
         HUDPanel.SetActive(true);
         UIControls.SetActive(true);
+
+        lastCountEventEmitter.Play();
+        musicPlayer.BeginMusic();
         
         startRaceCountdownText.text = "GO!";
 
         yield return new WaitForSeconds(3);
         
         startRaceCountdownText.enabled = false;
+    }
+
+    public void Pause()
+    {
+        musicPlayer.PauseMusic(true);
+    }
+    
+    // TODO: ObtainItem and UseItem methods
+
+    // // Subscribe to obtain item event
+    // private void ObtainItem()
+    // {
+    //     itemIcon = itemManager.Icon;
+    //     itemButton.interactable = true;
+    // }
+
+    // // Subscribe to use item event
+    // private void UseItem()
+    // {
+    //     itemsUsedCount++;
+    //     itemIcon = itemIconDefault;
+    //     itemDurationText.enabled = true;
+    //     itemDurationText.text = System.TimeSpan.FromSeconds(itemManager.Time).ToString("mm\\:ss\\:ff");
+    //     itemButton.interactable = false;
+    //
+    //     StartCoroutine(DisableItemDurationText());
+    // }
+
+    // private IEnumerator DisableItemDurationText()
+    // {
+    //     yield return new WaitUntil(() => !itemManager.HasItem);
+    //     itemDurationText.enabled = false;
+    // }
+    
+    private void UpdateUI()
+    {
+        // Update the score multiplier text and color
+        // scoreMultiplier.sprite = scoreMultiplierSprites[scoreManager.GetRange()];
+        scoreMultiplier.color = Color.Lerp(scoreMultiplier.color, scoreMultiplierColors[scoreManager.GetRange()], 1f * Time.deltaTime);
+        scoreMultiplierText.text = System.Math.Round(scoreManager.GetMultiplier(), 1).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US")) + "x";
         
-        yield return null;
+        // Update speedometer
+        speedometer.fillAmount = Mathf.Clamp01(vehicle.GetCurrentSpeed() / vehicle.GetMaximumSpeed());
+        
+        // Update time travel bar
+        turbo.sprite = turboSprites[timeTravel.CurrentStage];
+
+        // Burn animation (when player exceeds maximum speed)
+        bool burn = nitrous.IsActive();
+        burning.enabled = burn;
+        burningAnimator.SetBool("Burn", burn);
+
+        if (burn)
+        {
+            burningAnimator.speed = Mathf.Clamp01(vehicle.GetCurrentSpeed() / vehicle.GetActualMaximumSpeed());
+        }
+        
+        // Update the timer
+        timerText.text = System.TimeSpan.FromSeconds(timer).ToString("mm\\:ss\\:ff");
+        
+        // Update the score text
+        scoreText.text = scoreManager.GetScore().ToString("000,000 PTS", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+        coinsText.text = coins.ToString("D6", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+    }
+    
+    private void ScoreBonusFeedback(object sender, OnScoreBonusGrantEventArgs eventArgs)
+    {
+        scoreBonusText.text = $"+{eventArgs.BonusAmount} PTS";
+
+        if (scoreBonusTextCoroutine != null)
+        {
+            StopCoroutine(scoreBonusTextCoroutine);
+        }
+
+        scoreBonusTextCoroutine = StartCoroutine(FadeBonusText(scoreBonusText));
+    }
+
+    private IEnumerator FadeBonusText(TextMeshProUGUI bonusText)
+    {
+        bonusText.gameObject.SetActive(true);
+        
+        Color c = bonusText.color;
+        
+        if (bonusText.color.a < 1f)
+        {
+            c.a = 1f;
+            bonusText.color = c;
+        }
+        
+        c.a = 0f;
+
+        float fadeInSpeed = 3f;
+        float fadeOutSpeed = 0.5f;
+
+        while (c.a < 1f)
+        {
+            c.a += Time.deltaTime * fadeInSpeed;
+            bonusText.color = c;
+            yield return null;
+        }
+        
+        while (c.a > 0f)
+        {
+            c.a -= Time.deltaTime * fadeOutSpeed;
+            bonusText.color = c;
+            yield return null;
+        }
+        
+        bonusText.gameObject.SetActive(false);
     }
 }

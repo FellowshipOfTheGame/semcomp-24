@@ -18,10 +18,10 @@ TagManager:
   - Player
   - VehicleWheels
   - Obstacle
-  - 
-  - 
-  - 
-  - 
+  - WorldWalls
+  - Train
+  - TrainRails
+  - UIOverlay
   - 
   - 
   - 

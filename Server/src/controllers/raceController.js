@@ -14,11 +14,6 @@ module.exports = {
     ranking
 }
 
-// Init global ranking variable
-const rankingMazSize = 10
-let   globalRank     = { rank: [], minScore: -1, updatedAt: new Date() }
-loadRanking()
-
 // Controller Functions
 async function start(req, res) {
     const userId = req.user._id
@@ -45,7 +40,7 @@ async function finish(req, res) {
     const gold  = parseInt(req.body?.gold)
     const nonce = req.body?.nonce?.toString().trim()
     const sign  = req.body?.sign?.toString().trim()
-    const finishedAt = new Date().toISOString().trim()
+    const finishedAt = new Date().toISOString()
 
     let newPersonalRecord = false
 
@@ -82,16 +77,15 @@ async function finish(req, res) {
         UserModel.findById(userId)
         .then((doc) => { 
             doc.gold += gold
+            doc.goldAcc += gold
             doc.runs += 1
             newPersonalRecord = doc.topScore < score
             doc.topScore = (newPersonalRecord) ? score : doc.topScore
+            doc.topScoreDate = (newPersonalRecord) ? new Date().toISOString() : doc.topScoreDate
             return doc.save() 
         })
         .then(( ) => new RaceModel({ userId, score, gold, startedAt, finishedAt}).save())
         .then(( ) => { 
-            if( newPersonalRecord && globalRank.minScore < score ) 
-                updateRanking(userId, req.user.name, score)
-
             return res.json({ message: "ok", isPersonalRecord: newPersonalRecord }) 
         })
         .catch((err) => { 
@@ -102,57 +96,41 @@ async function finish(req, res) {
 }
 
 async function ranking(req, res) {
-    return res.json({ 
-        message: "ok",
-        updatedAt: globalRank.updatedAt,
-        rank: globalRank.rank.map((item) => { 
-            return { 
-                name: item.name, 
-                nickname: item.nickname, 
-                topScore: item.topScore
+
+    // Using lean + indexed search to optimize performance
+    UserModel.find().lean()
+    .select('name topScore topScoreDate')
+    .sort({topScore: -1, topScoreDate: 1})
+    .exec()
+    .then((ranking) => {
+
+        let personal = { position: -1, topScore: -1, name: '' }
+        
+        if(req.user?._id !== undefined) { 
+            const userPos = ranking.findIndex((u) => req.user._id.equals(u._id))
+
+            if(userPos >= 0){ 
+                personal.position = userPos+1
+                personal.topScore = ranking[userPos].topScore
+                personal.name = req.user.name
             }
-        }) 
-    })
-}
-
-// Auxiliar Functions 
-async function loadRanking(){
-    await UserModel.find().select('name nickname topScore').sort({topScore: -1}).limit(rankingMazSize).exec()
-    .then((docs) => {
-        const N             = docs.length
-        globalRank.rank     = docs
-        globalRank.minScore = (N >= rankingMazSize) ? globalRank.rank[N-1].topScore : -1
-    })
-    .catch((err) => { console.error(`at loadRanking(): error loading ranking ${err}`) })
-}
-
-function updateRanking(_id, nickname, topScore){ 
-    // Flag to know if user is already in ranking
-    let isInRanking = false
-
-    // If user is already in ranking then update his score
-    for(let i = 0; isInRanking === false && i < globalRank.rank.length; i++){
-        if(_id.equals(globalRank.rank[i]._id)){
-            if(topScore < globalRank.rank[i].topScore) 
-                return  // If he did not beat his own best topScore then ignore
-            
-            isInRanking = true
-            globalRank.rank[i].topScore = topScore
         }
-    }
 
-    // If not in ranking need to append to the ranking list
-    if(isInRanking === false) 
-        globalRank.rank.push({_id, nickname, topScore})
-    
-    // Reordering the ranking
-    globalRank.rank.sort((a,b) => (b.topScore > a.topScore) ? 1 : -1)
-
-    // Remove ranking overflow
-    globalRank.rank = globalRank.rank.slice(0,rankingMazSize)
-    
-    // Update min score and update time
-    const N = globalRank.rank.length
-    globalRank.minScore  = (N >= rankingMazSize) ? globalRank.rank[N-1].topScore : -1
-    globalRank.updatedAt = new Date()
+        return res.json({ 
+            message: "ok", 
+            personal: personal,
+            rank: ranking.map((u) => { 
+                    return { 
+                        topScore: u.topScore,
+                        name: u.name,
+                        topScoreDate: u.topScoreDate
+                    }
+                }).slice(0, 10) // Return only first 10 users to avoid giant HTTP responses
+        })
+        
+    })
+    .catch((err) => { 
+        console.error(`at /race/ranking: error loading ranking ${err}`) 
+        return res.status(500).json({ message: "internal server error" })
+    })
 }

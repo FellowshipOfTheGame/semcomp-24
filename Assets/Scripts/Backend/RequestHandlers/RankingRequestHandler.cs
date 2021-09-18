@@ -9,7 +9,8 @@ namespace SubiNoOnibus.Networking.Requests
     {
         public static IEnumerator GetRanking(Action<RankingData> OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
-            using UnityWebRequest request = WebRequestFactory.AuthGetJson(Endpoints.Ranking_url);
+            RaycastBlockEvent.Invoke(true);
+            using UnityWebRequest request = WebRequestFactory.AuthGet(Endpoints.Ranking_url);
 
             yield return request.SendWebRequest();
 
@@ -19,9 +20,11 @@ namespace SubiNoOnibus.Networking.Requests
             }
             else
             {
+                UserAuthRequestHandler.SaveAuthCookie(request);
                 var rankingData = JsonUtility.FromJson<RankingData>(request.downloadHandler.text);
                 OnSuccess?.Invoke(rankingData);
             }
+            RaycastBlockEvent.Invoke(false);
         }
     }
 }

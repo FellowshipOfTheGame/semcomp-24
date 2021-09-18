@@ -7,10 +7,21 @@ namespace SubiNoOnibus.Networking.Requests
 {
     public static class UserAuthRequestHandler
     {
-        private const string authKey = "Auth";
+        public const string authKey = "Auth";
+
+        public static void SaveAuthCookie(UnityWebRequest request)
+        {
+            string cookie = request.GetResponseHeader("Set-Cookie");
+            
+            if (!string.IsNullOrEmpty(cookie))
+            {
+                PlayerPrefs.SetString(authKey, cookie);
+            }
+        }
 
         public static IEnumerator GetSession(SessionData data, Action OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
+            RaycastBlockEvent.Invoke(true);
             using UnityWebRequest request = WebRequestFactory.PostJson(Endpoints.Login_get_session_url, JsonUtility.ToJson(data));
 
             yield return request.SendWebRequest();
@@ -21,15 +32,16 @@ namespace SubiNoOnibus.Networking.Requests
             }
             else
             {
-                string cookie = request.GetResponseHeader("Set-Cookie");
-                PlayerPrefs.SetString(authKey, cookie);
+                SaveAuthCookie(request);
 
                 OnSuccess?.Invoke();
             }
+            RaycastBlockEvent.Invoke(false);
         }
 
         public static IEnumerator Logout(Action OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
+            RaycastBlockEvent.Invoke(true);
             using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Logout_url);
 
             yield return request.SendWebRequest();
@@ -45,11 +57,13 @@ namespace SubiNoOnibus.Networking.Requests
                 
                 OnSuccess?.Invoke();
             }
+            RaycastBlockEvent.Invoke(false);
         }
 
-        public static IEnumerator ValidateSession(Action OnSuccess)
+        public static IEnumerator ValidateSession(Action OnSuccess, Action OnFailure = null)
         {
-            using UnityWebRequest request = WebRequestFactory.AuthGetJson(Endpoints.Session_validate_url);
+            RaycastBlockEvent.Invoke(true);
+            using UnityWebRequest request = WebRequestFactory.AuthGet(Endpoints.Session_validate_url);
 
             yield return request.SendWebRequest();
 
@@ -57,6 +71,11 @@ namespace SubiNoOnibus.Networking.Requests
             {
                 OnSuccess?.Invoke();
             }
+            else
+            {
+                OnFailure?.Invoke();
+            }
+            RaycastBlockEvent.Invoke(false);
         }
     }
 }

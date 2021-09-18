@@ -9,6 +9,7 @@ namespace SubiNoOnibus.Networking.Requests
     {
         public static IEnumerator StartRace(Action<RaceData> OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
+            RaycastBlockEvent.Invoke(true);
             using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Race_start_url);
             yield return request.SendWebRequest();
 
@@ -18,16 +19,20 @@ namespace SubiNoOnibus.Networking.Requests
             }
             else
             {
+                UserAuthRequestHandler.SaveAuthCookie(request);
                 var raceData = JsonUtility.FromJson<RaceData>(request.downloadHandler.text);
                 OnSuccess?.Invoke(raceData);
             }
+            RaycastBlockEvent.Invoke(false);
         }
 
         public static IEnumerator FinishRace(RaceData raceData, Action OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
-            Cryptography.SetSignature(raceData);
-            
-            using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Race_finish_url, JsonUtility.ToJson(raceData));
+            RaycastBlockEvent.Invoke(true);
+            raceData.sign = Cryptography.GetSignature(raceData);
+            string data = JsonUtility.ToJson(raceData);
+            Debug.Log(data);
+            using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Race_finish_url, data);
             
             yield return request.SendWebRequest();
 
@@ -39,6 +44,7 @@ namespace SubiNoOnibus.Networking.Requests
             {
                 OnSuccess?.Invoke();
             }
+            RaycastBlockEvent.Invoke(false);
         }
     }
 }

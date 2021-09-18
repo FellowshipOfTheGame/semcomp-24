@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{d5eca974-1c16-4387-a9e0-878ada81a2b2}">
+		<property name="name">
+			<value>TimeTravel</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3f492ca1-a7ae-4713-8561-a92ab6197041}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{a0bb6650-0460-467c-98d8-f2e020582a2d}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{a0bb6650-0460-467c-98d8-f2e020582a2d}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Present</value>
+			<value>Past</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

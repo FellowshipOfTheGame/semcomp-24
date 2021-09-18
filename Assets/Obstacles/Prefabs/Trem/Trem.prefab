@@ -1,0 +1,2729 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4569119828363182557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6452561128086884966}
+  - component: {fileID: 5704599852602912616}
+  m_Layer: 11
+  m_Name: Trem
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6452561128086884966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569119828363182557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 833600907762944973}
+  - {fileID: 1785856426116324421}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5704599852602912616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569119828363182557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494a40f6eec14665bedd02a96f5db790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsSet: {fileID: 11400000, guid: 1dc7b89ccb6b6bdce9a98a6e24d0014c, type: 2}
+--- !u!1 &6011752171039614979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 833600907762944973}
+  - component: {fileID: 7979351473968685011}
+  - component: {fileID: 8095338487123573186}
+  - component: {fileID: 5824064234958484806}
+  - component: {fileID: 188584102431333672}
+  - component: {fileID: 3497563674238949282}
+  m_Layer: 11
+  m_Name: Trem
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &833600907762944973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011752171039614979}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -30, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3176908547351806417}
+  - {fileID: 4416365956122542962}
+  - {fileID: 1191632509026899095}
+  - {fileID: 1137541704663952766}
+  - {fileID: 5477630297636242360}
+  - {fileID: 1081100524538388458}
+  - {fileID: 6949078325660113543}
+  - {fileID: 1783335291102124164}
+  - {fileID: 8193268224611586943}
+  - {fileID: 6788911990298999669}
+  - {fileID: 1110155641545529400}
+  - {fileID: 5239931441634022448}
+  - {fileID: 4722182774385575099}
+  - {fileID: 330906731698660594}
+  - {fileID: 6345618277555792518}
+  - {fileID: 1479403884683860449}
+  - {fileID: 1691382612903776636}
+  - {fileID: 3369239792656378659}
+  - {fileID: 8628530849844751357}
+  - {fileID: 2747339620541842064}
+  - {fileID: 8094030781053347873}
+  - {fileID: 8183803998766147554}
+  - {fileID: 2607611089798205561}
+  - {fileID: 4012597294447433333}
+  - {fileID: 7448823837260189258}
+  - {fileID: 7518502672111075280}
+  - {fileID: 1297434796360125839}
+  - {fileID: 348880604599960076}
+  - {fileID: 644855132766664743}
+  - {fileID: 1600993863281758679}
+  - {fileID: 7945787935598573281}
+  - {fileID: 5002533973750567025}
+  - {fileID: 3326864020431037897}
+  - {fileID: 3675966017324177796}
+  - {fileID: 2433932440410578084}
+  - {fileID: 5070655851075369694}
+  - {fileID: 2909862166621351746}
+  - {fileID: 5336944857604900786}
+  - {fileID: 5495760349665715057}
+  - {fileID: 5941487617476493049}
+  - {fileID: 787974201778360658}
+  - {fileID: 1952591746567269948}
+  - {fileID: 4334738573776636388}
+  - {fileID: 4834364060142592511}
+  - {fileID: 3674769870505868984}
+  - {fileID: 2087212899762578595}
+  m_Father: {fileID: 6452561128086884966}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!54 &7979351473968685011
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011752171039614979}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8095338487123573186
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011752171039614979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.2, y: 4.3496385, z: 541.2098}
+  m_Center: {x: -1.1517913e-13, y: 2.3251808, z: -264.10495}
+--- !u!114 &5824064234958484806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011752171039614979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1828c36b7bc5c7fda304867e4151267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePropertiesPreset: {fileID: 11400000, guid: 8e6be16416784e5629019d1c2b203923, type: 2}
+--- !u!114 &188584102431333672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011752171039614979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6beedac28117a204bb454daa9b7d658d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumSpeed: 13
+  randomizeMaximumSpeed: 0
+  acceleration: 1000000
+  forward: 1
+  brake: 0
+  wakeOnProximity: 1
+  wakeDistance: 400
+  useParentPosition: 1
+  lookAtLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  brakingDistance: 10
+  fieldOfView: 0
+--- !u!114 &3497563674238949282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011752171039614979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/OBST\xC1CULOS/IMPACTO4"
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!1001 &439188552524892229
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -282.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &7448823837260189258 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 439188552524892229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &458606808580668802
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -258.50003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &2607611089798205561 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 458606808580668802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &884448515879454770
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -376.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &3326864020431037897 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 884448515879454770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &913287015060522712
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -199.75003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &3369239792656378659 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 913287015060522712}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1118915166880790861
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6452561128086884966}
+    m_Modifications:
+    - target: {fileID: 1679716901501723912, guid: 85354b751088d88fa964eb07c697f5e5, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679716901501723915, guid: 85354b751088d88fa964eb07c697f5e5, type: 3}
+      propertyPath: m_Name
+      value: Trilho
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 85354b751088d88fa964eb07c697f5e5, type: 3}
+--- !u!4 &1785856426116324421 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1679716901501723912, guid: 85354b751088d88fa964eb07c697f5e5, type: 3}
+  m_PrefabInstance: {fileID: 1118915166880790861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1212998930293432813
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -246.75003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &8183803998766147554 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 1212998930293432813}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1221478749649311088
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.094947e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -94.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &8193268224611586943 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 1221478749649311088}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1655483456270888434
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -211.50003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &8628530849844751357 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 1655483456270888434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2181221931291763743
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -493.50006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &4334738573776636388 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 2181221931291763743}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2472715918611310576
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -505.25006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &4834364060142592511 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 2472715918611310576}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2790592404530950135
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -317.25003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &348880604599960076 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 2790592404530950135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2918937644667239593
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -470.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &787974201778360658 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 2918937644667239593}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3021985286546395711
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8189894e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -129.25002
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &5239931441634022448 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 3021985286546395711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3243465374031766910
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -446.50006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &5495760349665715057 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 3243465374031766910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3244074571606504899
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8189894e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -117.500015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &1110155641545529400 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 3244074571606504899}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3261650403287598519
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.5474735e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -47.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &5477630297636242360 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 3261650403287598519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3273416802072621585
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.094947e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -58.750008
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &1081100524538388458 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 3273416802072621585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3489232104482070644
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -305.50003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &1297434796360125839 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 3489232104482070644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3667288517821020524
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.2737368e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &1191632509026899095 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 3667288517821020524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3689470619656681718
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -458.25006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &5941487617476493049 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 3689470619656681718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3825152060998483079
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8189894e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -188.00002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &1691382612903776636 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 3825152060998483079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3957170869954294810
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8189894e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -176.25002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &1479403884683860449 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 3957170869954294810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4132030989213985929
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8189894e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -164.50002
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &6345618277555792518 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 4132030989213985929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4140404373002666951
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -481.75006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &1952591746567269948 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 4140404373002666951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4238725015731926399
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.094947e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -82.25001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &1783335291102124164 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 4238725015731926399}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4510936792584292696
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -528.75006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &2087212899762578595 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 4510936792584292696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4571374646331997562
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8189894e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -105.750015
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &6788911990298999669 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 4571374646331997562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4647951011083311787
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -399.50006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &2433932440410578084 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 4647951011083311787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4764036434235127676
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.094947e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -70.50001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &6949078325660113543 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 4764036434235127676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5145156609369031839
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -223.25003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &2747339620541842064 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 5145156609369031839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5270951266600708429
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -423.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &2909862166621351746 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 5270951266600708429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5348660446550118955
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -293.75003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &7518502672111075280 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 5348660446550118955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5487715351106149146
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -352.50003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &7945787935598573281 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 5487715351106149146}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5926334767872017882
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -235.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &8094030781053347873 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 5926334767872017882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5927970645667405707
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -387.75006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &3675966017324177796 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 5927970645667405707}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6032749560193775799
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -517.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &3674769870505868984 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 6032749560193775799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6262358103019917434
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -270.25003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &4012597294447433333 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 6262358103019917434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6633189861998265725
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.1368684e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.750001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &4416365956122542962 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 6633189861998265725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6903227869119808693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2629273564027738480, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348429413745427812, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348429413745427812, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348429413745427812, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348429413745427812, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348429413745427812, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348429413745427812, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687519536696025054, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+      propertyPath: m_Name
+      value: TremLocomotivaEletrica
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687519536696025054, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8818520306852611280, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+--- !u!4 &3176908547351806417 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8348429413745427812, guid: 1aa91b1aab753c05e825d173502c4349, type: 3}
+  m_PrefabInstance: {fileID: 6903227869119808693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7198375327665793344
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8189894e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -141.00002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &4722182774385575099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 7198375327665793344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7220328686884902693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -411.25006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &5070655851075369694 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 7220328686884902693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7336464477562217213
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8189894e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -152.75002
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &330906731698660594 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 7336464477562217213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7422431548885302666
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -364.25003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &5002533973750567025 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 7422431548885302666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7529445853102041673
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoGraos (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222196, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.275958e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -434.75006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731389114047133, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480731390456397643, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+--- !u!4 &5336944857604900786 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2480731388904222203, guid: 2a9081910484f82c596a762f3594165d, type: 3}
+  m_PrefabInstance: {fileID: 7529445853102041673}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7617058298991607336
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -329.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &644855132766664743 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 7617058298991607336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7966474521116863345
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.5474735e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -35.250004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &1137541704663952766 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 7966474521116863345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8606406472543000536
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 833600907762944973}
+    m_Modifications:
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Name
+      value: TremVagaoContainer (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475470, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.637979e-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -340.75003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789568670953462, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7009789569730702714, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+--- !u!4 &1600993863281758679 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7009789568571475471, guid: ca1cd81377bd103d7b5b6e85e09541a5, type: 3}
+  m_PrefabInstance: {fileID: 8606406472543000536}
+  m_PrefabAsset: {fileID: 0}
