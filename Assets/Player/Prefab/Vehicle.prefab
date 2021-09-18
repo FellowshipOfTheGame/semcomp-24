@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 6095949563745021327}
   - component: {fileID: 1822952218701299703}
   - component: {fileID: 108651217}
+  - component: {fileID: 3569172652181902057}
   m_Layer: 7
   m_Name: Vehicle
   m_TagString: Player
@@ -321,6 +322,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceManager: {fileID: 0}
+--- !u!114 &3569172652181902057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6036709807576084203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a748a6eb30cf91e41911ae910fc1b3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxX: 20
+  maxY: -10
 --- !u!1 &6036709807610969999
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,6 +41,7 @@ public class TimeTravel : MonoBehaviour
     private GameObject player;
     private HealthSystem healthSystem;
     private ScoreManager scoreManager;
+    private VehicleRenderer vehicleRenderer;
 
     public static bool InThePast { get; private set; }
     public int CurrentStage { get; private set; }
@@ -56,6 +57,7 @@ public class TimeTravel : MonoBehaviour
     {
         player = GetComponent<RaceManager>().player;
         healthSystem = player.GetComponent<HealthSystem>();
+        vehicleRenderer = player.GetComponent<VehicleRenderer>();
         
         scoreManager = GetComponent<ScoreManager>();
     }
@@ -142,6 +144,12 @@ public class TimeTravel : MonoBehaviour
             OnTimeTravel(this, e);
         }
 
+        if (!healthSystem.HasShield())
+        {
+            healthSystem.ActivateShield(1, 5f);
+            vehicleRenderer.ActivateShieldeEffect(5f);
+        }
+        
         InThePast = false;
         healthSystem.SetInvulnerable(false);
     }

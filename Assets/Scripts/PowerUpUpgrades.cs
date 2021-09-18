@@ -232,7 +232,7 @@ public class PowerUpUpgrades : MonoBehaviour
 
     private void OnFailure(UnityWebRequest request)
     {
-        playerPrefab.GetComponent<HealthSystem>().SetHealthMax(playerHealth0Preset0.starterHealth);
+        playerPrefab.GetComponent<HealthSystem>().SetHealthMax(maxHealth);
         
         Booster booster = boosterPrefab.GetComponent<Booster>();
         booster.boost = boosterBoost;
