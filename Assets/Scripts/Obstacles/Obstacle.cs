@@ -54,7 +54,6 @@ public class Obstacle : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
-            _eventEmitter?.Play();
             // If countdown was already triggered by a player hit, do nothing
             if (DestroyObstacleCoroutine == null)
             {

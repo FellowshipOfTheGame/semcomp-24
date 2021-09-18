@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 5627304107780903769}
   - component: {fileID: 5627304107780903766}
   m_Layer: 0
-  m_Name: BackgroundMusic
+  m_Name: StartupMenuBackgroundMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5627304107780903769
 Transform:
   m_ObjectHideFlags: 0

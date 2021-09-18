@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/GAMEPLAY SFX/GAMEPLAY_UI1
+  Event: event:/GAMEPLAY SFX/Moeda
   PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1

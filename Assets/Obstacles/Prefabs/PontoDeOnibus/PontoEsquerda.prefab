@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/GAMEPLAY SFX/GAMEPLAY_UI2
+  Event: event:/GAMEPLAY SFX/GAMEPLAY_UI4
   PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1

@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: "event:/OBST\xC1CULOS/CONE"
+  Event: "event:/OBST\xC1CULOS/SEM\xC1FORO"
   PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1

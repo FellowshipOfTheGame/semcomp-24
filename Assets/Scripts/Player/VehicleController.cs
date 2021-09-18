@@ -33,6 +33,8 @@ public class VehicleController : MonoBehaviour
     [Header("SFX's")]
     [SerializeField]
     private FMODUnity.StudioEventEmitter landingEventEmitter;
+    [SerializeField]
+    private FMODUnity.StudioEventEmitter motorEventEmmiter;
 
     [FormerlySerializedAs("acceleration")]
     [Header("Physics")]
@@ -185,6 +187,9 @@ public class VehicleController : MonoBehaviour
 
         frontLeftWheel.localRotation = Quaternion.Euler(wheelRotationLeft);
         frontRightWheel.localRotation = Quaternion.Euler(wheelRotationRight);
+
+        float rpm = Mathf.Clamp01(GetCurrentSpeed() / GetMaximumSpeed());
+        motorEventEmmiter.SetParameter(motorEventEmmiter.Params[0].ID, rpm);
     }
 
     protected void FixedUpdate()
