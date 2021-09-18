@@ -1546,7 +1546,7 @@
     "m_Guid": {
         "m_GuidSerialized": "06e5afa9-0f96-4e32-a629-6915e5745acc"
     },
-    "m_Name": "Color",
+    "m_Name": "_Color",
     "m_DefaultReferenceName": "Color_81d1cb0f97a54146b78f827320d9b49b",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
