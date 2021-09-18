@@ -18,7 +18,7 @@ public class LevelGenerator : Generator
         float weightSum = 0f;
         foreach (WeightedSet set in sets)
         {
-            weightSum += set.weight;
+            weightSum += (set.weight > 0f) ? set.weight : 0f;
         }
         float randomNumber = UnityEngine.Random.Range(0f, weightSum);
         float cumulative = 0f;

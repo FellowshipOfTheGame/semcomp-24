@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 8880439268216535320}
   - component: {fileID: 5808896081283186843}
   - component: {fileID: 6799904399800792151}
-  - component: {fileID: -6363866668295053090}
   - component: {fileID: -5980911304186450146}
   m_Layer: 9
   m_Name: Cone
@@ -77,19 +76,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePropertiesPreset: {fileID: 11400000, guid: 76e4568d4279132a98c40cee8cef4578, type: 2}
---- !u!114 &-6363866668295053090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8880439268216535399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494a40f6eec14665bedd02a96f5db790, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsSet: {fileID: 11400000, guid: 0f45309bfa1ac493c96914de9767569e, type: 2}
 --- !u!114 &-5980911304186450146
 MonoBehaviour:
   m_ObjectHideFlags: 0

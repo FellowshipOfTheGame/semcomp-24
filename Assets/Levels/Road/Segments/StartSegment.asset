@@ -16,7 +16,7 @@ MonoBehaviour:
   width: 12
   length: 8
   segment:
-  - {fileID: 11400000, guid: 79b3fb2bea6cee002a98a4e8e9eebeb0, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
