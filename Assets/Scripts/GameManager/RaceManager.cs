@@ -56,6 +56,19 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemDurationText;
 
+    [Header("Game progression")]
+    [SerializeField] private LevelGenerator levelGenerator;
+    [SerializeField] private float progressionTimeScale;
+    [SerializeField] private int easyIndex;
+    [SerializeField] private int mediumIndex;
+    [SerializeField] private int hardIndex;
+    [Tooltip("Weight on easy set moves towards this value")]
+    [SerializeField] private float easyTarget;
+    [Tooltip("Weight on medium set moves towards this value")]
+    [SerializeField] private float mediumTarget;
+    [Tooltip("Weight on hard set moves towards this value")]
+    [SerializeField] private float hardTarget;
+
     private HealthSystem healthSystem;
 
     private TimeTravel timeTravel; 
@@ -114,6 +127,11 @@ public class RaceManager : MonoBehaviour
     {
         timer += Time.deltaTime;
         distanceTraveled += vehicle.GetCurrentSpeed() * Time.deltaTime;
+
+        if (easyIndex != -1) levelGenerator.sets[easyIndex].weight = Mathf.MoveTowards(levelGenerator.sets[easyIndex].weight, easyTarget, Time.deltaTime * progressionTimeScale);
+        if (mediumIndex != -1) levelGenerator.sets[mediumIndex].weight = Mathf.MoveTowards(levelGenerator.sets[mediumIndex].weight, mediumTarget, Time.deltaTime * progressionTimeScale);
+        if (hardIndex != -1) levelGenerator.sets[hardIndex].weight = Mathf.MoveTowards(levelGenerator.sets[hardIndex].weight, hardTarget, Time.deltaTime * progressionTimeScale);
+        
         UpdateUI();
     }
 

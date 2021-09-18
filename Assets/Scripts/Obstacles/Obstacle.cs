@@ -77,6 +77,12 @@ public class Obstacle : MonoBehaviour
 
         fadeOutReady = true;
     }
+
+    public void FadeOut(Collider playerCollider)
+    {
+        this.playerCollider = playerCollider;
+        FadeOut();
+    }
     
     private IEnumerator FadeOutEnumerator(Renderer _renderer)
     {

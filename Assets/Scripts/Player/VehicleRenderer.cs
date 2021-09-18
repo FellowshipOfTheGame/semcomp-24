@@ -10,6 +10,7 @@ public class VehicleRenderer : MonoBehaviour
     [SerializeField] private GameObject lightning;
     private GameObject shieldEffectInstance;
     private Animator shieldAnimator;
+    private Collider shieldCollider;
     private Animator lightningAnimator;
     private Coroutine shieldCoroutine;
 
@@ -17,6 +18,7 @@ public class VehicleRenderer : MonoBehaviour
     {
         shieldEffectInstance = Instantiate(shieldEffect, transform);
         shieldEffectInstance.SetActive(false);
+        shieldCollider = shieldEffectInstance.GetComponent<Collider>();
         shieldAnimator = shieldEffectInstance.GetComponent<Animator>();
         lightningAnimator = lightning.GetComponent<Animator>();
     }
@@ -33,11 +35,13 @@ public class VehicleRenderer : MonoBehaviour
     public void DeactivateShieldeEffect()
     {
         StopCoroutine(shieldCoroutine);
+        shieldCollider.enabled = false;
         shieldAnimator.Play("ShieldDeactivate");
     }
 
-    public void ActivateLightning()
+    public void ActivateLightning(Vector3 size)
     {
+        lightning.transform.localScale = new Vector3(lightning.transform.localScale.x, lightning.transform.localScale.y, size.z);
         lightningAnimator.Play("FadeInOut", 0, 0);
     }
 
@@ -52,11 +56,13 @@ public class VehicleRenderer : MonoBehaviour
     private IEnumerator Shield(float duration)
     {
         shieldEffectInstance.SetActive(true);
+        shieldCollider.enabled = true;
         shieldAnimator.Play("ShieldActivate");
         yield return new WaitForSeconds(duration);
         shieldAnimator.Play("ShieldDeactivate");
         yield return new WaitForSeconds(0.5f);
         shieldEffectInstance.SetActive(false);
+        shieldCollider.enabled = false;
     }
     
 }

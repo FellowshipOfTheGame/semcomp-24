@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ItemSystem : MonoBehaviour
 {
     [SerializeField] private Image iconHUD;
+    [SerializeField] private Button button;
     private VehicleController controller;
     private VehicleRenderer _renderer;
     
@@ -20,6 +21,7 @@ public class ItemSystem : MonoBehaviour
         _renderer = GetComponent<VehicleRenderer>();
         iconHUD.enabled = false;
         hasPowerUp = false;
+        button.interactable = false;
     }
 
     public void ActivateItem()
@@ -27,6 +29,7 @@ public class ItemSystem : MonoBehaviour
         if (currentPowerUp is null)
             return;
         hasPowerUp = false;
+        button.interactable = false;
         currentPowerUp.OnActivate(controller, _renderer);
         OnPowerUpActiveEvent?.Invoke(currentPowerUp);
         currentPowerUp = null;
@@ -38,6 +41,7 @@ public class ItemSystem : MonoBehaviour
         currentPowerUp = newPowerUp;
         iconHUD.sprite = newPowerUp.icon;
         iconHUD.enabled = true;
+        button.interactable = true;
     }
 
     public void ReplaceIfNull(PowerUp newPowerUp)

@@ -1,15 +1,16 @@
+using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 [System.Serializable]
-internal class AccelerationRange
+public class AccelerationRange
 {
     [SerializeField]
     private float acceleration;
     
-    [SerializeField] [Range(0, 100)]
+    [SerializeField]
     private int upperLimit;
 
     public static float reference;
@@ -21,6 +22,7 @@ internal class AccelerationRange
         return (value / reference * 100 <= upperLimit);
     }
 }
+
 /**
  * Physics interactions for vehicles
 */
@@ -36,53 +38,54 @@ public class VehicleController : MonoBehaviour
     [SerializeField]
     private FMODUnity.StudioEventEmitter motorEventEmmiter;
 
-    [FormerlySerializedAs("acceleration")]
     [Header("Physics")]
-
-    // public float acceleration = 1f;
-
-    // [SerializeField]
-    // private AccelerationRange[] acceleration;
     
-    [SerializeField]
-    private AccelerationRange[] accelerationRanges;
+    public AccelerationRange[] accelerationRanges;
+    
+    public float forwardForce = 80f;
+    public float initialForwardForce = 0f;
     
     public LayerMask whatIsGround;
     public Transform[] groundDetection;
     public float groundCheckDistance = 0.5f;
     public float groundDrag = 3f;
     public float airDrag = 0.1f;
+    public Transform centerOfMass;
 
     [Header("Turning")]
-    [Tooltip("Distance between wheels")] public float wheelBase = 2f;
-    private float turningAngle; // Current turning wheel angle
     
-    public float forwardForce = 80f;
-    public float initialForwardForce = 0f;
-    private bool grounded; // State management
+    [Tooltip("Distance between wheels")]
+    public float wheelBase = 2f;
 
-    private float currentForwardForce;
-    
-    // Components
-    private Rigidbody _rigidbody;
-    private Collider[] _colliders;
-    private ItemSystem itemSystem;
-
-    public float maximumSpeed { get; private set; }
-
-    public float groundDragDefault { get; private set; }
-    
     [Tooltip("The maximum angle the player should be able to turn")]
     public float turningAngleMax = 15f;
     
     [Tooltip("The maximum angle the vehicle can rotate before rotating back to player's original position")]
     public float rotateBackAngle = 60f;
+
+    [Tooltip("The compensation force that is applied in the x component of the forward force")]
+    public float compensationForceControl = 3f;
+    
+    private float turningAngle; // Current turning wheel angle
     
     [Header("Wheels (aesthetic)")]
     
     [SerializeField] private Transform frontLeftWheel;
     [SerializeField] private Transform frontRightWheel;
     [SerializeField] private float wheelsRotationSpeed = 5f;
+    
+    private bool grounded; // State management
+
+    // Components
+    private Rigidbody _rigidbody;
+    private Collider[] _colliders;
+    private ItemSystem itemSystem;
+
+    public BoxCollider VehicleCollider { get; private set; }
+
+    public float maximumSpeed { get; private set; }
+
+    public float groundDragDefault { get; private set; }
     
     private PlayerInput playerInput;
     private InputAction movement;
@@ -122,6 +125,8 @@ public class VehicleController : MonoBehaviour
         _colliders = GetComponents<Collider>();
         itemSystem = GetComponent<ItemSystem>();
 
+        VehicleCollider = GetComponent<BoxCollider>(); 
+
         groundDragDefault = groundDrag;
         
         if (preset is null)
@@ -132,30 +137,12 @@ public class VehicleController : MonoBehaviour
         rigidbodyDefaultConstraints = _rigidbody.constraints;
 
         AccelerationRange.reference = maximumSpeed;
+
+        _rigidbody.centerOfMass = centerOfMass.position;
     }
 
     protected void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            UseItem(new InputAction.CallbackContext());
-        }
-
-        int i = 0;
-        try
-        {
-            while (!accelerationRanges[i].Contain(GetCurrentSpeed())) i++;
-        }
-        catch
-        {
-            i = accelerationRanges.Length - 1;
-        }
-        
-        //Debug.Log(accelerationRanges[i].Acceleration);
-
-        // forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, acceleration[i].Acceleration * Time.deltaTime);
-        forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, accelerationRanges[i].Acceleration * Time.deltaTime);
-
         // Check rotation boundaries
         bool turnRight = (vehicleRotation.y <= turningAngleMax || vehicleRotation.y > 180);
         bool turnLeft = (vehicleRotation.y >= (360 - turningAngleMax) || vehicleRotation.y <= 180);
@@ -200,7 +187,19 @@ public class VehicleController : MonoBehaviour
             return;
         }
 
+        int i = 0;
+        while (!accelerationRanges[i].Contain(GetCurrentSpeed())) i++;
+        
+        forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, accelerationRanges[i].Acceleration * Time.deltaTime);
+        
         _rigidbody.AddRelativeForce(Vector3.forward * forwardForce, ForceMode.Acceleration);
+
+        if (i > 1)
+        {
+            Vector3 compensationDirection = turningAngle > 0 ? Vector3.right : turningAngle < 0 ? Vector3.left : Vector3.zero;
+            _rigidbody.AddRelativeForce(compensationDirection * Mathf.Clamp((forwardForce / compensationForceControl), -preset.speed, preset.speed), ForceMode.Acceleration);
+        }
+        
         // _rigidbody.AddForce(-_rigidbody.velocity, ForceMode.Acceleration); // Goes up to a certain maximum speed
         
         if (turningAngle != 0f)
@@ -211,7 +210,7 @@ public class VehicleController : MonoBehaviour
         }
         
         vehicleRotation = _rigidbody.rotation.eulerAngles;
-
+        
         // Checks for rotation boundaries
         if (vehicleRotation.y > rotateBackAngle && vehicleRotation.y < (360 - rotateBackAngle))
         {

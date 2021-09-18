@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1829685355624860074, guid: 76e2afdebdb5ad842a1e219507b67757, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5062499472762960053, guid: 76e2afdebdb5ad842a1e219507b67757, type: 3}
       propertyPath: m_Name
       value: PontoDireita

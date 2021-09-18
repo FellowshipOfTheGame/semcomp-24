@@ -14,7 +14,8 @@ public class HoleInRoad : MonoBehaviour
         {
             // Debug.Log("Hole Collide");
             _eventEmitter.Play();
-            other.gameObject.GetComponent<VehicleController>().SlowFowardForce(slowAmount);
+            VehicleController vehicleController = other.gameObject.GetComponent<VehicleController>();
+            vehicleController.forwardForce -= Mathf.Clamp(vehicleController.forwardForce, 0, slowAmount);
         }
     }
 }
