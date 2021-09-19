@@ -13,11 +13,11 @@ const logger = winston.createLogger({
             format: winston.format.colorize()
         }),
         new winston.transports.File({
-            filename: 'error.log',
+            filename: 'logs/error.log',
             level: 'error'
         }),
         new winston.transports.File({
-            filename: 'info.log',
+            filename: 'logs/info.log',
             level: 'info'
         }),
         new winston.transports.MongoDB({
@@ -46,7 +46,7 @@ const raceLogger = winston.createLogger({
             format: winston.format.colorize()
         }),
         new winston.transports.File({
-            filename: 'race.log',
+            filename: 'logs/race.log',
             level: 'info'
         }),
         new winston.transports.MongoDB({
