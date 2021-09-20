@@ -2003,6 +2003,14 @@ PrefabInstance:
       propertyPath: starterSegment
       value: 
       objectReference: {fileID: 11400000, guid: 558102f4322e0ab9686ee89e3c214e27, type: 2}
+    - target: {fileID: 2004649143416114322, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: sets.Array.data[0].weight
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004649143416114322, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: sets.Array.data[1].weight
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
       propertyPath: follow
       value: 
