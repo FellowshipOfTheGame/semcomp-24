@@ -1,4 +1,5 @@
 let GoogleStrategy = require('passport-google-oauth20').Strategy;
+let FacebookStrategy = require('passport-facebook').Strategy;
 
 const config = require('../config')
 const User = require('../models/User');
@@ -32,6 +33,30 @@ module.exports = function (passport) {
                 if (err) {
                     logger.error({
                         message: `at Google Login: ${err}`
+                    })
+                    return done(err, null, { message: "unable to create or find user" })
+                }
+
+                if (!user) {
+                    return done(null, null, { message: "user not created or not found" });
+                }
+                
+                return done(null, user);
+            });
+        }
+    ));
+
+    passport.use(new FacebookStrategy({
+            clientID: config.FACEBOOK_CLIENT_ID,
+            clientSecret: config.FACEBOOK_CLIENT_SECRET,
+            callbackURL: config.FACEBOOK_CALLBACK_URL,
+            profileFields: ["id", "email", "name"]
+        },
+        function(accessToken, refreshToken, profile, done) {
+            UserController.findOrCreate(profile, (err, user) => {
+                if (err) {
+                    logger.error({
+                        message: `at Facebook Login: ${err}`
                     })
                     return done(err, null, { message: "unable to create or find user" })
                 }
