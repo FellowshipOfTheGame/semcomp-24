@@ -8,6 +8,6 @@ public class NitroPreset : ScriptableObject
 
     public override string ToString()
     {
-        return $"aumenta a aceleração em um fator de {boost} por {duration}s";
+        return $"aumenta {Mathf.FloorToInt(boost*100f)}% da velocidade máxima";
     }
 }
