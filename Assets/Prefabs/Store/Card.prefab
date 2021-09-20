@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteArray: {fileID: 11400000, guid: 5fed41105a321b84fa53e6e97e5ca585, type: 2}
+  presets: []
   background: {fileID: 8909270467062015096}
   buyButton: {fileID: 8994440970381598801}
   itemValueTxt: {fileID: 7647646488132846812}
@@ -225,10 +226,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.65
-  m_fontSizeBase: 36
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
