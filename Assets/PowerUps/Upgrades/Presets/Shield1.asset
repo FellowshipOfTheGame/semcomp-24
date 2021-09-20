@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1b4cd6e714b1948b7eb724147a1bd9, type: 3}
   m_Name: Shield1
   m_EditorClassIdentifier: 
-  maxHits: 2
-  maxDuration: 5
+  maxHits: 8
+  maxDuration: 10

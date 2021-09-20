@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 8095338487123573186}
   - component: {fileID: 5824064234958484806}
   - component: {fileID: 188584102431333672}
+  - component: {fileID: 3497563674238949282}
   m_Layer: 11
   m_Name: Trem
   m_TagString: Obstacle
@@ -74,7 +75,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6011752171039614979}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -70, y: 0, z: 0}
+  m_LocalPosition: {x: -30, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3176908547351806417}
@@ -180,19 +181,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6beedac28117a204bb454daa9b7d658d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumSpeed: 12
+  maximumSpeed: 13
   randomizeMaximumSpeed: 0
-  acceleration: 150
+  acceleration: 1000000
   forward: 1
   brake: 0
   wakeOnProximity: 1
-  wakeDistance: 220
+  wakeDistance: 400
   useParentPosition: 1
   lookAtLayers:
     serializedVersion: 2
     m_Bits: 0
   brakingDistance: 10
   fieldOfView: 0
+--- !u!114 &3497563674238949282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011752171039614979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/OBST\xC1CULOS/IMPACTO4"
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1001 &439188552524892229
 PrefabInstance:
   m_ObjectHideFlags: 0

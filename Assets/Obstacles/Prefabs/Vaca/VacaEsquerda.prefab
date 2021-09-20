@@ -533,6 +533,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2524633185713070638, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: Event
+      value: "event:/OBST\xC1CULOS/VACAS"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524633185713070638, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524633185713070638, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7305960074823135600, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -603,7 +615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7305960074823135605, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
       propertyPath: acceleration
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7305960074823135605, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
       propertyPath: maximumSpeed

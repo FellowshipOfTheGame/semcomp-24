@@ -6,6 +6,7 @@ const cors = require('cors')
 const fs = require('fs');
 const path = require('path')
 
+const { logger } = require('./config/logger');
 
 // Singletons & Libraries Loaders
 require('./loaders/mongoose')
@@ -47,9 +48,17 @@ app.use(cors({
 // Security and Log Configurations
 // TODO (https://expressjs.com/pt-br/advanced/best-practice-security.html)
 app.disable('x-powered-by');
+
 app.use((req, res, next) => {
-    console.info(`[${new Date().toUTCString()}] ${req.method} ${req.path} - User-Agent: ${req.get('User-Agent')}`);
-    next()
+    let ip = req.headers['x-forwarded-for'] || (req.socket.remoteAddress);
+    ip = ip.indexOf('.') >= 0 ? ip.substring(ip.lastIndexOf(':') + 1) : ip;
+
+    req.ip = ip;
+
+    logger.info({
+        message: `${req.method} ${req.path} - User-Agent: ${req.get('User-Agent')} - ${req.ip} `
+    });
+    next();
 })
 
 // Routes Configurations
@@ -72,14 +81,18 @@ if(config.ENABLE_HTTPS) {
 
     https.createServer(httpsCredentials, app).listen(config.SERVER_PORT , (error) => {
         if (error) throw error
-        console.log(`Starting HTTPS server on port ${config.SERVER_PORT}.`) 
+        logger.info({
+            message: `Starting HTTPS server on port ${config.SERVER_PORT}.`
+        }) 
     })
 
 } else {
 
     app.listen(config.SERVER_PORT, (error) => {
         if (error) throw error
-        console.log(`Starting HTTP server on port ${config.SERVER_PORT}.`) 
+        logger.info({
+            message: `Starting HTTP server on port ${config.SERVER_PORT}.`
+        }) 
     })
 
 }

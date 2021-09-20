@@ -6,6 +6,8 @@ const { v4: uuidv4, validate: uuidValidate } = require('uuid')
 const config = require('../config')
 const { otpClient: redis } = require("../loaders/redis")
 
+const { logger } = require('../config/logger');
+
 // Exporting controller async functions
 module.exports = { 
     loginCallback,
@@ -19,7 +21,9 @@ async function loginCallback(req, res) {
 
     redis.set(`otp-${otpCode}`, req.sessionID, "EX", 3*60, (err) => { // Expire in 3 minutes        
         if(err){
-            console.error(`at /session/login/callback: Error in set opt to session ${req.sessionID}`)
+            logger.error({
+                message: `at Session.loginCallback(): Error in set opt to session ${req.sessionID}`
+            })
             // return res.status(500).json({ message: "internal server error" })
             return res.redirect(`${config.SERVER_PATH_PREFIX}/?auth=failed`)
 
@@ -41,14 +45,21 @@ async function getSession(req, res) {
     .exec((err, results) => { 
 
         if(err){
-            console.error(`at /session/login/get-session: Error in get opt session ${otpCode}`)
+            logger.error({
+                message: `at Session.getSession: Error in get opt session ${otpCode}`
+            })
+
             return res.status(500).json({ message: "internal server error" })
         }
         
         const sessionID = results[0][1]
         
-        if(sessionID === null)
+        if(sessionID === null) {
+            logger.warn({
+                message: `[${req.ip}] - at Session.getSession(): Failed to retrieve session from OTP code`
+            })
             return res.status(400).json({ message: "otp code expired" })
+        }
         
         req.sessionID = sessionID
         req.sessionStore.get(sessionID, function (err, session) {

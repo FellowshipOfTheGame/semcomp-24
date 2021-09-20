@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 341142617301890382}
   - component: {fileID: 4452000199109063512}
   - component: {fileID: 1102173920970859881}
-  m_Layer: 0
+  - component: {fileID: 5080875457752890917}
+  m_Layer: 7
   m_Name: ShieldEffectPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,3 +102,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &5080875457752890917
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622252919096137203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Center: {x: 0, y: 0, z: 0}

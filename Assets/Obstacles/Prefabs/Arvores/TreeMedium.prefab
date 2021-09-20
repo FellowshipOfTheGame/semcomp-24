@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9015042965938363963}
   - component: {fileID: 8480175096157051677}
   - component: {fileID: 1943380994528242695}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TrunkMedium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7191328888258291771}
   - component: {fileID: 5464992153137352120}
   - component: {fileID: 490851936976023796}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeavesMedium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,6 +198,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2275893206383230177, guid: f2371697b7aad1f43b63250b11369577, type: 3}
+      propertyPath: m_Mass
+      value: 0.0001
+      objectReference: {fileID: 0}
     - target: {fileID: 6465148472691721578, guid: f2371697b7aad1f43b63250b11369577, type: 3}
       propertyPath: m_RootOrder
       value: 0

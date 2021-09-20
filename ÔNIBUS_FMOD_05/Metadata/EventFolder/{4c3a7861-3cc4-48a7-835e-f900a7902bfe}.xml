@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EventFolder" id="{4c3a7861-3cc4-48a7-835e-f900a7902bfe}">
+		<property name="name">
+			<value>ÔNIBUS_FOLEY</value>
+		</property>
+		<relationship name="folder">
+			<destination>{760eafdb-1b90-4343-a1ee-0729fdc2ffe7}</destination>
+		</relationship>
+	</object>
+</objects>

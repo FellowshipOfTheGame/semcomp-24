@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5878761018743779806}
   - component: {fileID: 4559698471976785963}
   - component: {fileID: 6254666723910395152}
+  - component: {fileID: 6206487274215084097}
   m_Layer: 9
   m_Name: PlacaBase
   m_TagString: Obstacle
@@ -62,6 +63,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePropertiesPreset: {fileID: 11400000, guid: 509523b936bc196d4be472548eedaf01, type: 2}
+--- !u!114 &6206487274215084097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6547773521371769700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: "event:/OBST\xC1CULOS/IMPACTO7 MADEIRA"
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &7735027340716901686
 GameObject:
   m_ObjectHideFlags: 0

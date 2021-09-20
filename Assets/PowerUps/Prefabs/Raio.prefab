@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8440671688425440990}
   - component: {fileID: 8483358212722747034}
   - component: {fileID: 695258625996066346}
+  - component: {fileID: -319854720937545431}
+  - component: {fileID: 8813445478355535616}
   m_Layer: 0
   m_Name: Raio
   m_TagString: Untagged
@@ -61,10 +63,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 245b847c6f2576f4b9b9fb79b874a03d, type: 3}
-  size: {x: 3, y: 10, z: 50}
+  useEventEmitter: {fileID: -319854720937545431}
+  pickupEventEmitter: {fileID: 8813445478355535616}
+  size: {x: 3, y: 10, z: 150}
+  maxTargets: 8
   collisionLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
 --- !u!114 &695258625996066346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +85,52 @@ MonoBehaviour:
   floatingMagnitude: 0.8
   floatingSpeed: 0.4
   rotationSpeed: 20
+--- !u!114 &-319854720937545431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480342596421178711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/GAMEPLAY SFX/Raio
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &8813445478355535616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480342596421178711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/GAMEPLAY SFX/COLETA_POWERUP
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &3622681476670836771
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,12 @@ public class RaceManager : MonoBehaviour
 {
     [SerializeField] public GameObject player;
     [SerializeField] private RaceData raceData;
+    
+    [Space(10)]
+    [Header("SFX")]
+    [SerializeField] public DynamicMusic musicPlayer;
+    [SerializeField] public FMODUnity.StudioEventEmitter normalCountEventEmitter;
+    [SerializeField] public FMODUnity.StudioEventEmitter lastCountEventEmitter;
 
     [Space(10)]
     [Header(("Menu"))]
@@ -49,6 +55,19 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private Button itemButton;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemDurationText;
+
+    [Header("Game progression")]
+    [SerializeField] private LevelGenerator levelGenerator;
+    [SerializeField] private float progressionTimeScale;
+    [SerializeField] private int easyIndex;
+    [SerializeField] private int mediumIndex;
+    [SerializeField] private int hardIndex;
+    [Tooltip("Weight on easy set moves towards this value")]
+    [SerializeField] private float easyTarget;
+    [Tooltip("Weight on medium set moves towards this value")]
+    [SerializeField] private float mediumTarget;
+    [Tooltip("Weight on hard set moves towards this value")]
+    [SerializeField] private float hardTarget;
 
     private HealthSystem healthSystem;
 
@@ -108,6 +127,11 @@ public class RaceManager : MonoBehaviour
     {
         timer += Time.deltaTime;
         distanceTraveled += vehicle.GetCurrentSpeed() * Time.deltaTime;
+
+        if (easyIndex != -1) levelGenerator.sets[easyIndex].weight = Mathf.MoveTowards(levelGenerator.sets[easyIndex].weight, easyTarget, Time.deltaTime * progressionTimeScale);
+        if (mediumIndex != -1) levelGenerator.sets[mediumIndex].weight = Mathf.MoveTowards(levelGenerator.sets[mediumIndex].weight, mediumTarget, Time.deltaTime * progressionTimeScale);
+        if (hardIndex != -1) levelGenerator.sets[hardIndex].weight = Mathf.MoveTowards(levelGenerator.sets[hardIndex].weight, hardTarget, Time.deltaTime * progressionTimeScale);
+        
         UpdateUI();
     }
 
@@ -115,6 +139,7 @@ public class RaceManager : MonoBehaviour
     private void GameOver(object sender, System.EventArgs e)
     {
         EndRace();
+        musicPlayer.TriggerGameOver();
         gameOverMenu.Open();
     }
     
@@ -165,7 +190,10 @@ public class RaceManager : MonoBehaviour
         
         float wait = 0.5f;
         float count = countdown + wait;
+        int lastSecond = Mathf.RoundToInt(count);
 
+        normalCountEventEmitter.Play();
+        
         startRaceCountdownPanel.gameObject.SetActive(true);
         startRaceCountdownPanel.enabled = true;
         startRaceCountdownSign.SetActive(true);
@@ -175,11 +203,17 @@ public class RaceManager : MonoBehaviour
 
         while (count >= wait)
         {
+            if (Mathf.RoundToInt(count) != lastSecond)
+            {
+                normalCountEventEmitter.Play();
+                lastSecond = Mathf.RoundToInt(count);
+            }
+
             if (count <= countdown)
             {
                 startRaceCountdownText.text = Mathf.Round(count).ToString();
             }
-            
+
             if (startRaceCountdownCircleFill.fillAmount == 0f)
             {
                 startRaceCountdownCircleFill.fillAmount = 1f;
@@ -197,12 +231,20 @@ public class RaceManager : MonoBehaviour
         startRaceCountdownSign.SetActive(false);
         HUDPanel.SetActive(true);
         UIControls.SetActive(true);
+
+        lastCountEventEmitter.Play();
+        musicPlayer.BeginMusic();
         
         startRaceCountdownText.text = "GO!";
 
         yield return new WaitForSeconds(3);
         
         startRaceCountdownText.enabled = false;
+    }
+
+    public void Pause()
+    {
+        musicPlayer.PauseMusic(true);
     }
     
     // TODO: ObtainItem and UseItem methods

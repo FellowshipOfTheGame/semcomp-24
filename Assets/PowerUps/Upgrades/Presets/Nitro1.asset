@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba0ba863f88a4f140a577e5658151556, type: 3}
   m_Name: Nitro1
   m_EditorClassIdentifier: 
-  boost: 0.2
-  duration: 2
+  boost: 0.4
+  duration: 3

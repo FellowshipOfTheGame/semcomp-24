@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56cf888740bfe3d4c817d0628661e3b9, type: 3}
   m_Name: Lightning2
   m_EditorClassIdentifier: 
-  size: {x: 3, y: 3, z: 30}
-  maxTargets: 32
+  size: {x: 3, y: 3, z: 100}
+  maxTargets: 6

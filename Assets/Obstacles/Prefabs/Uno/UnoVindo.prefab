@@ -90,6 +90,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2524633185713070638, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: Event
+      value: "event:/OBST\xC1CULOS/IMPACTO6 (VIDRO)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524633185713070638, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524633185713070638, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7305960074823135600, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -138,6 +150,10 @@ PrefabInstance:
       propertyPath: obstaclePropertiesPreset
       value: 
       objectReference: {fileID: 11400000, guid: e6e267233095e9f92988e812c5a1c389, type: 2}
+    - target: {fileID: 7305960074823135603, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7305960074823135604, guid: 1bd99940a883890dab5ed9f082335c4f, type: 3}
       propertyPath: m_Name
       value: UnoVindo

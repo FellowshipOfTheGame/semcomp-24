@@ -622,6 +622,7 @@ GameObject:
   - component: {fileID: 2644947745833713070}
   - component: {fileID: 1550832731129701682}
   - component: {fileID: 8994440970381598801}
+  - component: {fileID: 5509485323177535299}
   m_Layer: 5
   m_Name: BuyBtn
   m_TagString: Untagged
@@ -732,6 +733,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5509485323177535299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829195486442803310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a387fa897f3d64942b9994388dd0b4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableEvent: event:/MENU/Comprar habilidades
+  nonInteractableEvent: "event:/MENU/Sele\xE7\xE3o negativa A"
 --- !u!1 &8837408753022871769
 GameObject:
   m_ObjectHideFlags: 0

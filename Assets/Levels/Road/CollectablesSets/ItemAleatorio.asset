@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2242a55d1645a78459076a9952750ea6, type: 3}
   m_Name: ItemAleatorio
   m_EditorClassIdentifier: 
-  members: []
+  members:
+  - {fileID: 3322440421399226958, guid: e9d1aefb3c4caf045b2cb1a3f71e5eff, type: 3}
+  - {fileID: 4761799879409561140, guid: 85677399a90811b468d95b49b19b4680, type: 3}
+  - {fileID: 1480342596421178711, guid: 0def4b295fcd20549b984dcdab96daac, type: 3}
+  - {fileID: 1361347118971880862, guid: 1cae7005e4c1a0f6d84744066cb0d98f, type: 3}
