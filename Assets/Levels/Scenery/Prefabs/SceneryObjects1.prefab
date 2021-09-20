@@ -835,7 +835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6066277585264546671}
   m_Layer: 10
-  m_Name: SceneryObjects 1
+  m_Name: SceneryObjects1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
