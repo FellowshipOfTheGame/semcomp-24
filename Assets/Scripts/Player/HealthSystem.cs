@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Collections;
 using UnityEngine;
 
 public class OnHealthChangeEventArgs : System.EventArgs
@@ -144,9 +145,9 @@ public class HealthSystem : MonoBehaviour
 		if (OnHealthChange != null)
 			OnHealthChange(this, onHealthChangeEventArgs);
 
-		if (OnDie != null && health <= 0)
+		if (health <= 0)
 		{
-			OnDie(this, System.EventArgs.Empty);
+			OnDie?.Invoke(this, System.EventArgs.Empty);
 		}
 		
 		// Debug.Log("Damage: " + damageAmount);
@@ -169,6 +170,11 @@ public class HealthSystem : MonoBehaviour
 		if (OnHealthChange != null)
 			OnHealthChange(this, onHealthChangeEventArgs);
 		// Debug.Log("Heal: " + healAmount);
+	}
+
+	public void Die()
+	{
+		OnDie?.Invoke(this, EventArgs.Empty);
 	}
 
 	void Awake() {
