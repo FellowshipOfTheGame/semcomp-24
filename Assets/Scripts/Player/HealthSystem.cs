@@ -1,6 +1,4 @@
-﻿using System;
-using Unity.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OnHealthChangeEventArgs : System.EventArgs
 {
@@ -51,6 +49,7 @@ public class HealthSystem : MonoBehaviour
 	private float shieldTimer;
 
 	public event System.EventHandler<OnHealthChangeEventArgs> OnHealthChange;
+	public event System.EventHandler OnSetHealthMax;
 	public event System.EventHandler OnDie;
 
 	public void SetHealth(int health)
@@ -61,7 +60,9 @@ public class HealthSystem : MonoBehaviour
 	public void SetHealthMax(int healthMax)
 	{
 		this.healthMax = healthMax;
-		ResetHealth();
+		health = healthMax;
+		Debug.Log($"Setting health max to {healthMax}");
+		OnSetHealthMax?.Invoke(this, System.EventArgs.Empty);
 	}
 
 	public void ResetHealth()
@@ -174,13 +175,9 @@ public class HealthSystem : MonoBehaviour
 
 	public void Die()
 	{
-		OnDie?.Invoke(this, EventArgs.Empty);
+		OnDie?.Invoke(this, System.EventArgs.Empty);
 	}
-
-	void Awake() {
-		ResetHealth();
-	}
-
+	
 	private void Update()
 	{
 		if (hasShield)
