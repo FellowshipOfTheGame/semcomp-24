@@ -86,20 +86,22 @@ public class Obstacle : MonoBehaviour
     
     private IEnumerator FadeOutEnumerator(Renderer _renderer)
     {
+        if (playerCollider != null)
+        {
+            Physics.IgnoreCollision(_collider, playerCollider);
+        }
+        
+        if (!_renderer.material.HasProperty("_Color"))
+        {
+            yield break;
+        }
+        
         yield return new WaitUntil(() => fadeOutReady);
         
         Color c = _renderer.material.color;
 
         while (_renderer.material.color.a >= 0.2f)
         {
-            if (_renderer.material.color.a >= 0.9f && _renderer.material.color.a <= 1f)
-            {
-                if (playerCollider != null)
-                {
-                    Physics.IgnoreCollision(_collider, playerCollider);
-                }
-            }
-            
             c.a = Mathf.Lerp(c.a, 0f, FadeSpeed * Time.deltaTime);
             _renderer.material.color = c;
             yield return null;
