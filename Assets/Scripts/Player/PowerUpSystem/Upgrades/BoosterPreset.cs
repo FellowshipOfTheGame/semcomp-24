@@ -5,4 +5,9 @@ public class BoosterPreset : ScriptableObject
 {
     public float boost;
     public float duration;
+
+    public override string ToString()
+    {
+        return $"aumenta a aceleração por {Mathf.FloorToInt(duration)}s";
+    }
 }
