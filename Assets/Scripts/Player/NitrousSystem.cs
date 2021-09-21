@@ -12,6 +12,7 @@ public class NitrousSystem : MonoBehaviour
     private TextMeshProUGUI effectTimeText;
     
     private float effectTimeCount;
+    private float activatedSpeed;
     
     /// <summary>
     /// Use ActivateMode to specify what happens when nitrous is already active
@@ -56,12 +57,10 @@ public class NitrousSystem : MonoBehaviour
     private string boostChainCountText;
     
     private VehicleController vehicleController;
-    private OffRoad offRoad;
-    
+
     void Start()
     {
         vehicleController = GetComponent<VehicleController>();
-        offRoad = GetComponent<OffRoad>();
     }
 
     void Update()
@@ -94,7 +93,7 @@ public class NitrousSystem : MonoBehaviour
      /// </remarks>
      ///
      /// <param name="boost">
-     /// Boost power <c> [drag = drag * (1 - boost)] </c>
+     /// Boost power <c> [forward = maximumSpeed * (1 + boost)] </c>
      /// </param>
      ///
      /// <param name="duration">
@@ -215,11 +214,13 @@ public class NitrousSystem : MonoBehaviour
             }
         }
         
-        active = true;
+        if (!active)
+        {
+            activatedSpeed = vehicleController.forwardForce;
+        }
         
-        // If player is off-road, use the actual ground drag (modified by OffRoad script) instead of the default one
-        float groundDragDefault = offRoad.IsPlayerOffRoad ? vehicleController.groundDrag : vehicleController.groundDragDefault;
-        vehicleController.groundDrag = groundDragDefault * (1 - this.boost);
+        active = true;
+        vehicleController.forwardForce = vehicleController.GetActualMaximumSpeed() * (1 + this.boost);
     }
 
      /// <summary>
@@ -229,7 +230,7 @@ public class NitrousSystem : MonoBehaviour
      public void Deactivate()
     {
         active = false;
-        vehicleController.ResetGroundDrag();
+        vehicleController.forwardForce = Mathf.Clamp(vehicleController.forwardForce, 0,activatedSpeed);
         timer = 0;
         boostChainCount = 0;
 
@@ -252,8 +253,8 @@ public class NitrousSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// If nitrous is active, continue to use it. Useful when you need to change the vehicle rigidbody drag without
-    /// affecting the active nitrous
+    /// If nitrous is active, continue to use it. Useful when you need to change the vehicle rigidbody forward speed
+    /// without affecting the active nitrous
     /// </summary>
     ///
     /// <remarks>
