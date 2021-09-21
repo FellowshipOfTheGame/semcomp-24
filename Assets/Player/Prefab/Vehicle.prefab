@@ -504,7 +504,7 @@ MonoBehaviour:
   Event: event:/MOTOR 2
   PlayEvent: 1
   StopEvent: 2
-  AllowFadeout: 1
+  AllowFadeout: 0
   TriggerOnce: 0
   Preload: 0
   Params:
