@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4452000199109063512}
   - component: {fileID: 1102173920970859881}
   - component: {fileID: 5080875457752890917}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: ShieldEffectPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

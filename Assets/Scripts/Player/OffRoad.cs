@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class OffRoad : MonoBehaviour
 {
-    [SerializeField] [Range(0f, 1.5f)]
-    private float speedDecreaseFactor = 1f;
+    [SerializeField] [Range(0f, 1f)]
+    private float speedDecreaseFactor = 0.5f;
     
     private VehicleController vehicleController;
     private NitrousSystem nitrous;
     
-    private float groundDragDefault;
+    private float maximumSpeed;
     private bool nitrousWasActive;
 
-    public bool IsPlayerOffRoad { get; private set; }
+    public static bool IsPlayerOffRoad { get; private set; }
 
     void Start()
     {
@@ -25,10 +25,10 @@ public class OffRoad : MonoBehaviour
         {
             bool nitrousRanOut = (nitrousWasActive && !nitrous.IsActive());
             
-            if (groundDragDefault == 0 || nitrousRanOut)
+            if (maximumSpeed == 0 || nitrousRanOut)
             {
-                groundDragDefault = vehicleController.groundDrag;
-                // Debug.Log("Resetting off-road drag");
+                maximumSpeed = vehicleController.GetActualMaximumSpeed();
+                // Debug.Log("Resetting off-road clamped speed);
 
                 if (nitrousRanOut)
                 {
@@ -44,7 +44,8 @@ public class OffRoad : MonoBehaviour
             }
             else
             {
-                vehicleController.groundDrag = groundDragDefault * (1 + speedDecreaseFactor);
+                vehicleController.forwardForce = Mathf.Clamp(vehicleController.forwardForce, 0, maximumSpeed * (1 - speedDecreaseFactor));
+                // Debug.Log($"current: {vehicleController.forwardForce}, default: {maximumSpeed}, min: {maximumSpeed * 0.2f}, max: {maximumSpeed * (1 - speedDecreaseFactor)}");
             }
         }
     }
@@ -63,7 +64,8 @@ public class OffRoad : MonoBehaviour
 
             if (nitrousWasActive)
             {
-                groundDragDefault = 0;
+                maximumSpeed = vehicleController.forwardForce;
+                // maximumSpeed = vehicleController.GetActualMaximumSpeed() + vehicleController.forwardForce;
                 // Debug.Log("You entered off-road with the nitrous active");
             }
             else
@@ -76,17 +78,17 @@ public class OffRoad : MonoBehaviour
         {
             // Debug.Log("You are now on the road");
             IsPlayerOffRoad = false;
-            groundDragDefault = 0;
+            maximumSpeed = 0;
             nitrousWasActive = false;
 
             if (nitrous.IsActive())
             {
                 nitrous.Continue();
             }
-            else
-            {
-                vehicleController.ResetGroundDrag();
-            }
+            // else
+            // {
+            //     vehicleController.ResetGroundDrag();
+            // }
         }
     }
 }

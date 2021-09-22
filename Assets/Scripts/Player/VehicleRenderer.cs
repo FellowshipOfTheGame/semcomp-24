@@ -14,6 +14,8 @@ public class VehicleRenderer : MonoBehaviour
     private Animator lightningAnimator;
     private Coroutine shieldCoroutine;
 
+    public Collider ShieldCollider => shieldCollider;
+
     private void Start()
     {
         shieldEffectInstance = Instantiate(shieldEffect, transform);
