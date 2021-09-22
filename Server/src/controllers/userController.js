@@ -12,7 +12,7 @@ module.exports = {
         }
         
         try {
-            var user = await User.findOne({ email: passport_user._json.email });
+            var user = await User.findOne({ provider_id: passport_user.id, provider: passport_user.provider });
         } catch (err) {
             return cb(err, null);
         }

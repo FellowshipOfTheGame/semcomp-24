@@ -34,7 +34,7 @@ module.exports = function (passport) {
                     logger.error({
                         message: `at Google Login: ${err}`
                     })
-                    return done(err, null, { message: "unable to create or find user" })
+                    return done(null, null, { message: "unable to create or find user" })
                 }
 
                 if (!user) {
@@ -58,7 +58,7 @@ module.exports = function (passport) {
                     logger.error({
                         message: `at Facebook Login: ${err}`
                     })
-                    return done(err, null, { message: "unable to create or find user" })
+                    return done(null, null, { message: "unable to create or find user" })
                 }
 
                 if (!user) {
