@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 196179973890548914}
   m_Layer: 9
   m_Name: TrunkBig
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 5583734412716642351}
   m_Layer: 9
   m_Name: LeavesBig
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,7 +189,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.3786285
+  m_Radius: 1.5
   m_Center: {x: 1.0664108, y: 0.5708678, z: 0.9376809}
 --- !u!1001 &1153792490029700329
 PrefabInstance:
