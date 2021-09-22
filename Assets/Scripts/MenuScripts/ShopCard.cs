@@ -40,15 +40,29 @@ public class ShopCard : MonoBehaviour
             Debug.LogError("Correspondent sprite for item level not found");
         }
         finally
-        { 
-            EnableButtonInteraction( !IsItemLastLevel() );
+        {
+            if (IsItemLastLevel())
+            {
+                buyButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                EnableButtonInteraction(true);
+            }
         }
     }
 
     public void UpdateButtonInteraction(int goldOwned)
     {
-        bool shouldEnable = CanBePurchased(goldOwned) && !IsItemLastLevel();
-        EnableButtonInteraction(shouldEnable);
+        if (IsItemLastLevel())
+        {
+            buyButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            bool shouldEnable = CanBePurchased(goldOwned);
+            EnableButtonInteraction(shouldEnable);
+        }
     }
 
     private void EnableButtonInteraction(bool value) => buyButton.interactable = value;
