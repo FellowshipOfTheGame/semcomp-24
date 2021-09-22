@@ -716,10 +716,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1969801774}
     m_Modifications:
-    - target: {fileID: 1763720430400639345, guid: f2053c548dbd571458730d722d267390, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c71b934d366b4634cbe4b965748db5cd, type: 3}
     - target: {fileID: 2431540080811163891, guid: f2053c548dbd571458730d722d267390, type: 3}
       propertyPath: m_Name
       value: Booster
@@ -832,6 +828,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Booster
       objectReference: {fileID: 0}
+    - target: {fileID: 7930923641163445699, guid: f2053c548dbd571458730d722d267390, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9eb4de2e95db3604388b42274ade7689, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2053c548dbd571458730d722d267390, type: 3}
 --- !u!1 &205697472
@@ -998,10 +998,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1969801774}
     m_Modifications:
-    - target: {fileID: 1763720430400639345, guid: f2053c548dbd571458730d722d267390, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 460ba0c71f6172a48bd9678100badecb, type: 3}
     - target: {fileID: 2431540080811163891, guid: f2053c548dbd571458730d722d267390, type: 3}
       propertyPath: m_Name
       value: Nitro
@@ -1114,6 +1110,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Nitro
       objectReference: {fileID: 0}
+    - target: {fileID: 7930923641163445699, guid: f2053c548dbd571458730d722d267390, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f92fafd0e49aadd429b610c36750ba24, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2053c548dbd571458730d722d267390, type: 3}
 --- !u!1 &262747453
@@ -3024,6 +3024,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Ponto
       objectReference: {fileID: 0}
+    - target: {fileID: 7930923641163445699, guid: f2053c548dbd571458730d722d267390, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 719dc60003dd48342ba6546fbe2b61ab, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2053c548dbd571458730d722d267390, type: 3}
 --- !u!1 &891234771
@@ -4614,10 +4618,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1969801774}
     m_Modifications:
-    - target: {fileID: 1763720430400639345, guid: f2053c548dbd571458730d722d267390, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1a429b9ca2b98c74bb36ad1398c7f373, type: 3}
     - target: {fileID: 2431540080811163891, guid: f2053c548dbd571458730d722d267390, type: 3}
       propertyPath: m_Name
       value: Laser
@@ -4734,6 +4734,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Laser
       objectReference: {fileID: 0}
+    - target: {fileID: 7930923641163445699, guid: f2053c548dbd571458730d722d267390, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aa6b9bb96fc4bd64da6601801bbcd24e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2053c548dbd571458730d722d267390, type: 3}
 --- !u!1 &1235091690
@@ -6694,10 +6698,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1969801774}
     m_Modifications:
-    - target: {fileID: 1763720430400639345, guid: f2053c548dbd571458730d722d267390, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c31a90d264cd1fb499be7aa1bddc2dfa, type: 3}
     - target: {fileID: 2431540080811163891, guid: f2053c548dbd571458730d722d267390, type: 3}
       propertyPath: m_Name
       value: Shield
@@ -7411,6 +7411,18 @@ PrefabInstance:
     - target: {fileID: 7486165730365862444, guid: f2053c548dbd571458730d722d267390, type: 3}
       propertyPath: m_text
       value: Vida
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930923641163445699, guid: f2053c548dbd571458730d722d267390, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3322d626937708b46a6b50867ea69e46, type: 3}
+    - target: {fileID: 8813447774715798968, guid: f2053c548dbd571458730d722d267390, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813447774715798968, guid: f2053c548dbd571458730d722d267390, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2053c548dbd571458730d722d267390, type: 3}
