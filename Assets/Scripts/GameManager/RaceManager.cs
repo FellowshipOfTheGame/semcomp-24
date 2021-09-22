@@ -140,6 +140,7 @@ public class RaceManager : MonoBehaviour
     {
         EndRace();
         musicPlayer.TriggerGameOver();
+        vehicle.PauseMotorSFX(true);
         gameOverMenu.Open();
     }
     
@@ -161,10 +162,7 @@ public class RaceManager : MonoBehaviour
 
     public void EndRace()
     {
-        Score = scoreManager.GetScore();
-
-        raceData.gold = Coins;
-        raceData.score = Score;
+        raceData = GetEndRaceData();
 
         var finishRaceEnumerator = RaceRequestHandler.FinishRace(raceData, 
             () => Debug.Log("Success"), 
@@ -177,6 +175,15 @@ public class RaceManager : MonoBehaviour
         );
         
         StartCoroutine(finishRaceEnumerator);
+    }
+
+    public RaceData GetEndRaceData()
+    {
+        Score = scoreManager.GetScore();
+
+        raceData.gold = Coins;
+        raceData.score = Score;
+        return raceData;
     }
 
     public void AddCoin(int amount)
@@ -234,7 +241,8 @@ public class RaceManager : MonoBehaviour
 
         lastCountEventEmitter.Play();
         musicPlayer.BeginMusic();
-        
+        vehicle.PauseMotorSFX(false);
+
         startRaceCountdownText.text = "GO!";
 
         yield return new WaitForSeconds(3);
@@ -245,6 +253,7 @@ public class RaceManager : MonoBehaviour
     public void Pause()
     {
         musicPlayer.PauseMusic(true);
+        vehicle.PauseMotorSFX(true);
     }
     
     // TODO: ObtainItem and UseItem methods

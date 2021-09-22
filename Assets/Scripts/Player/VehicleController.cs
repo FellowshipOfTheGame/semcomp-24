@@ -297,4 +297,9 @@ public class VehicleController : MonoBehaviour
     {
         itemSystem.ActivateItem();
     }
+
+    public void PauseMotorSFX(bool pause)
+    {
+        motorEventEmmiter.EventInstance.setPaused(pause);
+    }
 }

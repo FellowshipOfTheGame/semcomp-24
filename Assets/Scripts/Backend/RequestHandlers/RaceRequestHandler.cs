@@ -31,7 +31,6 @@ namespace SubiNoOnibus.Networking.Requests
             RaycastBlockEvent.Invoke(true);
             raceData.sign = Cryptography.GetSignature(raceData);
             string data = JsonUtility.ToJson(raceData);
-            Debug.Log(data);
             using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Race_finish_url, data);
             
             yield return request.SendWebRequest();
