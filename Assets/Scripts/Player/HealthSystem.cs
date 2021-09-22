@@ -61,7 +61,6 @@ public class HealthSystem : MonoBehaviour
 	{
 		this.healthMax = healthMax;
 		health = healthMax;
-		Debug.Log($"Setting health max to {healthMax}");
 		OnSetHealthMax?.Invoke(this, System.EventArgs.Empty);
 	}
 
