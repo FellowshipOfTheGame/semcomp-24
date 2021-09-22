@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6066277585264546671}
   m_Layer: 10
-  m_Name: SceneryPredios2
+  m_Name: SceneryPredios2_presente
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

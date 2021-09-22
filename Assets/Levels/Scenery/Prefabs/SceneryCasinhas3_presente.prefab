@@ -334,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6066277585264546671}
   m_Layer: 10
-  m_Name: SceneryCasinhas3
+  m_Name: SceneryCasinhas3_presente
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
