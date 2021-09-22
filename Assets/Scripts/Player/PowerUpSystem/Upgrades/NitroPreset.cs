@@ -5,4 +5,9 @@ public class NitroPreset : ScriptableObject
 {
     public float boost;
     public float duration;
+
+    public override string ToString()
+    {
+        return $"aumenta {Mathf.FloorToInt(boost*100f)}% da velocidade máxima";
+    }
 }

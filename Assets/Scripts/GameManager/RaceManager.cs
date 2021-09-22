@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -94,6 +95,7 @@ public class RaceManager : MonoBehaviour
     public int Score { get; private set; }
 
     private Coroutine scoreBonusTextCoroutine;
+    private static readonly int BurningAnimatorBurn = Animator.StringToHash("Burn");
 
     private void OnEnable()
     {
@@ -299,7 +301,7 @@ public class RaceManager : MonoBehaviour
         // Burn animation (when player exceeds maximum speed)
         bool burn = nitrous.IsActive();
         burning.enabled = burn;
-        burningAnimator.SetBool("Burn", burn);
+        burningAnimator.SetBool(BurningAnimatorBurn, burn);
 
         if (burn)
         {
@@ -310,7 +312,10 @@ public class RaceManager : MonoBehaviour
         timerText.text = System.TimeSpan.FromSeconds(timer).ToString("mm\\:ss\\:ff");
         
         // Update the score text
-        scoreText.text = scoreManager.GetScore().ToString("000,000 PTS", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+        string formattedString = scoreManager.GetScore().ToString("000,000 PTS", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+        Color inactiveColor = scoreText.color;
+        inactiveColor.a = 0.7f;
+        scoreText.text = Regex.Replace(formattedString, "^(.*?)(?=[1-9])", $"<color=#{ColorUtility.ToHtmlStringRGBA(inactiveColor)}>$1</color>");
         coinsText.text = coins.ToString("D6", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
     }
     
