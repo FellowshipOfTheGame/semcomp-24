@@ -20,6 +20,7 @@ const sessionRoutes = require('./routes/session')
 const raceRoutes = require('./routes/race')
 const shopRoutes = require('./routes/shop')
 const viewsRoutes = require('./routes/views')
+const adminRoutes = require('./routes/admin')
 
 // Enviroments Variables
 const config = require("./config/");
@@ -68,6 +69,7 @@ app.use(`${config.SERVER_PATH_PREFIX}/user`, userRoutes)
 app.use(`${config.SERVER_PATH_PREFIX}/session`, sessionRoutes)
 app.use(`${config.SERVER_PATH_PREFIX}/race`, raceRoutes)
 app.use(`${config.SERVER_PATH_PREFIX}/shop`, shopRoutes)
+app.use(`${config.SERVER_PATH_PREFIX}/admin`, adminRoutes)
 app.use(`${config.SERVER_PATH_PREFIX}`, viewsRoutes)
 
 // Server Listeners

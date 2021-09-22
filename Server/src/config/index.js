@@ -5,6 +5,8 @@ dotenv.config();
 module.exports = {
     NODE_ENV: process.env.NODE_ENV || "dev",
     ENABLE_HTTPS: process.env.ENABLE_HTTPS == "1" || false,
+
+    ADMIN_APIKEY: process.env.ADMIN_APIKEY || "__SONSEG_ADEMIR_SEMCOMP_24__",
     
     SERVER_TRUST_PROXY: process.env.SERVER_TRUST_PROXY == "1" || false,
     SERVER_PORT: process.env.SERVER_PORT || 3000,
