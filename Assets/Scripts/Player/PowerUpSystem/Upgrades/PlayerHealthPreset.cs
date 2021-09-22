@@ -4,4 +4,9 @@ using UnityEngine;
 public class PlayerHealthPreset : ScriptableObject
 {
     public int starterHealth;
+
+    public override string ToString()
+    {
+        return $"{starterHealth} pontos de vida";
+    }
 }
