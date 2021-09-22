@@ -19,7 +19,6 @@ namespace SubiNoOnibus.UI
             distanceText.text = $"{raceManager.Distance} m";
             timeText.text = System.TimeSpan.FromSeconds(raceManager.Timer).ToString("mm\\:ss\\:ff");
             coinsText.text = $"x{raceManager.Coins}";
-            itemsUsedText.text = raceManager.ItemsUsed.ToString();
             finalScoreText.text = $"PONTUAÇÃO FINAL: {raceManager.Score} pts";
             finalScoreTextUnderlay.text = finalScoreText.text;
             
