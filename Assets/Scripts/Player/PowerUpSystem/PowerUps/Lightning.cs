@@ -23,7 +23,7 @@ public class Lightning : PowerUp
         hitList.Sort(((a, b) => a.distance.CompareTo(b.distance)));
         for (int i = 0; i < hitList.Count; i++)
         {
-            hitList[i].transform.gameObject.GetComponent<Obstacle>().FadeOut(controller.VehicleCollider);
+            hitList[i].transform.gameObject.GetComponent<Obstacle>().FadeOut(controller.VehicleCollider, renderer.ShieldCollider);
         }
         
         renderer.ActivateLightning(size);
