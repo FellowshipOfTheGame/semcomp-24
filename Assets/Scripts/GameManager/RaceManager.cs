@@ -35,6 +35,9 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private GameObject HUDPanel;
     [SerializeField] private GameObject UIControls;
     
+    [SerializeField] private TextMeshProUGUI damageFeedbackText;
+    [SerializeField] private TextMeshProUGUI scoreBonusText;
+    
     [SerializeField] private Image speedometer;
     [SerializeField] private Image turbo;
     [SerializeField] private Sprite[] turboSprites;
@@ -50,8 +53,6 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI coinsText;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI scoreBonusText;
-    [SerializeField] private TextMeshProUGUI coinsBonusText;
 
     [SerializeField] private Button itemButton;
     [SerializeField] private Image itemIcon;
@@ -82,7 +83,6 @@ public class RaceManager : MonoBehaviour
 
     private Image startRaceCountdownCircleFill;
     
-    private int itemsUsedCount;
     private float distanceTraveled;
 
     private VehicleController vehicle;
@@ -91,10 +91,11 @@ public class RaceManager : MonoBehaviour
     public int Distance => Mathf.RoundToInt(distanceTraveled);
     public float Timer => timer;
     public int Coins => coins;
-    public int ItemsUsed => itemsUsedCount;
     public int Score { get; private set; }
 
     private Coroutine scoreBonusTextCoroutine;
+    private Coroutine damageFeedbackTextCoroutine;
+    
     private static readonly int BurningAnimatorBurn = Animator.StringToHash("Burn");
 
     private void OnEnable()
@@ -103,12 +104,14 @@ public class RaceManager : MonoBehaviour
         scoreManager = GetComponent<ScoreManager>();
         
         healthSystem.OnDie += GameOver;
+        healthSystem.OnHealthChange += DamageFeedback;
         scoreManager.OnScoreBonusGrant += ScoreBonusFeedback;
     }
 
     private void OnDisable()
     {
         healthSystem.OnDie -= GameOver;
+        healthSystem.OnHealthChange -= DamageFeedback;
         scoreManager.OnScoreBonusGrant -= ScoreBonusFeedback;
     }
 
@@ -258,33 +261,6 @@ public class RaceManager : MonoBehaviour
         vehicle.PauseMotorSFX(true);
     }
     
-    // TODO: ObtainItem and UseItem methods
-
-    // // Subscribe to obtain item event
-    // private void ObtainItem()
-    // {
-    //     itemIcon = itemManager.Icon;
-    //     itemButton.interactable = true;
-    // }
-
-    // // Subscribe to use item event
-    // private void UseItem()
-    // {
-    //     itemsUsedCount++;
-    //     itemIcon = itemIconDefault;
-    //     itemDurationText.enabled = true;
-    //     itemDurationText.text = System.TimeSpan.FromSeconds(itemManager.Time).ToString("mm\\:ss\\:ff");
-    //     itemButton.interactable = false;
-    //
-    //     StartCoroutine(DisableItemDurationText());
-    // }
-
-    // private IEnumerator DisableItemDurationText()
-    // {
-    //     yield return new WaitUntil(() => !itemManager.HasItem);
-    //     itemDurationText.enabled = false;
-    // }
-    
     private void UpdateUI()
     {
         // Update the score multiplier text and color
@@ -319,19 +295,32 @@ public class RaceManager : MonoBehaviour
         coinsText.text = coins.ToString("D6", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
     }
     
-    private void ScoreBonusFeedback(object sender, OnScoreBonusGrantEventArgs eventArgs)
+    private void ScoreBonusFeedback(object sender, OnScoreBonusGrantEventArgs e)
     {
-        scoreBonusText.text = $"+{eventArgs.BonusAmount} PTS";
+        scoreBonusText.text = $"+{e.BonusAmount} PTS";
 
         if (scoreBonusTextCoroutine != null)
         {
             StopCoroutine(scoreBonusTextCoroutine);
         }
 
-        scoreBonusTextCoroutine = StartCoroutine(FadeBonusText(scoreBonusText));
+        scoreBonusTextCoroutine = StartCoroutine(FadeText(scoreBonusText));
     }
 
-    private IEnumerator FadeBonusText(TextMeshProUGUI bonusText)
+    private void DamageFeedback(object sender, OnHealthChangeEventArgs e)
+    {
+        if (!e.Damaged) return;
+        damageFeedbackText.text = $"{e.Amount} HP";
+
+        if (damageFeedbackTextCoroutine != null)
+        {
+            StopCoroutine(damageFeedbackTextCoroutine);
+        }
+        
+        damageFeedbackTextCoroutine = StartCoroutine(FadeText(damageFeedbackText));
+    }
+
+    private IEnumerator FadeText(TextMeshProUGUI bonusText)
     {
         bonusText.gameObject.SetActive(true);
         
@@ -345,8 +334,8 @@ public class RaceManager : MonoBehaviour
         
         c.a = 0f;
 
-        float fadeInSpeed = 3f;
-        float fadeOutSpeed = 0.5f;
+        float fadeInSpeed = 4f;
+        float fadeOutSpeed = 1f;
 
         while (c.a < 1f)
         {

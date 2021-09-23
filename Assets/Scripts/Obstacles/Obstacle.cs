@@ -80,9 +80,10 @@ public class Obstacle : MonoBehaviour
         fadeOutReady = true;
     }
 
-    public void FadeOut(Collider playerCollider)
+    public void FadeOut(Collider playerCollider, Collider shieldCollider)
     {
         this.playerCollider = playerCollider;
+        this.shieldCollider = shieldCollider;
         FadeOut();
     }
     
