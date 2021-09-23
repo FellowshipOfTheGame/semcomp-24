@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
@@ -36,7 +37,15 @@ public class TimeTravel : MonoBehaviour
     
     [SerializeField] private GameObject globalVolumePast;
     [SerializeField] private GameObject portalPrefab;
+    
+    [Header("Skybox")]
+    [SerializeField] private Material pastSkybox;
+    [SerializeField] private Material presentSkybox;
 
+    [Header("Player Effect")]
+    [SerializeField] private Material playerRegular;
+    [SerializeField] private Material playerTimeTravel;
+    [SerializeField] private List<Renderer> playerRenderers;
 
     private GameObject player;
     private HealthSystem healthSystem;
@@ -100,6 +109,11 @@ public class TimeTravel : MonoBehaviour
             yield return null;
         }
         musicPlayer.EndTransition();
+        RenderSettings.skybox = pastSkybox;
+        foreach (Renderer renderer in playerRenderers)
+        {
+            renderer.sharedMaterial = playerTimeTravel;
+        }
         
         counter = 100f;
         decreaseRate = (100f / duration);
@@ -151,6 +165,11 @@ public class TimeTravel : MonoBehaviour
         }
         
         InThePast = false;
+        RenderSettings.skybox = presentSkybox;
+        foreach (Renderer renderer in playerRenderers)
+        {
+            renderer.sharedMaterial = playerRegular;
+        }
         healthSystem.SetInvulnerable(false);
     }
     

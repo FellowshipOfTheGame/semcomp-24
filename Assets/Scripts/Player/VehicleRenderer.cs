@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VehicleRenderer : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class VehicleRenderer : MonoBehaviour
     [SerializeField] private GameObject shieldEffect;
     [SerializeField] private ParticleSystem speedLines;
     [SerializeField] private GameObject lightning;
+    [SerializeField] private Image HUDShieldImage;
+    private HealthSystem healthSystem;
     private GameObject shieldEffectInstance;
     private Animator shieldAnimator;
     private Collider shieldCollider;
@@ -23,10 +26,20 @@ public class VehicleRenderer : MonoBehaviour
         shieldCollider = shieldEffectInstance.GetComponent<Collider>();
         shieldAnimator = shieldEffectInstance.GetComponent<Animator>();
         lightningAnimator = lightning.GetComponent<Animator>();
+        healthSystem = GetComponent<HealthSystem>();
     }
 
     private void Update()
     {
+        if (healthSystem.HasShield())
+        {
+            HUDShieldImage.enabled = true;
+            HUDShieldImage.material.SetFloat("Fill", healthSystem.shieldPercentage);
+        }
+        else
+        {
+            HUDShieldImage.enabled = false;
+        }
     }
 
     public void ActivateShieldeEffect(float duration)
@@ -60,11 +73,14 @@ public class VehicleRenderer : MonoBehaviour
         shieldEffectInstance.SetActive(true);
         shieldCollider.enabled = true;
         shieldAnimator.Play("ShieldActivate");
-        yield return new WaitForSeconds(duration);
-        shieldAnimator.Play("ShieldDeactivate");
-        yield return new WaitForSeconds(0.5f);
-        shieldEffectInstance.SetActive(false);
+        while (healthSystem.HasShield())
+        {
+            yield return null;
+        }
         shieldCollider.enabled = false;
+        shieldAnimator.Play("ShieldDeactivate");
+        yield return new WaitForSeconds(0.1f);
+        shieldEffectInstance.SetActive(false);
     }
     
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 //TODO: call OnActivate from base
 public class Lightning : PowerUp
@@ -13,10 +15,15 @@ public class Lightning : PowerUp
         RaycastHit[] results = new RaycastHit[32];
         int num = Physics.BoxCastNonAlloc(controller.transform.position, size, controller.transform.forward, results, controller.transform.rotation, size.z, collisionLayer);
         Debug.Log("Raio acertou " + num);
-        
+        List<RaycastHit> hitList = new List<RaycastHit>();
         for (int i = 0; i < num && i < maxTargets; i++)
         {
-            results[i].transform.gameObject.GetComponent<Obstacle>().FadeOut(controller.VehicleCollider);
+            hitList.Add(results[i]);
+        }
+        hitList.Sort(((a, b) => a.distance.CompareTo(b.distance)));
+        for (int i = 0; i < hitList.Count; i++)
+        {
+            hitList[i].transform.gameObject.GetComponent<Obstacle>().FadeOut(controller.VehicleCollider);
         }
         
         renderer.ActivateLightning(size);
