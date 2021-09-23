@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 3995385674325696505}
   - component: {fileID: 3995385674325696510}
   - component: {fileID: 3995385674325696504}
+  - component: {fileID: 7516142187607419910}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -139,6 +140,8 @@ MonoBehaviour:
   startRaceCountdownText: {fileID: 0}
   HUDPanel: {fileID: 0}
   UIControls: {fileID: 0}
+  damageFeedbackText: {fileID: 0}
+  scoreBonusText: {fileID: 0}
   speedometer: {fileID: 0}
   turbo: {fileID: 0}
   turboSprites:
@@ -165,11 +168,17 @@ MonoBehaviour:
   timerText: {fileID: 0}
   coinsText: {fileID: 0}
   scoreText: {fileID: 0}
-  scoreBonusText: {fileID: 0}
-  coinsBonusText: {fileID: 0}
   itemButton: {fileID: 0}
   itemIcon: {fileID: 0}
   itemDurationText: {fileID: 0}
+  levelGenerator: {fileID: 0}
+  progressionTimeScale: 0.0033333334
+  easyIndex: 0
+  mediumIndex: 4
+  hardIndex: 5
+  easyTarget: 0.2
+  mediumTarget: 1.4
+  hardTarget: 0.8
 --- !u!114 &3995385674325696504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,3 +203,22 @@ MonoBehaviour:
   - multiplier: 5
     upperLimit: 100
   scoreText: {fileID: 0}
+--- !u!114 &7516142187607419910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995385674325696507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f671fd80a721e64529bbcd854d87dd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 30
+  increaseRate: 5
+  stages: 5
+  musicPlayer: {fileID: 0}
+  scoreBonus: 300
+  globalVolumePast: {fileID: 0}
+  portalPrefab: {fileID: 1920802284332158919, guid: 935e15d81df6e62fbb4a99abff917e8e, type: 3}

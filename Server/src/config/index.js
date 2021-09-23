@@ -24,6 +24,10 @@ module.exports = {
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET|| undefined,
     GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL || "http://localhost:3000/session/login/callback",
 
+    FACEBOOK_CLIENT_ID: process.env.FACEBOOK_CLIENT_ID || undefined,
+    FACEBOOK_CLIENT_SECRET: process.env.FACEBOOK_CLIENT_SECRET|| undefined,
+    FACEBOOK_CALLBACK_URL: process.env.FACEBOOK_CALLBACK_URL || "http://localhost:3000/session/login/callback",
+
     COOKIE_SIGNATURE_KEY: process.env.COOKIE_SIGNATURE_KEY || "MINHASENHAMEGASECRETA",
     SESSION_SECURE: process.env.SESSION_SECURE == "1" || false, 
     SESSION_HTTP_ONLY: process.env.SESSION_HTTP_ONLY == "1" || false,

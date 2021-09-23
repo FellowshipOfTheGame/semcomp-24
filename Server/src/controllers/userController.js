@@ -6,36 +6,39 @@ const User = require('../models/User');
 const { logger } = require('../config/logger');
 
 module.exports = {
-    async findOrCreate (google_user, cb) {
-        if (!google_user.id) {
-            return cb({ message: "a google_id is required" }, null);
+    async findOrCreate (passport_user, cb) {
+        if (!passport_user?.id) {
+            return cb({ message: "An provider_id is required" }, null);
         }
         
         try {
-            var user = await User.findOne({ google_id: google_user.id });
+            var user = await User.findOne({ provider_id: passport_user.id, provider: passport_user.provider });
         } catch (err) {
             return cb(err, null);
         }
 
         if (user) {
-            return cb(null, user);
+            if (user.isBanned === false)
+                return cb(null, user);
+            else
+                return cb(null, null)
         }
 
         try {
             user = await User.create({
                 created_at: new Date(),
 
-                google_id: google_user.id,
-                name: google_user._json?.name,
-                email: google_user._json?.email,
-                picture: google_user._json?.picture,
+                provider: passport_user.provider,
+                provider_id: passport_user.id,
+                name: (passport_user.provider === 'facebook') ? `${passport_user._json?.first_name} ${passport_user._json?.last_name}` : passport_user._json?.name,
+                email: passport_user._json?.email,
             });
         } catch (err) {
             return cb(err, null);
         }
 
         logger.info({
-            message: `User ${user._id} created successfully`
+            message: `User ${user._id} created successfully from ${passport_user.provider}`
         });
 
         return cb(null, user);

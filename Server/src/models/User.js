@@ -7,11 +7,14 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-
-    google_id: {
+    
+    provider: {
         type: String,
         required: true,
-        unique: true,
+    },
+    provider_id: {
+        type: String,
+        required: true,
     },
     name: {
         type: String,
@@ -21,9 +24,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-    },
-    picture: {
-        type: String,
     },
 
     gold: {
@@ -68,6 +68,12 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         required: true,
         default: Date.now
+    },
+
+    isBanned: {
+        type: Boolean,
+        required: true,
+        default: false,
     },
 });
 
