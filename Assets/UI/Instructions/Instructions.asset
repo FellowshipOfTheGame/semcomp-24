@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd1e6e5741df7a44827c245578a2365, type: 3}
+  m_Name: Instructions
+  m_EditorClassIdentifier: 
+  instructions:
+  - text: Batidas frontais dao mais dano!
+    sprite: {fileID: 21300000, guid: 6e69af71f6eb71d4f87bdd6e8cc7cf8c, type: 3}
+  - text: Pontos de onibus regeneram
+    sprite: {fileID: 21300000, guid: 719dc60003dd48342ba6546fbe2b61ab, type: 3}
+  - text: Use itens para te ajudar!
+    sprite: {fileID: 21300000, guid: 1a429b9ca2b98c74bb36ad1398c7f373, type: 3}
+  - text: Colete modeas para usar na loja!
+    sprite: {fileID: 21300000, guid: 832db48912f62554480c348e8117d872, type: 3}
