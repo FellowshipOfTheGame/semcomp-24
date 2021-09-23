@@ -16,7 +16,7 @@ public class Lightning : PowerUp
         
         for (int i = 0; i < num && i < maxTargets; i++)
         {
-            results[i].transform.gameObject.GetComponent<Obstacle>().FadeOut(controller.VehicleCollider);
+            results[i].transform.gameObject.GetComponent<Obstacle>().FadeOut(controller.VehicleCollider, renderer.ShieldCollider);
         }
         
         renderer.ActivateLightning(size);
