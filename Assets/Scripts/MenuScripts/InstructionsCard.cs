@@ -25,6 +25,7 @@ namespace SubiNoOnibus.UI
     [System.Serializable]
     public struct InstructionCard
     {
+        public string title;
         public string text;
         public Sprite sprite;
     }
