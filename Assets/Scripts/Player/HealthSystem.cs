@@ -38,12 +38,11 @@ public class OnHealthChangeEventArgs : System.EventArgs
 
 public class HealthSystem : MonoBehaviour
 {
-	[SerializeField]
-	private int healthMax;
+	[SerializeField] private bool invulnerable;
+	[SerializeField] private int healthMax;
 	
 	private int health;
-	private bool invulnerable;
-	
+
 	private bool hasShield;
 	private int shieldLeft;
 	private float shieldTimer;
