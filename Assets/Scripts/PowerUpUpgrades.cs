@@ -60,7 +60,7 @@ public class PowerUpUpgrades : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject shieldPrefab;
 
-    private void Awake()
+    private void Start()
     {
         StartCoroutine(UserStatusRequestHandler.GetUserStatus(OnSuccess, OnFailure));
     }

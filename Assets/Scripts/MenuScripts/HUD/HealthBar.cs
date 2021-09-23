@@ -17,13 +17,13 @@ public class HealthBar : MonoBehaviour
 	private Image[] indicators;
 	private float indicatorPercentage;
 
-	void OnEnable()
+	void Awake()
 	{
 		healthSystem.OnHealthChange += UpdateHealthBar;
 		healthSystem.OnSetHealthMax += Setup;
 	}
 	
-	void OnDisable()
+	void OnDestroy()
 	{
 		healthSystem.OnHealthChange -= UpdateHealthBar;
 		healthSystem.OnSetHealthMax -= Setup;
