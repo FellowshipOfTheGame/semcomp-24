@@ -1,0 +1,1 @@
+Os tijolos reaproveitam a textura da caçamba
