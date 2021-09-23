@@ -26,7 +26,7 @@ namespace SubiNoOnibus.Networking.Requests
             RaycastBlockEvent.Invoke(false);
         }
 
-        public static IEnumerator FinishRace(RaceData raceData, Action OnSuccess, Action<UnityWebRequest> OnFailure = null)
+        public static IEnumerator FinishRace(RaceData raceData, Action<FinishRaceData> OnSuccess, Action<UnityWebRequest> OnFailure = null)
         {
             RaycastBlockEvent.Invoke(true);
             raceData.sign = Cryptography.GetSignature(raceData);
@@ -41,7 +41,8 @@ namespace SubiNoOnibus.Networking.Requests
             }
             else
             {
-                OnSuccess?.Invoke();
+                FinishRaceData finishRaceData = JsonUtility.FromJson<FinishRaceData>(request.downloadHandler.text);
+                OnSuccess?.Invoke(finishRaceData);
             }
             RaycastBlockEvent.Invoke(false);
         }
