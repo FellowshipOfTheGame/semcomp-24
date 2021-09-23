@@ -7314,7 +7314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4070277646144147459
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7392,7 +7392,6 @@ MonoBehaviour:
   itemsUsedText: {fileID: 0}
   finalScoreText: {fileID: 6407277668100510896}
   finalScoreTextUnderlay: {fileID: 5351424882534601808}
-  isRecordMarker: {fileID: 4420421068540954024}
 --- !u!1 &4420421068540954024
 GameObject:
   m_ObjectHideFlags: 0
