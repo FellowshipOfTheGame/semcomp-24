@@ -514,6 +514,7 @@ MonoBehaviour:
   - "Preparando mentalmente pro Lab. de F\xEDsica..."
   - "Esperando o sim\xF5es pegar o tira tampa..."
   - Alimentando vaquinhas...
+  - "Daqui pra frente s\xF3 pra tr\xE1s..."
   textMesh: {fileID: 306766190}
 --- !u!4 &1178269798
 Transform:
