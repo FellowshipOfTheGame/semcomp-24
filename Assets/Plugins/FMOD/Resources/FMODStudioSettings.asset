@@ -60,15 +60,15 @@ MonoBehaviour:
       Value: {fileID: 0}
       HasValue: 0
   childIdentifiers:
-  - 2fea114e74ecf3c4f920e1d5cc1c4c40
+  - 2c5177b11d81d824dbb064f9ac8527da
   - c88d16e5272a4e241b0ef0ac2e53b73d
+  - 2fea114e74ecf3c4f920e1d5cc1c4c40
+  - fd7c55dab0fce234b8c25f6ffca523c1
+  - b7716510a1f36934c87976f3a81dbf3d
   - e7a046c753c3c3d4aacc91f6597f310d
   - 0f8eb3f400726694eb47beb1a9f94ce8
-  - 46fbfdf3fc43db0458918377fd40293e
   - 52eb9df5db46521439908db3a29a1bbb
-  - b7716510a1f36934c87976f3a81dbf3d
-  - fd7c55dab0fce234b8c25f6ffca523c1
-  - 2c5177b11d81d824dbb064f9ac8527da
+  - 46fbfdf3fc43db0458918377fd40293e
   outputType: 
   threadAffinities:
     Value: []
@@ -443,18 +443,18 @@ MonoBehaviour:
   EnableErrorCallback: 0
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
-  HideSetupWizard: 0
+  HideSetupWizard: 1
   Platforms:
-  - {fileID: -2731175459950355985}
+  - {fileID: -6818138761908430010}
+  - {fileID: -6153948812199636635}
   - {fileID: -3760106029021519633}
+  - {fileID: -2731175459950355985}
+  - {fileID: -1971094023803115067}
+  - {fileID: -1048665183208986528}
   - {fileID: 568071383767793178}
   - {fileID: 1045463309716667725}
-  - {fileID: 3243754435171747392}
   - {fileID: 1861268434151794421}
-  - {fileID: -1048665183208986528}
-  - {fileID: -1971094023803115067}
-  - {fileID: -6153948812199636635}
-  - {fileID: -6818138761908430010}
+  - {fileID: 3243754435171747392}
   - {fileID: 5272052798544730970}
   MigratedPlatforms: 0c00000006000000120000000b00000015000000090000000a00000005000000080000000200000001000000
 --- !u!114 &568071383767793178
