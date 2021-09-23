@@ -8,6 +8,7 @@ namespace SubiNoOnibus.UI
     {
         [SerializeField] private InstructionsCard instructions;
         [SerializeField] private TMPro.TextMeshProUGUI textMesh;
+        [SerializeField] private TMPro.TextMeshProUGUI titleTextMesh;
         [SerializeField] private Image image;
         [SerializeField] private Button nextButton;
         [SerializeField] private Button backButton;
@@ -77,6 +78,7 @@ namespace SubiNoOnibus.UI
 
         private void SetInstruction(in InstructionCard card)
         {
+            titleTextMesh.SetText(card.title);
             textMesh.SetText(card.text);
             image.sprite = card.sprite;
         }
