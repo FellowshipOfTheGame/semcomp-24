@@ -28,7 +28,7 @@ namespace SubiNoOnibus.UI
             var finishRaceEnumerator = RaceRequestHandler.FinishRace
             (
                 data, 
-                () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex)
+                (data) => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex)
             );
             StartCoroutine(finishRaceEnumerator);
         }
@@ -36,7 +36,7 @@ namespace SubiNoOnibus.UI
         public void MainMenu()
         {
             RaceData data = raceManager.GetEndRaceData();
-            var finishRaceEnumerator = RaceRequestHandler.FinishRace(data, () => SceneManager.LoadScene(0));
+            var finishRaceEnumerator = RaceRequestHandler.FinishRace(data, (data) => SceneManager.LoadScene("StartupMenu"));
             StartCoroutine(finishRaceEnumerator);
         }
     }

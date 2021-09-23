@@ -13,9 +13,14 @@ public class LoadFModOnInit : MonoBehaviour
         textMesh.SetText(phrase);
     }
 
-    public IEnumerator Start()
+    public void Start()
     {
-        yield return new WaitForSeconds(2f);
+        StartCoroutine(WaitForBankLoading());
+    }
+
+    private IEnumerator WaitForBankLoading()
+    {
+        yield return new WaitForSecondsRealtime(2f);
         yield return new WaitUntil(() => FMODUnity.RuntimeManager.HasBanksLoaded);
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }

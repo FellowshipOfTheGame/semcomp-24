@@ -146,7 +146,6 @@ public class RaceManager : MonoBehaviour
         EndRace();
         musicPlayer.TriggerGameOver();
         vehicle.PauseMotorSFX(true);
-        gameOverMenu.Open();
     }
     
     public void StartRace()
@@ -170,7 +169,7 @@ public class RaceManager : MonoBehaviour
         raceData = GetEndRaceData();
 
         var finishRaceEnumerator = RaceRequestHandler.FinishRace(raceData, 
-            () => Debug.Log("Success"), 
+            (data) => gameOverMenu.Open(data.isPersonalRecord), 
             (req) =>
             {
                 string errorMsg = (string) JsonUtility.FromJson<ErrorMessageData>(req.downloadHandler.text);

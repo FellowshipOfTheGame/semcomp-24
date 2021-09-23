@@ -14,12 +14,21 @@ namespace SubiNoOnibus.UI
         [SerializeField] private TextMeshProUGUI finalScoreText;
         [SerializeField] private TextMeshProUGUI finalScoreTextUnderlay;
 
+        public void Open(bool isPersonalRecord)
+        {
+            if (isPersonalRecord)
+                finalScoreText.text = $"NOVO RECORDE: {raceManager.Score} pts";
+            else
+                finalScoreText.text = $"PONTUAÇÃO FINAL: {raceManager.Score} pts";
+
+            Open();
+        }
+
         public void Open()
         {
             distanceText.text = $"{raceManager.Distance} m";
             timeText.text = System.TimeSpan.FromSeconds(raceManager.Timer).ToString("mm\\:ss\\:ff");
             coinsText.text = $"x{raceManager.Coins}";
-            finalScoreText.text = $"PONTUAÇÃO FINAL: {raceManager.Score} pts";
             finalScoreTextUnderlay.text = finalScoreText.text;
             
             Time.timeScale = 0f;
@@ -29,7 +38,8 @@ namespace SubiNoOnibus.UI
 
         public void Close()
         {
-            SceneManager.LoadScene(0);
+            Time.timeScale = 1;
+            SceneManager.LoadScene("StartupMenu");
         }
 
         public void Continue()
