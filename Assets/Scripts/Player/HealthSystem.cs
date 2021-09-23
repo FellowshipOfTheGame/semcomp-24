@@ -46,6 +46,9 @@ public class HealthSystem : MonoBehaviour
 	private bool hasShield;
 	private int shieldLeft;
 	private float shieldTimer;
+	private float shieldMaxTime;
+	private int shieldMaxUsages;
+	public float shieldPercentage;
 
 	public event System.EventHandler<OnHealthChangeEventArgs> OnHealthChange;
 	public event System.EventHandler OnSetHealthMax;
@@ -103,6 +106,8 @@ public class HealthSystem : MonoBehaviour
 		this.hasShield = true;
 		this.shieldLeft = protectionTimes;
 		this.shieldTimer = duration;
+		this.shieldMaxTime = duration;
+		this.shieldMaxUsages = protectionTimes;
 	}
 
 	public void EndShield()
@@ -180,6 +185,8 @@ public class HealthSystem : MonoBehaviour
 	{
 		if (hasShield)
 		{
+			shieldPercentage = (shieldTimer / shieldMaxTime) * ((float)shieldLeft / shieldMaxUsages);
+			
 			if (shieldTimer <= 0f)
 			{
 #if UNITY_EDITOR
