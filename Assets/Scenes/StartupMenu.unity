@@ -7649,7 +7649,7 @@ MonoBehaviour:
     Design</size></b>\nMateus Paludetti\n\n<b><size=42>Supervisor</size></b>\nTiago
     Marino Silva\n\n<b><size=42>Programa\xE7\xE3o</size></b>\nGeraldo Murilo Carrijo
     Viana Alves da Silva\nLucas Xavier Leite\nPaolo Victor Hitoshi Scassa\nTiago
-    Marino Silva"
+    Marino Silva\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac6c1f245f6ebdd4b81764777c92d499, type: 2}
   m_sharedMaterial: {fileID: -7461510129028098897, guid: ac6c1f245f6ebdd4b81764777c92d499, type: 2}
