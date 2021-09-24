@@ -29,7 +29,7 @@ namespace SubiNoOnibus.UI
             (
                 data, 
                 (data) => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex),
-                DefaultErrorHandling.OnGameScene
+                raceManager.HandleEndRaceError
             );
             StartCoroutine(finishRaceEnumerator);
         }
@@ -41,7 +41,7 @@ namespace SubiNoOnibus.UI
             (
                 data, 
                 (data) => SceneManager.LoadScene("StartupMenu"),
-                DefaultErrorHandling.OnGameScene
+                raceManager.HandleEndRaceError
             );
             StartCoroutine(finishRaceEnumerator);
         }

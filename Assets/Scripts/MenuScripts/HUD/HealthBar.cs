@@ -111,7 +111,7 @@ public class HealthBar : MonoBehaviour
 	{
 		while ((damageTaken.value - healthBarSlider.value) > 0.01f)
 		{
-			damageTaken.value = Mathf.Lerp(damageTaken.value, healthBarSlider.value, 1.5f * Time.deltaTime);
+			damageTaken.value = Mathf.Lerp(damageTaken.value, healthBarSlider.value, 1.5f * Time.unscaledDeltaTime);
 			yield return null;
 		}
 	}
