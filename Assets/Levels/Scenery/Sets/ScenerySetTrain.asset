@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: ScenerySetTrain
   m_EditorClassIdentifier: 
   members:
-  - {fileID: 6066277585264546669, guid: 8b732f552978a9fc59babe3b0f4a815b, type: 3}
+  - {fileID: 6066277585264546669, guid: 49da44f12fa13e84890c6f83f707e686, type: 3}
+  - {fileID: 6066277585264546669, guid: 6d918a19b20573148a1a0ba4362959ce, type: 3}
+  - {fileID: 6066277585264546669, guid: 28b27e79abb0ee94c904b65ab8efe89f, type: 3}
+  - {fileID: 6066277585264546669, guid: 9c64172d05700a847b78e7a7ae4ef114, type: 3}
+  - {fileID: 6066277585264546669, guid: 2f29dac08f9741d4c9239167dc0b8010, type: 3}

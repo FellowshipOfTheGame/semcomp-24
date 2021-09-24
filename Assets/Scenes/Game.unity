@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26869857, g: 0.34751043, b: 0.54489845, a: 1}
+  m_IndirectSpecularColor: {r: 0.26508117, g: 0.348178, b: 0.54742694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2061,6 +2061,42 @@ PrefabInstance:
       propertyPath: follow
       value: 
       objectReference: {fileID: 108651215}
+    - target: {fileID: 2004649143416114320, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: threshold
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004649143416114320, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004649143416114320, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c7afe3463ae53ce3c9fd10fb7ca44eb9, type: 2}
+    - target: {fileID: 2004649143416114320, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c7a7b53399c5e2ec2bd43e4952aaec69, type: 2}
+    - target: {fileID: 2004649143416114320, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: bbe3c2909bd091a2cb707a1addab3ef1, type: 2}
+    - target: {fileID: 2004649143416114320, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 13170f590d4f28a9f817d8e7907735ec, type: 2}
+    - target: {fileID: 2004649143416114320, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: abe262d7a07d040fca9924faf070d962, type: 2}
+    - target: {fileID: 2004649143416114320, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: ba371c72245c48d2d866cbcaae4a9bbd, type: 2}
+    - target: {fileID: 2004649143416114320, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9eba80de589fdeb35b04c3603bda30d6, type: 2}
     - target: {fileID: 2004649143416114322, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
       propertyPath: follow
       value: 
@@ -2069,10 +2105,50 @@ PrefabInstance:
       propertyPath: starterSegment
       value: 
       objectReference: {fileID: 11400000, guid: 558102f4322e0ab9686ee89e3c214e27, type: 2}
+    - target: {fileID: 2004649143416114322, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: sets.Array.data[1].weight
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
       propertyPath: follow
       value: 
       objectReference: {fileID: 108651215}
+    - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: threshold
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 13170f590d4f28a9f817d8e7907735ec, type: 2}
+    - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: abe262d7a07d040fca9924faf070d962, type: 2}
+    - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: ba371c72245c48d2d866cbcaae4a9bbd, type: 2}
+    - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9eba80de589fdeb35b04c3603bda30d6, type: 2}
+    - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: bbe3c2909bd091a2cb707a1addab3ef1, type: 2}
+    - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: c7afe3463ae53ce3c9fd10fb7ca44eb9, type: 2}
+    - target: {fileID: 2004649143416114323, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
+      propertyPath: levelTrainSegments.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: c7a7b53399c5e2ec2bd43e4952aaec69, type: 2}
     - target: {fileID: 2004649143416114348, guid: 66e7f431315b8f280b2b18a33f439774, type: 3}
       propertyPath: m_Name
       value: Generator
