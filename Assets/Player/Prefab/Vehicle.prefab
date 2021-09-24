@@ -105,7 +105,6 @@ GameObject:
   - component: {fileID: 407148919}
   - component: {fileID: 3450803821602236937}
   - component: {fileID: 2565623165293259774}
-  - component: {fileID: 8284381887647273626}
   - component: {fileID: 847439272864004725}
   - component: {fileID: 6095949563745021327}
   - component: {fileID: 1822952218701299703}
@@ -233,7 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad26218649bb1523f840544fef3067bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invulnerable: 0
   healthMax: 100
+  shieldPercentage: 0
 --- !u!114 &3450803821602236937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,18 +263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedDecreaseFactor: 0.5
---- !u!114 &8284381887647273626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6036709807576084203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4c69dbfb7f1e5408725a9f765ef633, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &847439272864004725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +306,7 @@ MonoBehaviour:
   shieldEffect: {fileID: 4622252919096137203, guid: da4af0db463309b4ab5222feaba3f2d5, type: 3}
   speedLines: {fileID: 0}
   lightning: {fileID: 3100041402938328298}
+  HUDShieldImage: {fileID: 0}
 --- !u!114 &108651217
 MonoBehaviour:
   m_ObjectHideFlags: 0

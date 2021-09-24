@@ -287,11 +287,12 @@ public class RaceManager : MonoBehaviour
         timerText.text = System.TimeSpan.FromSeconds(timer).ToString("mm\\:ss\\:ff");
         
         // Update the score text
-        string formattedString = scoreManager.GetScore().ToString("000,000 PTS", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+        string scoreString = scoreManager.GetScore().ToString("000,000 PTS", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
         Color inactiveColor = scoreText.color;
-        inactiveColor.a = 0.7f;
-        scoreText.text = Regex.Replace(formattedString, "^(.*?)(?=[1-9])", $"<color=#{ColorUtility.ToHtmlStringRGBA(inactiveColor)}>$1</color>");
-        coinsText.text = coins.ToString("D6", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+        inactiveColor.a = 0.5f;
+        scoreText.text = Regex.Replace(scoreString, "^(.*?)(?=[1-9])", $"<color=#{ColorUtility.ToHtmlStringRGBA(inactiveColor)}>$1</color>");
+        string coinsString = coins.ToString("00,000", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
+        coinsText.text = Regex.Replace(coinsString, "^(.*?)(?=[1-9])", $"<color=#{ColorUtility.ToHtmlStringRGBA(inactiveColor)}>$1</color>");
     }
     
     private void ScoreBonusFeedback(object sender, OnScoreBonusGrantEventArgs e)

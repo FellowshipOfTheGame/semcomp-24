@@ -145,11 +145,11 @@ MonoBehaviour:
   speedometer: {fileID: 0}
   turbo: {fileID: 0}
   turboSprites:
-  - {fileID: 21300000, guid: 936bb093de3154f8fad29009c9c7e59f, type: 3}
-  - {fileID: 21300000, guid: 0f7a08d96d51dfa33b72443eb9d14f9e, type: 3}
-  - {fileID: 21300000, guid: 27893d17b306253ad90bbe16e716ab82, type: 3}
-  - {fileID: 21300000, guid: 31c7745c83f8425f992a379c81b99323, type: 3}
-  - {fileID: 21300000, guid: 8aed06cc355dced1d99ddd9452a62c7b, type: 3}
+  - {fileID: 21300000, guid: 6fd13d11e7c5161ae865ac0c814a5847, type: 3}
+  - {fileID: 21300000, guid: 3db303df7aa09165c8a57f4ce638b0d9, type: 3}
+  - {fileID: 21300000, guid: fbdd991e91fbb4f7689a61109fa47c0c, type: 3}
+  - {fileID: 21300000, guid: b730c9fe6eadd0dc89605e97fdb1f838, type: 3}
+  - {fileID: 21300000, guid: adacaad6385e19ae1871d88c9768cbc6, type: 3}
   burning: {fileID: 0}
   scoreMultiplier: {fileID: 0}
   scoreMultiplierSprites:
