@@ -11,8 +11,10 @@ namespace SubiNoOnibus.Networking.Requests
         {
             RaycastBlockEvent.Invoke(true);
             using UnityWebRequest request = WebRequestFactory.AuthPostJson(Endpoints.Race_start_url);
+            
             yield return request.SendWebRequest();
 
+            RaycastBlockEvent.Invoke(false);
             if (request.result != UnityWebRequest.Result.Success)
             {
                 OnFailure?.Invoke(request);
@@ -23,7 +25,6 @@ namespace SubiNoOnibus.Networking.Requests
                 var raceData = JsonUtility.FromJson<RaceData>(request.downloadHandler.text);
                 OnSuccess?.Invoke(raceData);
             }
-            RaycastBlockEvent.Invoke(false);
         }
 
         public static IEnumerator FinishRace(RaceData raceData, Action<FinishRaceData> OnSuccess, Action<UnityWebRequest> OnFailure = null)
@@ -35,6 +36,8 @@ namespace SubiNoOnibus.Networking.Requests
             
             yield return request.SendWebRequest();
 
+            RaycastBlockEvent.Invoke(false);
+
             if (request.result != UnityWebRequest.Result.Success)
             {
                 OnFailure?.Invoke(request);
@@ -44,7 +47,6 @@ namespace SubiNoOnibus.Networking.Requests
                 FinishRaceData finishRaceData = JsonUtility.FromJson<FinishRaceData>(request.downloadHandler.text);
                 OnSuccess?.Invoke(finishRaceData);
             }
-            RaycastBlockEvent.Invoke(false);
         }
     }
 }

@@ -10,12 +10,10 @@ namespace SubiNoOnibus.UI
     {
         public int Gold { get => _gold;  private set => UpdateGoldAmount(value); }
         
-        [SerializeField] private PopupMessageWindow logInterface;
         [SerializeField] private Transform cardsContainer;
         [SerializeField] private TMPro.TextMeshProUGUI goldAmountTxt;
 
-        [SerializeField]
-        private ShopUpgrades _shopUpgrades;
+        [SerializeField]         private ShopUpgrades _shopUpgrades;
         private int _gold = 0;
         private Dictionary<string, ShopCard> _shopCards;
 
@@ -71,8 +69,7 @@ namespace SubiNoOnibus.UI
 
         private void HandleError(UnityWebRequest request)
         {
-            string errorMsg = JsonUtility.FromJson<ErrorMessageData>(request.downloadHandler.text);
-            logInterface.LogError(errorMsg);
+            DefaultErrorHandling.OnMenuScene(request, this, FindObjectOfType<MainMenu>());
         }
 
         private void PopulateShopList()
