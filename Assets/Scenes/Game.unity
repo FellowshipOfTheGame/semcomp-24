@@ -425,10 +425,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2019770675}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
-      propertyPath: progressionTimeScale
-      value: 0.0022222223
-      objectReference: {fileID: 0}
-    - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: startRaceCountdownSign
       value: 
       objectReference: {fileID: 2019770667}
