@@ -12,6 +12,7 @@ public class RaceManager : MonoBehaviour
 {
     [SerializeField] public GameObject player;
     [SerializeField] private RaceData raceData;
+    private RaceData? _cachedRaceData = null;
     
     [Space(10)]
     [Header("SFX")]
@@ -21,8 +22,8 @@ public class RaceManager : MonoBehaviour
 
     [Space(10)]
     [Header(("Menu"))]
-    
     [SerializeField] private GameOverMenu gameOverMenu;
+    [SerializeField] private RetryMenu retryMenu;
     
     [Space(10)]
     [Header("Start Race Countdown")]
@@ -108,6 +109,8 @@ public class RaceManager : MonoBehaviour
         healthSystem.OnDie += GameOver;
         healthSystem.OnHealthChange += DamageFeedback;
         scoreManager.OnScoreBonusGrant += ScoreBonusFeedback;
+
+        _cachedRaceData = null;
     }
 
     private void OnDisable()
@@ -168,14 +171,38 @@ public class RaceManager : MonoBehaviour
 
     public void EndRace()
     {
-        raceData = GetEndRaceData();
+        Time.timeScale = 0f;
 
-        var finishRaceEnumerator = RaceRequestHandler.FinishRace(raceData, 
-            (data) => gameOverMenu.Open(data.isPersonalRecord),
-            DefaultErrorHandling.OnGameScene
+        if (!_cachedRaceData.HasValue)
+        {
+            _cachedRaceData = GetEndRaceData();
+        }
+
+        var finishRaceEnumerator = RaceRequestHandler.FinishRace(_cachedRaceData.Value,
+            OnEndRaceSuccess,
+            HandleEndRaceError
         );
-        
+
         StartCoroutine(finishRaceEnumerator);
+    }
+
+    private void OnEndRaceSuccess(FinishRaceData data)
+    {
+        retryMenu.Close();
+        gameOverMenu.Open(data.isPersonalRecord);
+    }
+
+    public void HandleEndRaceError(UnityWebRequest request)
+    {
+        retryMenu.Open();
+        if(request.responseCode == 401)
+        {
+            retryMenu.SessionExpired();
+        }
+        else
+        {
+            retryMenu.InternetConnectionLost();
+        }
     }
 
     public RaceData GetEndRaceData()
