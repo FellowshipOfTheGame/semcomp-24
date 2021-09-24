@@ -20,7 +20,7 @@ public class LoadFModOnInit : MonoBehaviour
 
     private IEnumerator WaitForBankLoading()
     {
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(5f);
         yield return new WaitUntil(() => FMODUnity.RuntimeManager.HasBanksLoaded);
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
