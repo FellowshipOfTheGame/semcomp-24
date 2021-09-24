@@ -15,6 +15,9 @@ public class LoadFModOnInit : MonoBehaviour
 
     public void Start()
     {
+#if !(DEVELOPMENT_BUILD || UNITY_EDITOR)
+        Debug.unityLogger.logEnabled = false; 
+#endif
         StartCoroutine(WaitForBankLoading());
     }
 
