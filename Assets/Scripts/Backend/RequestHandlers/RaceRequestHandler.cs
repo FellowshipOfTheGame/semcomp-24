@@ -44,8 +44,15 @@ namespace SubiNoOnibus.Networking.Requests
             }
             else
             {
-                FinishRaceData finishRaceData = JsonUtility.FromJson<FinishRaceData>(request.downloadHandler.text);
-                OnSuccess?.Invoke(finishRaceData);
+                try
+                {
+                    FinishRaceData finishRaceData = JsonUtility.FromJson<FinishRaceData>(request.downloadHandler.text);
+                    OnSuccess?.Invoke(finishRaceData);
+                }
+                catch
+                {
+                    OnFailure?.Invoke(request);
+                }
             }
         }
     }
