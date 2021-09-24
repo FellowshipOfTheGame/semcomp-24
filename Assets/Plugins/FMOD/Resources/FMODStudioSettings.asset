@@ -342,10 +342,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   SwitchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
   sourceProjectPath: "FMOD_PROJECT/\xD4NIBUS_FMOD_05.fspro"
-  sourceBankPath: FMOD_PROJECT/Build
+  sourceBankPath: FMOD_PROJECT/Build/Desktop
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
@@ -539,7 +539,7 @@ MonoBehaviour:
   active: 1
   Properties:
     LiveUpdate:
-      Value: 2
+      Value: 0
       HasValue: 1
     LiveUpdatePort:
       Value: 9264
@@ -557,8 +557,8 @@ MonoBehaviour:
       Value: 
       HasValue: 0
     SpeakerMode:
-      Value: 0
-      HasValue: 0
+      Value: 3
+      HasValue: 1
     VirtualChannelCount:
       Value: 0
       HasValue: 0
