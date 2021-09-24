@@ -177,7 +177,7 @@ MonoBehaviour:
   easyIndex: 0
   mediumIndex: 4
   hardIndex: 5
-  easyTarget: 0.2
+  easyTarget: 0.4
   mediumTarget: 1.4
   hardTarget: 0.8
 --- !u!114 &3995385674325696504
