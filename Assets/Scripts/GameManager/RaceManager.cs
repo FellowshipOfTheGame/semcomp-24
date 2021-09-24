@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using SubiNoOnibus.UI;
 using SubiNoOnibus.Networking.Requests;
+using System;
+using UnityEngine.Networking;
 
 public class RaceManager : MonoBehaviour
 {
@@ -153,14 +155,14 @@ public class RaceManager : MonoBehaviour
         HUDPanel.SetActive(false);
         UIControls.SetActive(false);
         StartCoroutine(Countdown(startRaceCountdownTime));
-        
+
         // TODO: get player active item from ItemManager
-        
+
         var startRaceEnumerator = RaceRequestHandler.StartRace(
             (raceData) => this.raceData = raceData,
-            (req) => Debug.Log(req.error)
+            DefaultErrorHandling.OnGameScene
         );
-        
+
         StartCoroutine(startRaceEnumerator);
     }
 
@@ -169,13 +171,8 @@ public class RaceManager : MonoBehaviour
         raceData = GetEndRaceData();
 
         var finishRaceEnumerator = RaceRequestHandler.FinishRace(raceData, 
-            (data) => gameOverMenu.Open(data.isPersonalRecord), 
-            (req) =>
-            {
-                string errorMsg = (string) JsonUtility.FromJson<ErrorMessageData>(req.downloadHandler.text);
-                Debug.Log($"{req.responseCode}: {req.error}");
-                Debug.Log(errorMsg);
-            }
+            (data) => gameOverMenu.Open(data.isPersonalRecord),
+            DefaultErrorHandling.OnGameScene
         );
         
         StartCoroutine(finishRaceEnumerator);

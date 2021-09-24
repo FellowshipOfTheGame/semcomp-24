@@ -232,6 +232,7 @@ public class PowerUpUpgrades : MonoBehaviour
 
     private void OnFailure(UnityWebRequest request)
     {
+#if UNITY_EDITOR
         playerPrefab.GetComponent<HealthSystem>().SetHealthMax(maxHealth);
         
         Booster booster = boosterPrefab.GetComponent<Booster>();
@@ -254,6 +255,9 @@ public class PowerUpUpgrades : MonoBehaviour
         Lightning lightning = lightningPrefab.GetComponent<Lightning>();
         lightning.size = size;
         lightning.maxTargets = maxTargets;
+#else
+        DefaultErrorHandling.OnGameScene(request);
+#endif
     }
-    
+
 }

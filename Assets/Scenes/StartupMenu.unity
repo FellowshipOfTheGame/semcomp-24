@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -853,8 +853,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  warningColor: {r: 0.8962264, g: 0.8390205, b: 0, a: 1}
-  errorColor: {r: 1, g: 0.009047557, b: 0, a: 1}
+  warningColor: {r: 1, g: 1, b: 1, a: 1}
+  errorColor: {r: 1, g: 1, b: 1, a: 1}
   textMesh: {fileID: 2119199434}
 --- !u!1 &151314654
 GameObject:
