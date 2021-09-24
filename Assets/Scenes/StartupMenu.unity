@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5643,7 +5643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce275f9a44a15941814e37087e7109d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logInterface: {fileID: 116545423}
   cardsContainer: {fileID: 1969801774}
   goldAmountTxt: {fileID: 1568004753}
   _shopUpgrades:
@@ -7641,14 +7640,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b><size=42>Arte</size></b>\nFernando Randon\nJhonatas Paolozza\nLaura
-    Louas\nLeandro Satoshi\nLuis Cabral\n\n<b><size=42>Backend</size></b>\nGabriel
-    Van Loon B. C. D. Fuentes Rojas\nJ\xFAlia Frare\nLucas Romero\n\n<b><size=42>Level
+  m_text: "<b><size=42>Arte</size></b>\nFernando Henrique Paes Generich\nJhonatas
+    Paolozza\nLaura Felippe Torggler\nLeandro Satoshi\nLu\xEDs Eduardo Rozante de
+    Freitas Pereira\n\n<b><size=42>Backend</size></b>\nGabriel Van Loon B. C. D.
+    Fuentes Rojas\nJulia Carolina Frare Peixoto\nLucas de Medeiros Fran\xE7a Romero\n\n<b><size=42>Level
     Design</size></b>\nGabriel Van Loon B. C. D. Fuentes Rojas\n\n<b><size=42>Scrum
     Master</size></b>\nGabriel Van Loon B. C. D. Fuentes Rojas\n\n<b><size=42>Sound
-    Design</size></b>\nMatheus Paludetti\n\n<b><size=42>Supervisor</size></b>\nTiago
+    Design</size></b>\nMateus Paludetti\n\n<b><size=42>Supervisor</size></b>\nTiago
     Marino Silva\n\n<b><size=42>Programa\xE7\xE3o</size></b>\nGeraldo Murilo Carrijo
-    Viana Alves da Silva\nLucas Xavier Leite\nTiago Marino Silva"
+    Viana Alves da Silva\nLucas Xavier Leite\nPaolo Victor Hitoshi Scassa\nTiago
+    Marino Silva"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac6c1f245f6ebdd4b81764777c92d499, type: 2}
   m_sharedMaterial: {fileID: -7461510129028098897, guid: ac6c1f245f6ebdd4b81764777c92d499, type: 2}
