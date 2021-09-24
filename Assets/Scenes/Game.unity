@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26508117, g: 0.348178, b: 0.54742694, a: 1}
+  m_IndirectSpecularColor: {r: 0.16233736, g: 0.2919892, b: 0.5116891, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -365,6 +365,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2019770671}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
+      propertyPath: retryMenu
+      value: 
+      objectReference: {fileID: 2019770674}
+    - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 2019770670}
@@ -420,6 +424,10 @@ PrefabInstance:
       propertyPath: scoreMultiplierText
       value: 
       objectReference: {fileID: 2019770675}
+    - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
+      propertyPath: progressionTimeScale
+      value: 0.0022222223
+      objectReference: {fileID: 0}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: startRaceCountdownSign
       value: 
@@ -1892,6 +1900,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -21.400024
       objectReference: {fileID: 0}
+    - target: {fileID: 3837380459989959862, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
+      propertyPath: raceManager
+      value: 
+      objectReference: {fileID: 987757884}
     - target: {fileID: 3853385077361984948, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2039,6 +2051,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2019770674 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3837380459989959862, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
+  m_PrefabInstance: {fileID: 2019770664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ded692c9e7e8a459859caf6140929c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2019770675 stripped

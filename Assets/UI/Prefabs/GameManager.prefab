@@ -134,6 +134,7 @@ MonoBehaviour:
   normalCountEventEmitter: {fileID: 8179181862584672488}
   lastCountEventEmitter: {fileID: 7662136770089317030}
   gameOverMenu: {fileID: 0}
+  retryMenu: {fileID: 0}
   startRaceCountdownTime: 5
   startRaceCountdownPanel: {fileID: 0}
   startRaceCountdownSign: {fileID: 0}
@@ -172,7 +173,7 @@ MonoBehaviour:
   itemIcon: {fileID: 0}
   itemDurationText: {fileID: 0}
   levelGenerator: {fileID: 0}
-  progressionTimeScale: 0.0033333334
+  progressionTimeScale: 0.0022222223
   easyIndex: 0
   mediumIndex: 4
   hardIndex: 5
