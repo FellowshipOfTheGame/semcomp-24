@@ -217,7 +217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &38616110
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2032,7 +2032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &424378372
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5558,7 +5558,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 344d9749fdf15d648a38a640d024a38c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 391ffdb4bece1cf889aa9e87042b302c, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5589,10 +5589,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pictures:
-  - Chance: 0.25
+  - Chance: 0.05
     Picture: {fileID: 21300000, guid: 8adee6da65f8e544ca851547d0b68ea8, type: 3}
-  - Chance: 0.75
-    Picture: {fileID: 21300000, guid: 344d9749fdf15d648a38a640d024a38c, type: 3}
+  - Chance: 0.95
+    Picture: {fileID: 21300000, guid: 391ffdb4bece1cf889aa9e87042b302c, type: 3}
 --- !u!1 &1421613141
 GameObject:
   m_ObjectHideFlags: 0
@@ -8401,7 +8401,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac6c1f245f6ebdd4b81764777c92d499, type: 2}
   m_sharedMaterial: {fileID: -7461510129028098897, guid: ac6c1f245f6ebdd4b81764777c92d499, type: 2}
