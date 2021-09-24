@@ -148,9 +148,10 @@ public class RaceManager : MonoBehaviour
     // Called when player dies
     private void GameOver(object sender, System.EventArgs e)
     {
-        EndRace();
+        Time.timeScale = 0f;
         musicPlayer.TriggerGameOver();
         vehicle.PauseMotorSFX(true);
+        StartCoroutine(EndRaceWithDelay());
     }
     
     public void StartRace()
@@ -169,10 +170,16 @@ public class RaceManager : MonoBehaviour
         StartCoroutine(startRaceEnumerator);
     }
 
+    private IEnumerator EndRaceWithDelay()
+    {
+        RaycastBlockEvent.Invoke(true);
+        yield return new WaitForSecondsRealtime(1.2f);
+        EndRace();
+    }
+
     public void EndRace()
     {
-        Time.timeScale = 0f;
-
+        RaycastBlockEvent.Invoke(false);
         if (!_cachedRaceData.HasValue)
         {
             _cachedRaceData = GetEndRaceData();
