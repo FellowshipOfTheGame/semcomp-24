@@ -14,11 +14,15 @@ const logger = winston.createLogger({
         }),
         new winston.transports.File({
             filename: `logs/error${new Date().getTime()}.log`,
-            level: 'error'
+            level: 'error',
+            maxsize: 2*1024*1024, // 2 MB max size
+            maxFiles: 512,        // No more storage then 1 GB
         }),
         new winston.transports.File({
             filename: `logs/info${new Date().getTime()}.log`,
-            level: 'info'
+            level: 'info',
+            maxsize: 2*1024*1024, // 2 MB max size
+            maxFiles: 512,        // No more storage then 1 GB
         }),
         new winston.transports.MongoDB({
             level: 'info',
@@ -47,7 +51,9 @@ const raceLogger = winston.createLogger({
         }),
         new winston.transports.File({
             filename: `logs/race${new Date().getTime()}.log`,
-            level: 'info'
+            level: 'info',
+            maxsize: 2*1024*1024, // 2 MB max size
+            maxFiles: 512,        // No more storage then 1 GB
         }),
         new winston.transports.MongoDB({
             level: 'info',

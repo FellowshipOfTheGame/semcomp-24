@@ -23,50 +23,54 @@ module.exports = function (passport) {
         // done(null, obj);
     });
 
-    passport.use(new GoogleStrategy({
-            clientID: config.GOOGLE_CLIENT_ID,
-            clientSecret: config.GOOGLE_CLIENT_SECRET,
-            callbackURL: config.GOOGLE_CALLBACK_URL,
-        },
-        function(accessToken, refreshToken, profile, done) {
-            UserController.findOrCreate(profile, (err, user) => {
-                if (err) {
-                    logger.error({
-                        message: `at Google Login: ${err}`
-                    })
-                    return done(null, null, { message: "unable to create or find user" })
-                }
+    if(config.GOOGLE_CLIENT_ID !== undefined){
+        passport.use(new GoogleStrategy({
+                clientID: config.GOOGLE_CLIENT_ID,
+                clientSecret: config.GOOGLE_CLIENT_SECRET,
+                callbackURL: config.GOOGLE_CALLBACK_URL,
+            },
+            function(accessToken, refreshToken, profile, done) {
+                UserController.findOrCreate(profile, (err, user) => {
+                    if (err) {
+                        logger.error({
+                            message: `at Google Login: ${err}`
+                        })
+                        return done(null, null, { message: "unable to create or find user" })
+                    }
 
-                if (!user) {
-                    return done(null, null, { message: "user not created or not found" });
-                }
-                
-                return done(null, user);
-            });
-        }
-    ));
+                    if (!user) {
+                        return done(null, null, { message: "user not created or not found" });
+                    }
+                    
+                    return done(null, user);
+                });
+            }
+        ));
+    }
 
-    passport.use(new FacebookStrategy({
-            clientID: config.FACEBOOK_CLIENT_ID,
-            clientSecret: config.FACEBOOK_CLIENT_SECRET,
-            callbackURL: config.FACEBOOK_CALLBACK_URL,
-            profileFields: ["id", "email", "name"]
-        },
-        function(accessToken, refreshToken, profile, done) {
-            UserController.findOrCreate(profile, (err, user) => {
-                if (err) {
-                    logger.error({
-                        message: `at Facebook Login: ${err}`
-                    })
-                    return done(null, null, { message: "unable to create or find user" })
-                }
+    if(config.FACEBOOK_CLIENT_ID !== undefined){
+        passport.use(new FacebookStrategy({
+                clientID: config.FACEBOOK_CLIENT_ID,
+                clientSecret: config.FACEBOOK_CLIENT_SECRET,
+                callbackURL: config.FACEBOOK_CALLBACK_URL,
+                profileFields: ["id", "email", "name"]
+            },
+            function(accessToken, refreshToken, profile, done) {
+                UserController.findOrCreate(profile, (err, user) => {
+                    if (err) {
+                        logger.error({
+                            message: `at Facebook Login: ${err}`
+                        })
+                        return done(null, null, { message: "unable to create or find user" })
+                    }
 
-                if (!user) {
-                    return done(null, null, { message: "user not created or not found" });
-                }
-                
-                return done(null, user);
-            });
-        }
-    ));
+                    if (!user) {
+                        return done(null, null, { message: "user not created or not found" });
+                    }
+                    
+                    return done(null, user);
+                });
+            }
+        ));
+    }
 }

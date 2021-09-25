@@ -4,8 +4,6 @@ const RaceSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        // type: String,
-        // required: true,
     },
 
     score: { 
@@ -28,5 +26,8 @@ const RaceSchema = new mongoose.Schema({
         required: true
     },
 })
+
+// Add custom index to optimize Ranking Loading
+RaceSchema.index({score: -1, finishedAt: -1})
 
 module.exports = mongoose.model('Race', RaceSchema);
