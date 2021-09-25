@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OnHealthChangeEventArgs : System.EventArgs
 {
@@ -39,17 +38,20 @@ public class OnHealthChangeEventArgs : System.EventArgs
 
 public class HealthSystem : MonoBehaviour
 {
-	[SerializeField]
-	private int healthMax;
+	[SerializeField] private bool invulnerable;
+	[SerializeField] private int healthMax;
 	
 	private int health;
-	private bool invulnerable;
-	
+
 	private bool hasShield;
 	private int shieldLeft;
 	private float shieldTimer;
+	private float shieldMaxTime;
+	private int shieldMaxUsages;
+	public float shieldPercentage;
 
 	public event System.EventHandler<OnHealthChangeEventArgs> OnHealthChange;
+	public event System.EventHandler OnSetHealthMax;
 	public event System.EventHandler OnDie;
 
 	public void SetHealth(int health)
@@ -60,7 +62,8 @@ public class HealthSystem : MonoBehaviour
 	public void SetHealthMax(int healthMax)
 	{
 		this.healthMax = healthMax;
-		ResetHealth();
+		health = healthMax;
+		OnSetHealthMax?.Invoke(this, System.EventArgs.Empty);
 	}
 
 	public void ResetHealth()
@@ -103,6 +106,8 @@ public class HealthSystem : MonoBehaviour
 		this.hasShield = true;
 		this.shieldLeft = protectionTimes;
 		this.shieldTimer = duration;
+		this.shieldMaxTime = duration;
+		this.shieldMaxUsages = protectionTimes;
 	}
 
 	public void EndShield()
@@ -144,9 +149,9 @@ public class HealthSystem : MonoBehaviour
 		if (OnHealthChange != null)
 			OnHealthChange(this, onHealthChangeEventArgs);
 
-		if (OnDie != null && health <= 0)
+		if (health <= 0)
 		{
-			OnDie(this, System.EventArgs.Empty);
+			OnDie?.Invoke(this, System.EventArgs.Empty);
 		}
 		
 		// Debug.Log("Damage: " + damageAmount);
@@ -171,14 +176,17 @@ public class HealthSystem : MonoBehaviour
 		// Debug.Log("Heal: " + healAmount);
 	}
 
-	void Awake() {
-		ResetHealth();
+	public void Die()
+	{
+		OnDie?.Invoke(this, System.EventArgs.Empty);
 	}
-
+	
 	private void Update()
 	{
 		if (hasShield)
 		{
+			shieldPercentage = (shieldTimer / shieldMaxTime) * ((float)shieldLeft / shieldMaxUsages);
+			
 			if (shieldTimer <= 0f)
 			{
 #if UNITY_EDITOR

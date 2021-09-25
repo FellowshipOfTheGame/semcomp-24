@@ -3,7 +3,7 @@ using UnityEngine;
 public class SwapOnTimeTravel : MonoBehaviour
 {
     [SerializeField] private TimeTravelObjectsSet objectsSet;
-
+    
     public GameObject PresentObject => objectsSet.PresentObject;
     public GameObject PastObject => objectsSet.PastObject;
 
@@ -27,6 +27,7 @@ public class SwapOnTimeTravel : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private void Swap(object sender, OnTimeTravelEventArgs e)
     {
+        
         GameObject newGameObject = e.Period switch
         {
             TimeTravel.Period.Present => PresentObject,
@@ -36,7 +37,9 @@ public class SwapOnTimeTravel : MonoBehaviour
 
         if (newGameObject != null)
         {
-            Generator.LoadedObjects.Add(Instantiate(newGameObject, _transform.position, _transform.rotation, transform.parent));
+            GameObject obj = Instantiate(newGameObject, _transform.position, _transform.rotation, transform.parent);
+            obj.transform.localScale = _transform.localScale;
+            Generator.LoadedObjects.Add(obj);
         }
 
         Destroy(gameObject);

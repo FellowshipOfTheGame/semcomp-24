@@ -1,0 +1,1 @@
+O material "Floresta" é uma versão do "tree" que usa a shader Lit normal e sem transparência para simplificar

@@ -1,23 +1,22 @@
-using System;
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 [System.Serializable]
-public class AccelerationRange
+public class Range
 {
     [SerializeField]
-    private float acceleration;
+    private float value;
     
     [SerializeField]
     private int upperLimit;
 
     public static float reference;
 
-    public float Acceleration => acceleration;
+    public float Value => value;
 
-    public bool Contain(float value)
+    public bool Contains(float value)
     {
         return (value / reference * 100 <= upperLimit);
     }
@@ -40,7 +39,7 @@ public class VehicleController : MonoBehaviour
 
     [Header("Physics")]
     
-    public AccelerationRange[] accelerationRanges;
+    public Range[] accelerationRanges;
     
     public float forwardForce = 80f;
     public float initialForwardForce = 0f;
@@ -62,17 +61,17 @@ public class VehicleController : MonoBehaviour
     
     [Tooltip("The maximum angle the vehicle can rotate before rotating back to player's original position")]
     public float rotateBackAngle = 60f;
-
-    [Tooltip("The compensation force that is applied in the x component of the forward force")]
-    public float compensationForceControl = 3f;
     
+    [Tooltip("The compensation force that is applied in the x component of velocity")]
+    [SerializeField] Range[] compensationForceControlRanges;
+
     private float turningAngle; // Current turning wheel angle
     
     [Header("Wheels (aesthetic)")]
     
     [SerializeField] private Transform frontLeftWheel;
     [SerializeField] private Transform frontRightWheel;
-    [SerializeField] private float wheelsRotationSpeed = 5f;
+    [FormerlySerializedAs("wheelsRotationSpeed")] [SerializeField] private float wheelsTurningSpeed = 5f;
     
     private bool grounded; // State management
 
@@ -136,7 +135,7 @@ public class VehicleController : MonoBehaviour
 
         rigidbodyDefaultConstraints = _rigidbody.constraints;
 
-        AccelerationRange.reference = maximumSpeed;
+        Range.reference = maximumSpeed;
 
         _rigidbody.centerOfMass = centerOfMass.position;
     }
@@ -157,19 +156,19 @@ public class VehicleController : MonoBehaviour
         {
             if (vehicleRotation.y <= 180 && turningInput > 0 || vehicleRotation.y > 180 && turningInput < 0) // input para a direita virado para e esquerda ou input para e esquerda virado para a direita 
             {
-                wheelRotationLeft.y = Mathf.LerpAngle(wheelRotationLeft.y, -90 + transform.localEulerAngles.y, wheelsRotationSpeed * Time.deltaTime);
-                wheelRotationRight.y = Mathf.LerpAngle(wheelRotationRight.y, 90 + transform.localEulerAngles.y, wheelsRotationSpeed * Time.deltaTime);
+                wheelRotationLeft.y = Mathf.LerpAngle(wheelRotationLeft.y, -90 + transform.localEulerAngles.y, wheelsTurningSpeed * Time.deltaTime);
+                wheelRotationRight.y = Mathf.LerpAngle(wheelRotationRight.y, 90 + transform.localEulerAngles.y, wheelsTurningSpeed * Time.deltaTime);
             }
             else if (vehicleRotation.y <= 180 && turningInput < 0 || vehicleRotation.y > 180 && turningInput > 0) // input para a esquerda virado para a esquerda ou input para a direita virado para a esquerda
             {
-                wheelRotationLeft.y = Mathf.LerpAngle(wheelRotationLeft.y, -90 - transform.localEulerAngles.y, wheelsRotationSpeed * Time.deltaTime);
-                wheelRotationRight.y = Mathf.LerpAngle(wheelRotationRight.y, 90 - transform.localEulerAngles.y, wheelsRotationSpeed * Time.deltaTime);
+                wheelRotationLeft.y = Mathf.LerpAngle(wheelRotationLeft.y, -90 - transform.localEulerAngles.y, wheelsTurningSpeed * Time.deltaTime);
+                wheelRotationRight.y = Mathf.LerpAngle(wheelRotationRight.y, 90 - transform.localEulerAngles.y, wheelsTurningSpeed * Time.deltaTime);
             }
         }
         else
         {
-            wheelRotationLeft.y = Mathf.MoveTowardsAngle(wheelRotationLeft.y, -90, wheelsRotationSpeed * Time.deltaTime);
-            wheelRotationRight.y = Mathf.MoveTowardsAngle(wheelRotationRight.y, 90, wheelsRotationSpeed * Time.deltaTime);
+            wheelRotationLeft.y = Mathf.MoveTowardsAngle(wheelRotationLeft.y, -90, wheelsTurningSpeed * Time.deltaTime);
+            wheelRotationRight.y = Mathf.MoveTowardsAngle(wheelRotationRight.y, 90, wheelsTurningSpeed * Time.deltaTime);
         }
 
         frontLeftWheel.localRotation = Quaternion.Euler(wheelRotationLeft);
@@ -187,19 +186,13 @@ public class VehicleController : MonoBehaviour
             return;
         }
 
-        int i = 0;
-        while (!accelerationRanges[i].Contain(GetCurrentSpeed())) i++;
+        int currentAcceleration = 0;
+        while (!accelerationRanges[currentAcceleration].Contains(GetCurrentSpeed())) currentAcceleration++;
         
-        forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, accelerationRanges[i].Acceleration * Time.deltaTime);
+        forwardForce = Mathf.MoveTowards(forwardForce, preset.speed, accelerationRanges[currentAcceleration].Value * Time.deltaTime);
         
         _rigidbody.AddRelativeForce(Vector3.forward * forwardForce, ForceMode.Acceleration);
 
-        if (i > 1)
-        {
-            Vector3 compensationDirection = turningAngle > 0 ? Vector3.right : turningAngle < 0 ? Vector3.left : Vector3.zero;
-            _rigidbody.AddRelativeForce(compensationDirection * Mathf.Clamp((forwardForce / compensationForceControl), -preset.speed, preset.speed), ForceMode.Acceleration);
-        }
-        
         // _rigidbody.AddForce(-_rigidbody.velocity, ForceMode.Acceleration); // Goes up to a certain maximum speed
         
         if (turningAngle != 0f)
@@ -207,6 +200,16 @@ public class VehicleController : MonoBehaviour
             float radius = wheelBase / Mathf.Sin(turningAngle * Mathf.Deg2Rad);
             float angularSpeed = _rigidbody.velocity.magnitude * preset.handling / radius;
             _rigidbody.AddRelativeTorque(Vector3.up * angularSpeed, ForceMode.Acceleration);
+            
+            int currentCompensationForceControl = 0;
+            while (!compensationForceControlRanges[currentCompensationForceControl].Contains(GetCurrentSpeed()))
+                currentCompensationForceControl++;
+
+            float ccf = compensationForceControlRanges[currentCompensationForceControl].Value;
+            float compensationForce = ccf != 0 ? forwardForce / ccf : ccf;
+            
+            Vector3 compensationDirection = Vector3.right * Mathf.Sign(turningAngle);
+            _rigidbody.AddRelativeForce(compensationDirection * compensationForce, ForceMode.Acceleration);
         }
         
         vehicleRotation = _rigidbody.rotation.eulerAngles;
@@ -296,5 +299,10 @@ public class VehicleController : MonoBehaviour
     private void UseItem(InputAction.CallbackContext context)
     {
         itemSystem.ActivateItem();
+    }
+
+    public void PauseMotorSFX(bool pause)
+    {
+        motorEventEmmiter.EventInstance.setPaused(pause);
     }
 }

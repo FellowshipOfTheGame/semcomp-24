@@ -14,6 +14,7 @@ namespace SubiNoOnibus.Networking.Requests
 
             yield return request.SendWebRequest();
 
+            RaycastBlockEvent.Invoke(false);
             if (request.result != UnityWebRequest.Result.Success)
             {
                 OnFailure?.Invoke(request);
@@ -24,7 +25,6 @@ namespace SubiNoOnibus.Networking.Requests
                 var shopUpgrades = JsonUtility.FromJson<ShopUpgrades>(request.downloadHandler.text);
                 OnSuccess?.Invoke(shopUpgrades);
             }
-            RaycastBlockEvent.Invoke(false);
         }
 
         public static IEnumerator BuyShopUpgrade(ShopItem item, Action<NewShopItem> OnSuccess, Action<UnityWebRequest> OnFailure = null)
@@ -35,6 +35,7 @@ namespace SubiNoOnibus.Networking.Requests
 
             yield return request.SendWebRequest();
 
+            RaycastBlockEvent.Invoke(false);
             if (request.result != UnityWebRequest.Result.Success)
             {
                 OnFailure?.Invoke(request);
@@ -45,7 +46,6 @@ namespace SubiNoOnibus.Networking.Requests
                 var shopItem = JsonUtility.FromJson<NewShopItem>(request.downloadHandler.text);
                 OnSuccess?.Invoke(shopItem);
             }
-            RaycastBlockEvent.Invoke(false);
         }
     }
 }

@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 3995385674325696505}
   - component: {fileID: 3995385674325696510}
   - component: {fileID: 3995385674325696504}
+  - component: {fileID: 7516142187607419910}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -133,20 +134,23 @@ MonoBehaviour:
   normalCountEventEmitter: {fileID: 8179181862584672488}
   lastCountEventEmitter: {fileID: 7662136770089317030}
   gameOverMenu: {fileID: 0}
+  retryMenu: {fileID: 0}
   startRaceCountdownTime: 5
   startRaceCountdownPanel: {fileID: 0}
   startRaceCountdownSign: {fileID: 0}
   startRaceCountdownText: {fileID: 0}
   HUDPanel: {fileID: 0}
   UIControls: {fileID: 0}
+  damageFeedbackText: {fileID: 0}
+  scoreBonusText: {fileID: 0}
   speedometer: {fileID: 0}
   turbo: {fileID: 0}
   turboSprites:
-  - {fileID: 21300000, guid: 936bb093de3154f8fad29009c9c7e59f, type: 3}
-  - {fileID: 21300000, guid: 0f7a08d96d51dfa33b72443eb9d14f9e, type: 3}
-  - {fileID: 21300000, guid: 27893d17b306253ad90bbe16e716ab82, type: 3}
-  - {fileID: 21300000, guid: 31c7745c83f8425f992a379c81b99323, type: 3}
-  - {fileID: 21300000, guid: 8aed06cc355dced1d99ddd9452a62c7b, type: 3}
+  - {fileID: 21300000, guid: 6fd13d11e7c5161ae865ac0c814a5847, type: 3}
+  - {fileID: 21300000, guid: 3db303df7aa09165c8a57f4ce638b0d9, type: 3}
+  - {fileID: 21300000, guid: fbdd991e91fbb4f7689a61109fa47c0c, type: 3}
+  - {fileID: 21300000, guid: b730c9fe6eadd0dc89605e97fdb1f838, type: 3}
+  - {fileID: 21300000, guid: adacaad6385e19ae1871d88c9768cbc6, type: 3}
   burning: {fileID: 0}
   scoreMultiplier: {fileID: 0}
   scoreMultiplierSprites:
@@ -165,11 +169,17 @@ MonoBehaviour:
   timerText: {fileID: 0}
   coinsText: {fileID: 0}
   scoreText: {fileID: 0}
-  scoreBonusText: {fileID: 0}
-  coinsBonusText: {fileID: 0}
   itemButton: {fileID: 0}
   itemIcon: {fileID: 0}
   itemDurationText: {fileID: 0}
+  levelGenerator: {fileID: 0}
+  progressionTimeScale: 0.0022222223
+  easyIndex: 0
+  mediumIndex: 4
+  hardIndex: 5
+  easyTarget: 0.4
+  mediumTarget: 1.4
+  hardTarget: 0.8
 --- !u!114 &3995385674325696504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,3 +204,34 @@ MonoBehaviour:
   - multiplier: 5
     upperLimit: 100
   scoreText: {fileID: 0}
+--- !u!114 &7516142187607419910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3995385674325696507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f671fd80a721e64529bbcd854d87dd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 30
+  increaseRate: 5
+  stages: 5
+  cooldownTime: 15
+  scoreBonus: 300
+  globalVolumePast: {fileID: 0}
+  globalVolumeTransition: {fileID: 0}
+  portalPrefab: {fileID: 1920802284332158919, guid: 935e15d81df6e62fbb4a99abff917e8e, type: 3}
+  pastSkybox: {fileID: 2100000, guid: 48a4817e54b2bc24ba00397e15739a3a, type: 2}
+  presentSkybox: {fileID: 2100000, guid: 1cdab542aca79c6448579f9ce7e562f7, type: 2}
+  playerRegular: {fileID: 2100000, guid: 7971046a8e753644d9965a2b4e92ce42, type: 2}
+  playerTimeTravel: {fileID: 2100000, guid: d5bdfd1228f2b964daf79d107d7b4a15, type: 2}
+  playerRenderers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  musicPlayer: {fileID: 0}

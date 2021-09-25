@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd1e6e5741df7a44827c245578a2365, type: 3}
+  m_Name: Instructions
+  m_EditorClassIdentifier: 
+  instructions:
+  - title: Boas Vindas!
+    text: "Conhe\xE7a o <b>Subi no \xD4nibus</b>, o jogo tem\xE1tico da Semcomp 24! 
+      Conquiste o Ranking alcan\xE7ando a maior quantidade de pontos"
+    sprite: {fileID: 21300000, guid: 2c739389f9bf9534c98823ce6c2ce093, type: 3}
+  - title: Objetivo do Jogo!
+    text: "No <b>Subi no \xD4nibus</b> os jogadores competem pelo Ranking ao obter
+      grandes quantidades de pontos nas partidas."
+    sprite: {fileID: 21300000, guid: 0c1d302f4de2b3471bdf102141995bf4, type: 3}
+  - title: Ganhando Pontos
+    text: "Neste jogo a quantidade do pontos \xE9 baseada na dist\xE2ncia e velocidade
+      do jogador. N\xE3o basta chegar longe, <b>u gotta go fast</b>!"
+    sprite: {fileID: 21300000, guid: d0e7e5e93d58b3736b6afb8eddf4e995, type: 3}
+  - title: Game Over!
+    text: "O \xF4nibus possui uma <b>Barra de Vida</b> que diminui com colis\xF5es.
+      Fatores como velocidade, \xE2ngulo de colis\xE3o e tamanho do obst\xE1culo.
+      definem a quantidade de vida perdida."
+    sprite: {fileID: 21300000, guid: 5fcfd5430b2f3afd4a77e3ac99925716, type: 3}
+  - title: "Itens & Pontos de \xD4nibus"
+    text: "Colete e use itens durante a corrida para te ajudar a sobreviver. Fique
+      atento pois <b>Pontos de \xD4nibus</b> recuperam vida e aparecem com pouca
+      frequ\xEAncia!"
+    sprite: {fileID: 21300000, guid: 61bc41ab69892ea79b348534a2399ab8, type: 3}
+  - title: Loja & Melhorias
+    text: "Colete os <b>Semcompinhos</b> e melhore a resist\xEAncia do \xF4nibus
+      ou a efic\xE1cia dos itens da partida em at\xE9 3 n\xEDveis."
+    sprite: {fileID: 21300000, guid: 235b9f79379a1b9f7bc71787010868fb, type: 3}
+  - title: Viagem no Tempo
+    text: "Se manter na velocidade m\xE1xima carrega o combust\xEDvel de <b>Viagem
+      no Tempo</b>. Ap\xF3s completa, o \xF4nibus realiza uma viagem para o passado
+      por 30s."
+    sprite: {fileID: 21300000, guid: 7f2ec85e4053201979577626b4ffa69e, type: 3}
+  - title: "Quebrando o Espa\xE7o-Tempo!"
+    text: "No passado o \xF4nibus se torna <b>imortal</b> e as <b>colis\xF5es geram
+      pontos</b>, aproveite cada segundo e derrube o m\xE1ximo de obst\xE1culos!"
+    sprite: {fileID: 21300000, guid: bc3237b64b1995be58e8fc2b0bfa1ec0, type: 3}

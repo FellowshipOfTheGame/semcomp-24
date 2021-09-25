@@ -91,7 +91,12 @@ public abstract class Generator : MonoBehaviour
                     prefab = TimeTravel.InThePast ? prefabSwap.PastObject : prefabSwap.PresentObject;
                 }
 
-                GameObject instance = Instantiate(prefab, currentPosition, flip ? Quaternion.Euler(new Vector3(0, 180, 0)) : prefab.transform.rotation);
+                GameObject instance = Instantiate(prefab, currentPosition, prefab.transform.rotation);
+                if (flip)
+                {
+                    // Mirrors horizontally
+                    instance.transform.localScale = new Vector3(-1, 1, instance.transform.localScale.z);
+                }
 
                 LoadedObjects.Add(instance);
                 currentPosition.x += offset.x;
@@ -114,7 +119,8 @@ public abstract class Generator : MonoBehaviour
 
     private IEnumerator ClearObjectsListEnumerator()
     {
-        yield return new WaitForSeconds(10f);
+        // yield return new WaitForSeconds(3f);
+        yield return new WaitForSecondsRealtime(3f);
         
         ClearObjectsList(LoadedObjects);
         ClearObjectsList(LoadedRoads);

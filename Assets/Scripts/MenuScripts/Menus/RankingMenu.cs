@@ -12,7 +12,7 @@ namespace SubiNoOnibus.UI
             var getRankingRequest = RankingRequestHandler.GetRanking
             (
                 PopulateRankingList,
-                (res) => Close()
+                (req) => DefaultErrorHandling.OnMenuScene(req, this, FindObjectOfType<MainMenu>())
             );
 
             StartCoroutine(getRankingRequest);

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
@@ -12,51 +13,38 @@ public class HealthBar : MonoBehaviour
 	[SerializeField]
 	private GameObject indicatorsParent;
 	
-	private Slider slider;
-	
+	private Slider healthBarSlider;
 	private Image[] indicators;
 	private float indicatorPercentage;
 
-	private bool takenDamage;
-
-	void OnEnable()
+	void Awake()
 	{
 		healthSystem.OnHealthChange += UpdateHealthBar;
+		healthSystem.OnSetHealthMax += Setup;
 	}
 	
-	void OnDisable()
+	void OnDestroy()
 	{
 		healthSystem.OnHealthChange -= UpdateHealthBar;
+		healthSystem.OnSetHealthMax -= Setup;
 	}
 
-	void Start()
+	private void Setup(object sender, System.EventArgs e)
 	{
-		slider = GetComponent<Slider>();
-		
-		SetHealthBarMax(healthSystem.GetHealthMax());
+		healthBarSlider = GetComponent<Slider>();
+		healthBarSlider.maxValue = healthSystem.GetHealthMax();
 		SetHealthBarValue(healthSystem.GetHealth());
 		
-		damageTaken.maxValue = slider.maxValue;
-		damageTaken.value = slider.value;
+		damageTaken.maxValue = healthBarSlider.maxValue;
+		damageTaken.value = healthBarSlider.value;
 
 		indicators = indicatorsParent.GetComponentsInChildren<Image>();
 		indicatorPercentage = 100f * (1f / indicators.Length);
 	}
 
-	void Update()
-	{
-		if (damageTaken.value > slider.value)
-			damageTaken.value = Mathf.Lerp(damageTaken.value, slider.value, 1.5f * Time.deltaTime);
-	}
-
-	private void SetHealthBarMax(int healthBarMax)
-	{
-		slider.maxValue = healthBarMax;
-	}
-
 	private void SetHealthBarValue(int healthBarValue)
 	{
-		slider.value = Mathf.Clamp(healthBarValue, slider.minValue, slider.maxValue);
+		healthBarSlider.value = Mathf.Clamp(healthBarValue, healthBarSlider.minValue, healthBarSlider.maxValue);
 	}
 	
 	// Update only when health value changes (damage or heal)
@@ -109,7 +97,22 @@ public class HealthBar : MonoBehaviour
 				indicators[i].gameObject.SetActive(true);
 			}
 		}
+	}
+	
+	public void UpdateDamageTakenBar()
+	{
+		if (damageTaken.value > healthBarSlider.value)
+		{
+			StartCoroutine(UpdateDamageTakenBarEnumerator());
+		}
+	}
 
-		// Debug.Log("Health: " + healthSystem.GetHealth());
+	private IEnumerator UpdateDamageTakenBarEnumerator()
+	{
+		while ((damageTaken.value - healthBarSlider.value) > 0.01f)
+		{
+			damageTaken.value = Mathf.Lerp(damageTaken.value, healthBarSlider.value, 1.5f * Time.unscaledDeltaTime);
+			yield return null;
+		}
 	}
 }

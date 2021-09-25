@@ -14,6 +14,8 @@ namespace SubiNoOnibus.Networking.Requests
 
             yield return request.SendWebRequest();
 
+            RaycastBlockEvent.Invoke(false);
+
             if (request.result != UnityWebRequest.Result.Success)
             {
                 OnFailure?.Invoke(request);
@@ -28,7 +30,6 @@ namespace SubiNoOnibus.Networking.Requests
                 else
                     OnFailure?.Invoke(request);
             }
-            RaycastBlockEvent.Invoke(false);
         }
     }
 }

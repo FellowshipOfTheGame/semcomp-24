@@ -6,3 +6,9 @@ public struct RaceData
     public string nonce;
     public string sign;
 }
+
+[System.Serializable]
+public struct FinishRaceData
+{
+    public bool isPersonalRecord;
+}
