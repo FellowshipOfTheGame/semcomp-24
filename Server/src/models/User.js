@@ -45,10 +45,6 @@ const UserSchema = new mongoose.Schema({
         default:[{
             itemName: "Max_Life",
         }, {
-            itemName: "Base_Acceleration",
-        }, {
-            itemName: "Traction",
-        }, {
             itemName: "Booster",
         }, {
             itemName: "Nitro",
