@@ -37,12 +37,12 @@ namespace SubiNoOnibus.UI
             StartCoroutine(UserAuthRequestHandler.Logout(OpenLoginMenu, (req) => OpenLoginMenu()));
         }
 
-        private void OpenLoginMenu()
+        public void OpenLoginMenu()
         {
             loginMenu.Open();
         }
 
-        public void ExitGame()
+        public static void ExitGame()
         {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.ExitPlaymode();

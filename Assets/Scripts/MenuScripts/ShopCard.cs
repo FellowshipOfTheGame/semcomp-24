@@ -5,6 +5,7 @@ using SubiNoOnibus.UI;
 public class ShopCard : MonoBehaviour
 {
     [SerializeField] private SpriteArraySO spriteArray;
+    [SerializeField] private ScriptableObject[] presets;
     
     [SerializeField] private Image background;
     [SerializeField] private Button buyButton;
@@ -13,7 +14,6 @@ public class ShopCard : MonoBehaviour
     
     private ShopItem _item;
     private ShopMenu _shopMenu;
-    private string _initialDescription = string.Empty;
 
 
     public bool CanBePurchased(int goldAmount) => goldAmount >= _item?.price;
@@ -28,39 +28,48 @@ public class ShopCard : MonoBehaviour
     {
         _item = item;
         itemValueTxt.SetText(item.price.ToString());
-        SetDescriptionValue();
 
         int index = item.level - 1;
         try
         {
             background.sprite = spriteArray.sprites[index];
+            SetDescriptionValue(presets[index]);
         }
         catch
         {
             Debug.LogError("Correspondent sprite for item level not found");
         }
         finally
-        { 
-            EnableButtonInteraction( !IsItemLastLevel() );
+        {
+            if (IsItemLastLevel())
+            {
+                buyButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                EnableButtonInteraction(true);
+            }
         }
     }
 
     public void UpdateButtonInteraction(int goldOwned)
     {
-        bool shouldEnable = CanBePurchased(goldOwned) && !IsItemLastLevel();
-        EnableButtonInteraction(shouldEnable);
+        if (IsItemLastLevel())
+        {
+            buyButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            bool shouldEnable = CanBePurchased(goldOwned);
+            EnableButtonInteraction(shouldEnable);
+        }
     }
 
     private void EnableButtonInteraction(bool value) => buyButton.interactable = value;
     
-    private void SetDescriptionValue()
-    {
-        if(string.IsNullOrEmpty(_initialDescription))
-            _initialDescription = itemDescriptionTxt.text;
-
-        float value = _item.level;
-        string result = _initialDescription.Replace("$", value.ToString());
-        itemDescriptionTxt.SetText(result);
+    private void SetDescriptionValue(ScriptableObject preset)
+    {   
+        itemDescriptionTxt.SetText(preset.ToString());
     }
 
     private void BuyItem()

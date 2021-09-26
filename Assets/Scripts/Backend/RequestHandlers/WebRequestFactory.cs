@@ -15,7 +15,8 @@ static class WebRequestFactory
         request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
 
         request.SetRequestHeader("Content-Type", "application/json");
-        
+
+        request.timeout = 10;
         return request;
     }
 
@@ -27,6 +28,7 @@ static class WebRequestFactory
         string authCookie = PlayerPrefs.GetString(UserAuthRequestHandler.authKey, string.Empty);
         request.SetRequestHeader("Cookie", authCookie);
 #endif
+        request.timeout = 10;
         return request;
     }
 
@@ -37,7 +39,8 @@ static class WebRequestFactory
 #if !UNITY_WEBGL
         string authCookie = PlayerPrefs.GetString(UserAuthRequestHandler.authKey, string.Empty);
         request.SetRequestHeader("Cookie", authCookie);
-#endif        
+#endif
+        request.timeout = 10;
         return request;
     }
 }

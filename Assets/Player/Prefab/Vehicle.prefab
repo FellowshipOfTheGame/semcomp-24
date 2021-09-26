@@ -105,7 +105,6 @@ GameObject:
   - component: {fileID: 407148919}
   - component: {fileID: 3450803821602236937}
   - component: {fileID: 2565623165293259774}
-  - component: {fileID: 8284381887647273626}
   - component: {fileID: 847439272864004725}
   - component: {fileID: 6095949563745021327}
   - component: {fileID: 1822952218701299703}
@@ -186,11 +185,11 @@ MonoBehaviour:
   landingEventEmitter: {fileID: 8859263428831341725}
   motorEventEmmiter: {fileID: 828919795751822662}
   accelerationRanges:
-  - acceleration: 4
+  - value: 4
     upperLimit: 20
-  - acceleration: 1
+  - value: 1
     upperLimit: 50
-  - acceleration: 0.5
+  - value: 0.5
     upperLimit: 1000
   forwardForce: 80
   initialForwardForce: 0
@@ -209,10 +208,18 @@ MonoBehaviour:
   wheelBase: 4
   turningAngleMax: 15
   rotateBackAngle: 60
-  compensationForceControl: 3
+  compensationForceControlRanges:
+  - value: 12
+    upperLimit: 10
+  - value: 10
+    upperLimit: 25
+  - value: 2
+    upperLimit: 90
+  - value: 1.8
+    upperLimit: 1000
   frontLeftWheel: {fileID: 5856988595180296522}
   frontRightWheel: {fileID: 7807893900232531829}
-  wheelsRotationSpeed: 5
+  wheelsTurningSpeed: 5
 --- !u!114 &407148919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad26218649bb1523f840544fef3067bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invulnerable: 0
   healthMax: 100
+  shieldPercentage: 0
 --- !u!114 &3450803821602236937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,19 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23f5c4371ad4bde9834784a0a333ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedDecreaseFactor: 1
---- !u!114 &8284381887647273626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6036709807576084203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4c69dbfb7f1e5408725a9f765ef633, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  speedDecreaseFactor: 0.5
 --- !u!114 &847439272864004725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +306,7 @@ MonoBehaviour:
   shieldEffect: {fileID: 4622252919096137203, guid: da4af0db463309b4ab5222feaba3f2d5, type: 3}
   speedLines: {fileID: 0}
   lightning: {fileID: 3100041402938328298}
+  HUDShieldImage: {fileID: 0}
 --- !u!114 &108651217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,7 +502,7 @@ MonoBehaviour:
   Event: event:/MOTOR 2
   PlayEvent: 1
   StopEvent: 2
-  AllowFadeout: 1
+  AllowFadeout: 0
   TriggerOnce: 0
   Preload: 0
   Params:
@@ -624,14 +622,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 072e246c06e0a81408d0d9c282ce6e5e, type: 3}
---- !u!1 &3100041402938328298 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2600818550640140208, guid: 072e246c06e0a81408d0d9c282ce6e5e, type: 3}
-  m_PrefabInstance: {fileID: 1086064094282406746}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3100041402938328277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2600818550640140175, guid: 072e246c06e0a81408d0d9c282ce6e5e, type: 3}
+  m_PrefabInstance: {fileID: 1086064094282406746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3100041402938328298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2600818550640140208, guid: 072e246c06e0a81408d0d9c282ce6e5e, type: 3}
   m_PrefabInstance: {fileID: 1086064094282406746}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2084501642634216637
@@ -723,9 +721,9 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ad7ceb8a89e507c42be1d3f6c7d41084, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
---- !u!4 &1974575885416866646 stripped
+--- !u!4 &7807893900232531829 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
+  m_CorrespondingSourceObject: {fileID: -1101529156557808696, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
   m_PrefabInstance: {fileID: 2084501642634216637}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5856988595180296522 stripped
@@ -733,8 +731,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -3628327712297181705, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
   m_PrefabInstance: {fileID: 2084501642634216637}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7807893900232531829 stripped
+--- !u!4 &1974575885416866646 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -1101529156557808696, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e9789a5035e6c94395acaf39fb96f1b, type: 3}
   m_PrefabInstance: {fileID: 2084501642634216637}
   m_PrefabAsset: {fileID: 0}

@@ -15,8 +15,9 @@ public class Obstacle : MonoBehaviour
     public bool HitPlayer { get; set; }
 
     private Renderer[] renderers;
-    private Collider _collider;
+    private Collider[] colliders;
     private Collider playerCollider;
+    private Collider shieldCollider;
     
     public Coroutine DestroyObstacleCoroutine;
 
@@ -26,12 +27,12 @@ public class Obstacle : MonoBehaviour
     void Start()
     {
         renderers = GetComponentsInChildren<Renderer>();
-        _collider = GetComponent<Collider>();
+        colliders = GetComponents<Collider>();
         _eventEmitter = gameObject.GetComponent<StudioEventEmitter>();
 
-        if (_collider == null)
+        if (colliders.Length == 0)
         {
-            _collider = GetComponentInChildren<Collider>();
+            colliders = GetComponentsInChildren<Collider>();
         }
     }
 
@@ -51,6 +52,7 @@ public class Obstacle : MonoBehaviour
             DestroyObstacleCoroutine = StartCoroutine(DestroyCountdown(DestroyCountdownPlayer));
 
             playerCollider = other.collider;
+            shieldCollider = other.gameObject.GetComponent<VehicleRenderer>().ShieldCollider;
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
@@ -78,28 +80,41 @@ public class Obstacle : MonoBehaviour
         fadeOutReady = true;
     }
 
-    public void FadeOut(Collider playerCollider)
+    public void FadeOut(Collider playerCollider, Collider shieldCollider)
     {
         this.playerCollider = playerCollider;
+        this.shieldCollider = shieldCollider;
         FadeOut();
     }
     
     private IEnumerator FadeOutEnumerator(Renderer _renderer)
     {
+        foreach (Collider col in colliders)
+        {
+            if (playerCollider != null)
+            {
+                Physics.IgnoreCollision(col, playerCollider);
+                // Debug.Log($"Ignoring collision between {col.name} and {playerCollider.name}");
+            }
+
+            if (shieldCollider != null)
+            {
+                Physics.IgnoreCollision(col, shieldCollider);
+                // Debug.Log($"Ignoring collision between {col.name} and {shieldCollider.name}");
+            }
+        }
+
+        if (!_renderer.material.HasProperty("_Color"))
+        {
+            yield break;
+        }
+        
         yield return new WaitUntil(() => fadeOutReady);
         
         Color c = _renderer.material.color;
 
         while (_renderer.material.color.a >= 0.2f)
         {
-            if (_renderer.material.color.a >= 0.9f && _renderer.material.color.a <= 1f)
-            {
-                if (playerCollider != null)
-                {
-                    Physics.IgnoreCollision(_collider, playerCollider);
-                }
-            }
-            
             c.a = Mathf.Lerp(c.a, 0f, FadeSpeed * Time.deltaTime);
             _renderer.material.color = c;
             yield return null;

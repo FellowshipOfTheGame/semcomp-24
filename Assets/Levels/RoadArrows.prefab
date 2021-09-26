@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoadArrows
       objectReference: {fileID: 0}
+    - target: {fileID: 4616914094097852954, guid: 301ec04a4fae02b08b2572c1b5a35310, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 08bd037a21fba98c89095ca3dd8c357d, type: 2}
     - target: {fileID: 5306470712295837087, guid: 301ec04a4fae02b08b2572c1b5a35310, type: 3}
       propertyPath: m_RootOrder
       value: 0

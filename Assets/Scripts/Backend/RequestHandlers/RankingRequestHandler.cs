@@ -14,6 +14,7 @@ namespace SubiNoOnibus.Networking.Requests
 
             yield return request.SendWebRequest();
 
+            RaycastBlockEvent.Invoke(false);
             if (request.result != UnityWebRequest.Result.Success)
             {
                 OnFailure?.Invoke(request);
@@ -24,7 +25,6 @@ namespace SubiNoOnibus.Networking.Requests
                 var rankingData = JsonUtility.FromJson<RankingData>(request.downloadHandler.text);
                 OnSuccess?.Invoke(rankingData);
             }
-            RaycastBlockEvent.Invoke(false);
         }
     }
 }

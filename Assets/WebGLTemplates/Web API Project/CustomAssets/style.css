@@ -1,0 +1,7 @@
+html {
+    height: 100vh;
+    background-image: url('SubiNoOnibusBGBlack.png');
+    background-repeat: repeat;
+    background-position: 50% 0;
+    background-size: contain;
+}

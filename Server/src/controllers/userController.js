@@ -3,34 +3,43 @@ const { createHmac } = require("crypto")
 const config = require("../config/")
 const User = require('../models/User');
 
+const { logger } = require('../config/logger');
+
 module.exports = {
-    async findOrCreate (google_user, cb) {
-        if (!google_user.id) {
-            return cb({ message: "a google_id is required" }, null);
+    async findOrCreate (passport_user, cb) {
+        if (!passport_user?.id) {
+            return cb({ message: "An provider_id is required" }, null);
         }
         
         try {
-            var user = await User.findOne({ google_id: google_user.id });
+            var user = await User.findOne({ provider_id: passport_user.id, provider: passport_user.provider });
         } catch (err) {
             return cb(err, null);
         }
 
         if (user) {
-            return cb(null, user);
+            if (user.isBanned === false)
+                return cb(null, user);
+            else
+                return cb(null, null)
         }
 
         try {
             user = await User.create({
                 created_at: new Date(),
 
-                google_id: google_user.id,
-                name: google_user._json?.name,
-                email: google_user._json?.email,
-                picture: google_user._json?.picture,
+                provider: passport_user.provider,
+                provider_id: passport_user.id,
+                name: (passport_user.provider === 'facebook') ? `${passport_user._json?.first_name} ${passport_user._json?.last_name}` : passport_user._json?.name,
+                email: passport_user._json?.email,
             });
         } catch (err) {
             return cb(err, null);
         }
+
+        logger.info({
+            message: `User ${user._id} created successfully from ${passport_user.provider}`
+        });
 
         return cb(null, user);
     },
@@ -44,7 +53,9 @@ module.exports = {
             var user = await User.findById(req.query.user_id)
                                  .select("name nickname email picture");
         } catch (err) {
-            console.log(err);
+            logger.error({
+                message: `at User.show(): failed to find user ${req.query.user_id}`
+            })
             return res.status(500).json({ message: "internal server error" });
         }
 
@@ -60,7 +71,9 @@ module.exports = {
             var users = await User.find({})
                                   .select("nickname photo");
         } catch (err) {
-            console.log(err);
+            logger.error({
+                message: `at User.showAll(): failed to find all users`
+            })
             return res.status(500).json({ message: "internal server error" });
         }
 

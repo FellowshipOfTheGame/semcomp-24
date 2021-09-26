@@ -1,7 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 
 public class OnTimeTravelEventArgs : System.EventArgs
 {
@@ -12,32 +12,34 @@ public class TimeTravel : MonoBehaviour
 {
     [Space(10)]
     [Header("Gameplay")]
-    [Space(10)]
-    
+
     [SerializeField] private float duration = 30f;
     [SerializeField] [Range(0f, 100f)] private float increaseRate = 1f;
     [SerializeField] private int stages = 5;
-
-    [Space(10)]
-    [Header("Bonuses")]
-    [Space(10)]
-    [SerializeField] private DynamicMusic musicPlayer;
-
-    [Space(10)]
-    [Header("Bonuses")]
-    [Space(10)]
+    [SerializeField] private float cooldownTime = 15f;
     [SerializeField] private int scoreBonus = 300;
-    // [SerializeField] private int coinsBonus = 100;
-
-    [FormerlySerializedAs("pastGlobalVolume")]
+    
     [Space(10)]
     [Header("Graphics (post-processing)")]
-    [Space(10)]
-    
+
     [SerializeField] private GameObject globalVolumePast;
+    [SerializeField] private Volume globalVolumeTransition;
     [SerializeField] private GameObject portalPrefab;
+    
+    [Header("Skybox")]
+    [SerializeField] private Material pastSkybox;
+    [SerializeField] private Material presentSkybox;
 
+    [Header("Player Effect")]
+    [SerializeField] private Material playerRegular;
+    [SerializeField] private Material playerTimeTravel;
+    [SerializeField] private List<Renderer> playerRenderers;
 
+    [Space(10)]
+    [Header("Music")]
+    
+    [SerializeField] private DynamicMusic musicPlayer;
+    
     private GameObject player;
     private HealthSystem healthSystem;
     private ScoreManager scoreManager;
@@ -47,6 +49,7 @@ public class TimeTravel : MonoBehaviour
     public int CurrentStage { get; private set; }
     
     private float counter;
+    private bool cooldown;
     private TimeTravelPortal portal;
 
     public static event System.EventHandler<OnTimeTravelEventArgs> OnTimeTravel;
@@ -64,7 +67,7 @@ public class TimeTravel : MonoBehaviour
     
     void Update()
     {
-        if (!InThePast && scoreManager.GetRange() == scoreManager.GetMaxRange())
+        if (!cooldown && !InThePast && scoreManager.GetRange() == scoreManager.GetMaxRange())
         {
             counter += Time.deltaTime * increaseRate;
             CurrentStage = Mathf.RoundToInt(counter / (100f / (stages - 2)));
@@ -80,6 +83,7 @@ public class TimeTravel : MonoBehaviour
         Debug.Log($"InThePast: {InThePast}");
         Debug.Log($"counter: {counter}");
         Debug.Log($"CurrentStage: {CurrentStage}");
+        Debug.Log($"cooldown: {cooldown}");
         
         --------------- */
     }
@@ -94,12 +98,24 @@ public class TimeTravel : MonoBehaviour
         float decreaseRate = (100f / transitionDuration);
         
         musicPlayer.BeginTransition();
+        globalVolumeTransition.gameObject.SetActive(true);
+        globalVolumeTransition.weight = 0f;
+        
         while (counter > 0)
         {
             counter -= Time.deltaTime * decreaseRate;
+            globalVolumeTransition.weight = Mathf.MoveTowards(globalVolumeTransition.weight, 1f, decreaseRate/100f * Time.deltaTime);
             yield return null;
         }
+        
+        globalVolumeTransition.gameObject.SetActive(false);
+        
         musicPlayer.EndTransition();
+        RenderSettings.skybox = pastSkybox;
+        foreach (Renderer renderer in playerRenderers)
+        {
+            renderer.sharedMaterial = playerTimeTravel;
+        }
         
         counter = 100f;
         decreaseRate = (100f / duration);
@@ -118,17 +134,15 @@ public class TimeTravel : MonoBehaviour
 
         scoreManager.GrantBonus(scoreBonus);
 
-        while (counter > 0)
+        while (counter > Time.deltaTime * decreaseRate)
         {
             counter -= Time.deltaTime * decreaseRate;
-            
-            if (counter <= 100 - decreaseRate)
-            {
-                CurrentStage = Mathf.RoundToInt(counter / (100f / (stages - 2))) + 1;
-            }
-
+            CurrentStage = Mathf.RoundToInt(counter / (100f / (stages - 2))) + 1;
             yield return null;
         }
+
+        counter = 0f;
+        CurrentStage = 0;
 
         GeneratePortal();
 
@@ -151,7 +165,16 @@ public class TimeTravel : MonoBehaviour
         }
         
         InThePast = false;
+        RenderSettings.skybox = presentSkybox;
+        foreach (Renderer renderer in playerRenderers)
+        {
+            renderer.sharedMaterial = playerRegular;
+        }
         healthSystem.SetInvulnerable(false);
+
+        cooldown = true;
+        yield return new WaitForSeconds(cooldownTime);
+        cooldown = false;
     }
     
     // ReSharper disable Unity.PerformanceAnalysis

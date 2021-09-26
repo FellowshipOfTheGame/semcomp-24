@@ -1,3 +1,4 @@
+using SubiNoOnibus.Networking.Requests;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,19 +18,32 @@ namespace SubiNoOnibus.UI
         
         public void Close()
         {
-            // raceManager.StartRace();
             raceManager.StartCoroutine(raceManager.Countdown(resumeRaceCountdown));
             gameObject.SetActive(false);
         }
 
         public void Restart()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            RaceData data = raceManager.GetEndRaceData();
+            var finishRaceEnumerator = RaceRequestHandler.FinishRace
+            (
+                data, 
+                (data) => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex),
+                raceManager.HandleEndRaceError
+            );
+            StartCoroutine(finishRaceEnumerator);
         }
 
         public void MainMenu()
         {
-            SceneManager.LoadScene(0);
+            RaceData data = raceManager.GetEndRaceData();
+            var finishRaceEnumerator = RaceRequestHandler.FinishRace
+            (
+                data, 
+                (data) => SceneManager.LoadScene("StartupMenu"),
+                raceManager.HandleEndRaceError
+            );
+            StartCoroutine(finishRaceEnumerator);
         }
     }
 }

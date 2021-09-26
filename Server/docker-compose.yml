@@ -11,6 +11,8 @@ services:
         restart: unless-stopped
         ports: 
             - 3000:3000
+        volumes:
+            - subiNoOnibusLogsVolume:/usr/src/app/logs
     
     mongodb:
         image: mongo
@@ -32,4 +34,7 @@ services:
         # Use ports in development but change to expose in production.
         # Reason: expose allow only inter-service communications and 
         # can be reached by other services using the 'semcomp-24-game-redis.server_default' DNS
+
+volumes:
+  subiNoOnibusLogsVolume:
         

@@ -7,6 +7,8 @@ const UserModel = require("../models/User")
 const RaceModel = require("../models/Race")
 const { nonceClient: redis } = require("../loaders/redis")
 
+const { logger, raceLogger } = require('../config/logger')
+
 // Exporting controller async functions
 module.exports = { 
     start,
@@ -26,9 +28,16 @@ async function start(req, res) {
     .exec((err, results) => {
 
         if(err){
-            console.error(`at /race/start: Error in set nonce ${nonce} to user ${userId}`)
+            logger.error({
+                message: `at Race.start(): Error in set nonce ${nonce} to user ${userId}`
+            })
+
             return res.status(500).json({ message: "internal server error" })
         }
+
+        raceLogger.info({
+            message: `${userId} started a race. Nonce: ${nonce}`
+        })
 
         return res.json({ message: "ok", nonce: nonce })
     })    
@@ -52,7 +61,13 @@ async function finish(req, res) {
 
     // Verifying the signature 
     const reqSign = createHmac('sha256', config.REQUEST_SIGNATURE_KEY).update(JSON.stringify({score, gold, nonce, sign: ""})).digest('base64')
-    if(sign !== reqSign) return res.status(400).json({ message: "incorrect signature" })
+    if(sign !== reqSign) {
+        logger.warn({
+            message: `at Race.finish(): Invalid signature for user ${userId}`
+        })    
+
+        return res.status(400).json({ message: "incorrect signature" })
+    }
 
     // Get nonce and start time in Cache Database
     redis.multi()
@@ -62,7 +77,10 @@ async function finish(req, res) {
     .exec((err, results) => {
     
         if(err){
-            console.error(`at /race/finish: Error in get nonce in cache to user ${userId}`)
+            logger.error({
+                message: `at Race.finish(): Error in get nonce in cache to user ${userId}`
+            })
+
             return res.status(500).json({ message: "internal server error" })
         }
         
@@ -70,7 +88,10 @@ async function finish(req, res) {
         const startedAt = results[1][1]
 
         if(storedNonce === null || storedNonce !== nonce){
-            console.log(`at /race/finish: Invalid Nonce ${nonce} != ${storedNonce} to user ${userId}`)
+            logger.warn({
+                message: `at Race.finish(): Invalid Nonce ${nonce} != ${storedNonce} to user ${userId}`
+            })
+
             return res.status(400).json({ message: "incorrect nonce" })
         }
 
@@ -85,11 +106,17 @@ async function finish(req, res) {
             return doc.save() 
         })
         .then(( ) => new RaceModel({ userId, score, gold, startedAt, finishedAt}).save())
-        .then(( ) => { 
+        .then(( ) => {
+            raceLogger.info({
+                message: `${userId} finished a race`
+            }) 
             return res.json({ message: "ok", isPersonalRecord: newPersonalRecord }) 
         })
         .catch((err) => { 
-            console.error(`at /race/finish: Error saving user ${userId} race! ${err}`)
+            logger.error({
+                message: `at Race.finish(): Error saving user ${userId} race! Error: ${err}`
+            })
+
             return res.status(500).json({ message: "internal server error" })
         })
     })
@@ -130,7 +157,10 @@ async function ranking(req, res) {
         
     })
     .catch((err) => { 
-        console.error(`at /race/ranking: error loading ranking ${err}`) 
+        logger.error({
+            message: `at Race.ranking(): error loading ranking. Error: ${err}`
+        })
+
         return res.status(500).json({ message: "internal server error" })
     })
 }

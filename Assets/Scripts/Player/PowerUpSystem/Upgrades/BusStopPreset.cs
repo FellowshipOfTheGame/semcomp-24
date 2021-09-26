@@ -4,4 +4,10 @@ using UnityEngine;
 public class BusStopPreset : ScriptableObject
 {
     public int healAmount;
+
+    public override string ToString()
+    {
+        return $"recupera {healAmount} pontos de vida";
+    }
+
 }

@@ -34,6 +34,7 @@ public class DynamicMusic : MonoBehaviour
 
     public void TriggerGameOver()
     {
+        PauseMusic(false);
         StartCoroutine(TriggerGameOverCoroutine());
     }
 
