@@ -3,19 +3,19 @@ using UnityEngine.UI;
 
 public class InputToggle : MonoBehaviour
 {
-    [SerializeField] private Toggle joystickToggle;
+    [SerializeField] private Toggle directionalToggle;
     [SerializeField] private GameObject joystick;
     [SerializeField] private GameObject leftDirectional;
     [SerializeField] private GameObject rightDirectional;
 
     private void Awake()
     {
-        joystickToggle.onValueChanged.AddListener(Toogle);
+        directionalToggle.onValueChanged.AddListener(Toogle);
         
-        bool useJoystick = PlayerPrefs.GetInt("input", 0) == 1;
-        joystickToggle.isOn = useJoystick;
+        bool useDirectional = PlayerPrefs.GetInt("input", 0) == 1;
+        directionalToggle.isOn = useDirectional;
 
-        UpdateInputs(useJoystick);
+        UpdateInputs(useDirectional);
     }
 
     public void Toogle(bool value)
@@ -24,19 +24,19 @@ public class InputToggle : MonoBehaviour
         UpdateInputs(value);
     }
 
-    private void UpdateInputs(bool useJoystick)
+    private void UpdateInputs(bool useDirectional)
     {
-        if (useJoystick)
-        {
-            joystick.SetActive(true);
-            leftDirectional.SetActive(false);
-            rightDirectional.SetActive(false);
-        }
-        else
+        if (useDirectional)
         {
             joystick.SetActive(false);
             leftDirectional.SetActive(true);
             rightDirectional.SetActive(true);
+        }
+        else
+        {
+            joystick.SetActive(true);
+            leftDirectional.SetActive(false);
+            rightDirectional.SetActive(false);
         }
     }
 }

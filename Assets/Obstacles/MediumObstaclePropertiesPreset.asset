@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f5a8826297dfe93b4f664216fa5ca3, type: 3}
   m_Name: MediumObstaclePropertiesPreset
   m_EditorClassIdentifier: 
-  baseDamage: 7
+  baseDamage: 5
   vehicleSpeedDecrease: 2
   destroyCountdownPlayer: 0.5
   destroyCountdownObstacle: 0.5
