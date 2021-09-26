@@ -257,6 +257,33 @@ public class PowerUpUpgrades : MonoBehaviour
         lightning.maxTargets = maxTargets;
 #else
         DefaultErrorHandling.OnGameScene(request);
+        
+        // No request error but signature was invalid, use 0 values by default
+        if (request.responseCode < 400)
+        {
+            playerPrefab.GetComponent<HealthSystem>().SetHealthMax(playerHealth0Preset0.starterHealth);
+
+            Booster booster = boosterPrefab.GetComponent<Booster>();
+            booster.boost = boosterPreset0.boost;
+            booster.duration = boosterPreset0.duration;
+
+            Nitro nitro = nitroPrefab.GetComponent<Nitro>();
+            nitro.boost = nitroPreset0.boost;
+            nitro.duration = nitroPreset0.duration;
+
+            BusStop busStop0 = busStopPrefab0.GetComponentInChildren<BusStop>();
+            BusStop busStop1 = busStopPrefab1.GetComponentInChildren<BusStop>();
+            busStop0.healAmount = busStopPreset0.healAmount;
+            busStop1.healAmount = busStopPreset0.healAmount;
+
+            Shield shield = shieldPrefab.GetComponent<Shield>();
+            shield.protectionTimes = shieldPreset0.maxHits;
+            shield.duration = shieldPreset0.maxDuration;
+
+            Lightning lightning = lightningPrefab.GetComponent<Lightning>();
+            lightning.size = lightningPreset0.size;
+            lightning.maxTargets = lightningPreset0.maxTargets;
+        }
 #endif
     }
 
