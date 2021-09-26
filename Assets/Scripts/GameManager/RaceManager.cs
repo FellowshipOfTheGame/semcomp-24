@@ -13,7 +13,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] public GameObject player;
     [SerializeField] private RaceData raceData;
     private RaceData? _cachedRaceData = null;
-    
+
     [Space(10)]
     [Header("SFX")]
     [SerializeField] public DynamicMusic musicPlayer;
@@ -24,7 +24,8 @@ public class RaceManager : MonoBehaviour
     [Header(("Menu"))]
     [SerializeField] private GameOverMenu gameOverMenu;
     [SerializeField] private RetryMenu retryMenu;
-    
+    [SerializeField] private PauseMenu pauseMenu;
+
     [Space(10)]
     [Header("Start Race Countdown")]
     [SerializeField] private int startRaceCountdownTime = 3;
@@ -34,13 +35,13 @@ public class RaceManager : MonoBehaviour
 
     [Space(10)]
     [Header("UI Elements")]
-    
+
     [SerializeField] private GameObject HUDPanel;
     [SerializeField] private GameObject UIControls;
-    
+
     [SerializeField] private TextMeshProUGUI damageFeedbackText;
     [SerializeField] private TextMeshProUGUI scoreBonusText;
-    
+
     [SerializeField] private Image speedometer;
     [SerializeField] private Image turbo;
     [SerializeField] private Sprite[] turboSprites;
@@ -52,7 +53,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private Color[] scoreMultiplierColors;
 
     [SerializeField] private TextMeshProUGUI scoreMultiplierText;
-    
+
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI coinsText;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -76,16 +77,16 @@ public class RaceManager : MonoBehaviour
 
     private HealthSystem healthSystem;
 
-    private TimeTravel timeTravel; 
-        
+    private TimeTravel timeTravel;
+
     private Animator burningAnimator;
-    
+
     private float timer;
     private int coins;
     private ScoreManager scoreManager;
 
     private Image startRaceCountdownCircleFill;
-    
+
     private float distanceTraveled;
 
     private VehicleController vehicle;
@@ -98,14 +99,16 @@ public class RaceManager : MonoBehaviour
 
     private Coroutine scoreBonusTextCoroutine;
     private Coroutine damageFeedbackTextCoroutine;
-    
+
     private static readonly int BurningAnimatorBurn = Animator.StringToHash("Burn");
+
+    private bool _canPause = false;
 
     private void OnEnable()
     {
         healthSystem = player.GetComponent<HealthSystem>();
         scoreManager = GetComponent<ScoreManager>();
-        
+
         healthSystem.OnDie += GameOver;
         healthSystem.OnHealthChange += DamageFeedback;
         scoreManager.OnScoreBonusGrant += ScoreBonusFeedback;
@@ -132,7 +135,7 @@ public class RaceManager : MonoBehaviour
 
         StartRace();
     }
-    
+
     void FixedUpdate()
     {
         timer += Time.deltaTime;
@@ -141,19 +144,20 @@ public class RaceManager : MonoBehaviour
         if (easyIndex != -1) levelGenerator.sets[easyIndex].weight = Mathf.MoveTowards(levelGenerator.sets[easyIndex].weight, easyTarget, Time.deltaTime * progressionTimeScale);
         if (mediumIndex != -1) levelGenerator.sets[mediumIndex].weight = Mathf.MoveTowards(levelGenerator.sets[mediumIndex].weight, mediumTarget, Time.deltaTime * progressionTimeScale);
         if (hardIndex != -1) levelGenerator.sets[hardIndex].weight = Mathf.MoveTowards(levelGenerator.sets[hardIndex].weight, hardTarget, Time.deltaTime * progressionTimeScale);
-        
+
         UpdateUI();
     }
 
     // Called when player dies
     private void GameOver(object sender, System.EventArgs e)
     {
+        _canPause = false;
         Time.timeScale = 0f;
         musicPlayer.TriggerGameOver();
         vehicle.PauseMotorSFX(true);
         StartCoroutine(EndRaceWithDelay());
     }
-    
+
     public void StartRace()
     {
         HUDPanel.SetActive(false);
@@ -202,7 +206,7 @@ public class RaceManager : MonoBehaviour
     public void HandleEndRaceError(UnityWebRequest request)
     {
         retryMenu.Open();
-        if(request.responseCode == 401)
+        if (request.responseCode == 401)
         {
             retryMenu.SessionExpired();
         }
@@ -225,17 +229,18 @@ public class RaceManager : MonoBehaviour
     {
         this.coins += amount;
     }
-    
+
     public IEnumerator Countdown(int countdown)
     {
+        _canPause = false;
         Time.timeScale = 0f;
-        
+
         float wait = 0.5f;
         float count = countdown + wait;
         int lastSecond = Mathf.RoundToInt(count);
 
         normalCountEventEmitter.Play();
-        
+
         startRaceCountdownPanel.gameObject.SetActive(true);
         startRaceCountdownPanel.enabled = true;
         startRaceCountdownSign.SetActive(true);
@@ -260,9 +265,9 @@ public class RaceManager : MonoBehaviour
             {
                 startRaceCountdownCircleFill.fillAmount = 1f;
             }
-            
+
             startRaceCountdownCircleFill.fillAmount -= Time.unscaledDeltaTime / countdown;
-            
+
             count -= Time.unscaledDeltaTime;
 
             yield return null;
@@ -279,9 +284,10 @@ public class RaceManager : MonoBehaviour
         vehicle.PauseMotorSFX(false);
 
         startRaceCountdownText.text = "GO!";
+        _canPause = true;
 
         yield return new WaitForSeconds(3);
-        
+
         startRaceCountdownText.enabled = false;
     }
 
@@ -290,17 +296,17 @@ public class RaceManager : MonoBehaviour
         musicPlayer.PauseMusic(true);
         vehicle.PauseMotorSFX(true);
     }
-    
+
     private void UpdateUI()
     {
         // Update the score multiplier text and color
         // scoreMultiplier.sprite = scoreMultiplierSprites[scoreManager.GetRange()];
         scoreMultiplier.color = Color.Lerp(scoreMultiplier.color, scoreMultiplierColors[scoreManager.GetRange()], 1f * Time.deltaTime);
         scoreMultiplierText.text = System.Math.Round(scoreManager.GetMultiplier(), 1).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US")) + "x";
-        
+
         // Update speedometer
         speedometer.fillAmount = Mathf.Clamp01(vehicle.GetCurrentSpeed() / vehicle.GetMaximumSpeed());
-        
+
         // Update time travel bar
         turbo.sprite = turboSprites[timeTravel.CurrentStage];
 
@@ -313,10 +319,10 @@ public class RaceManager : MonoBehaviour
         {
             burningAnimator.speed = Mathf.Clamp01(vehicle.GetCurrentSpeed() / vehicle.GetActualMaximumSpeed());
         }
-        
+
         // Update the timer
         timerText.text = System.TimeSpan.FromSeconds(timer).ToString("mm\\:ss\\:ff");
-        
+
         // Update the score text
         string scoreString = scoreManager.GetScore().ToString("000,000 PTS", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
         Color inactiveColor = scoreText.color;
@@ -325,7 +331,7 @@ public class RaceManager : MonoBehaviour
         string coinsString = coins.ToString("00,000", System.Globalization.CultureInfo.GetCultureInfo("pt-BR"));
         coinsText.text = Regex.Replace(coinsString, "^(.*?)(?=[1-9])", $"<color=#{ColorUtility.ToHtmlStringRGBA(inactiveColor)}>$1</color>");
     }
-    
+
     private void ScoreBonusFeedback(object sender, OnScoreBonusGrantEventArgs e)
     {
         scoreBonusText.text = $"+{e.BonusAmount} PTS";
@@ -347,22 +353,22 @@ public class RaceManager : MonoBehaviour
         {
             StopCoroutine(damageFeedbackTextCoroutine);
         }
-        
+
         damageFeedbackTextCoroutine = StartCoroutine(FadeText(damageFeedbackText));
     }
 
     private IEnumerator FadeText(TextMeshProUGUI bonusText)
     {
         bonusText.gameObject.SetActive(true);
-        
+
         Color c = bonusText.color;
-        
+
         if (bonusText.color.a < 1f)
         {
             c.a = 1f;
             bonusText.color = c;
         }
-        
+
         c.a = 0f;
 
         float fadeInSpeed = 4f;
@@ -374,14 +380,23 @@ public class RaceManager : MonoBehaviour
             bonusText.color = c;
             yield return null;
         }
-        
+
         while (c.a > 0f)
         {
             c.a -= Time.deltaTime * fadeOutSpeed;
             bonusText.color = c;
             yield return null;
         }
-        
+
         bonusText.gameObject.SetActive(false);
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus && _canPause)
+        {
+            pauseMenu?.Open();
+        }
+        FMODUnity.RuntimeManager.PauseAllEvents(!focus);
     }
 }
