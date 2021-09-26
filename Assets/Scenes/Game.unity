@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16233736, g: 0.2919892, b: 0.5116891, a: 1}
+  m_IndirectSpecularColor: {r: 0.16234663, g: 0.29197103, b: 0.5122466, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -364,6 +364,10 @@ PrefabInstance:
       propertyPath: coinsText
       value: 
       objectReference: {fileID: 2019770671}
+    - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 2019770679}
     - target: {fileID: 3995385674325696510, guid: 83ebad7730f866342a4709103e727d45, type: 3}
       propertyPath: retryMenu
       value: 
@@ -2102,6 +2106,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1264862397784885854, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
   m_PrefabInstance: {fileID: 2019770664}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2019770679 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1446988165381960915, guid: 6aac771bab64b2e40bafc93e0ec9d0b6, type: 3}
+  m_PrefabInstance: {fileID: 2019770664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae26620188e8520f9c8195a0c7838cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2031818982
 PrefabInstance:
   m_ObjectHideFlags: 0
