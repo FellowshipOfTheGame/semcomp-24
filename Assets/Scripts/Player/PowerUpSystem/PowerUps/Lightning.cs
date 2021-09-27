@@ -16,14 +16,17 @@ public class Lightning : PowerUp
         int num = Physics.BoxCastNonAlloc(controller.transform.position, size, controller.transform.forward, results, controller.transform.rotation, size.z, collisionLayer);
         Debug.Log("Raio acertou " + num);
         List<RaycastHit> hitList = new List<RaycastHit>();
-        for (int i = 0; i < num && i < maxTargets; i++)
+        for (int i = 0; i < num; i++)
         {
             hitList.Add(results[i]);
+            Debug.Log($"Hit {hitList[i].transform.name}");
         }
         hitList.Sort(((a, b) => a.distance.CompareTo(b.distance)));
-        for (int i = 0; i < hitList.Count; i++)
+
+        for (int i = 0; i < maxTargets; i++)
         {
             hitList[i].transform.gameObject.GetComponent<Obstacle>().FadeOut(controller.VehicleCollider, renderer.ShieldCollider);
+            Debug.Log($"Destroying {hitList[i].transform.name}");
         }
         
         renderer.ActivateLightning(size);
