@@ -309,7 +309,7 @@ public class VehicleController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
-        Gizmos.DrawRay(transform.position, transform.forward * 150f);
-        Gizmos.DrawWireCube(transform.position, new Vector3(3, 3, 150f));
+        Gizmos.DrawRay(transform.position, transform.forward * 150f/2f);
+        Gizmos.DrawWireCube(new Vector3(transform.position.x, transform.position.y, transform.position.z + 150f/4f), new Vector3(3, 3, 150f/2f));
     }
 }
