@@ -12,7 +12,7 @@ namespace SubiNoOnibus.UI
         [Header("Buttons")]
         [SerializeField] private Button playBtn;
         [SerializeField] private Button logoutBtn;
-        [SerializeField] private Button exitBtn;
+        [SerializeField] private Button semcompBtn;
 
         private void Awake()
         {
@@ -24,7 +24,7 @@ namespace SubiNoOnibus.UI
         {
             playBtn.onClick.AddListener(PlayGame);
             logoutBtn.onClick.AddListener(Logout);
-            exitBtn.onClick.AddListener(ExitGame);
+            semcompBtn.onClick.AddListener(OpenSemcompSite);
         }
 
         public void PlayGame()
@@ -40,6 +40,11 @@ namespace SubiNoOnibus.UI
         public void OpenLoginMenu()
         {
             loginMenu.Open();
+        }
+
+        public void OpenSemcompSite()
+        {
+            WebLink.OpenLinkJSPlugin("https://semcomp.icmc.usp.br");
         }
 
         public static void ExitGame()

@@ -71,7 +71,7 @@ public class VehicleController : MonoBehaviour
     
     [SerializeField] private Transform frontLeftWheel;
     [SerializeField] private Transform frontRightWheel;
-    [FormerlySerializedAs("wheelsRotationSpeed")] [SerializeField] private float wheelsTurningSpeed = 5f;
+    [SerializeField] private float wheelsTurningSpeed = 5f;
     
     private bool grounded; // State management
 
@@ -304,5 +304,12 @@ public class VehicleController : MonoBehaviour
     public void PauseMotorSFX(bool pause)
     {
         motorEventEmmiter.EventInstance.setPaused(pause);
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawRay(transform.position, transform.forward * 150f/2f);
+        Gizmos.DrawWireCube(new Vector3(transform.position.x, transform.position.y, transform.position.z + 150f/4f), new Vector3(3, 3, 150f/2f));
     }
 }

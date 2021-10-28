@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 //TODO: call OnActivate from base
+
 public class Lightning : PowerUp
 {
     public Vector3 size;
@@ -15,15 +15,45 @@ public class Lightning : PowerUp
         RaycastHit[] results = new RaycastHit[32];
         int num = Physics.BoxCastNonAlloc(controller.transform.position, size, controller.transform.forward, results, controller.transform.rotation, size.z, collisionLayer);
         Debug.Log("Raio acertou " + num);
+        
         List<RaycastHit> hitList = new List<RaycastHit>();
-        for (int i = 0; i < num && i < maxTargets; i++)
+        
+        for (int i = 0; i < num; i++)
         {
-            hitList.Add(results[i]);
+            if (Vector3.Distance(controller.transform.position, results[i].transform.position) >= 0f)
+            {
+                hitList.Add(results[i]);
+            }
         }
-        hitList.Sort(((a, b) => a.distance.CompareTo(b.distance)));
-        for (int i = 0; i < hitList.Count; i++)
+        
+        // Debug.Log("--- Unsorted ---");
+        // foreach (RaycastHit hit in hitList)
+        // {
+        //     Debug.Log($"Hit {hit.transform.name} ({hit.transform.position}). Raycast distance: {hit.distance}. Vector3Distance: {Vector3.Distance(controller.transform.position, hit.transform.position)}");
+        // }
+        
+        hitList.Sort((a, b) => (controller.transform.position - a.transform.position).sqrMagnitude.CompareTo((controller.transform.position - b.transform.position).sqrMagnitude));
+        
+        // Debug.Log("--- Sorted ---");
+        //
+        // foreach (RaycastHit hit in hitList)
+        // {
+        //     Debug.Log($"Hit {hit.transform.name} ({hit.transform.position}). Raycast distance: {hit.distance}. Vector3Distance: {Vector3.Distance(controller.transform.position, hit.transform.position)}");
+        // }
+        
+        // Debug.Log("--- Destroy ---");
+        
+        for (int i = 0; i < hitList.Count && i < maxTargets; i++)
         {
-            hitList[i].transform.gameObject.GetComponent<Obstacle>().FadeOut(controller.VehicleCollider, renderer.ShieldCollider);
+            if (hitList[i].transform.gameObject.TryGetComponent(out Obstacle obstacle))
+            {
+                obstacle.FadeOut(controller.VehicleCollider, renderer.ShieldCollider);
+                Debug.Log($"Destroying {hitList[i].transform.name}");
+            }
+            else
+            {
+                Debug.Log($"Failed to destroy {hitList[i].transform.name}. Object doesn't have an obstacle component");
+            }
         }
         
         renderer.ActivateLightning(size);
