@@ -1,16 +1,18 @@
-using System;
 using UnityEngine;
 
-public class Semcompinho : MonoBehaviour
+namespace SubiNoOnibus
 {
-    [SerializeField] private FMODUnity.StudioEventEmitter eventEmitter;
-
-    private void OnTriggerEnter(Collider other)
+    public class Semcompinho : MonoBehaviour
     {
-        if (!other.gameObject.CompareTag("Player")) return;
+        [SerializeField] private FMODUnity.StudioEventEmitter eventEmitter;
 
-        eventEmitter.Play();
-        other.gameObject.GetComponent<SemcompinhoCounter>().Increment();
-        Destroy(gameObject);
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.gameObject.CompareTag("Player")) return;
+
+            eventEmitter.Play();
+            other.gameObject.GetComponent<SemcompinhoCounter>().Increment();
+            Destroy(gameObject);
+        }
     }
 }

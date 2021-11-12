@@ -1,6 +1,11 @@
-using SubiNoOnibus.Networking.Requests;
 using UnityEngine;
 using UnityEngine.Networking;
+
+#if SUBI_NO_ONIBUS_ONLINE
+using Backend = SubiNoOnibus.Backend.Online.Requests;
+#else
+using Backend = SubiNoOnibus.Backend.Offline.Requests;
+#endif
 
 public class PowerUpUpgrades : MonoBehaviour
 {
@@ -62,7 +67,7 @@ public class PowerUpUpgrades : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(UserStatusRequestHandler.GetUserStatus(OnSuccess, OnFailure));
+        StartCoroutine(Backend::UserStatusRequestHandler.GetUserStatus(OnSuccess, OnFailure));
     }
 
     private void OnSuccess(UserStatus status)
@@ -256,7 +261,7 @@ public class PowerUpUpgrades : MonoBehaviour
         lightning.size = size;
         lightning.maxTargets = maxTargets;
 #else
-        DefaultErrorHandling.OnGameScene(request);
+        SubiNoOnibus.Backend.DefaultErrorHandling.OnGameScene(request);
         
         // No request error but signature was invalid, use 0 values by default
         if (request.responseCode < 400)

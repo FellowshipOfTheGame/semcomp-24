@@ -1,7 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using SubiNoOnibus.Networking.Requests;
+
+#if SUBI_NO_ONIBUS_ONLINE
+using Backend = SubiNoOnibus.Backend.Online.Requests;
+#else
+using Backend = SubiNoOnibus.Backend.Offline.Requests;
+#endif
+
 
 namespace SubiNoOnibus.UI
 {
@@ -34,7 +40,7 @@ namespace SubiNoOnibus.UI
 
         public void Logout()
         {
-            StartCoroutine(UserAuthRequestHandler.Logout(OpenLoginMenu, (req) => OpenLoginMenu()));
+            StartCoroutine(Backend::UserAuthRequestHandler.Logout(OpenLoginMenu, (req) => OpenLoginMenu()));
         }
 
         public void OpenLoginMenu()

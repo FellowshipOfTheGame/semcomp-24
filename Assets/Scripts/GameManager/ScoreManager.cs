@@ -35,113 +35,120 @@ internal class SpeedRange
     }
 }
 
-public class ScoreManager : MonoBehaviour
+namespace SubiNoOnibus
 {
-    [SerializeField] [Range(1f, 50f)] [Tooltip("A constant by which the score will be multiplied. A higher value will result in a higher score.")]
-    private float constantMultiplier = 10f;
-    
-    [SerializeField] [Tooltip("The minimum speed the player has to reach in order to score")]
-    private int minimumScoringSpeed;
-    
-    [SerializeField] [Tooltip("Speed ranges and their respective score multipliers")]
-    private List<SpeedRange> ranges;
-    
-    [SerializeField]
-    private TextMeshProUGUI scoreText;
-    
-    private Rigidbody playerRigidbody;
-
-    private float maximumSpeed;
-    private int currentRange;
-    private float score;
-
-    public event System.EventHandler<OnScoreBonusGrantEventArgs> OnScoreBonusGrant;
-
-    void Start()
+    public class ScoreManager : MonoBehaviour
     {
-        GameObject player = GetComponent<RaceManager>().player;
-        playerRigidbody = player.GetComponent<Rigidbody>();
-        maximumSpeed = player.GetComponent<VehicleController>().GetMaximumSpeed();
-    }
+        [SerializeField]
+        [Range(1f, 50f)]
+        [Tooltip("A constant by which the score will be multiplied. A higher value will result in a higher score.")]
+        private float constantMultiplier = 10f;
 
-    void FixedUpdate()
-    {
-        CalculateScore();
-        scoreText.text = score.ToString();
-        
-        // DEBUG ---------------
-        
-        if (currentRange > 0)
+        [SerializeField]
+        [Tooltip("The minimum speed the player has to reach in order to score")]
+        private int minimumScoringSpeed;
+
+        [SerializeField]
+        [Tooltip("Speed ranges and their respective score multipliers")]
+        private List<SpeedRange> ranges;
+
+        [SerializeField]
+        private TextMeshProUGUI scoreText;
+
+        private Rigidbody playerRigidbody;
+
+        private float maximumSpeed;
+        private int currentRange;
+        private float score;
+
+        public event System.EventHandler<OnScoreBonusGrantEventArgs> OnScoreBonusGrant;
+
+        void Start()
         {
-            scoreText.text += "\n{" + (currentRange + 1) + ", (" + ranges[currentRange - 1].GetUpperLimit() + "% ~ " +
-                              ranges[currentRange].GetUpperLimit() + "%)} (x" + ranges[currentRange].GetMultiplier() + ")";
+            GameObject player = GetComponent<RaceManager>().player;
+            playerRigidbody = player.GetComponent<Rigidbody>();
+            maximumSpeed = player.GetComponent<VehicleController>().GetMaximumSpeed();
         }
-        else
-        {
-            scoreText.text += "\n{" + (currentRange + 1) + ", (0% ~ " + ranges[currentRange].GetUpperLimit() +
-                              "%)} (x" + ranges[currentRange].GetMultiplier() + ")";
-        }
-        
-        // ---------------------
-    }
 
-    private void CalculateScore()
-    {
-        int currentSpeed = Mathf.FloorToInt(playerRigidbody.velocity.magnitude);
-        
-        if (currentSpeed > minimumScoringSpeed && currentSpeed >= 1)
+        void FixedUpdate()
         {
+            CalculateScore();
+            scoreText.text = score.ToString();
 
-            if (currentSpeed < maximumSpeed)
+            // DEBUG ---------------
+
+            if (currentRange > 0)
             {
-                int i = 0;
-                // while (currentSpeed/maximumSpeed * 100 > ranges[i].GetLimit()) i++;
-                while (!ranges[i].Contain(currentSpeed, maximumSpeed))
-                    i++; // Find the range that contains the current speed value
-                currentRange = i;
+                scoreText.text += "\n{" + (currentRange + 1) + ", (" + ranges[currentRange - 1].GetUpperLimit() + "% ~ " +
+                                  ranges[currentRange].GetUpperLimit() + "%)} (x" + ranges[currentRange].GetMultiplier() + ")";
             }
             else
             {
-                currentRange = ranges.Count - 1;
+                scoreText.text += "\n{" + (currentRange + 1) + ", (0% ~ " + ranges[currentRange].GetUpperLimit() +
+                                  "%)} (x" + ranges[currentRange].GetMultiplier() + ")";
             }
 
-            // scoreF += constantMultiplier * ranges[currentRange].GetMultiplier() * Time.deltaTime;
-            score = Mathf.Lerp(score, score + constantMultiplier * ranges[currentRange].GetMultiplier(), Time.deltaTime);
+            // ---------------------
         }
-    }
 
-    public int GetScore()
-    {
-        return Mathf.RoundToInt(score);
-    }
-
-    public float GetMultiplier()
-    {
-        return ranges[currentRange].GetMultiplier();
-    }
-
-    public int GetRange()
-    {
-        return currentRange;
-    }
-
-    public int GetMaxRange()
-    {
-        return ranges.Count - 1;
-    }
-
-    public void GrantBonus(int bonus)
-    {
-        score += bonus;
-        
-        OnScoreBonusGrantEventArgs onBonusGrantedEventArgs = new OnScoreBonusGrantEventArgs
+        private void CalculateScore()
         {
-            BonusAmount = bonus
-        };
+            int currentSpeed = Mathf.FloorToInt(playerRigidbody.velocity.magnitude);
 
-        if (OnScoreBonusGrant != null)
+            if (currentSpeed > minimumScoringSpeed && currentSpeed >= 1)
+            {
+
+                if (currentSpeed < maximumSpeed)
+                {
+                    int i = 0;
+                    // while (currentSpeed/maximumSpeed * 100 > ranges[i].GetLimit()) i++;
+                    while (!ranges[i].Contain(currentSpeed, maximumSpeed))
+                        i++; // Find the range that contains the current speed value
+                    currentRange = i;
+                }
+                else
+                {
+                    currentRange = ranges.Count - 1;
+                }
+
+                // scoreF += constantMultiplier * ranges[currentRange].GetMultiplier() * Time.deltaTime;
+                score = Mathf.Lerp(score, score + constantMultiplier * ranges[currentRange].GetMultiplier(), Time.deltaTime);
+            }
+        }
+
+        public int GetScore()
         {
-            OnScoreBonusGrant(this, onBonusGrantedEventArgs);
+            return Mathf.RoundToInt(score);
+        }
+
+        public float GetMultiplier()
+        {
+            return ranges[currentRange].GetMultiplier();
+        }
+
+        public int GetRange()
+        {
+            return currentRange;
+        }
+
+        public int GetMaxRange()
+        {
+            return ranges.Count - 1;
+        }
+
+        public void GrantBonus(int bonus)
+        {
+            score += bonus;
+
+            OnScoreBonusGrantEventArgs onBonusGrantedEventArgs = new OnScoreBonusGrantEventArgs
+            {
+                BonusAmount = bonus
+            };
+
+            if (OnScoreBonusGrant != null)
+            {
+                OnScoreBonusGrant(this, onBonusGrantedEventArgs);
+            }
         }
     }
 }

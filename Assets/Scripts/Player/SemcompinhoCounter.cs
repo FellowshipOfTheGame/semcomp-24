@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SemcompinhoCounter : MonoBehaviour
+namespace SubiNoOnibus
 {
-    [SerializeField] private RaceManager raceManager;
-
-    public void Increment()
+    public class SemcompinhoCounter : MonoBehaviour
     {
-        raceManager.AddCoin(1);
+        [SerializeField] private RaceManager raceManager;
+
+        public void Increment()
+        {
+            raceManager.AddCoin(1);
+        }
+
     }
-    
 }

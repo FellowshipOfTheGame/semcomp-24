@@ -1,8 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-using SubiNoOnibus.Networking.Requests;
 using System.Collections.Generic;
+using SubiNoOnibus.Backend;
+
+#if SUBI_NO_ONIBUS_ONLINE
+using Backend = SubiNoOnibus.Backend.Online.Requests;
+#else
+using Backend = SubiNoOnibus.Backend.Offline.Requests;
+#endif
 
 namespace SubiNoOnibus.UI
 {
@@ -13,13 +19,13 @@ namespace SubiNoOnibus.UI
         [SerializeField] private Transform cardsContainer;
         [SerializeField] private TMPro.TextMeshProUGUI goldAmountTxt;
 
-        [SerializeField]         private ShopUpgrades _shopUpgrades;
+        [SerializeField] private ShopUpgrades _shopUpgrades;
         private int _gold = 0;
         private Dictionary<string, ShopCard> _shopCards;
 
         public void Open()
         {
-            IEnumerator getShopUpgrades = ShopRequestHandler.GetShopUpgrades
+            IEnumerator getShopUpgrades = Backend::ShopRequestHandler.GetShopUpgrades
             (
                 HandleGetShopUpgradesSuccess, 
                 HandleError
@@ -34,7 +40,7 @@ namespace SubiNoOnibus.UI
 
         public void TryBuyItem(ShopItem item)
         {
-            IEnumerator buyShopUpgrade = ShopRequestHandler.BuyShopUpgrade
+            IEnumerator buyShopUpgrade = Backend::ShopRequestHandler.BuyShopUpgrade
             (
                 item,
                 HandleBuyUpgradeSuccess,

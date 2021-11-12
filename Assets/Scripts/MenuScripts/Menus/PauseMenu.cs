@@ -1,6 +1,11 @@
-using SubiNoOnibus.Networking.Requests;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+#if SUBI_NO_ONIBUS_ONLINE
+using Backend = SubiNoOnibus.Backend.Online.Requests;
+#else
+using Backend = SubiNoOnibus.Backend.Offline.Requests;
+#endif
 
 namespace SubiNoOnibus.UI
 {
@@ -25,7 +30,7 @@ namespace SubiNoOnibus.UI
         public void Restart()
         {
             RaceData data = raceManager.GetEndRaceData();
-            var finishRaceEnumerator = RaceRequestHandler.FinishRace
+            var finishRaceEnumerator = Backend::RaceRequestHandler.FinishRace
             (
                 data, 
                 (data) => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex),
@@ -37,7 +42,7 @@ namespace SubiNoOnibus.UI
         public void MainMenu()
         {
             RaceData data = raceManager.GetEndRaceData();
-            var finishRaceEnumerator = RaceRequestHandler.FinishRace
+            var finishRaceEnumerator = Backend::RaceRequestHandler.FinishRace
             (
                 data, 
                 (data) => SceneManager.LoadScene("StartupMenu"),

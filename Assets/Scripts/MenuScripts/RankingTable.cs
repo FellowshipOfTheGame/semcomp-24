@@ -1,7 +1,12 @@
-using SubiNoOnibus.Networking.Requests;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+#if SUBI_NO_ONIBUS_ONLINE
+using Backend = SubiNoOnibus.Backend.Online.Requests;
+#else
+using Backend = SubiNoOnibus.Backend.Offline.Requests;
+#endif
 
 public class RankingTable : MonoBehaviour
 {
@@ -15,7 +20,7 @@ public class RankingTable : MonoBehaviour
     private void OnEnable()
     {
         
-        StartCoroutine(RankingRequestHandler.GetRanking(OnRankingSuccess));
+        StartCoroutine(Backend::RankingRequestHandler.GetRanking(OnRankingSuccess));
     }
 
     private void OnRankingSuccess(RankingData data)

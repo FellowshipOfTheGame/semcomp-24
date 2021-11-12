@@ -1,5 +1,11 @@
-using SubiNoOnibus.Networking.Requests;
+using SubiNoOnibus.Backend;
 using UnityEngine;
+
+#if SUBI_NO_ONIBUS_ONLINE
+using Backend = SubiNoOnibus.Backend.Online.Requests;
+#else
+using Backend = SubiNoOnibus.Backend.Offline.Requests;
+#endif
 
 namespace SubiNoOnibus.UI
 {
@@ -9,7 +15,7 @@ namespace SubiNoOnibus.UI
 
         public void Open()
         {
-            var getRankingRequest = RankingRequestHandler.GetRanking
+            var getRankingRequest = Backend::RankingRequestHandler.GetRanking
             (
                 PopulateRankingList,
                 (req) => DefaultErrorHandling.OnMenuScene(req, this, FindObjectOfType<MainMenu>())

@@ -1,7 +1,12 @@
-using SubiNoOnibus.Networking.Requests;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+
+#if SUBI_NO_ONIBUS_ONLINE
+using Backend = SubiNoOnibus.Backend.Online.Requests;
+#else
+using Backend = SubiNoOnibus.Backend.Offline.Requests;
+#endif
 
 namespace SubiNoOnibus.UI
 {
@@ -22,8 +27,8 @@ namespace SubiNoOnibus.UI
         public IEnumerator ValidateCookie()
         {
             RaycastBlockEvent.Invoke(true);
-#if !UNITY_WEBGL
-            string authCookie = PlayerPrefs.GetString(UserAuthRequestHandler.authKey, string.Empty);
+#if !UNITY_WEBGL && SUBI_NO_ONIBUS_ONLINE
+            string authCookie = PlayerPrefs.GetString(Backend::UserAuthRequestHandler.authKey, string.Empty);
 
             if (string.IsNullOrEmpty(authCookie))
             {
@@ -32,7 +37,7 @@ namespace SubiNoOnibus.UI
                 yield break;
             }
 #endif
-            yield return UserAuthRequestHandler.ValidateSession(Close, Open);
+            yield return Backend::UserAuthRequestHandler.ValidateSession(Close, Open);
             RaycastBlockEvent.Invoke(false);
         }
 
@@ -40,7 +45,7 @@ namespace SubiNoOnibus.UI
         {
             string key = keyInputField.text.Trim();
 
-            IEnumerator getSessionRequest = UserAuthRequestHandler.GetSession
+            IEnumerator getSessionRequest = Backend::UserAuthRequestHandler.GetSession
             (
                 new SessionData(key),
                 Close,
@@ -73,8 +78,9 @@ namespace SubiNoOnibus.UI
 
         public void OnPress_Login()
         {
-            WebLink.OpenLinkJSPlugin(Endpoints.Login_url);
-            
+#if SUBI_NO_ONIBUS_ONLINE
+            WebLink.OpenLinkJSPlugin(Backend.Online.Configurations.Endpoints.Login_url);
+#endif            
             SwitchToInsertKey();
         }
 
