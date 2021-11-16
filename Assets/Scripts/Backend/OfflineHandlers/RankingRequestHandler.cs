@@ -14,7 +14,7 @@ namespace SubiNoOnibus.Backend.Offline.Requests
             RankingPlayerData[] ranking = new RankingPlayerData[]
             {
                 new RankingPlayerData() { name = "Susy da Costa Dutra", topScore = 353281 },
-                new RankingPlayerData() { name = "André Santana", topScore = 266398 },
+                new RankingPlayerData() { name = "Andre Santana", topScore = 266398 },
                 new RankingPlayerData() { name = "Sandy da Costa Dutra", topScore = 160370 },
                 new RankingPlayerData() { name = user.name, topScore = user.topScore }
             };
