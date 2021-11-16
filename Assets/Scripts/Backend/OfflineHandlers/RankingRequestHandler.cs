@@ -24,7 +24,7 @@ namespace SubiNoOnibus.Backend.Offline.Requests
             personalRank.topScore = user.topScore;
             personalRank.position = 4;
             
-            for(int i = 2; i >= 0 && ranking[i].topScore < user.topScore; i++)
+            for(int i = 2; i >= 0 && ranking[i].topScore < user.topScore; i--)
             {
                 ranking[i+1] = ranking[i];
                 ranking[i].name = user.name;

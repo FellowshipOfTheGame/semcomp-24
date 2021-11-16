@@ -20,7 +20,7 @@ namespace SubiNoOnibus.Backend.Offline.Requests
                 shopUpgrades.shop[i] = new ShopItem()
                 {
                     level = user.upgrades[i].level,
-                    price = (user.upgrades[i].level+1) * 100,
+                    price = (user.upgrades[i].level) * 100,
                     itemName = user.upgrades[i].itemName,
                 };
             }
@@ -36,17 +36,20 @@ namespace SubiNoOnibus.Backend.Offline.Requests
            
             NewShopItem newItem = new NewShopItem();
             newItem.itemName = item.itemName;
-            newItem.level = item.level+1;
-            newItem.price = (item.level+1)*100;
-            newItem.gold = user.gold;
+            newItem.level = item.level;
+            newItem.price = item.price;
+            newItem.gold  = user.gold;
 
             if(user.gold >= item.price){
-                user.gold -= item.price;
-                newItem.gold = user.gold;
-
                 for(int i = 0; i < user.upgrades.Length; i++){
-                    if(user.upgrades[i].itemName == item.itemName){
-                        user.upgrades[i].level = item.level;
+                    if( String.Equals(user.upgrades[i].itemName, item.itemName)){
+                        user.gold    -= item.price;
+                        newItem.gold  = user.gold;
+                        
+                        newItem.level = item.level+1;
+                        newItem.price = (newItem.level)*100;    
+                        
+                        user.upgrades[i].level += 1;
                         break;
                     }
                 }

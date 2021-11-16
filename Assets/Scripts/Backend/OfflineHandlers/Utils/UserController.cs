@@ -13,7 +13,7 @@ namespace SubiNoOnibus.Backend.Offline.Utils
             if(string.IsNullOrEmpty(storedData))
             {
                 UserStatus newUser = new UserStatus();
-                newUser.name = "Jogador";
+                newUser.name = "Você";
                 newUser.gold = 0;
                 newUser.runs = 0;
                 newUser.topScore = 0;
